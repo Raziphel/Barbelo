@@ -6,9 +6,9 @@ from utils.permissions import *
 from utils.embed import Embed
 
 #? SQL
-from utils.sql.users.currency import Currency
-from utils.sql.users.levels import Levels
-from utils.sql.users.tracking import Tracking
+from utils.sql.currency import Currency
+from utils.sql.levels import Levels
+from utils.sql.tracking import Tracking
 
 #? Functions
 
