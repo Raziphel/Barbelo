@@ -15,7 +15,6 @@ class DefaultEmbed(Embed):
         thumbnail = kwargs.pop('thumbnail', None)
         image = kwargs.pop('image', None)
         desc = kwargs.pop('desc', None)
-        guild = kwargs.pop('guild', None)
         footer = kwargs.pop('footer', None)
 
         #+ Make the Embed
