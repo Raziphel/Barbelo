@@ -1,0 +1,5 @@
+asyncpg
+discord.py
+more_itertools
+toml
+pillow
