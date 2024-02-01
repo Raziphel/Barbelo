@@ -19,10 +19,8 @@ class Baphomet(commands.AutoShardedBot):
         with open(self.config_filename) as z:
             self.config = toml.load(z)
 
-        #+ Adds all embeds to the Baphomet Bot.
-        # utils.DefaultEmbed.bot = self
-
-        #+ Load Functions
+        #+ Load Utils
+        utils.Embed.bot = self
         # utils.UserFunction.bot = self
 
         self.database = DatabaseConnection
@@ -41,6 +39,7 @@ class Baphomet(commands.AutoShardedBot):
             # utils.Moderation.all_moderation.clear()
             utils.Levels.all_levels.clear()
             utils.Currency.all_currency.clear()
+            utils.Tracking.all_tracking.clear()
 
 
             #! Collect from Database
@@ -48,6 +47,7 @@ class Baphomet(commands.AutoShardedBot):
             #     moderation = await db('SELECT * FROM moderation')
                 levels = await db('SELECT * FROM levels')
                 currency = await db('SELECT * FROM currency')
+                tracking = await db('SELECT * FROM tracking')
 
 
             #! Cache all into local objects
@@ -57,6 +57,8 @@ class Baphomet(commands.AutoShardedBot):
                 utils.Levels(**i)
             for i in currency:
                 utils.Currency(**i)
+            for i in tracking:
+                utils.Tracking(**i)
 
         except Exception as e:
             print(f'Couldn\'t connect to the database... :: {e}')
