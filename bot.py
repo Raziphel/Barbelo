@@ -9,7 +9,8 @@ from serpent import Baphomet
 intents = Intents.all()
 bot = Baphomet(
     command_prefix=["."],
-    config_filename="config/config.toml",
+    config="config/config.toml",
+    secret="config/secret.toml",
     intents=intents
 )
 logger = bot.logger

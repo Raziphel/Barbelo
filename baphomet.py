@@ -10,27 +10,34 @@ from utils.database import DatabaseConnection
 
 #+ ------------------------- Baphomet Main Class
 class Baphomet(commands.AutoShardedBot):
-    def __init__(self, config_filename: str, *args, logger: logging.Logger = None, **kwargs):
+    def __init__(self, config: str, secret: str, *args, logger: logging.Logger = None, **kwargs):
         super().__init__(*args, fetch_offline_members=True, guild_subscriptions=True, allowed_mentions = AllowedMentions(roles=True, users=True, everyone=True), **kwargs)
 
         self.logger = logger or logging.getLogger("Baphomet")
-        self.config_filename = config_filename
+
+        self.config = config
         self.config = None
-        with open(self.config_filename) as z:
+        self.secret = secret
+        self.secret = None
+
+        with open(self.config) as z:
             self.config = toml.load(z)
+
+        with open(self.secret) as z:
+            self.secret = toml.load(z)
 
         #+ Load Utils
         utils.Embed.bot = self
         # utils.UserFunction.bot = self
 
         self.database = DatabaseConnection
-        self.database.config = self.config['database']
+        self.database.secret = self.secret['database']
         self.startup_method = None
         self.connected = False
 
     def run(self):
         self.startup_method = self.loop.create_task(self.startup())
-        super().run(self.config['token'])
+        super().run(self.secret['secret'])
 
     async def startup(self):
         """Load database"""
