@@ -3,7 +3,7 @@ from glob import glob
 
 from discord import Intents
 
-from serpent import Baphomet
+from baphomet import Baphomet
 
 
 intents = Intents.all()
