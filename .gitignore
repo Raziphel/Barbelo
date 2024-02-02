@@ -1,10 +1,11 @@
 __pycache__/*
 *.pyc
+*.disabled
 *sublime*
 _*
 !__*.py
 *.code*
 .vscode/*
 .ini
-config/config.toml
+config/secret.toml
 .venv
