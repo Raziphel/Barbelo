@@ -41,7 +41,7 @@ class Baphomet(commands.AutoShardedBot):
         """Load database"""
         try:  #? Try this to prevent reseting the database on accident!
             #! Clear cache
-            # utils.Moderation.all_moderation.clear()
+            utils.Currency.all_currency.clear()
             utils.Levels.all_levels.clear()
             utils.Gems.all_gems.clear()
             utils.Tracking.all_tracking.clear()
@@ -49,15 +49,15 @@ class Baphomet(commands.AutoShardedBot):
 
             #! Collect from Database
             async with self.database() as db:
-            #     moderation = await db('SELECT * FROM moderation')
+                currency = await db('SELECT * FROM currency')
                 levels = await db('SELECT * FROM levels')
                 gems = await db('SELECT * FROM gems')
                 tracking = await db('SELECT * FROM tracking')
 
 
             #! Cache all into local objects
-            # for i in moderation:
-            #     utils.Moderation(**i)
+            for i in currency:
+                utils.Currency(**i)
             for i in levels:
                 utils.Levels(**i)
             for i in gems:
