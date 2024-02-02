@@ -35,7 +35,7 @@ class Baphomet(commands.AutoShardedBot):
 
     def run(self):
         self.startup_method = self.loop.create_task(self.startup())
-        super().run(self.secret['secret'])
+        super().run(self.secret['token'])
 
     async def startup(self):
         """Load database"""
