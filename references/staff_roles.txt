@@ -19,6 +19,81 @@ SCPSL Overseer -> Developers -> SCPSL Sr. Moderator -> SCPSL Mod -> SCPSL Jr. Mo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#! I also hide the scpsl info junk waaaaaaaaaaay down.
+#! # # # # # #
+
+
 <b><size=45><align="center"><color=#14CD17>Serpent's</color> <color=#14CD69>Garden</color></align></size></b>
  
 <align="center">------------------------------------------------------------------------</align>
