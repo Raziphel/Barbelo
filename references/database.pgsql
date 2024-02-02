@@ -27,7 +27,7 @@ CREATE TABLE daily (
 );
 
 
-CREATE TABLE currency (
+CREATE TABLE gems (
     user_id bigint NOT NULL,
     emerald integer DEFAULT 0,
     diamond integer DEFAULT 0,

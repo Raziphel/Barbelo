@@ -43,7 +43,7 @@ class Baphomet(commands.AutoShardedBot):
             #! Clear cache
             # utils.Moderation.all_moderation.clear()
             utils.Levels.all_levels.clear()
-            utils.Currency.all_currency.clear()
+            utils.Gems.all_gems.clear()
             utils.Tracking.all_tracking.clear()
 
 
@@ -51,7 +51,7 @@ class Baphomet(commands.AutoShardedBot):
             async with self.database() as db:
             #     moderation = await db('SELECT * FROM moderation')
                 levels = await db('SELECT * FROM levels')
-                currency = await db('SELECT * FROM currency')
+                gems = await db('SELECT * FROM gems')
                 tracking = await db('SELECT * FROM tracking')
 
 
@@ -60,8 +60,8 @@ class Baphomet(commands.AutoShardedBot):
             #     utils.Moderation(**i)
             for i in levels:
                 utils.Levels(**i)
-            for i in currency:
-                utils.Currency(**i)
+            for i in gems:
+                utils.Gems(**i)
             for i in tracking:
                 utils.Tracking(**i)
 
