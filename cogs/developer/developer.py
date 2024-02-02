@@ -43,10 +43,10 @@ class Developer(Cog):
     @command(aliases=['r'])
     async def restart(self, ctx):
         '''Restarts the bot'''  
-        msg = await ctx.send(embed=utils.DevEmbed(title=f"Restarting...", guild=ctx.guild))
+        msg = await ctx.send(embed=utils.Embed(title=f"Restarting...", guild=ctx.guild))
         for num in range(5):
             await sleep(1)
-            await msg.edit(embed=utils.DevEmbed(title=f"Restarting in {5-num}.", guild=ctx.guild))
+            await msg.edit(embed=utils.Embed(title=f"Restarting in {5-num}.", guild=ctx.guild))
         await ctx.message.delete()
         await msg.delete()
         python = sys.executable
@@ -63,7 +63,7 @@ class Developer(Cog):
         ping = (monotonic() - before) * 1000
         users = len(set(self.bot.get_all_members()))
         servers = len(self.bot.guilds)
-        await message.edit(embed=utils.DevEmbed(desc=f"Ping:`{int(ping)}ms`\nUsers: `{users}`\nServers: `{servers}`", guild=ctx.guild))
+        await message.edit(embed=utils.Embed(desc=f"Ping:`{int(ping)}ms`\nUsers: `{users}`\nServers: `{servers}`", guild=ctx.guild))
 
 
 
