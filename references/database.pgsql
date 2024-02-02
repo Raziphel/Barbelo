@@ -29,13 +29,12 @@ CREATE TABLE daily (
 
 CREATE TABLE currency (
     user_id bigint NOT NULL,
-    coins integer DEFAULT 500,
-    coins_earned integer DEFAULT 0,
-    last_coin TIMESTAMP,
-    xp integer DEFAULT 1,
-    xp_earned integer DEFAULT 0,
-    last_xp TIMESTAMP,
-    lot_tickets Integer DEFAULT 0,
+    emerald integer DEFAULT 0,
+    diamond integer DEFAULT 0,
+    ruby integer DEFAULT 0,
+    sapphire integer DEFAULT 0,
+    amethyst integer DEFAULT 0,
+    hellstone integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 
