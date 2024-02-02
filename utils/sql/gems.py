@@ -1,7 +1,7 @@
 from utils.database import DatabaseConnection
 import asyncpg
 
-class gems(object):
+class Gems(object):
     all_gems = {}
 
     def __init__(self, user_id:int, emerald:int=0, diamond:int=0, ruby:int=0, sapphire:int=0, amethyst:int=0, hellstone:int=0):
