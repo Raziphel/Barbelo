@@ -7,6 +7,7 @@ from utils.embed import Embed
 
 #? SQL
 from utils.sql.currency import Currency
+from utils.sql.gems import Gems
 from utils.sql.levels import Levels
 from utils.sql.tracking import Tracking
 

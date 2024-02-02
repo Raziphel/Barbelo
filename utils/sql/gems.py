@@ -4,10 +4,10 @@ import asyncpg
 class gems(object):
     all_gems = {}
 
-    def __init__(self, user_id:int, silver:int=0, gold:int=0, diamond:int=0, emerald:int=0, ruby:int=0, sapphire:int=0, amethyst:int=0, hellstone:int=0):
+    def __init__(self, user_id:int, emerald:int=0, diamond:int=0, ruby:int=0, sapphire:int=0, amethyst:int=0, hellstone:int=0):
         self.user_id = user_id
-        self.diamond = diamond
         self.emerald = emerald
+        self.diamond = diamond
         self.ruby = ruby
         self.sapphire = sapphire
         self.amethyst = amethyst
