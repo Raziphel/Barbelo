@@ -14,11 +14,9 @@ class Baphomet(commands.AutoShardedBot):
         super().__init__(*args, fetch_offline_members=True, guild_subscriptions=True, allowed_mentions = AllowedMentions(roles=True, users=True, everyone=True), **kwargs)
 
         self.logger = logger or logging.getLogger("Baphomet")
-
         self.config = config
-        self.config = None
         self.secret = secret
-        self.secret = None
+
 
         with open(self.config) as z:
             self.config = toml.load(z)
