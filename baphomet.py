@@ -29,7 +29,7 @@ class Baphomet(commands.AutoShardedBot):
         # utils.UserFunction.bot = self
 
         self.database = DatabaseConnection
-        self.database.secret = self.secret['database']
+        self.database.config = self.secret['database']
         self.startup_method = None
         self.connected = False
 
