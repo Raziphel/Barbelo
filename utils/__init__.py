@@ -12,6 +12,7 @@ from utils.sql.levels import Levels
 from utils.sql.tracking import Tracking
 
 #? Functions
+from utils.functions.gemfunction import GemFunctions
 
 #? Additions
 from discord.utils import get as DiscordGet
