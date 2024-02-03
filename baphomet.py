@@ -26,7 +26,7 @@ class Baphomet(commands.AutoShardedBot):
 
         #+ Load Utils
         utils.Embed.bot = self
-        utils.GemFunction.bot = self
+        utils.GemFunctions.bot = self
 
         self.database = DatabaseConnection
         self.database.config = self.secret['database']
