@@ -104,7 +104,7 @@ class Developer(Cog):
             c = utils.Currency.get(member.id)
 
             g.emerald = c.coins*800
-            await utils.GemFunctions.update_gems(member)
+            await utils.GemFunctions.update(member)
             async with self.bot.database() as db:
                 await g.save(db)
 
