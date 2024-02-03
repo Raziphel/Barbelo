@@ -5,7 +5,7 @@ from math import floor
 
 import utils
 
-class GemFunction(object):
+class GemFunctions(object):
     bot = None
 
 
