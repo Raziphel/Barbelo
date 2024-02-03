@@ -87,12 +87,10 @@ class Developer(Cog):
             await channel.set_permissions(council, manage_channels=True, manage_permissions=True)
             await channel.set_permissions(untrusted, read_messages=False, send_messages=False, add_reactions=False, send_messages_in_threads=False, create_public_threads=False, create_private_threads=False)
 
-
         for channel in ctx.guild.voice_channels:
             await channel.set_permissions(muted, read_messages=None, send_messages=False, add_reactions=False, send_messages_in_threads=False, create_public_threads=False, create_private_threads=False, connect=False)
             # await channel.set_permissions(trusted, read_messages=True)
             await channel.set_permissions(bots, read_messages=True, send_messages=True, add_reactions=True, send_messages_in_threads=True, create_public_threads=True, create_private_threads=True, connect=True)
-
 
         await ctx.send('Fixed Muted & Trust roles!')
 
@@ -105,7 +103,7 @@ class Developer(Cog):
             g = utils.Gems.get(member.id)
             c = utils.Currency.get(member.id)
 
-            g.emerald = c.coins*100
+            g.emerald = c.coins*800
             await utils.GemFunctions.update_gems(member)
             async with self.bot.database() as db:
                 await g.save(db)
