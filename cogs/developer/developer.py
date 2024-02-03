@@ -98,7 +98,23 @@ class Developer(Cog):
 
 
 
+    @utils.is_dev()
+    @command()
+    async def convertcoins(self, ctx):
+        for member in ctx.guild.members:
+            g = utils.Gems.get(member.id)
+            c = utils.Currency.get(member.id)
+
+            g.emerald = c.coins
+            async with cls.bot.database() as db:
+                await g.save(db)
+
+        await ctx.send('All members coins have been copied over to emeralds.')
+
+
+
 
 def setup(bot):
+    
     x = Developer(bot)
     bot.add_cog(x)
