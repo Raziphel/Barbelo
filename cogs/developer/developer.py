@@ -105,17 +105,16 @@ class Developer(Cog):
             g = utils.Gems.get(member.id)
             c = utils.Currency.get(member.id)
 
-            g.emerald = c.coins
+            g.emerald = c.coins*100
             await utils.GemFunctions.update_gems(member)
             async with self.bot.database() as db:
                 await g.save(db)
 
-        await ctx.send('All members coins have been copied over to emeralds.')
+        await ctx.send('All members coins have been copied over and adjusted too new currency.')
 
 
 
 
 def setup(bot):
-    
     x = Developer(bot)
     bot.add_cog(x)
