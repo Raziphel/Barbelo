@@ -106,7 +106,8 @@ class Developer(Cog):
             c = utils.Currency.get(member.id)
 
             g.emerald = c.coins
-            async with cls.bot.database() as db:
+            await utils.GemFunctions.update_gems(member)
+            async with self.bot.database() as db:
                 await g.save(db)
 
         await ctx.send('All members coins have been copied over to emeralds.')
