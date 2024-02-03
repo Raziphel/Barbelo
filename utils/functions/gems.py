@@ -45,9 +45,6 @@ class GemFunctions(object):
         async with cls.bot.database() as db:
             await g.save(db)
 
-        return
-
-
 
 
     @classmethod
