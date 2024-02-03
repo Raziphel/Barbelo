@@ -11,7 +11,7 @@ class GemFunctions(object):
 
 
     @classmethod
-    async def update_gems(cls, user:Member):
+    async def update(cls, user:Member):
         g = utils.Gems.get(user.id)
 
         #+ Upgrade gems to the next tier!
@@ -51,37 +51,33 @@ class GemFunctions(object):
 
 
     @classmethod
-    async def pay_exchange(cls, user:Member):
-        c = utils.Currency.get(user.id)
+    async def downgrade(cls, user:Member):
+        g = utils.Gems.get(user.id)
 
-        #! Lower every gem by one to check if they can afford
-        if c.phelstone > 0:
-            c.phelstone -= 1
-            c.amethyst += 100
+        #+ Lower every gem by one to check if they can afford
+        if g.hellstone > 0:
+            g.hellstone -= 1
+            g.amethyst += 100
 
-        if c.amethyst > 0:
-            c.amethyst -= 1
-            c.sappire += 100
+        if g.amethyst > 0:
+            g.amethyst -= 1
+            g.sappire += 100
 
-        if c.sapphire > 0:
-            c.sapphire -= 1
-            c.ruby += 100
+        if g.sapphire > 0:
+            g.sapphire -= 1
+            g.ruby += 100
 
-        if c.ruby > 0:
-            c.ruby -= 1
-            c.diamond += 100
+        if g.ruby > 0:
+            g.ruby -= 1
+            g.diamond += 100
 
-        if c.diamond > 0:
-            c.diamond -= 1
-            c.emerald += 100
+        if g.diamond > 0:
+            g.diamond -= 1
+            g.emerald += 100
 
-        if c.emerald > 0:
-            c.emerald -= 1
-            c.gold += 100
-
-        if c.gold > 0:
-            c.gold -= 1
-            c.silver += 100
+        if g.emerald > 0:
+            g.emerald -= 1
+            g.gold += 100
 
         async with cls.bot.database() as db:
-            await c.save(db)
+            await g.save(db)
