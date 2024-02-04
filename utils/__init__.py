@@ -14,6 +14,7 @@ from utils.sql.tracking import Tracking
 
 #? Functions
 from utils.functions.gems import GemFunctions
+from utils.functions.users import UserFunctions
 
 #? Additions
 from discord.utils import get as DiscordGet
