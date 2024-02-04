@@ -6,6 +6,7 @@ from utils.permissions import *
 from utils.embed import Embed
 
 #? SQL
+from utils.sql.moderation import Moderation
 from utils.sql.currency import Currency
 from utils.sql.gems import Gems
 from utils.sql.levels import Levels
