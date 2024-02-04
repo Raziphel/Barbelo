@@ -106,7 +106,7 @@ class Gem_Generator(Cog):
                     lvl.exp += 2 * (len(vc.members)/2)
                     g.emeralds = 25 * round(len(vc.members)/2)
 
-                    await utils.UserFunction.level_up(user=member, channel=None)
+                    await utils.UserFunctions.level_up(user=member, channel=None)
 
                     async with self.bot.database() as db:
                         await g.save(db)

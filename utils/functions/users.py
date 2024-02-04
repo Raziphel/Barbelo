@@ -2,11 +2,11 @@
 from discord.ext.commands import command, cooldown, BucketType, Cog
 from discord import Member, Message, User, TextChannel
 
-import utils
-
 from asyncio import sleep
 from random import randint, choice
 from math import floor
+
+import utils
 
 class UserFunctions(object):
     bot = None
