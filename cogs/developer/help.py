@@ -80,9 +80,9 @@ class Help(Cog):
         try:
             await ctx.author.send(embed=help_embed)
             if ctx.guild:
-                await ctx.send('Sent you a PM!')
+                await ctx.send('I\'ve sent you a DM with a list of commands!')
         except Exception:
-            await ctx.send("I couldn't send you a PM :c")
+            await ctx.send("I am not able to DM you a list of commands.\nYou will need to change your privacy settings.")
 
 
 def setup(bot):
