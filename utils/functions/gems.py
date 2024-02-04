@@ -41,6 +41,7 @@ class GemFunctions(object):
             for x in range(floor(g.amethyst/100)):
                 g.amethyst -= 100
                 g.hellstone += 1
+
         async with cls.bot.database() as db:
             await g.save(db)
 
@@ -53,7 +54,6 @@ class GemFunctions(object):
 
         g = utils.Gems.get(user.id)
 
-        #+ Lower every gem by one to check if they can afford
         #? Hellstone
         if g.hellstone > 0:
             g.hellstone -= 1
@@ -78,5 +78,6 @@ class GemFunctions(object):
         if g.emerald > 0:
             g.emerald -= 1
             g.gold += 100
+
         async with cls.bot.database() as db:
             await g.save(db)
