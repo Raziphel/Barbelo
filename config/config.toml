@@ -1,6 +1,6 @@
 [bot]
     prefix = "."
-    garden_id = 689534383878701223
+    guild_id = 689534383878701223
     bot_id = 550474149332516881
 
 [developers]
