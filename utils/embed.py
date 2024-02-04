@@ -11,6 +11,7 @@ class DefaultEmbed(Embed):
     def __init__(self, *args, **kwargs):
         #? Gets the varibles for the embed
         user = kwargs.pop('user', None)
+        color = kwargs.pop('color', None)
         title = kwargs.pop('author', None)
         thumbnail = kwargs.pop('thumbnail', None)
         image = kwargs.pop('image', None)
@@ -24,6 +25,8 @@ class DefaultEmbed(Embed):
         if user:
             t = utils.Tracking.get(user.id)
             self.color = t.color
+        elif color:
+            self.color = color
 
         #* Add Author
         if title:
