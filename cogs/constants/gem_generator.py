@@ -1,16 +1,16 @@
-# Discord
-from datetime import datetime as dt, timedelta
-# Additions
-from random import choice
-from re import compile
 
+# Discord
 from discord import Message
 from discord.ext.commands import Cog
 from discord.ext.tasks import loop
 from more_itertools import unique_everseen
 
-import utils
+# Additions
+from random import choice
+from datetime import datetime as dt, timedelta
+from re import compile
 
+import utils
 
 class Gem_Generator(Cog):
     def __init__(self, bot):
