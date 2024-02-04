@@ -40,7 +40,7 @@ class Gem_Generator(Cog):
 
         if lvl.last_xp == None:
             lvl.last_xp = dt.utcnow()
-        if (lvl.last_xp + timedelta(seconds=5)) <= dt.utcnow(): # Check Time
+        if (lvl.last_xp + timedelta(seconds=10)) <= dt.utcnow(): #? Make sure it's not just spam.
 
             #! Define varibles
             exp = 1
@@ -52,8 +52,8 @@ class Gem_Generator(Cog):
             if unique_words > 10:
                 unique_words = 8
 
-            g.emerald += 1+unique_words
-            exp += 1+unique_words
+            g.emerald += 3+unique_words
+            exp += lvl.level+unique_words
 
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
@@ -103,8 +103,8 @@ class Gem_Generator(Cog):
 
                     g = utils.Gems.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += 2 * (len(vc.members)/2)
-                    g.emeralds = 25 * round(len(vc.members)/2)
+                    lvl.exp += lvl.level + (len(vc.members)*5)
+                    g.emeralds = 5 + round(len(vc.members)*5)
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
 
