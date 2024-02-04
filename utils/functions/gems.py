@@ -12,9 +12,9 @@ class GemFunctions(object):
 
     @classmethod
     async def update(cls, user:Member):
-        g = utils.Gems.get(user.id)
+        '''Simply updates gems to the next tier'''
 
-        #+ Upgrade gems to the next tier!
+        g = utils.Gems.get(user.id)
 
         #? Emerald
         if g.emerald > 100:
@@ -41,40 +41,42 @@ class GemFunctions(object):
             for x in range(floor(g.amethyst/100)):
                 g.amethyst -= 100
                 g.hellstone += 1
-
         async with cls.bot.database() as db:
             await g.save(db)
 
 
 
     @classmethod
-    async def downgrade(cls, user:Member):
+    async def payment(cls, user:Member, gem:str):
+        '''Pay for stuff with gems if they can afford it!  
+        Returns true if it was purchased.'''
+
         g = utils.Gems.get(user.id)
 
         #+ Lower every gem by one to check if they can afford
+        #? Hellstone
         if g.hellstone > 0:
             g.hellstone -= 1
             g.amethyst += 100
-
+        #? Amethyst
         if g.amethyst > 0:
             g.amethyst -= 1
             g.sappire += 100
-
+        #? Sapphire
         if g.sapphire > 0:
             g.sapphire -= 1
             g.ruby += 100
-
+        #? Ruby
         if g.ruby > 0:
             g.ruby -= 1
             g.diamond += 100
-
+        #? Diamond
         if g.diamond > 0:
             g.diamond -= 1
             g.emerald += 100
-
+        #? Emerald
         if g.emerald > 0:
             g.emerald -= 1
             g.gold += 100
-
         async with cls.bot.database() as db:
             await g.save(db)
