@@ -5,7 +5,7 @@ from random import choice
 
 import utils
 
-class DefaultEmbed(Embed):
+class Embed(Embed):
     bot = None
 
     def __init__(self, *args, **kwargs):
