@@ -9,7 +9,7 @@ class DefaultEmbed(Embed):
     bot = None
 
     def __init__(self, *args, **kwargs):
-        #?Gets the varibles for the embed
+        #? Gets the varibles for the embed
         user = kwargs.pop('user', None)
         title = kwargs.pop('author', None)
         thumbnail = kwargs.pop('thumbnail', None)
