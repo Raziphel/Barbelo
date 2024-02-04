@@ -55,7 +55,7 @@ class Gem_Generator(Cog):
             g.emerald += 1+unique_words
             exp += 1+unique_words
 
-            await utils.UserFunction.level_up(user=message.author, channel=message.channel)
+            await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
             #! Save it to database
             lvl.exp += exp+3
