@@ -114,4 +114,4 @@ class UserFunctions(object):
                 role = utils.DiscordGet(guild.roles, name=role_to_add)
                 await user.add_roles(role, reason="Adding Level Role.")
             except: 
-                print(f'Failed to apply level role: {user.name} getting role: {role_to_add}'
+                print(f'Failed to apply level role: {user.name} getting role: {role_to_add}')
