@@ -20,7 +20,7 @@ class Gem_Generator(Cog):
 
 
     @Cog.listener('on_message')
-    async def Level_Progression(self, message:Message):
+    async def gem_generator(self, message:Message):
         '''Determine Level progression settings!'''
 
         #? Better not be in dms.
@@ -35,7 +35,7 @@ class Gem_Generator(Cog):
 
         lvl = utils.Levels.get(message.author.id)
         g = utils.Gems.get(message.author.id)
-        tr = utils.Tracking.get(member.id)
+        tr = utils.Tracking.get(message.author.id)
 
 
         if lvl.last_xp == None:
