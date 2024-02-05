@@ -28,11 +28,11 @@ class role_handler(Cog):
         msg5 = await ch.fetch_message(self.bot.config['role_handler']['5'])
         msg6 = await ch.fetch_message(self.bot.config['role_handler']['6'])
 
-        embed1=Embed(description=f"# Pronouns\n```\nYour pronouns show up under your **About Me** section.\n```\n> 💜<@&{self.bot.config['pronoun_roles']['she_her']}>\n> 💛<@&{self.bot.config['pronoun_roles']['she_they']}>\n> 💙<@&{self.bot.config['pronoun_roles']['he_him']}>\n> 💚<@&{self.bot.config['pronoun_roles']['he_they']}>\n> 🧡<@&{self.bot.config['pronoun_roles']['they_them']}>\n> 🖤<@&{self.bot.config['pronoun_roles']['any']}>\n> 🤎<@&{self.bot.config['pronoun_roles']['other']}>", color=0x8f00f8)
+        embed1=Embed(description=f"# Pronouns\n> 💜<@&{self.bot.config['pronoun_roles']['she_her']}>\n> 💛<@&{self.bot.config['pronoun_roles']['she_they']}>\n> 💙<@&{self.bot.config['pronoun_roles']['he_him']}>\n> 💚<@&{self.bot.config['pronoun_roles']['he_they']}>\n> 🧡<@&{self.bot.config['pronoun_roles']['they_them']}>\n> 🤍<@&{self.bot.config['pronoun_roles']['any']}>\n> 🤎<@&{self.bot.config['pronoun_roles']['other']}>", color=0x8f00f8)
 
-        embed2=Embed(description=f"# DM Preference\n```\nYour DM preference show up under your **About Me** section.\n```\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
+        embed2=Embed(description=f"# DM Preference\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
 
-        embed3=Embed(description=f".", color=0x8f00f8)
+        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> 🏳‍🌈<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>\n", color=0x8f00f8)
 
         embed4=Embed(description=f".", color=0x8f00f8)
 
