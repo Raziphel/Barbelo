@@ -28,17 +28,17 @@ class role_handler(Cog):
         msg5 = await ch.fetch_message(self.bot.config['role_handler']['5'])
         msg6 = await ch.fetch_message(self.bot.config['role_handler']['6'])
 
-        embed1=Embed(title=f"**[- Pings for Bot & Server updates -]**", description=f"📕 **Get pings for __Server__ related updates / changes** 📕\n\n📗 **Get pings for __Bot__ related updates / changes** 📗\n", color=0x8f00f8)
+        embed1=Embed(description=f".", color=0x8f00f8)
 
-        embed2=Embed(title=f"**[- Gain Adult Access -]**", description=f"✅ **Identify as an __adult!__ ( Gives NSFW Access)** ✅\n\n🌼 **Identify as an __adult!__ ( No NSFW Access)** 🌼\n\n❌ **Identify as __underage__.  (Its not worth lying.)** ❌", color=0x8f00f8)
+        embed2=Embed(description=f".", color=0x8f00f8)
 
-        embed3=Embed(title=f"**[- Channel Category Access -]**", description=f"✨ **Access to General related channels.** ✨\n\n🐾 **Access to Furry related channels.** 🐾\n\n🏹 **Access to the Kingussy Alliance channels.** 🏹", color=0x8f00f8)
+        embed3=Embed(description=f".", color=0x8f00f8)
 
-        embed4=Embed(title=f"**[- Personal Bot Setting -]**", description=f"🎤 **Get messages about VC earnings** 🎤\n\n🔰 **Disable being able to Prestige** 🔰\n\n🎉 **Get level messages from being in VC** 🎉", color=0x8f00f8)
+        embed4=Embed(description=f".", color=0x8f00f8)
 
-        embed5=Embed(title=f"**[- Coming Soon -]**", description=f".", color=0x8f00f8)
+        embed5=Embed(description=f".", color=0x8f00f8)
 
-        embed6=Embed(title=f"**[- Coming Soon -]**", description=f".", color=0x8f00f8)
+        embed6=Embed(description=f".", color=0x8f00f8)
 
 
 
@@ -84,7 +84,7 @@ class role_handler(Cog):
         # Check to see total reactions on the message
         message = await channel.fetch_message(payload.message_id)
         emoji = [i.emoji for i in message.reactions]
-        if sum([i.count for i in message.reactions]) > 200:
+        if sum([i.count for i in message.reactions]) > 4000:
             await message.clear_reactions()
         for e in emoji:
             await message.add_reaction(e)
