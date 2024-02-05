@@ -35,7 +35,7 @@ class role_handler(Cog):
 
         embed4=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\nKeep in mind nsfw mostly contains furry art.\n```\n> 🍺<@&{self.bot.config['age_roles']['nsfw_adult']}> `Gives access to NSFW text & voice channels.`\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Only gives access to NSFW voice channels.`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Is given automatically if you don't get an age role.`", color=0x8f00f8)
 
-        embed5=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ☑<@&{self.bot.config['ping_roles']['voter']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}>\n> 🎲<@&{self.bot.config['ping_roles']['gamblers']}>\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}>\n> 🔦<@&{self.bot.config['ping_roles']['lethal']}>\n> 🔒<@&{self.bot.config['ping_roles']['scp']}>\n> 🔊<@&{self.bot.config['ping_roles']['vc']}>", color=0x8f00f8)
+        embed5=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ☑<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}>\n> 🎲<@&{self.bot.config['ping_roles']['gamblers']}>\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}>\n> 🔦<@&{self.bot.config['ping_roles']['lethal']}>\n> 🔒<@&{self.bot.config['ping_roles']['scp']}>\n> 🔊<@&{self.bot.config['ping_roles']['vc']}>", color=0x8f00f8)
 
         embed6=Embed(description=f".", color=0x8f00f8)
 
