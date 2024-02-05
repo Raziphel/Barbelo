@@ -33,6 +33,11 @@ bot_id = 550474149332516881
 #+  
 #+ --- Roles 
 #+ 
+[age_roles]
+    nsfw_adult = 1141807070581112944
+    adult = 1093881864806223932
+    underage = 1109752142878744627
+
 [seperator_roles]
     access = 1011440483576336394
     purchases = 1069865335689330769

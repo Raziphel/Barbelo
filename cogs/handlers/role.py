@@ -18,7 +18,6 @@ class role_handler(Cog):
     @Cog.listener()
     async def on_ready(self):
         '''Displays the role handler messages'''
-
         ch = self.bot.get_channel(self.bot.config['channels']['roles'])
 
         msg1 = await ch.fetch_message(self.bot.config['role_handler']['1']) 
@@ -32,9 +31,9 @@ class role_handler(Cog):
 
         embed2=Embed(description=f"# DM Preference\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
 
-        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> :rainbow_flag:<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>\n", color=0x8f00f8)
+        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> :rainbow_flag:<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
 
-        embed4=Embed(description=f".", color=0x8f00f8)
+        embed4=Embed(description=f"# Age and NSFW access\n```\nLying about your age will result in a ban!\nKeep in mind nsfw mostly contains furry art.\n```\n> 🍺<@&{self.bot.config['age_roles']['nsfw_adult']}>\n> 🚬<@&{self.bot.config['age_roles']['adult']}\n> 🍼<@&{self.bot.config['age_roles']['underage']}", color=0x8f00f8)
 
         embed5=Embed(description=f".", color=0x8f00f8)
 
