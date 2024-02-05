@@ -28,9 +28,9 @@ class role_handler(Cog):
         msg5 = await ch.fetch_message(self.bot.config['role_handler']['5'])
         msg6 = await ch.fetch_message(self.bot.config['role_handler']['6'])
 
-        embed1=Embed(description=f"# Pronouns\n```\nYour pronouns show up under your [About Me] section.\n```\n> 🚗<@&{self.bot.config['pronouns']['she_her']}>\n> 🚓<@&{self.bot.config['pronouns']['she_they']}>\n> 🚕<@&{self.bot.config['pronouns']['he_him']}>\n> 🛺<@&{self.bot.config['pronouns']['he_they']}>\n> 🚙<@&{self.bot.config['pronouns']['they_them']}>\n> 🚌<@&{self.bot.config['pronouns']['any']}>\n> 🚐<@&{self.bot.config['pronouns']['other']}>", color=0x8f00f8)
+        embed1=Embed(description=f"# Pronouns\n```\nYour pronouns show up under your **About Me** section.\n```\n> 💜<@&{self.bot.config['pronoun_roles']['she_her']}>\n> 💛<@&{self.bot.config['pronoun_roles']['she_they']}>\n> 💙<@&{self.bot.config['pronoun_roles']['he_him']}>\n> 💚<@&{self.bot.config['pronoun_roles']['he_they']}>\n> 🧡<@&{self.bot.config['pronoun_roles']['they_them']}>\n> 🖤<@&{self.bot.config['pronoun_roles']['any']}>\n> 🤎<@&{self.bot.config['pronoun_roles']['other']}>", color=0x8f00f8)
 
-        embed2=Embed(description=f".", color=0x8f00f8)
+        embed2=Embed(description=f"# DM Preference\n```\nYour DM preference show up under your **About Me** section.\n```\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
 
         embed3=Embed(description=f".", color=0x8f00f8)
 
