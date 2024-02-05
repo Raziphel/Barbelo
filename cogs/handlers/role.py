@@ -28,7 +28,7 @@ class role_handler(Cog):
         msg5 = await ch.fetch_message(self.bot.config['role_handler']['5'])
         msg6 = await ch.fetch_message(self.bot.config['role_handler']['6'])
 
-        embed1=Embed(description=f"# Pronouns\n+ <@&{self.bot.config['pronouns']['she_her']}>\n+ <@&{self.bot.config['pronouns']['she_they']}>\n+ <@&{self.bot.config['pronouns']['he_him']}>\n+ <@&{self.bot.config['pronouns']['he_they']}>\n+ <@&{self.bot.config['pronouns']['they_them']}>\n+ <@&{self.bot.config['pronouns']['any']}>\n+ <@&{self.bot.config['pronouns']['other']}>", color=0x8f00f8)
+        embed1=Embed(description=f"# Pronouns\n> <@&{self.bot.config['pronouns']['she_her']}>\n> <@&{self.bot.config['pronouns']['she_they']}>\n> <@&{self.bot.config['pronouns']['he_him']}>\n> <@&{self.bot.config['pronouns']['he_they']}>\n> <@&{self.bot.config['pronouns']['they_them']}>\n> <@&{self.bot.config['pronouns']['any']}>\n> <@&{self.bot.config['pronouns']['other']}>", color=0x8f00f8)
 
         embed2=Embed(description=f".", color=0x8f00f8)
 
