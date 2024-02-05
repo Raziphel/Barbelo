@@ -11,10 +11,6 @@ import utils
 class UserFunctions(object):
     bot = None
 
-    @property  #+ The Gem Logs
-    def gem_log(cls):
-        return cls.bot.get_channel(cls.bot.config['logs']['gem'])
-
     # For level ups!
     @classmethod
     async def level_up(cls, user:Member, channel:TextChannel=None):
@@ -43,7 +39,8 @@ class UserFunctions(object):
         if channel:
             msg = await channel.send(f"🎉 {user.mention} is now level: **{lvl.level:,}\n**Granting them: **{round(amount):,}x** {coin}")
 
-        await cls.gem_log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{round(amount):,}x** {coin}")
+        log = cls.bot.get_channel(cls.bot.config['logs']['gem'])
+        await log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{round(amount):,}x** {coin}")
 
         await sleep(6)
         try: await msg.delete()
