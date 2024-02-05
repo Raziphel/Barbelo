@@ -7,7 +7,7 @@ import math
 
 import utils
 
-class Logging(Cog):
+class log_handler(Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -15,7 +15,7 @@ class Logging(Cog):
     def bot_log(self):
         return self.bot.get_channel(self.bot.config['logs']['bot']) 
 
-    @property  #+ The Members Logs
+    @property  #+ The Server Logs
     def discord_log(self):
         return self.bot.get_channel(self.bot.config['logs']['server']) 
 
@@ -187,5 +187,5 @@ class Logging(Cog):
 
 
 def setup(bot):
-    x = Logging(bot)
+    x = log_handler(bot)
     bot.add_cog(x)

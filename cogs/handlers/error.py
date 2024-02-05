@@ -9,7 +9,7 @@ from asyncio import sleep
 
 
 
-class Error_Handler(Cog):
+class error_handler(Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -60,5 +60,5 @@ class Error_Handler(Cog):
         except: pass
 
 def setup(bot):
-    x = Error_Handler(bot)
+    x = error_handler(bot)
     bot.add_cog(x)
