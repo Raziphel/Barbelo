@@ -60,6 +60,9 @@ class log_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=role_id)
             await user.add_roles(role, reason="Joined Server!")
 
+        #? Makes sure they get the gemless role.
+        await utils.UserFunctions.check_level(member)
+
         #+ Send joining server messages!
         try:
             #? General Welcome Message!
