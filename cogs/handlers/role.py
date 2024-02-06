@@ -126,7 +126,7 @@ class role_handler(Cog):
     async def role_remove(self, payload:RawReactionActionEvent):
         """Reaction role removal handler"""
 
-        if payload.channel_id != self.bot.config['channels']['royale']['role_handler']:
+        if payload.channel_id != self.bot.config['channels']['roles']:
             return
 
         # See what the emoji is
