@@ -68,6 +68,7 @@ class role_handler(Cog):
             emoji = payload.emoji.name
         else:
             emoji = payload.emoji.id
+            print(f"{emoji}")
 
         # Work out out cached items
         channel = self.bot.get_channel(payload.channel_id)
