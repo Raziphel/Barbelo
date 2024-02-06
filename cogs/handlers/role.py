@@ -230,51 +230,27 @@ class role_handler(Cog):
         elif emoji == "0️⃣":
             role = utils.DiscordGet(guild.roles, name="Eastern Asia")
 
-        mod = utils.Moderation.get(member.id)
-        if mod.nsfw == True:
-            if emoji == "🍒":
-                role = utils.DiscordGet(guild.roles, name="Femboy")
-            elif emoji == "🥞":
-                role = utils.DiscordGet(guild.roles, name="Tomboy")
-            elif emoji == "🥨":
-                role = utils.DiscordGet(guild.roles, name="Trap")
-            elif emoji == "🍩":
-                role = utils.DiscordGet(guild.roles, name="Brat")
-            elif emoji == "1️⃣":
-                role = utils.DiscordGet(guild.roles, name="Single")
-            elif emoji == "2️⃣":
-                role = utils.DiscordGet(guild.roles, name="Taken")
-            elif emoji == "🌺":
-                role = utils.DiscordGet(guild.roles, name="Sub")
-            elif emoji == "🥓":
-                role = utils.DiscordGet(guild.roles, name="Dom")
+        # mod = utils.Moderation.get(member.id)
+        # if mod.nsfw == True:
+        #     if emoji == "🍒":
+        #         role = utils.DiscordGet(guild.roles, name="Femboy")
+        #     elif emoji == "🥞":
+        #         role = utils.DiscordGet(guild.roles, name="Tomboy")
+        #     elif emoji == "🥨":
+        #         role = utils.DiscordGet(guild.roles, name="Trap")
+        #     elif emoji == "🍩":
+        #         role = utils.DiscordGet(guild.roles, name="Brat")
+        #     elif emoji == "1️⃣":
+        #         role = utils.DiscordGet(guild.roles, name="Single")
+        #     elif emoji == "2️⃣":
+        #         role = utils.DiscordGet(guild.roles, name="Taken")
+        #     elif emoji == "🌺":
+        #         role = utils.DiscordGet(guild.roles, name="Sub")
+        #     elif emoji == "🥓":
+        #         role = utils.DiscordGet(guild.roles, name="Dom")
 
         if role:
             return role
-
-        # User settings change
-        ss = utils.Settings.get(member.id)
-
-        # VC messages
-        if emoji == "🎤":
-            if ss.vc_msgs is True:
-                ss.vc_msgs = False
-            else:
-                ss.vc_msgs = True
-            async with self.bot.database() as db:
-                await ss.save(db)
-            await member.send(embed=utils.LogEmbed(type="special", title=f"VC MSGS: {ss.vc_msgs}"))
-
-        elif emoji == "✅":
-            mod = utils.Moderation.get(member.id)
-            if mod.nsfw == False:
-                if guild.id == self.bot.config['guilds']['RaziRealmID']:
-                    role = utils.DiscordGet(guild.roles, name="Adult 🚬")
-                elif guild.id == self.bot.config['guilds']['FurryRoyaleID']:
-                    role = utils.DiscordGet(guild.roles, name="18+")
-                await member.add_roles(role)
-                log = await utils.ChannelFunction.get_log_channel(guild=member.guild, log="member")
-                await log.send(embed=utils.LogEmbed(type="Special", title=f"Got Adult Role", desc=f"{member.name} was given nsfw access!"))
 
 
 
