@@ -31,7 +31,7 @@ class role_handler(Cog):
 
         embed2=Embed(description=f"# DM Preference\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
 
-        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['lgbt_emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['lgbt_emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['lgbt_emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> :rainbow_flag:<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['lgbt_emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['lgbt_emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['lgbt_emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
+        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['lgbt_emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['lgbt_emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['lgbt_emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> 🌈<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['lgbt_emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['lgbt_emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['lgbt_emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
 
         embed4=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\nKeep in mind nsfw mostly contains furry art.\n```\n> 🍺<@&{self.bot.config['age_roles']['nsfw_adult']}> `Gives access to NSFW text & voice channels.`\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Only gives access to NSFW voice channels.`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Is given automatically if you don't get an age role.`", color=0x8f00f8)
 
@@ -68,7 +68,7 @@ class role_handler(Cog):
             emoji = payload.emoji.name
         else:
             emoji = payload.emoji.id
-            print(f"{emoji}")
+
 
         # Work out out cached items
         channel = self.bot.get_channel(payload.channel_id)
@@ -181,7 +181,7 @@ class role_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
         elif emoji == 1139231865547530280:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['pan'])
-        elif emoji == ":rainbow_flag:":
+        elif emoji == "🌈":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['gay'])
         elif emoji == 1141807570915434507:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['lesbian'])
