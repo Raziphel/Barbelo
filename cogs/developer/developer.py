@@ -148,7 +148,7 @@ class Developer(Cog):
                             self.bot.config['seperator_roles']['about']]
         for role_id in seperator_role_ids:
             role = utils.DiscordGet(guild.roles, id=role_id)
-            await user.add_roles(role, reason="Fixing")
+            await ctx.author.add_roles(role, reason="Fixing")
 
 
 def setup(bot):
