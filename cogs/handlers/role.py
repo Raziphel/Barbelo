@@ -134,8 +134,7 @@ class role_handler(Cog):
             emoji = payload.emoji.name
         else:
             emoji = payload.emoji.id
-        if payload.emoji.is_custom_emoji:
-            emoji = payload.emoji.name
+        print('emoji'))
 
         # Get the right role
         guild = self.bot.get_guild(payload.guild_id)
