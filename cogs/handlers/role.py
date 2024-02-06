@@ -81,10 +81,10 @@ class role_handler(Cog):
             await member.add_roles(role, reason="Role picker entry")
 
             # Check they only have one gender role
-            gender_roles = self.bot.config['pronoun_roles'].values()
-            if len([i for i in member.roles if i.id in gender_roles]) > 1:
+            pronoun_roles = self.bot.config['pronoun_roles'].values()
+            if len([i for i in member.roles if i.id in pronoun]) >= 1:
                 try:
-                    for i in gender_roles:
+                    for i in pronoun:
                         role = utils.DiscordGet(guild.roles, name=i)
                         await member.remove_roles(role, reason="Too many pronoun roles")
                 except Exception:
@@ -93,7 +93,7 @@ class role_handler(Cog):
 
             # Check they only have one DM role
             dm_roles = self.bot.config['dm_roles'].values()
-            if len([i for i in member.roles if i.name in dm_roles]) > 1:
+            if len([i for i in member.roles if i.id in dm_roles]) >= 1:
                 await member.send(f"You can only have one DM preference.")
                 try:
                     for i in dm_roles:
@@ -105,7 +105,7 @@ class role_handler(Cog):
 
             # Check they only have one color role
             color_roles = self.bot.config['color_roles'].values()
-            if len([i for i in member.roles if i.name in color_roles]) > 1:
+            if len([i for i in member.roles if i.id in color_roles]) >= 1:
                 await member.send(f"You can only have one color role at a time.")
                 try:
                     for i in color_roles:
@@ -118,7 +118,7 @@ class role_handler(Cog):
         # Check to see total reactions on the message
         message = await channel.fetch_message(payload.message_id)
         emoji = [i.emoji for i in message.reactions]
-        if sum([i.count for i in message.reactions]) > 200:
+        if sum([i.count for i in message.reactions]) > 4000:
             await message.clear_reactions()
         for e in emoji:
             await message.add_reaction(e)
@@ -173,6 +173,13 @@ class role_handler(Cog):
         elif emoji == "🟡":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['ask'])
         elif emoji == "🔴":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
+
+        if emoji == "🍺":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['open'])
+        elif emoji == "🚬":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['ask'])
+        elif emoji == "🍼":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
         if emoji == 1140458935694934037:
