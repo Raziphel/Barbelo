@@ -38,9 +38,16 @@ bot_id = 550474149332516881
     adult = 1093881864806223932
     underage = 1109752142878744627
 
+[level_roles]
+    emerald = 1204291876958502932
+    diamond = 1204295647021367366
+    ruby = 1204295777199853589
+    sapphire = 1204295884976951297
+    amethyst = 1204295985098919946
+    hellstone = 1204296229354475591
 
 [seperator_roles]
-    access = 1011440483576336394
+    access = 1204290817527779408
     purchases = 1069865335689330769
     pings = 1028802118188028005
     about = 1070968239644999681
@@ -88,13 +95,23 @@ bot_id = 550474149332516881
 #+
 #+ --- Emojis
 #+
-[emoji]
+[gem_emoji]
+    emerald = "<:Emerald:1202385480352813117>"
+    diamond = "<:Diamond:1202385477492146176>"
+    ruby = "<:Ruby:1202385485000089600>"
+    sapphire = "<:Sapphire:1202385487042445363>"
+    amethyst = "<:Amethyst:1202385735936770068>"
+    hellstone = "<:HellStone:1202385482886164580>"
+
+
+[lgbt_emoji]
     trans = "<:TransFlag:1140458935694934037>"
     binary = "<:NonBinaryFlag:1145387497199763486>"
     pan = "<:PansexualFlag:1139231865547530280>"
     lesbian = "<:LesbianFlag:1141807570915434507>"
     asexual = "<:AsexualFlag:1140089833692336128>"
     bi = "<:BisexualFlag:1141808161980956762>"
+
 
 
 

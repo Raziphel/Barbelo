@@ -111,6 +111,16 @@ class Developer(Cog):
         await ctx.send('All members coins have been copied over and adjusted too new currency.')
 
 
+    @utils.is_dev()
+    @command()
+    async def checklevels(self, ctx):
+        for member in ctx.guild.members:
+            await utils.UserFunctions.check_level(member)
+
+        await ctx.send('ALl members have had their level roles adjusted correctly.')
+
+
+
 
 
 def setup(bot):

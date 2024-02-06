@@ -53,7 +53,7 @@ class UserFunctions(object):
         """Determines how much exp is needed to level up!"""
         if level == 0:
             requiredexp = 10
-        elif level < 5:
+        elif level < 4:
             requiredexp = level*25
         else:
             requiredexp = round(level**2.75)
@@ -69,24 +69,12 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            100: "Ancient Serpent Deceiver (Lvl 100)",
-            90: "Leviathan (Lvl 90)",
-            80: "Cosmic Horror (Lvl 80)",
-            70: "Dragon (Lvl 70)",
-            65: "Malevolent One (Lvl 65)",
-            60: "Oath Taker (Lvl 60)",
-            55: "Shadow Priest (Lvl 55)",
-            50: "Warlock (Lvl 50)",
-            45: "Sorcerer (Lvl 45)",
-            40: "Cleric (Lvl 40)",
-            35: "Paladin (Lvl 35)",
-            30: "Adventurer (Lvl 30)",
-            25: "Warrior (Lvl 25)",
-            20: "Hunter (Lvl 20)",
-            15: "Villager (Lvl 15)",
-            10: "Beggar (Lvl 10)",
-            5: "Nit-Wit (Lvl 5)",
-            0: "Sacrifice (Lvl 1)",
+            250: "⊰ Hellstone ⊱",
+            200: "⊰ Amethyst ⊱",
+            100: "⊰ Sapphire ⊱",
+            50: "⊰ Ruby ⊱",
+            25: "⊰ Diamond ⊱",
+            10: "⊰ Emerald ⊱",
         }
 
         # Get roles from the user we'd need to delete

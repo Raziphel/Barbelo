@@ -31,13 +31,13 @@ class role_handler(Cog):
 
         embed2=Embed(description=f"# DM Preference\n> 🟢<@&{self.bot.config['dm_roles']['open']}>\n> 🟡<@&{self.bot.config['dm_roles']['ask']}>\n> 🔴<@&{self.bot.config['dm_roles']['closed']}>", color=0x8f00f8)
 
-        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> :rainbow_flag:<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
+        embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['lgbt_emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['lgbt_emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['lgbt_emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> :rainbow_flag:<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['lgbt_emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['lgbt_emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['lgbt_emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
 
         embed4=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\nKeep in mind nsfw mostly contains furry art.\n```\n> 🍺<@&{self.bot.config['age_roles']['nsfw_adult']}> `Gives access to NSFW text & voice channels.`\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Only gives access to NSFW voice channels.`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Is given automatically if you don't get an age role.`", color=0x8f00f8)
 
         embed5=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ✅<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}> `Get pinged for info on server events!`\n> 🎲<@&{self.bot.config['ping_roles']['gambler']}> `Get a ping to see who won raffles.`\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}> `Get pinged to greet any new members!`\n> 🔦<@&{self.bot.config['ping_roles']['lethal']}> `Anyone can ping this role using /sendping`\n> 🔒<@&{self.bot.config['ping_roles']['scp']}> `Anyone can ping this role using /sendping`\n> 🔊<@&{self.bot.config['ping_roles']['vc']}> `Anyone can ping this role using /sendping`", color=0x8f00f8)
 
-        embed6=Embed(description=f"# Free Color roles\n```\nBetter color are available in the #store\n```\n", color=0x8f00f8)
+        embed6=Embed(description=f"# Color roles\n**You must be Emerald Tier (Level 10) for custom colors!**\n```\nBetter colors are available in the #╰⊰🛒store\n```\n> ", color=0x8f00f8)
 
 
 
