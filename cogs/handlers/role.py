@@ -82,9 +82,9 @@ class role_handler(Cog):
 
             # Check they only have one gender role
             pronoun_roles = self.bot.config['pronoun_roles'].values()
-            if len([i for i in member.roles if i.id in pronoun]) >= 1:
+            if len([i for i in member.roles if i.id in pronoun_roles]) >= 1:
                 try:
-                    for i in pronoun:
+                    for i in pronoun_roles:
                         role = utils.DiscordGet(guild.roles, name=i)
                         await member.remove_roles(role, reason="Too many pronoun roles")
                 except Exception:
