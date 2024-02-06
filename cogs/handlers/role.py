@@ -175,12 +175,25 @@ class role_handler(Cog):
         elif emoji == "🔴":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
+        mod = utils.Moderation.get(member.id)
         if emoji == "🍺":
-            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['open'])
+            if mod.child != True:
+                role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['nsfw_adult'])
+            else: 
+                await member.send(f"You are unable to get the Adult role, message staff.")
+                await self.discord_log.send(f"<@{member.id}> failed to get NSFW access.")
         elif emoji == "🚬":
-            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['ask'])
+            if mod.child != True:
+                role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['adult'])
+            else: 
+                await member.send(f"You are unable to get the Adult role, message staff.")
+                await self.discord_log.send(f"<@{member.id}> failed to get ADULT access.")
         elif emoji == "🍼":
-            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
+            if mod.adult != True:
+                role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['underage'])
+            else: 
+                await member.send(f"You are unable to get the Child role, message staff.")
+                await self.discord_log.send(f"<@{member.id}> failed to get CHILD access.")
 
         if emoji == 1140458935694934037:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['trans'])

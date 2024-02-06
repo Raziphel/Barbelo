@@ -119,7 +119,22 @@ class Developer(Cog):
 
         await ctx.send('All members have had their level roles adjusted correctly.')
 
+    @utils.is_dev()
+    @command()
+    async def checkage(self, ctx):
+        for member in ctx.guild.members:
+            for i in member.roles:
+                if i.id is self.bot.config['age_roles']['nsfw_adult']:
+                    mod.adult = True
+                    mod.child = False
+                if i.id is self.bot.config['age_roles']['adult']:
+                    mod.adult = True
+                    mod.child = False
+                if i.id is self.bot.config['age_roles']['underage']:
+                    mod.adult = False
+                    mod.child = True
 
+        await ctx.send('All members age moderation paramaters have been set.')
 
 
 
