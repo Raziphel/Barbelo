@@ -37,7 +37,7 @@ class role_handler(Cog):
 
         embed5=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ✅<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}> `Get pinged for info on server events!`\n> 🎲<@&{self.bot.config['ping_roles']['gambler']}> `Get a ping to see who won raffles.`\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}> `Get pinged to greet any new members!`\n> 🔦<@&{self.bot.config['ping_roles']['lethal']}> `Anyone can ping this role using /sendping`\n> 🔒<@&{self.bot.config['ping_roles']['scp']}> `Anyone can ping this role using /sendping`\n> 🔊<@&{self.bot.config['ping_roles']['vc']}> `Anyone can ping this role using /sendping`", color=0x8f00f8)
 
-        embed6=Embed(description=f"# Color roles\n```\nBetter colors are available in the #╰⊰🛒store\n```\n> 🍎<@&{self.bot.config['color_roles']['red_apple']}>\n> 🍏<@&{self.bot.config['color_roles']['green_apple']}>\n>🍑<@&{self.bot.config['color_roles']['peach']}>\n>🥕<@&{self.bot.config['color_roles']['carrot']}>\n>", color=0x8f00f8)
+        embed6=Embed(description=f"# Color roles\n```\nBetter colors are available in the #╰⊰🛒store\n```\n> 🍎<@&{self.bot.config['color_roles']['red_apple']}>\n> 🍏<@&{self.bot.config['color_roles']['green_apple']}>\n> 🍑<@&{self.bot.config['color_roles']['peach']}>\n> 🥕<@&{self.bot.config['color_roles']['carrot']}>", color=0x8f00f8)
 
 
 
