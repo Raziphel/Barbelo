@@ -138,6 +138,18 @@ class Developer(Cog):
         await ctx.send('All members age moderation paramaters have been set.')
 
 
+    @utils.is_dev()
+    @command()
+    async def fixseps(self, ctx):
+        guild = self.bot.get_guild(self.bot.config['guild_id'])
+        seperator_role_ids = [self.bot.config['seperator_roles']['access'], 
+                            self.bot.config['seperator_roles']['purchases'], 
+                            self.bot.config['seperator_roles']['pings'], 
+                            self.bot.config['seperator_roles']['about']]
+        for role_id in seperator_role_ids:
+            role = utils.DiscordGet(guild.roles, id=role_id)
+            await user.add_roles(role, reason="Fixing")
+
 
 def setup(bot):
     x = Developer(bot)
