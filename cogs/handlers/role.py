@@ -180,6 +180,8 @@ class role_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
         elif emoji == 1139231865547530280:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['pan'])
+        elif emoji == "🏳‍🌈":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['gay'])
         elif emoji == 1141807570915434507:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['lesbian'])
         elif emoji == 1140089833692336128:
