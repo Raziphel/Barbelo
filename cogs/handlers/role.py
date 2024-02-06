@@ -51,13 +51,12 @@ class role_handler(Cog):
 
 
 
-
     @Cog.listener('on_raw_reaction_add')
     async def role_add(self, payload:RawReactionActionEvent):
         """Reaction role add handler"""
 
         # Validate channel
-        if payload.channel_id != self.bot.config['channels']['role_handler']:
+        if payload.channel_id != self.bot.config['channels']['royale']['role_handler']:
             return
 
         # Not bot
@@ -76,14 +75,49 @@ class role_handler(Cog):
         member = guild.get_member(payload.user_id)
 
         # Get the right role
-        role = await self.get_role(emoji=emoji, member=member, guild=guild)
+        role = await self.get_role(guild=guild, emoji=emoji, member=member)
         if role:
             await member.add_roles(role, reason="Role picker entry")
+
+            # Check they only have one gender role
+            gender_roles = self.bot.config['pronoun_roles'].values()
+            if len([i for i in member.roles if i.id in gender_roles]) > 1:
+                try:
+                    for i in gender_roles:
+                        role = utils.DiscordGet(guild.roles, name=i)
+                        await member.remove_roles(role, reason="Too many pronoun roles")
+                except Exception:
+                    pass
+                return
+
+            # Check they only have one DM role
+            dm_roles = self.bot.config['dm_roles'].values()
+            if len([i for i in member.roles if i.name in dm_roles]) > 1:
+                await member.send(f"You can only have one DM preference.")
+                try:
+                    for i in dm_roles:
+                        role = utils.DiscordGet(guild.roles, name=i)
+                        await member.remove_roles(role, reason="Too many DM roles")
+                except Exception:
+                    pass
+                return
+
+            # Check they only have one color role
+            color_roles = self.bot.config['color_roles'].values()
+            if len([i for i in member.roles if i.name in color_roles]) > 1:
+                await member.send(f"You can only have one color role at a time.")
+                try:
+                    for i in color_roles:
+                        role = utils.DiscordGet(guild.roles, name=i)
+                        await member.remove_roles(role, reason="Too many color roles")
+                except Exception:
+                    pass
+                return
 
         # Check to see total reactions on the message
         message = await channel.fetch_message(payload.message_id)
         emoji = [i.emoji for i in message.reactions]
-        if sum([i.count for i in message.reactions]) > 4000:
+        if sum([i.count for i in message.reactions]) > 200:
             await message.clear_reactions()
         for e in emoji:
             await message.add_reaction(e)
@@ -92,7 +126,7 @@ class role_handler(Cog):
     async def role_remove(self, payload:RawReactionActionEvent):
         """Reaction role removal handler"""
 
-        if payload.channel_id != self.bot.config['channels']['role_handler']:
+        if payload.channel_id != self.bot.config['channels']['royale']['role_handler']:
             return
 
         # See what the emoji is
@@ -104,7 +138,7 @@ class role_handler(Cog):
         # Get the right role
         guild = self.bot.get_guild(payload.guild_id)
         member = guild.get_member(payload.user_id)
-        role = await self.get_role(emoji=emoji, member=member, guild=guild)
+        role = await self.get_role(guild=guild, emoji=emoji, member=member)
         if role is None:
             return
 
@@ -114,83 +148,134 @@ class role_handler(Cog):
 
 
 
-    async def get_role(self, emoji, member, guild):
+    async def get_role(self, guild, emoji, member):
         """Gets the role given a picked emoji If the user has picked to enable mention alerts or VC messages, the bot will configure that _here_"""
 
-        mod = utils.Moderation.get(member.id)
-        ss = utils.Settings.get(member.id)
         role = None
         # Role picker emoji
-        if emoji == "📕":
-            role = utils.DiscordGet(guild.roles, name="Discord")
-        elif emoji == "📗":
-            role = utils.DiscordGet(guild.roles, name="Bot")
-        elif emoji == "📘":
-            role = utils.DiscordGet(guild.roles, name="Minecraft")
+        if emoji == "💜":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['she_her'])
+        elif emoji == "💛":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['she_they'])
+        elif emoji == "💙":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['he_him'])
+        elif emoji == "💚":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['he_they'])
+        elif emoji == "🧡":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['they_them'])
+        elif emoji == "🤍":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['any'])
+        elif emoji == "🤎":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['other'])
 
-        elif emoji == "✅":
-            if mod.child == False and mod.adult == False:
-                mod.adult = True
-                role = utils.DiscordGet(guild.roles, name="Adult 🚬")
-                await member.add_roles(role)
-                await self.members_log.send(embed=utils.LogEmbed(type="Special", title=f"Got Adult Role", desc=f"{member.name} was given Adult access!"))
-        elif emoji == "🌼":
-            if mod.child == False and mod.adult == False:
-                mod.adult = True
-                role = utils.DiscordGet(guild.roles, name="Adult 🍺")
-                await member.add_roles(role)
-                await self.members_log.send(embed=utils.LogEmbed(type="Special", title=f"Got Adult Role", desc=f"{member.name} was given Adult access!"))
-        elif emoji == "❌":
-            mod = utils.Moderation(member.id)
-            mod.child = True
-            mod.adult = False
-            role = utils.DiscordGet(guild.roles, name="Child 🍼")
+        elif emoji == "🌈":
+            role = utils.DiscordGet(guild.roles, name="Gay / Lesbian")
+        elif emoji == "🍳":
+            role = utils.DiscordGet(guild.roles, name="Pansexual / Demisexual")
+        elif emoji == "📏":
+            role = utils.DiscordGet(guild.roles, name="Straight")
+        elif emoji == "🎈":
+            role = utils.DiscordGet(guild.roles, name="Bisexual")
+        elif emoji == "😔":
+            role = utils.DiscordGet(guild.roles, name="Asexual")
 
-
-        elif emoji == "✨":
-            role = utils.DiscordGet(guild.roles, name=".")
-
-        elif emoji == "🐾":
-            if mod.adult == True:
-                role = utils.DiscordGet(guild.roles, name="*")
-            else:
-                role = utils.DiscordGet(guild.roles, name="-")
-
-        elif emoji == "🌷":
-            if mod.child == False and mod.adult == True:
-                role = utils.DiscordGet(guild.roles, name="'")
-
-        elif emoji == "🏹":
-            role = utils.DiscordGet(guild.roles, name="|")
-
-
-        elif emoji == "🎤":
-            if ss.vc_msgs == True:
-                ss.vc_msgs = False
-                await member.send(embed=utils.DefualtEmbed(title="Setting has been changed", desc=f"You will no longer recieve messages about earning you make in vc!"))
-            elif ss.vc_msgs == False:
-                ss.vc_msgs = True
-                await member.send(embed=utils.DefualtEmbed(title="Setting has been changed", desc=f"You will now recieve messages about earning you make in vc!"))
-
-        elif emoji == "🔰":
-            #! Need to set that up eventually
-            return
-
+        elif emoji == "🎮":
+            role = utils.DiscordGet(guild.roles, name="Gamer")
+        elif emoji == "📸":
+            role = utils.DiscordGet(guild.roles, name="Youtuber")
+        elif emoji == "🎦":
+            role = utils.DiscordGet(guild.roles, name="Streamer")
+        elif emoji == "🎨":
+            role = utils.DiscordGet(guild.roles, name="Artist")
+        elif emoji == "🐎":
+            role = utils.DiscordGet(guild.roles, name="MLP")
+        elif emoji == "🎀":
+            role = utils.DiscordGet(guild.roles, name="Femboy")
+        elif emoji == "🐁":
+            role = utils.DiscordGet(guild.roles, name="Trap >///<")
+        elif emoji == "🎑":
+            role = utils.DiscordGet(guild.roles, name="Anime Slut")
+        elif emoji == "🧸":
+            role = utils.DiscordGet(guild.roles, name="Plushie")
         elif emoji == "⛏":
-            if ss.vc_lvls == True:
-                ss.vc_lvls = False
-                await member.send(embed=utils.DefualtEmbed(title="Setting has been changed", desc=f"You will no longer recieve messages about leveling up in vc!"))
-            elif ss.vc_lvls == False:
-                ss.vc_lvls = True
-                await member.send(embed=utils.DefualtEmbed(title="Setting has been changed", desc=f"You will now recieve messages about leveling up in vc!"))
+            role = utils.DiscordGet(guild.roles, name="Minecraft")
+        elif emoji == "🥽":
+            role = utils.DiscordGet(guild.roles, name="VR Chat")
 
+        elif emoji == "👸":
+            role = utils.DiscordGet(guild.roles, name="Wanna be princess")
+        elif emoji == "💸":
+            role = utils.DiscordGet(guild.roles, name="Meanie Memey")
+        elif emoji == "🐕":
+            role = utils.DiscordGet(guild.roles, name="Feral")
+
+        elif emoji == "1️⃣":
+            role = utils.DiscordGet(guild.roles, name="Africa")
+        elif emoji == "2️⃣":
+            role = utils.DiscordGet(guild.roles, name="Western Asia")
+        elif emoji == "3️⃣":
+            role = utils.DiscordGet(guild.roles, name="Europe Nordic & East")
+        elif emoji == "4️⃣":
+            role = utils.DiscordGet(guild.roles, name="Europe West")
+        elif emoji == "5️⃣":
+            role = utils.DiscordGet(guild.roles, name="North America")
+        elif emoji == "6️⃣":
+            role = utils.DiscordGet(guild.roles, name="South America")
+        elif emoji == "7️⃣":
+            role = utils.DiscordGet(guild.roles, name="Oceania")
+        elif emoji == "8️⃣":
+            role = utils.DiscordGet(guild.roles, name="Pacific Islands")
+        elif emoji == "9️⃣":
+            role = utils.DiscordGet(guild.roles, name="Russia")
+        elif emoji == "0️⃣":
+            role = utils.DiscordGet(guild.roles, name="Eastern Asia")
+
+        mod = utils.Moderation.get(member.id)
+        if mod.nsfw == True:
+            if emoji == "🍒":
+                role = utils.DiscordGet(guild.roles, name="Femboy")
+            elif emoji == "🥞":
+                role = utils.DiscordGet(guild.roles, name="Tomboy")
+            elif emoji == "🥨":
+                role = utils.DiscordGet(guild.roles, name="Trap")
+            elif emoji == "🍩":
+                role = utils.DiscordGet(guild.roles, name="Brat")
+            elif emoji == "1️⃣":
+                role = utils.DiscordGet(guild.roles, name="Single")
+            elif emoji == "2️⃣":
+                role = utils.DiscordGet(guild.roles, name="Taken")
+            elif emoji == "🌺":
+                role = utils.DiscordGet(guild.roles, name="Sub")
+            elif emoji == "🥓":
+                role = utils.DiscordGet(guild.roles, name="Dom")
 
         if role:
             return role
 
-        async with self.bot.database() as db:
-            await mod.save(db)
-            await ss.save(db)
+        # User settings change
+        ss = utils.Settings.get(member.id)
+
+        # VC messages
+        if emoji == "🎤":
+            if ss.vc_msgs is True:
+                ss.vc_msgs = False
+            else:
+                ss.vc_msgs = True
+            async with self.bot.database() as db:
+                await ss.save(db)
+            await member.send(embed=utils.LogEmbed(type="special", title=f"VC MSGS: {ss.vc_msgs}"))
+
+        elif emoji == "✅":
+            mod = utils.Moderation.get(member.id)
+            if mod.nsfw == False:
+                if guild.id == self.bot.config['guilds']['RaziRealmID']:
+                    role = utils.DiscordGet(guild.roles, name="Adult 🚬")
+                elif guild.id == self.bot.config['guilds']['FurryRoyaleID']:
+                    role = utils.DiscordGet(guild.roles, name="18+")
+                await member.add_roles(role)
+                log = await utils.ChannelFunction.get_log_channel(guild=member.guild, log="member")
+                await log.send(embed=utils.LogEmbed(type="Special", title=f"Got Adult Role", desc=f"{member.name} was given nsfw access!"))
+
 
 
 def setup(bot):
