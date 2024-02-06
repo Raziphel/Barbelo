@@ -168,67 +168,51 @@ class role_handler(Cog):
         elif emoji == "🤎":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['pronoun_roles']['other'])
 
-        elif emoji == "🌈":
-            role = utils.DiscordGet(guild.roles, name="Gay / Lesbian")
-        elif emoji == "🍳":
-            role = utils.DiscordGet(guild.roles, name="Pansexual / Demisexual")
-        elif emoji == "📏":
-            role = utils.DiscordGet(guild.roles, name="Straight")
-        elif emoji == "🎈":
-            role = utils.DiscordGet(guild.roles, name="Bisexual")
-        elif emoji == "😔":
-            role = utils.DiscordGet(guild.roles, name="Asexual")
+        if emoji == "🟢":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['open'])
+        elif emoji == "🟡":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['ask'])
+        elif emoji == "🔴":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
-        elif emoji == "🎮":
-            role = utils.DiscordGet(guild.roles, name="Gamer")
-        elif emoji == "📸":
-            role = utils.DiscordGet(guild.roles, name="Youtuber")
-        elif emoji == "🎦":
-            role = utils.DiscordGet(guild.roles, name="Streamer")
-        elif emoji == "🎨":
-            role = utils.DiscordGet(guild.roles, name="Artist")
-        elif emoji == "🐎":
-            role = utils.DiscordGet(guild.roles, name="MLP")
-        elif emoji == "🎀":
-            role = utils.DiscordGet(guild.roles, name="Femboy")
-        elif emoji == "🐁":
-            role = utils.DiscordGet(guild.roles, name="Trap >///<")
-        elif emoji == "🎑":
-            role = utils.DiscordGet(guild.roles, name="Anime Slut")
-        elif emoji == "🧸":
-            role = utils.DiscordGet(guild.roles, name="Plushie")
-        elif emoji == "⛏":
-            role = utils.DiscordGet(guild.roles, name="Minecraft")
-        elif emoji == "🥽":
-            role = utils.DiscordGet(guild.roles, name="VR Chat")
+        if emoji == self.bot.config['lgbt_emoji']['trans']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['trans'])
+        elif emoji == self.bot.config['lgbt_emoji']['binary']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
+        elif emoji == self.bot.config['lgbt_emoji']['pan']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['pan'])
+        elif emoji == self.bot.config['lgbt_emoji']['lesbian']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['lesbian'])
+        elif emoji == self.bot.config['lgbt_emoji']['asexual']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['asexual'])
+        elif emoji == self.bot.config['lgbt_emoji']['bi']:
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['bi'])
 
-        elif emoji == "👸":
-            role = utils.DiscordGet(guild.roles, name="Wanna be princess")
-        elif emoji == "💸":
-            role = utils.DiscordGet(guild.roles, name="Meanie Memey")
-        elif emoji == "🐕":
-            role = utils.DiscordGet(guild.roles, name="Feral")
+        if emoji == "📔":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['changelogs'])
+        elif emoji == "✅":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['voters'])
+        elif emoji == "📆":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['events'])
+        if emoji == "🎲":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['gambler'])
+        elif emoji == "🤝":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['welcomer'])
+        elif emoji == "🔦":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['lethal'])
+        elif emoji == "🔒":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['scp'])
+        elif emoji == "🔊":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['vc'])
 
-        elif emoji == "1️⃣":
-            role = utils.DiscordGet(guild.roles, name="Africa")
-        elif emoji == "2️⃣":
-            role = utils.DiscordGet(guild.roles, name="Western Asia")
-        elif emoji == "3️⃣":
-            role = utils.DiscordGet(guild.roles, name="Europe Nordic & East")
-        elif emoji == "4️⃣":
-            role = utils.DiscordGet(guild.roles, name="Europe West")
-        elif emoji == "5️⃣":
-            role = utils.DiscordGet(guild.roles, name="North America")
-        elif emoji == "6️⃣":
-            role = utils.DiscordGet(guild.roles, name="South America")
-        elif emoji == "7️⃣":
-            role = utils.DiscordGet(guild.roles, name="Oceania")
-        elif emoji == "8️⃣":
-            role = utils.DiscordGet(guild.roles, name="Pacific Islands")
-        elif emoji == "9️⃣":
-            role = utils.DiscordGet(guild.roles, name="Russia")
-        elif emoji == "0️⃣":
-            role = utils.DiscordGet(guild.roles, name="Eastern Asia")
+        if emoji == "🍎":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['red_apple'])
+        elif emoji == "🍏":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['green_apple'])
+        elif emoji == "🍑":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['peach'])
+        elif emoji == "🥕":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['carrot'])
 
         # mod = utils.Moderation.get(member.id)
         # if mod.nsfw == True:

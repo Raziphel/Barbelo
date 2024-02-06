@@ -39,7 +39,7 @@ class UserFunctions(object):
         if channel:
             msg = await channel.send(f"🎉 {user.mention} is now level: **{lvl.level:,}\n**Granting them: **{round(amount):,}x** {coin}")
 
-        log = cls.bot.get_channel(cls.bot.config['logs']['gem'])
+        log = cls.bot.get_channel(cls.bot.config['logs']['gems'])
         await log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{round(amount):,}x** {coin}")
 
         await sleep(6)
