@@ -75,6 +75,7 @@ class UserFunctions(object):
             30: "⊰ Ruby ⊱",
             15: "⊰ Diamond ⊱",
             5: "⊰ Emerald ⊱",
+            0: "⊰ Gemless ⊱"
         }
 
         # Get roles from the user we'd need to delete

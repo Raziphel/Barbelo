@@ -116,7 +116,6 @@ class Developer(Cog):
     async def checklevels(self, ctx):
         for member in ctx.guild.members:
             await utils.UserFunctions.check_level(member)
-            await sleep(1)
 
         await ctx.send('All members have had their level roles adjusted correctly.')
 
