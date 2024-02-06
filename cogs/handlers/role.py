@@ -175,7 +175,7 @@ class role_handler(Cog):
         elif emoji == "🔴":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
-        if emoji == 1202385480352813117:
+        if emoji == ':TransFlag:1202385480352813117':
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['trans'])
         elif emoji == 1202385477492146176:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
