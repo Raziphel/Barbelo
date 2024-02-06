@@ -134,8 +134,6 @@ class role_handler(Cog):
             emoji = payload.emoji.name
         else:
             emoji = payload.emoji.id
-        print(f'{emoji}')
-
         # Get the right role
         guild = self.bot.get_guild(payload.guild_id)
         member = guild.get_member(payload.user_id)
@@ -176,7 +174,7 @@ class role_handler(Cog):
         elif emoji == "🔴":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
-        if emoji == self.bot.config['lgbt_emoji']['trans']:
+        if emoji == 1140458935694934037:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['trans'])
         elif emoji == self.bot.config['lgbt_emoji']['binary']:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
