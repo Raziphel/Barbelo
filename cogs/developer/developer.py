@@ -122,7 +122,7 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def checkage(self, ctx):
-        mod = utils.Moderation.get(member.id)
+        mod = utils.Moderation.get(ctx.author.id)
         for member in ctx.guild.members:
             for i in member.roles:
                 if i.id is self.bot.config['age_roles']['nsfw_adult']:
