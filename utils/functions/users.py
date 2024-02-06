@@ -69,11 +69,11 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            250: "⊰ Hellstone ⊱",
-            200: "⊰ Amethyst ⊱",
-            100: "⊰ Sapphire ⊱",
-            50: "⊰ Ruby ⊱",
-            25: "⊰ Diamond ⊱",
+            100: "⊰ Hellstone ⊱",
+            75: "⊰ Amethyst ⊱",
+            50: "⊰ Sapphire ⊱",
+            30: "⊰ Ruby ⊱",
+            15: "⊰ Diamond ⊱",
             5: "⊰ Emerald ⊱",
         }
 
