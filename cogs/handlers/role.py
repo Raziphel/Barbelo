@@ -56,7 +56,7 @@ class role_handler(Cog):
         """Reaction role add handler"""
 
         # Validate channel
-        if payload.channel_id != self.bot.config['channels']['royale']['role_handler']:
+        if payload.channel_id != self.bot.config['channels']['roles']:
             return
 
         # Not bot
