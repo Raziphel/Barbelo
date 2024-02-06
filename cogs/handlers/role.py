@@ -175,17 +175,17 @@ class role_handler(Cog):
         elif emoji == "🔴":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
-        if emoji == self.bot.config['lgbt_emoji']['trans']:
+        if emoji == 1202385480352813117:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['trans'])
-        elif emoji == self.bot.config['lgbt_emoji']['binary']:
+        elif emoji == 1202385477492146176:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['binary'])
-        elif emoji == self.bot.config['lgbt_emoji']['pan']:
+        elif emoji == 1202385485000089600:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['pan'])
-        elif emoji == self.bot.config['lgbt_emoji']['lesbian']:
+        elif emoji == 1202385487042445363:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['lesbian'])
-        elif emoji == self.bot.config['lgbt_emoji']['asexual']:
+        elif emoji == 1202385735936770068:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['asexual'])
-        elif emoji == self.bot.config['lgbt_emoji']['bi']:
+        elif emoji == 1202385482886164580:
             role = utils.DiscordGet(guild.roles, id=self.bot.config['lgbt_roles']['bi'])
 
         if emoji == "📔":
