@@ -141,14 +141,19 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def fixseps(self, ctx):
+        '''Fix all the seperator roles by re-giving them to everyone.'''
         guild = self.bot.get_guild(self.bot.config['guild_id'])
         seperator_role_ids = [self.bot.config['seperator_roles']['access'], 
                             self.bot.config['seperator_roles']['purchases'], 
                             self.bot.config['seperator_roles']['pings'], 
                             self.bot.config['seperator_roles']['about']]
-        for role_id in seperator_role_ids:
-            role = utils.DiscordGet(guild.roles, id=role_id)
-            await ctx.author.add_roles(role, reason="Fixing")
+        for member in ctx.guild.members:
+            for role_id in seperator_role_ids:
+                role = utils.DiscordGet(guild.roles, id=role_id)
+                try:
+                    await ctx.author.add_roles(role, reason="Fixing")
+                except:
+                    pass
 
 
 def setup(bot):
