@@ -28,19 +28,24 @@ class UserFunctions(object):
         #+ Level em the hell up!
         lvl.exp = 0
         lvl.level += 1
-        g.emerald += (lvl.level*500)
+        emeralds = (lvl.level*500)
+        g.emerald += emeralds
         async with cls.bot.database() as db:
             await lvl.save(db)
             await g.save(db)
 
+        #? Check for a role change.
         await cls.check_level(user=user)
+
+        #? Generates text to show how many gems they got!
+        gems_string = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
 
         #? Log it and tell em.
         if channel:
-            msg = await channel.send(f"🎉 {user.mention} is now level: **{lvl.level:,}\n**Granting them: **{round(amount):,}x** {coin}")
+            msg = await channel.send(f"🎉 {user.mention} is now level: **{lvl.level:,}\n**Granting them: **{gems_string}**")
 
         log = cls.bot.get_channel(cls.bot.config['logs']['gems'])
-        await log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{round(amount):,}x** {coin}")
+        await log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{gems_string}**")
 
         await sleep(6)
         try: await msg.delete()
