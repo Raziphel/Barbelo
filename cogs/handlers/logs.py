@@ -58,7 +58,7 @@ class log_handler(Cog):
                             self.bot.config['seperator_roles']['about']]
         for role_id in seperator_role_ids:
             role = utils.DiscordGet(guild.roles, id=role_id)
-            await user.add_roles(role, reason="Joined Server!")
+            await member.add_roles(role, reason="Joined Server!")
 
         #? Makes sure they get the gemless role.
         await utils.UserFunctions.check_level(member)
