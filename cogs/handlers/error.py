@@ -20,34 +20,34 @@ class error_handler(Cog):
         if isinstance(error, CommandNotFound):
             return
         elif isinstance(error, MissingPermissions):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Ya don't have the right Server Permission!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Ya don't have the right Server Permission!"))
             pass
         elif isinstance(error, BadArgument):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Ya gave Incorrect Command Arguments!?"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Ya gave Incorrect Command Arguments!?"))
             pass
         elif isinstance(error, utils.InDmsCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"This command can only be ran in my Dms!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"This command can only be ran in my Dms!"))
             pass
         elif isinstance(error, utils.UserCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Only someone special can run this command!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Only someone special can run this command!"))
             pass
         elif isinstance(error, utils.DevCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Only the Bot Developer can run this command!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Only the Bot Developer can run this command!"))
             pass
         elif isinstance(error, utils.GuildCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"This isn't the right Discord Server for this command."))
+            msg = await ctx.send(embed=utils.Embed(desc=f"This isn't the right Discord Server for this command."))
             pass
         elif isinstance(error, utils.NSFWCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"An NSFW Error Occured."))
+            msg = await ctx.send(embed=utils.Embed(desc=f"An NSFW Error Occured."))
             pass
         elif isinstance(error, utils.ModStaffCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Only a Moderator can run this command!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Only a Moderator can run this command!"))
             pass
         elif isinstance(error, utils.AdminStaffCheckError):
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Only an Administrator can run this command!"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Only an Administrator can run this command!"))
             pass
         else: 
-            msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Something unexpected happened?"))
+            msg = await ctx.send(embed=utils.Embed(desc=f"Something unexpected happened?"))
             pass
 
         if ctx.author.id in self.bot.config['developers'].values():
