@@ -1,7 +1,8 @@
 
 #* Discord
 from discord.ext.commands import command, Cog, Greedy
-from discord import Member, Message, User
+from discord import Member, Message, User, ApplicationCommandOption, ApplicationCommandOptionType
+from discord.ext.commands import ApplicationCommandMeta
 
 import utils
 
