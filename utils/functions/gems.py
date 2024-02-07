@@ -97,7 +97,7 @@ class GemFunctions(object):
         if diamonds > 100:
             for x in range(floor(diamonds/100)):
                 diamonds -= 100
-                ruby += 1
+                rubys += 1
         #? Ruby
         if rubys > 100:
             for x in range(floor(rubys/100)):
