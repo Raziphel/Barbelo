@@ -81,3 +81,52 @@ class GemFunctions(object):
 
         async with cls.bot.database() as db:
             await g.save(db)
+
+
+
+    @classmethod
+    async def gems_to_text(cls, emeralds:int=0, diamonds:int=0, rubys:int=0, sapphires:int=0, amethysts:int=0, hellstones:int=0):
+        '''Generates text showing how many gems you got.'''
+
+        #? Emerald
+        if emeralds > 100:
+            for x in range(floor(emeralds/100)):
+                emeralds -= 100
+                diamonds += 1
+        #? Diamond
+        if diamonds > 100:
+            for x in range(floor(diamonds/100)):
+                g.diamonds -= 100
+                g.ruby += 1
+        #? Ruby
+        if rubys > 100:
+            for x in range(floor(rubys/100)):
+                rubys -= 100 
+                sapphires += 1
+        #? Sapphire
+        if sapphires > 100:
+            for x in range(floor(sapphires/100)):
+                sapphires -= 100
+                amethysts += 1
+        #? Amethyst
+        if amethysts > 100:
+            for x in range(floor(amethysts/100)):
+                amethysts -= 100
+                hellstones += 1
+
+        flags = []
+        if emeralds > 0:
+            flags.append(f"{emeralds}{self.bot.config['gem_emoji']['emerald']}")
+        if diamonds > 0:
+            flags.append(f"{diamonds}{self.bot.config['gem_emoji']['diamond']}")
+        if rubys > 0:
+            flags.append(f"{rubys}{self.bot.config['gem_emoji']['ruby']}")
+        if sapphires > 0:
+            flags.append(f"{sapphires}{self.bot.config['gem_emoji']['sapphire']}")
+        if amethysts > 0:
+            flags.append(f"{amethysts}{self.bot.config['gem_emoji']['amethyst']}")
+        if hellstones > 0:
+            flags.append(f"{hellstones}{self.bot.config['gem_emoji']['hellstone']}")
+        gems_string = '**//**'.join(flags)
+
+        return gems_string
