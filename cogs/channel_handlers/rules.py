@@ -1,10 +1,11 @@
 
 #* Discord
-from discord import RawReactionActionEvent, Embed
+from discord import RawReactionActionEvent, Embed, PartialEmoji, Message, Member, DiscordException, guild
 from discord.ext.commands import Cog
 
 # * Additions
 from math import floor
+from typing import Optional
 
 import utils
 
