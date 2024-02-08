@@ -4,6 +4,7 @@ from discord import RawReactionActionEvent, Embed, PartialEmoji, Message, Member
 from discord.ext.commands import Cog
 
 # * Additions
+from asyncio import sleep, TimeoutError
 from math import floor
 from random import randint
 from typing import Optional
@@ -126,6 +127,9 @@ class rules_handler(Cog):
             async def get_response():
                 ''''Waits for users responses'''
                 msg = await self.bot.wait_for('message', check=lambda m: m.author.id == author.id and not m.guild, timeout=timeout)
+
+                if 'cancel' == msg.content.lower():
+                    raise VerificationCancelled
 
                 return msg
 
