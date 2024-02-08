@@ -151,6 +151,16 @@ class Developer(Cog):
 
 
 
+
+
+    @utils.is_dev()
+    @command()
+    async def sm(self, ctx):
+        '''send message'''
+
+        await ctx.send('placeholder message!')
+
+
 def setup(bot):
     x = Developer(bot)
     bot.add_cog(x)
