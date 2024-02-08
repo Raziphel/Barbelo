@@ -140,16 +140,12 @@ class Developer(Cog):
 
     @utils.is_dev()
     @command()
-    async def fixseps(self, ctx):
-        '''Fix all the seperator roles by re-giving them to everyone.'''
-        seperator_role_ids = [self.bot.config['seperator_roles']['access'], 
-                            self.bot.config['seperator_roles']['purchases'], 
-                            self.bot.config['seperator_roles']['pings'], 
-                            self.bot.config['seperator_roles']['about']]
+    async def mass_verify(self, ctx):
+        '''Verify all users on server'''
         for member in ctx.guild.members:
-            for role_id in seperator_role_ids:
-                role = utils.DiscordGet(ctx.guild.roles, id=role_id)
-                await member.add_roles(role, reason="Fixing")
+            await utils.UserFunctions.verify_user(user)
+
+        await ctx.send('All members have been verified!')
 
 
 
