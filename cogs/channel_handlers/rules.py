@@ -127,9 +127,6 @@ class rules_handler(Cog):
                 ''''Waits for users responses'''
                 msg = await self.bot.wait_for('message', check=lambda m: m.author.id == author.id and not m.guild, timeout=timeout)
 
-                if 'cancel' == msg.content.lower():
-                    raise VerificationCancelled
-
                 return msg
 
             message = await get_response()
