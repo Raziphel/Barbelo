@@ -179,11 +179,11 @@ class rules_handler(Cog):
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
             if verify_answer.content.lower() == "baphomet" and age > 12:
-                embed2=Embed(desc="**You have been accepted!**")
+                embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
             else:
-                embed2=Embed(desc="**You have been denied!**")
+                embed2=Embed(description="**You have been denied!**")
                 await author.send(embed=embed2)
                 await self.bot.kick(author)
 
