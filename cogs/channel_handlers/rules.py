@@ -171,7 +171,7 @@ class rules_handler(Cog):
             table_data['verify'] = verify.content
 
             msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('invited')}"
-            msg = await discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
+            msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
 
             if verify.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
