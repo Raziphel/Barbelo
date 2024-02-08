@@ -40,7 +40,7 @@ class store_Handler(Cog):
         embed2.add_field(name=f"🎈 ❧ Reaction Perms", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using reactions!```", inline=True)
         embed2.add_field(name=f"🧶 ❧ Thread Perms", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get perms to create threads!```", inline=True)
         embed2.add_field(name=f"🔮 ❧ External Emotes", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
-        embed2.add_field(name=f"📚 ❧ Library Pass", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```\n*(Full Transparency from all users)*", inline=True)
+        embed2.add_field(name=f"📚 ❧ Library Pass", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
         embed2.add_field(name=f"🎫 ❧ Image Pass", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
         embed2.add_field(name=f"🔊 ❧ SoundBoard Access", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to using the soundboard in VC!```", inline=True)
 
