@@ -5,6 +5,7 @@ from discord.ext.commands import Cog
 
 # * Additions
 from math import floor
+from random import randint
 from typing import Optional
 
 import utils
