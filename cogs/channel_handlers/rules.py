@@ -21,14 +21,14 @@ class rules_handler(Cog):
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
 
-        rules1 = await ch.fetch_message(1134121709142806659) #? 
-        rules2 = await ch.fetch_message(1134121730366001262) #? 
-        rules3 = await ch.fetch_message(1134121747252248637) #? 
-        rules4 = await ch.fetch_message(1134121762561470626) #? 
-        rules5 = await ch.fetch_message(1134121781196763256) #? 
-        rules6 = await ch.fetch_message(1134121813954277416) #? 
-        rules7 = await ch.fetch_message(1134121834737049621) #? 
-        rules8 = await ch.fetch_message(1134121863577079898) #? 
+        rules1 = await ch.fetch_message(self.bot.config['rules_messages']['1']) 
+        rules2 = await ch.fetch_message(self.bot.config['rules_messages']['2'])
+        rules3 = await ch.fetch_message(self.bot.config['rules_messages']['3'])
+        rules4 = await ch.fetch_message(self.bot.config['rules_messages']['4'])
+        rules5 = await ch.fetch_message(self.bot.config['rules_messages']['5'])
+        rules6 = await ch.fetch_message(self.bot.config['rules_messages']['6'])
+        rules7 = await ch.fetch_message(self.bot.config['rules_messages']['7'])
+        rules8 = await ch.fetch_message(self.bot.config['rules_messages']['8'])
 
         embed1=Embed(description=f"# Server Etiquette\n⦁ Try to maintain the natural flow of a conversation already in progress. Do not spam, post irrelevant images or purposely disrupt the chat in any way.\n⦁ Avoid sending repeating messages as well as repeated characters, emojis or phrases.\n⦁ Try to keep your messages together. Avoid breaking your paragraphs up into multiple lines and sending messages too quickly.\n⦁ Keep roleplay short and casual. The occasional head-pat, hug or high-five is fine, but limit non-conversation to only one or two messages.\n⦁ This is an English-speaking server. Please communicate in a way our members and staff can understand while participating in this server.", color=0x80F75C)
 

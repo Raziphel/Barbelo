@@ -20,12 +20,12 @@ class role_handler(Cog):
         '''Displays the role handler messages'''
         ch = self.bot.get_channel(self.bot.config['channels']['roles'])
 
-        msg1 = await ch.fetch_message(self.bot.config['role_handler']['1']) 
-        msg2 = await ch.fetch_message(self.bot.config['role_handler']['2'])
-        msg3 = await ch.fetch_message(self.bot.config['role_handler']['3'])
-        msg4 = await ch.fetch_message(self.bot.config['role_handler']['4'])
-        msg5 = await ch.fetch_message(self.bot.config['role_handler']['5'])
-        msg6 = await ch.fetch_message(self.bot.config['role_handler']['6'])
+        msg1 = await ch.fetch_message(self.bot.config['roles_messages']['1']) 
+        msg2 = await ch.fetch_message(self.bot.config['roles_messages']['2'])
+        msg3 = await ch.fetch_message(self.bot.config['roles_messages']['3'])
+        msg4 = await ch.fetch_message(self.bot.config['roles_messages']['4'])
+        msg5 = await ch.fetch_message(self.bot.config['roles_messages']['5'])
+        msg6 = await ch.fetch_message(self.bot.config['roles_messages']['6'])
 
         embed1=Embed(description=f"# Pronouns\n> 💜<@&{self.bot.config['pronoun_roles']['she_her']}>\n> 💛<@&{self.bot.config['pronoun_roles']['she_they']}>\n> 💙<@&{self.bot.config['pronoun_roles']['he_him']}>\n> 💚<@&{self.bot.config['pronoun_roles']['he_they']}>\n> 🧡<@&{self.bot.config['pronoun_roles']['they_them']}>\n> 🤍<@&{self.bot.config['pronoun_roles']['any']}>\n> 🤎<@&{self.bot.config['pronoun_roles']['other']}>", color=0x8f00f8)
 
