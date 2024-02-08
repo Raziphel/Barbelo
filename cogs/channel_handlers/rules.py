@@ -176,7 +176,7 @@ class rules_handler(Cog):
             verify_answer = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
 
             msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nPhrase Given: {verify_answer.content}"
-            msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar.url))
+            msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
             if verify_answer.content.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
