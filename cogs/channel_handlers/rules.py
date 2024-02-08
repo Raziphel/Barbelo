@@ -8,12 +8,23 @@ from asyncio import sleep, TimeoutError
 from math import floor
 from random import randint
 from typing import Optional
+from re import findall
 
 import utils
 
 
 class VerificationCancelled(BaseException):
     pass
+
+
+def get_only_numbers(data: str):
+    try:
+        numbers_list = findall(r'\d+', data)
+        numbers = ''.join(numbers_list)
+
+        return int(numbers)
+    except ValueError:
+        return None
 
 
 
@@ -139,6 +150,7 @@ class rules_handler(Cog):
             invited_answer = await get_input(f"Where did you recieve an invintation to {guild.name} from?")
 
             age_answer = await get_input("How old are you?")
+            age_answer =get_only_numbers(age_answer.content)
 
             mod = utils.Moderation.get(author.id)
             if age_answer < 18:
@@ -163,10 +175,10 @@ class rules_handler(Cog):
 
             verify_answer = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
 
-            msg = f"How they were invited: {invited_answer}\nAge given: {age_answer}\nPhrase Given: {verify_answer}"
+            msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer.content}\nPhrase Given: {verify_answer.content}"
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
 
-            if verify_answer.lower() == "baphomet" and age > 12:
+            if verify_answer.content.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
