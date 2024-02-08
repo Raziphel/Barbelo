@@ -28,7 +28,7 @@ class UserFunctions(object):
             await member.add_roles(role, reason="Joined Server!")
 
         #? Makes sure they get the gemless role.
-        await utils.UserFunctions.check_level(member)
+        await cls.check_level(member)
 
         #+ Send joining server messages!
         await cls.welcome_log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
