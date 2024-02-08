@@ -43,7 +43,7 @@ class rules_handler(Cog):
 
         embed8=Embed(description=f"# 8. Alt Accounts\nDue to potential user abuse, users are not allowed to have alts within the server. If a user is found with an alt, the alt(s) and main account will be removed. Please keep any and all alts out of the server.", color=0x80F75C)
 
-        embed9=Embed(description=f"# 9. Verification\n**Please click the ✔ reaction to begin the verification process.**\n*The bot must be able to message you!*\n\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x80F75C)
+        embed9=Embed(description=f"# 9. Verification\n**Please click the ✅ reaction to begin the verification process.**\n*The bot must be able to message you!*\n\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x80F75C)
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
@@ -81,7 +81,7 @@ class rules_handler(Cog):
             guild = self.bot.get_guild(payload.guild_id)
             member = guild.get_member(payload.user_id)
 
-            if emoji == "✔":
+            if emoji == "✅":
                 await self.verification(author=member)
 
             # Check to see total reactions on the message
