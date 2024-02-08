@@ -11,19 +11,19 @@ from typing import Optional
 
 import utils
 
+
+class VerificationCancelled(BaseException):
+    pass
+
+
+
 class rules_handler(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-
-
-
     @property  #+ The Server Logs
     def discord_log(self):
         return self.bot.get_channel(self.bot.config['logs']['server']) 
-
-
 
 
 
