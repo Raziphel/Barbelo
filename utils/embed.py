@@ -30,7 +30,7 @@ class Embed(Embed):
 
         #* Add Author
         if title:
-            self.set_author(name=title, url=patron)
+            self.set_author(name=title)
 
         #* Add Thumbnail
         if thumbnail:
