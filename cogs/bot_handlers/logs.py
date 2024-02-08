@@ -49,29 +49,7 @@ class log_handler(Cog):
     #! Brand new members joining 
     @Cog.listener()
     async def on_member_join(self, member):
-
-        #+ Assign new member roles.
-        guild = self.bot.get_guild(self.bot.config['guild_id'])
-        seperator_role_ids = [self.bot.config['seperator_roles']['access'], 
-                            self.bot.config['seperator_roles']['purchases'], 
-                            self.bot.config['seperator_roles']['pings'], 
-                            self.bot.config['seperator_roles']['about']]
-        for role_id in seperator_role_ids:
-            role = utils.DiscordGet(guild.roles, id=role_id)
-            await member.add_roles(role, reason="Joined Server!")
-
-        #? Makes sure they get the gemless role.
-        await utils.UserFunctions.check_level(member)
-
-        #+ Send joining server messages!
-        try:
-            #? General Welcome Message!
-            await self.welcome_log.send(content=f"<@&{self.bot.config['ping_roles']['welcomer']}> {user.mention}", 
-                                        embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
-            #? Log
-            await self.discord_log.send(embed=utils.Embed(color=0x339c2a, title=f"{member.name} has joined the cult.", thumbnail=member.avatar.url))
-        except: pass
-
+        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, title=f"{member.name} has entered the cult and needs verification.", thumbnail=member.avatar.url))
 
 
     #! Logs

@@ -8,11 +8,19 @@ from math import floor
 
 import utils
 
-
-
 class rules_handler(Cog):
     def __init__(self, bot):
         self.bot = bot
+
+
+
+
+
+    @property  #+ The Server Logs
+    def discord_log(self):
+        return self.bot.get_channel(self.bot.config['logs']['server']) 
+
+
 
 
 
@@ -25,7 +33,7 @@ class rules_handler(Cog):
 
         embed3=Embed(description=f"# 3. Mental Illness\nThis includes jokes and discussing methods of harm. We care about the well-being of all our members; however, this chat is not a suitable method of mental care therapy. Instead, if you or somebody you know needs help, please seek out trained professionals for appropriate care. Resources relating to these issues can be found [Here](https://www.ispn-psych.org/mental-health-links).\n\n This rule isn't included in an attempt to deny people an emotional outlet, but instead to protect those members from malicious users who might try to convince them to harm themselves and to protect them from armchair psychologists who may make things worse.", color=0x80F75C)
 
-        embed4=Embed(description=f"# 4. Staff Decisions\nIf any issue comes up, please ping the appropriate staff for assistance. Please do not attempt to resolve issues yourself. Staff's decisions and actions should be respected by all users; however users may contact the team for additional information, clarification or to appeal. If you have any issues with a particular staff's actions please take it to an <@&1104988250478743572> or <@&1109654196942282793> privately.\n\nIn the case of emergencies or issues that require immediate attention you can:\nPing us using <@&1068389119195107378> Please do not use this for non-emergencies.\n(Secret code for verification is Baphomet)", color=0x80F75C)
+        embed4=Embed(description=f"# 4. Staff Decisions\nIf any issue comes up, please ping the appropriate staff for assistance. Please do not attempt to resolve issues yourself. Staff's decisions and actions should be respected by all users; however users may contact the team for additional information, clarification or to appeal. If you have any issues with a particular staff's actions please take it to an <@&1104988250478743572> or <@&1109654196942282793> privately.\n\nIn the case of emergencies or issues that require immediate attention you can:\nPing us using <@&1068389119195107378> Please do not use this for non-emergencies.\n(Secret phrase for verification is Baphomet)", color=0x80F75C)
 
         embed5=Embed(description=f"# 5. Advertising\nAdvertisements to other groups or Discord servers are not allowed without prior staff approval. Members seeking to advertise commissions or other products must do so in the art sectioned channels. Advertisements should not include any NSFW or otherwise unsuitable content. We consider raffles, or anything which requires following, liking, retweeting, and so forth, as advertising.\n\nChoosing to DM any member of the server only to try and advertise will result in an instant ban, especially if you are a low level member.", color=0x80F75C)
 
@@ -35,7 +43,7 @@ class rules_handler(Cog):
 
         embed8=Embed(description=f"# 8. Alt Accounts\nDue to potential user abuse, users are not allowed to have alts within the server. If a user is found with an alt, the alt(s) and main account will be removed. Please keep any and all alts out of the server.", color=0x80F75C)
 
-        embed9=Embed(description=f"# 9. Verification\n**Please click the ✔ reaction to begin the verification process,**", color=0x80F75C)
+        embed9=Embed(description=f"# 9. Verification\n**Please click the ✔ reaction to begin the verification process.**\n**__WARNING:__** `You must get these answers correct or you will be kicked.`", color=0x80F75C)
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
@@ -50,26 +58,138 @@ class rules_handler(Cog):
         for i, rule in rules.items():
             await rule.edit(content="", embed=embeds[i-1])
 
-        # rules1 = await ch.fetch_message(self.bot.config['rules_messages']['1']) 
-        # rules2 = await ch.fetch_message(self.bot.config['rules_messages']['2'])
-        # rules3 = await ch.fetch_message(self.bot.config['rules_messages']['3'])
-        # rules4 = await ch.fetch_message(self.bot.config['rules_messages']['4'])
-        # rules5 = await ch.fetch_message(self.bot.config['rules_messages']['5'])
-        # rules6 = await ch.fetch_message(self.bot.config['rules_messages']['6'])
-        # rules7 = await ch.fetch_message(self.bot.config['rules_messages']['7'])
-        # rules8 = await ch.fetch_message(self.bot.config['rules_messages']['8'])
-        # rules8 = await ch.fetch_message(self.bot.config['rules_messages']['9'])
 
 
-        # await rules1.edit(content=f" ", embed=embed1)
-        # await rules2.edit(content=f" ", embed=embed2)
-        # await rules3.edit(content=f" ", embed=embed3)
-        # await rules4.edit(content=f" ", embed=embed4)
-        # await rules5.edit(content=f" ", embed=embed5)
-        # await rules6.edit(content=f" ", embed=embed6)
-        # await rules7.edit(content=f" ", embed=embed7)
-        # await rules8.edit(content=f" ", embed=embed8)
-        # await rules9.edit(content=f" ", embed=embed9)
+
+
+    @Cog.listener('on_raw_reaction_add')
+    async def verify(self, payload:RawReactionActionEvent):
+            '''Send verification message~!'''
+
+            # See if I need to deal with it
+            if payload.channel_id != self.bot.config['channels']['realm']['rules'] : #? Verification Channel
+                return
+            if self.bot.get_user(payload.user_id).bot:
+                return
+
+            # See what the emoji is
+            if payload.emoji.is_unicode_emoji():
+                emoji = payload.emoji.name 
+            else:
+                emoji = payload.emoji.id
+        
+            guild = self.bot.get_guild(payload.guild_id)
+            member = guild.get_member(payload.user_id)
+
+            if emoji == "💎":
+                await self.verification(author=member)
+
+            # Check to see total reactions on the message
+            channel_id = payload.channel_id
+            channel = self.bot.get_channel(channel_id)
+            async for message in channel.history():
+                if message.id == payload.message_id:
+                    break 
+            if message.id != payload.message_id:
+                return  # Couldn't find message in channel history
+
+            # See total reactions
+            emoji = [i.emoji for i in message.reactions]
+            if sum([i.count for i in message.reactions]) > 69:
+                await message.clear_reactions()
+            for e in emoji:
+                await message.add_reaction(e)
+
+
+
+
+
+    async def verification(self, author:Member):
+        '''Sends a verification application!'''
+
+        # Set some stuff up
+        table_data = {
+            'invited': None,
+            'age': None,
+            'color': None,
+            'verification': None,
+        },
+
+        guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
+
+        async def get_input(prompt: str, timeout: float = 300.0, max_length: Optional[int] = 50):
+            '''Gets users responses and checks them'''
+            await author.send(embed=utils.Embed(color=randint(1, 0xffffff), desc=prompt))
+
+            async def get_response():
+                ''''Waits for users responses'''
+                msg = await self.bot.wait_for('message', check=lambda m: m.author.id == author.id and not m.guild, timeout=timeout)
+
+                if 'cancel' == msg.content.lower():
+                    raise VerificationCancelled
+
+                return msg
+
+            message = await get_response()
+
+            if max_length is not None:
+                while len(message.content) > max_length:
+                    await author.send(f"Sorry, but the value you've responded with is too long. Please keep it within {max_length} characters.")
+                    message = await get_response()
+
+            return message
+
+        try:
+            invited = await get_input(f"Where did you recieve an invintation to {guild.name} from?")
+            table_data['invited'] = invited.content
+
+            age = await get_input("How old are you?")
+            table_data['age'] = age.content
+
+            mod = utils.Moderation.get(author.id)
+            if age < 18:
+                mod.child = True
+
+            color = await get_input("What's your favourite colour? (Say a color name or a hex code)")
+            colour_value = utils.Colors.get(color.content.lower()) 
+            if colour_value == None:
+                try:
+                    colour_value = int(color.content.strip('#'), 16)
+                except ValueError:
+                    pass
+            ss = utils.Settings.get(author.id)
+            ss.color = colour_value
+            async with self.bot.database() as db:
+                await ss.save(db)
+                await mod.save(db)
+
+            if color is None:
+                color = 0x0
+                await author.send('Invalid color specified!\nSetting to default color.')
+
+            verify = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
+            table_data['verify'] = verify.content
+
+            msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('invited')}"
+            msg = await discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=ss.color, author=author, image=author.avatar_url))
+
+            if verify.lower() == "baphomet":
+                embed2=Embed(description="**You have been accepted!**")
+                await author.send(embed=embed2)
+                await utils.UserFunctions.verify_user(author)
+            else:
+                embed2=Embed(description="**You have been denied!**")
+                await author.send(embed=embed2)
+                await self.bot.kick(author)
+
+        except DiscordException:
+            await author.send('I\'m unable to DM you?')
+
+        except VerificationCancelled:
+            await author.send('Aborting Verification!')
+
+        except TimeoutError:
+            await author.send('Sorry, but you took too long to respond.  Verification has closed.')
 
 
 
