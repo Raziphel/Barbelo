@@ -146,7 +146,7 @@ class Developer(Cog):
         '''Verify all users on server'''
         for member in ctx.guild.members:
             await utils.UserFunctions.verify_user(member)
-
+            print(f'{member.name} was verified!')
         await ctx.send('All members have been verified!')
 
 
