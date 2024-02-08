@@ -96,7 +96,9 @@ class rules_handler(Cog):
             member = guild.get_member(payload.user_id)
 
             if emoji == "✅":
-                await self.verification(author=member)
+                verified = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['verified'])
+                if verified not in member.roles:
+                    await self.verification(author=member)
 
             # Check to see total reactions on the message
             channel_id = payload.channel_id
