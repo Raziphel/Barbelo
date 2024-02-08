@@ -34,7 +34,7 @@ class UserFunctions(object):
         await cls.check_level(user)
 
         #+ Send joining server messages!
-        log = cls.bot.get_channel(self.bot.config['channels']['general'])
+        log = cls.bot.get_channel(cls.bot.config['channels']['general'])
         await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
 
 
