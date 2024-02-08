@@ -104,7 +104,7 @@ class rules_handler(Cog):
 
 
 
-    async def verification(self, author:Member):
+    async def verification(self, author):
         '''Sends a verification application!'''
 
         # Set some stuff up
