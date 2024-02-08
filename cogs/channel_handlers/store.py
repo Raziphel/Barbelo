@@ -45,6 +45,7 @@ class store_Handler(Cog):
         embed2.add_field(name=f"🔊 ❧ SoundBoard Access", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to using the soundboard in VC!```", inline=True)
 
         await msg1.edit(content=f" ", embed=embed1)
+        await msg2.edit(content=f" ", embed=embed2)
 
 
 
