@@ -116,17 +116,17 @@ class GemFunctions(object):
 
         flags = []
         if emeralds > 0:
-            flags.append(f"{emeralds}{cls.bot.config['gem_emoji']['emerald']}")
+            flags.append(f"{emeralds}x {cls.bot.config['gem_emoji']['emerald']}")
         if diamonds > 0:
-            flags.append(f"{diamonds}{cls.bot.config['gem_emoji']['diamond']}")
+            flags.append(f"{diamonds}x {cls.bot.config['gem_emoji']['diamond']}")
         if rubys > 0:
-            flags.append(f"{rubys}{cls.bot.config['gem_emoji']['ruby']}")
+            flags.append(f"{rubys}x {cls.bot.config['gem_emoji']['ruby']}")
         if sapphires > 0:
-            flags.append(f"{sapphires}{cls.bot.config['gem_emoji']['sapphire']}")
+            flags.append(f"{sapphires}x {cls.bot.config['gem_emoji']['sapphire']}")
         if amethysts > 0:
-            flags.append(f"{amethysts}{cls.bot.config['gem_emoji']['amethyst']}")
+            flags.append(f"{amethysts}x {cls.bot.config['gem_emoji']['amethyst']}")
         if hellstones > 0:
-            flags.append(f"{hellstones}{cls.bot.config['gem_emoji']['hellstone']}")
-        gems_string = '**//**'.join(flags)
+            flags.append(f"{hellstones}x {cls.bot.config['gem_emoji']['hellstone']}")
+        gems_string = ' '.join(flags)
 
         return gems_string

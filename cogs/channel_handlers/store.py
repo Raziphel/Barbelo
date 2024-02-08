@@ -32,7 +32,7 @@ class store_Handler(Cog):
         msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0x80F75C)
-        embed1.add_field(name=f"✨ ❧ Discord Nitro", value=f"**10 {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get the 10$ Discord Nitro!```", inline=True)
+        embed1.add_field(name=f"✨ ❧ Discord Nitro", value=f"**10x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get the 10$ Discord Nitro!```", inline=True)
 
         await msg1.edit(content=f" ", embed=embed1)
 
