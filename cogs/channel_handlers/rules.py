@@ -185,7 +185,6 @@ class rules_handler(Cog):
             else:
                 embed2=Embed(description="**You have been denied!**")
                 await author.send(embed=embed2)
-                await self.bot.kick(author)
 
         except DiscordException:
             await author.send('I\'m unable to DM you?')
