@@ -12,6 +12,9 @@ class UserFunctions(object):
     bot = None
 
 
+
+
+
     @classmethod
     async def verify_user(cls, user:Member):
         '''Verifys a user access to the server!'''
@@ -31,7 +34,8 @@ class UserFunctions(object):
         await cls.check_level(user)
 
         #+ Send joining server messages!
-        await cls.welcome_log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
+        log = cls.bot.get_channel(self.bot.config['channels']['general'])
+        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
 
 
     @classmethod

@@ -31,12 +31,6 @@ class log_handler(Cog):
     def adult_log(self):
         return self.bot.get_channel(self.bot.config['logs']['adult'])
 
-    @property  #+ The Welcome Logs
-    def welcome_log(self):
-        return self.bot.get_channel(self.bot.config['channels']['general'])
-
-
-
 #? ---  COLOR PICKER  ---
 #? 
 #? GREEN -> 0x339c2a ... Positive logs

@@ -22,6 +22,8 @@ class Developer(Cog):
         self.bot = bot
 
 
+
+
     @utils.is_dev()
     @command()
     async def ev(self, ctx, *, content:str):
