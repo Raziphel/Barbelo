@@ -41,7 +41,7 @@ class rules_handler(Cog):
     @Cog.listener('on_ready') #! ---> Server Rules
     async def rules(self):
 
-        embed1=Embed(description=f"# Server Etiquette\n⦁ Try to maintain the natural flow of a conversation already in progress. Do not spam, post irrelevant images or purposely disrupt the chat in any way.\n⦁ Avoid sending repeating messages as well as repeated characters, emojis or phrases.\n⦁ Try to keep your messages together. Avoid breaking your paragraphs up into multiple lines and sending messages too quickly.\n⦁ Keep roleplay short and casual. The occasional head-pat, hug or high-five is fine, but limit non-conversation to only one or two messages.\n⦁ This is an English-speaking server. Please communicate in a way our members and staff can understand while participating in this server.", color=0x80F75C)
+        embed1=Embed(description=f"# 1. Server Etiquette\n⦁ Try to maintain the natural flow of a conversation already in progress. Do not spam, post irrelevant images or purposely disrupt the chat in any way.\n⦁ Avoid sending repeating messages as well as repeated characters, emojis or phrases.\n⦁ Try to keep your messages together. Avoid breaking your paragraphs up into multiple lines and sending messages too quickly.\n⦁ Keep roleplay short and casual. The occasional head-pat, hug or high-five is fine, but limit non-conversation to only one or two messages.\n⦁ This is an English-speaking server. Please communicate in a way our members and staff can understand while participating in this server.", color=0x80F75C)
 
         embed2=Embed(description=f"# 2. Respect\nExcessively argumentative, rude, dismissive, or aggressive members will be removed. We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of racism, homophobia, transphobia or other types of discriminatory language. Jokes about these topics are equally unwelcome. Personal arguments or conversations between members should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0x80F75C)
 
@@ -57,7 +57,7 @@ class rules_handler(Cog):
 
         embed8=Embed(description=f"# 8. Alt Accounts\nDue to potential user abuse, users are not allowed to have alts within the server. If a user is found with an alt, the alt(s) and main account will be removed. Please keep any and all alts out of the server.", color=0x80F75C)
 
-        embed9=Embed(description=f"# 9. Verification\n**Please click the ✅ reaction to begin the verification process.**\n*The bot must be able to message you!*\n\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x80F75C)
+        embed9=Embed(description=f"# Verification\n**Please click the ✅ reaction to begin the verification process.**\n*The bot must be able to message you!*\n\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x80F75C)
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
