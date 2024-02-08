@@ -10,7 +10,7 @@ import utils
 
 # * Additions
 
-class shop_Handler(Cog):
+class store_Handler(Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -21,46 +21,19 @@ class shop_Handler(Cog):
 
 
     @Cog.listener('on_ready')
-    async def shop_msg(self):
-        ch = self.bot.get_channel(self.bot.config['channels']['shop'])
+    async def store_msg(self):
+        ch = self.bot.get_channel(self.bot.config['channels']['store'])
 
-        msg1 = await ch.fetch_message(self.bot.config['roles_messages']['1']) 
-        msg2 = await ch.fetch_message(self.bot.config['roles_messages']['2'])
-        msg3 = await ch.fetch_message(self.bot.config['roles_messages']['3'])
-        msg4 = await ch.fetch_message(self.bot.config['roles_messages']['4'])
-        msg5 = await ch.fetch_message(self.bot.config['roles_messages']['5'])
-        msg6 = await ch.fetch_message(self.bot.config['roles_messages']['6'])
+        msg1 = await ch.fetch_message(self.bot.config['store_messages']['1']) 
+        msg2 = await ch.fetch_message(self.bot.config['store_messages']['2'])
+        msg3 = await ch.fetch_message(self.bot.config['store_messages']['3'])
+        msg4 = await ch.fetch_message(self.bot.config['store_messages']['4'])
+        msg5 = await ch.fetch_message(self.bot.config['store_messages']['5'])
+        msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
-        #* Get the coin emojis
-        coin = self.bot.config['emotes']['coin']
-
-        embed1=Embed(description=f"```fix\n█ Serpent's Toys █\n```\n**__By clicking the coresponding emoji, you will recieve a dm from the bot where you have to accept the transaction.__**\n\n**Exclusive Items:**\n*Items that are purposely made very expensive, due to their value!*", color=0x47F5DB)
-        embed1.add_field(name=f"✨ ❧ Discord Nitro", value=f"**{coin} 1,000,000x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-
-        embed2=Embed(description=f"```fix\n█ Permissions █\n```\n**__This is a list of discord related items for sale.__**", color=0x47B9F5)
-        embed2.add_field(name=f"🎁 ❧ Stat Channels", value=f"**{coin} 10,000x**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"🎈 ❧ Reaction Perms", value=f"**{coin} 20,000x**\n\n```Get access to using reactions!```", inline=True)
-        embed2.add_field(name=f"🧶 ❧ Thread Perms", value=f"**{coin} 20,000x**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"🔮 ❧ External Emotes", value=f"**{coin} 30,000x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
-        embed2.add_field(name=f"🔥 ❧ Dungeon Key", value=f"**{coin} 30,000x**\n\n```Get access to hell, where all the muted go!```", inline=True)
-        embed2.add_field(name=f"📚 ❧ Library Pass", value=f"**{coin} 40,000x**\n\n```Get access to all of the server's logs!```\n*(Full Transparency from all users)*", inline=True)
-        embed2.add_field(name=f"🎫 ❧ Image Pass", value=f"**{coin} 50,000x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"🔊 ❧ SoundBoard Access", value=f"**{coin} 50,000x**\n\n```Get access to using the soundboard in VC!```", inline=True)
-
-        embed3=Embed(description=f"```fix\n█ Abilities & Items █\n```\n**__Use special abilites on a set cooldown! (Some are permenant.)__**", color=0x475FF5)
-        embed3.add_field(name=f"💎 ❧ Daily Bonus", value=f"**{coin} 40,000x**\n\n```Get a bonus with every daily!```\n*(Doesn't get better with more dailys)*", inline=True)
-        embed3.add_field(name=f"🧤 ❧ Thief Gloves", value=f"**{coin} 20,000x**\n\n```Get 5 thief gloves!```\n*(Let's you steal coins from people!)*", inline=True)
-        
-        embed4=Embed(title=f"**█ Coming Soon █**", description=f" ", color=0xF54747)
-        
-        embed5=Embed(title=f"**█ Coming Soon █**", description=f" ", color=0xF54747)
-
+        embed1=Embed(description=f"# Gems -> USD$\n`All the listed items are worth real life money for the cost of gems!`\n\n⭐**10$ Discord Nitro | 10 {self.bot.config['gem_emoji']['hellstone']}**\n```\nGet 1 month of the 10$ Discord Nitro!\n\n```", color=0x80F75C)
 
         await msg1.edit(content=f" ", embed=embed1)
-        await msg2.edit(content=f" ", embed=embed2)
-        await msg3.edit(content=f" ", embed=embed3)
-        await msg4.edit(content=f" ", embed=embed4)
-        await msg5.edit(content=f" ", embed=embed5)
 
 
 
@@ -69,11 +42,11 @@ class shop_Handler(Cog):
 
 
     @Cog.listener('on_raw_reaction_add')
-    async def shop_buy(self, payload:RawReactionActionEvent):
-            '''Buys item's from the shop.'''
+    async def store_buy(self, payload:RawReactionActionEvent):
+            '''Buys item's from the store.'''
 
             #! See if I need to deal with it
-            if not payload.channel_id == self.bot.config['channels']['shop']:
+            if not payload.channel_id == self.bot.config['channels']['store']:
                 return
             if self.bot.get_user(payload.user_id).bot:
                 return
@@ -255,7 +228,7 @@ class shop_Handler(Cog):
 
 
     async def purchasing(self, msg, payload, item):
-        '''The system for buying in the shop.'''
+        '''The system for buying in the store.'''
 
         guild = self.bot.get_guild(payload.guild_id)
         user = guild.get_member(payload.user_id)
@@ -287,5 +260,5 @@ class shop_Handler(Cog):
 
 
 def setup(bot):
-    x = shop_Handler(bot)
+    x = store_Handler(bot)
     bot.add_cog(x)
