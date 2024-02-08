@@ -114,8 +114,7 @@ class rules_handler(Cog):
         table_data = {
             'invited': None,
             'age': None,
-            'color': None,
-            'verification': None,
+            'verify': None,
         },
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
@@ -173,7 +172,7 @@ class rules_handler(Cog):
             verify = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
             table_data['verify'] = verify.content
 
-            msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('invited')}"
+            msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('verify')}"
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
 
             if verify.lower() == "baphomet" and age > 12:
