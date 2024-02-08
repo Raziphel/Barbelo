@@ -25,10 +25,10 @@ class UserFunctions(object):
                             cls.bot.config['verified']]
         for role_id in entry_role_ids:
             role = utils.DiscordGet(guild.roles, id=role_id)
-            await member.add_roles(role, reason="Joined Server!")
+            await user.add_roles(role, reason="Joined Server!")
 
         #? Makes sure they get the gemless role.
-        await cls.check_level(member)
+        await cls.check_level(user)
 
         #+ Send joining server messages!
         await cls.welcome_log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
