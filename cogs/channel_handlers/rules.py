@@ -43,7 +43,7 @@ class rules_handler(Cog):
 
         embed8=Embed(description=f"# 8. Alt Accounts\nDue to potential user abuse, users are not allowed to have alts within the server. If a user is found with an alt, the alt(s) and main account will be removed. Please keep any and all alts out of the server.", color=0x80F75C)
 
-        embed9=Embed(description=f"# 9. Verification\n**Please click the ✔ reaction to begin the verification process.**\n**__WARNING:__** `You must get these answers correct or you will be kicked.`", color=0x80F75C)
+        embed9=Embed(description=f"# 9. Verification\n**Please click the ✔ reaction to begin the verification process.**\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x80F75C)
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
@@ -81,7 +81,7 @@ class rules_handler(Cog):
             guild = self.bot.get_guild(payload.guild_id)
             member = guild.get_member(payload.user_id)
 
-            if emoji == "💎":
+            if emoji == "✔":
                 await self.verification(author=member)
 
             # Check to see total reactions on the message
@@ -173,7 +173,7 @@ class rules_handler(Cog):
             msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('invited')}"
             msg = await discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=ss.color, author=author, image=author.avatar_url))
 
-            if verify.lower() == "baphomet":
+            if verify.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
