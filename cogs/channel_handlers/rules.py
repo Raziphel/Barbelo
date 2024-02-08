@@ -110,12 +110,6 @@ class rules_handler(Cog):
     async def verification(self, author):
         '''Sends a verification application!'''
 
-        # Set some stuff up
-        table_data = dict({
-            'invited': None,
-            'age': None,
-            'verify': None,
-        }),
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
 
@@ -142,14 +136,12 @@ class rules_handler(Cog):
             return message
 
         try:
-            invited = await get_input(f"Where did you recieve an invintation to {guild.name} from?")
-            table_data['invited'] = invited.content
+            invited_answer = await get_input(f"Where did you recieve an invintation to {guild.name} from?")
 
-            age = await get_input("How old are you?")
-            table_data['age'] = age.content
+            age_answer = await get_input("How old are you?")
 
             mod = utils.Moderation.get(author.id)
-            if age < 18:
+            if age_answer < 18:
                 mod.child = True
 
             color = await get_input("What's your favourite colour? (Say a color name or a hex code)")
@@ -169,13 +161,12 @@ class rules_handler(Cog):
                 color = 0x0
                 await author.send('Invalid color specified!\nSetting to default color.')
 
-            verify = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
-            table_data['verify'] = verify.content
+            verify_answer = await get_input("What is the secret phrase found in the rules?\n**WARNING** putting anything but the phrase perfectly will result in being kicked from the server.")
 
-            msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('verify')}"
+            msg = f"How they were invited: {invited_answer}\nAge given: {age_answer}\nPhrase Given: {verify_answer}"
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
 
-            if verify.lower() == "baphomet" and age > 12:
+            if verify_answer.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
