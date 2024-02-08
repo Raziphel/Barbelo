@@ -17,12 +17,12 @@ class UserFunctions(object):
         '''Verifys a user access to the server!'''
 
         #+ Assign new member roles.
-        guild = self.bot.get_guild(self.bot.config['guild_id'])
-        entry_role_ids = [self.bot.config['seperator_roles']['access'], 
-                            self.bot.config['seperator_roles']['purchases'], 
-                            self.bot.config['seperator_roles']['pings'], 
-                            self.bot.config['seperator_roles']['about'],
-                            self.bot.config['verified']]
+        guild = cls.bot.get_guild(cls.bot.config['guild_id'])
+        entry_role_ids = [cls.bot.config['seperator_roles']['access'], 
+                            cls.bot.config['seperator_roles']['purchases'], 
+                            cls.bot.config['seperator_roles']['pings'], 
+                            cls.bot.config['seperator_roles']['about'],
+                            cls.bot.config['verified']]
         for role_id in entry_role_ids:
             role = utils.DiscordGet(guild.roles, id=role_id)
             await member.add_roles(role, reason="Joined Server!")
@@ -31,7 +31,7 @@ class UserFunctions(object):
         await utils.UserFunctions.check_level(member)
 
         #+ Send joining server messages!
-        await self.welcome_log.send(content=f"<@&{self.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
+        await cls.welcome_log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{member.name} has joined the cult."))
 
 
     @classmethod
