@@ -95,7 +95,7 @@ class rules_handler(Cog):
 
             # See total reactions
             emoji = [i.emoji for i in message.reactions]
-            if sum([i.count for i in message.reactions]) > 69:
+            if sum([i.count for i in message.reactions]) > 5000:
                 await message.clear_reactions()
             for e in emoji:
                 await message.add_reaction(e)
@@ -157,10 +157,10 @@ class rules_handler(Cog):
                     colour_value = int(color.content.strip('#'), 16)
                 except ValueError:
                     pass
-            ss = utils.Settings.get(author.id)
-            ss.color = colour_value
+            t = utils.Tracking.get(author.id)
+            t.color = colour_value
             async with self.bot.database() as db:
-                await ss.save(db)
+                await t.save(db)
                 await mod.save(db)
 
             if color is None:
@@ -171,7 +171,7 @@ class rules_handler(Cog):
             table_data['verify'] = verify.content
 
             msg = f"How they were invited: {table_data.get('invited')}\nAge given: {table_data.get('age')}\nPhrase Given: {table_data.get('invited')}"
-            msg = await discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=ss.color, author=author, image=author.avatar_url))
+            msg = await discord_log.send(embed=utils.Embed(footer=f"Verification", message=msg, color=t.color, author=author, image=author.avatar_url))
 
             if verify.lower() == "baphomet" and age > 12:
                 embed2=Embed(description="**You have been accepted!**")
