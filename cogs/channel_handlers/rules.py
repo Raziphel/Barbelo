@@ -111,11 +111,11 @@ class rules_handler(Cog):
         '''Sends a verification application!'''
 
         # Set some stuff up
-        table_data = {
+        table_data = dict({
             'invited': None,
             'age': None,
             'verify': None,
-        },
+        }),
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
 
