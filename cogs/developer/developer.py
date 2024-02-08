@@ -143,7 +143,7 @@ class Developer(Cog):
     async def mass_verify(self, ctx):
         '''Verify all users on server'''
         for member in ctx.guild.members:
-            await utils.UserFunctions.verify_user(user)
+            await utils.UserFunctions.verify_user(member)
 
         await ctx.send('All members have been verified!')
 
