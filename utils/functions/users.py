@@ -33,9 +33,9 @@ class UserFunctions(object):
         #? Makes sure they get the gemless role.
         await cls.check_level(user)
 
-        #+ Send joining server messages!
-        log = cls.bot.get_channel(cls.bot.config['channels']['general'])
-        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the cult."))
+        # #+ Send joining server messages!
+        # log = cls.bot.get_channel(cls.bot.config['channels']['general'])
+        # await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the cult."))
 
 
     @classmethod
