@@ -178,7 +178,7 @@ class rules_handler(Cog):
             msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nPhrase Given: {verify_answer.content}"
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
-            if verify_answer.content.lower() == "baphomet" and age > 12:
+            if verify_answer.content.lower() == "baphomet" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
