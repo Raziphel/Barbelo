@@ -36,12 +36,12 @@ class store_Handler(Cog):
         embed1.add_field(name=f"💸 ❧ 5$ USD", value=f"**5x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get paypal'd 5$ USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`This is a list of discord related items for sale.`", color=0x47B9F5)
-        embed2.add_field(name=f"📚 ❧ Library Pass", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"🎫 ❧ Image Pass", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"🔊 ❧ SoundBoard Access", value=f"**1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"🎁 ❧ Stat Channels", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"🧶 ❧ Thread Perms", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"🔮 ❧ External Emotes", value=f"**1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"📚 ❧ Library Pass", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['sapphire']} ⊱**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"🎫 ❧ Image Pass", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['sapphire']} ⊱**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"🔊 ❧ SoundBoard Access", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['sapphire']} ⊱**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"🎁 ❧ Stat Channels", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['ruby']} ⊱**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"🧶 ❧ Thread Perms", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['ruby']} ⊱**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"🔮 ❧ External Emotes", value=f"**⊰ COST: 1x {self.bot.config['gem_emoji']['ruby']} ⊱**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
 
         await msg1.edit(content=f" ", embed=embed1)
