@@ -24,7 +24,6 @@ class GemFunctions(object):
         elif g.emerald < 0 and g.diamond > 0:
             g.emerald += 100
             g.diamond -= 1
-
         #? Diamond
         if g.diamond > 100:
             for x in range(floor(g.diamond/100)):
@@ -33,7 +32,6 @@ class GemFunctions(object):
         elif g.diamond < 0 and g.ruby > 0:
             g.diamond += 100
             g.ruby -= 1
-
         #? Ruby
         if g.ruby > 100:
             for x in range(floor(g.ruby/100)):
@@ -42,7 +40,6 @@ class GemFunctions(object):
         elif g.ruby < 0 and g.sapphire > 0:
             g.ruby += 100
             g.sapphire -= 1
-
         #? Sapphire
         if g.sapphire > 100:
             for x in range(floor(g.sapphire/100)):
@@ -51,7 +48,6 @@ class GemFunctions(object):
         elif g.sapphire < 0 and g.amethyst > 0:
             g.sapphire += 100
             g.amethyst -= 1
-
         #? Amethyst
         if g.amethyst > 100:
             for x in range(floor(g.amethyst/100)):
