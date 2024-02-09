@@ -70,12 +70,12 @@ class GemFunctions(object):
         g = utils.Gems.get(user.id)
 
         #? Hellstone
-        if gem is "hellstone":
+        if gem == "hellstone":
             if g.hellstone >= amount:
                 g.hellstone -= amount
             else: return False
         #? Amethyst
-        if gem is "amethyst":
+        if gem == "amethyst":
             if g.amethyst >= amount:
                 g.amethyst -= amount
             elif g.hellstone > 0:
@@ -84,7 +84,7 @@ class GemFunctions(object):
                 g.amethyst -= amount
             else: return False
         #? Sapphire
-        if gem is "sapphire":
+        if gem == "sapphire":
             if g.sapphire >= amount:
                 g.sapphire -= amount
             elif g.amethyst > 0:
@@ -93,7 +93,7 @@ class GemFunctions(object):
                 g.sapphire -= amount
             else: return False
         #? Ruby
-        if gem is "ruby":
+        if gem == "ruby":
             if g.ruby >= amount:
                 g.ruby -= amount
             elif g.sapphire > 0:
@@ -102,7 +102,7 @@ class GemFunctions(object):
                 g.ruby -= amount
             else: return False
         #? Diamond
-        if gem is "diamond":
+        if gem == "diamond":
             if g.diamond >= amount:
                 g.diamond -= amount
             elif g.ruby > 0:
@@ -111,7 +111,7 @@ class GemFunctions(object):
                 g.diamond -= amount
             else: return False
         #? Emerald
-        if gem is "emerald":
+        if gem == "emerald":
             if g.emerald >= amount:
                 g.emerald -= amount
             elif g.diamond > 0:
