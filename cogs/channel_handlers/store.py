@@ -35,7 +35,7 @@ class store_Handler(Cog):
         embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ 10x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get the 10$ Discord Nitro!```", inline=True)
         embed1.add_field(name=f"⊰ 💸 5$ USD ⊱", value=f"**╰⊰ 5x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get paypal'd 5$ USD!```", inline=True)
 
-        embed2=Embed(description=f"# Permissions\n`This is a list of discord related items for sale.`", color=0x47B9F5)
+        embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x47B9F5)
         embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
         embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
         embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to using the soundboard in VC!```", inline=True)
@@ -43,9 +43,12 @@ class store_Handler(Cog):
         embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get perms to create threads!```", inline=True)
         embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
+        embed3=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x47B9F5)
+        embed3.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
+        await msg3.edit(content=f" ", embed=embed3)
 
 
 
