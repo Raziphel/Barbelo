@@ -123,7 +123,6 @@ class rules_handler(Cog):
     async def verification(self, author):
         '''Sends a verification application!'''
 
-
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
 
         async def get_input(prompt: str, timeout: float = 300.0, max_length: Optional[int] = 50):
