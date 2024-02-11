@@ -59,7 +59,7 @@ class daily(Cog):
         daily = day.daily
         if daily > 90:
             daily = 90
-        now = datetime.now()
+        now = dt.now()
         emeralds = (10 + day.daily) * now.isoweekday()
         xps = lvl.level * now.isoweekday()
 
