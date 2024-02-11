@@ -73,7 +73,7 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n**{xps:,} ***XP***\n{rewards}")
+            embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n***{xps:,} XP***\n***{rewards}***")
         )
         
         await self.coin_logs.send(f"{ctx.author.name} claimed daily!\n**{xps:,} ***XP***\n{rewards}")
