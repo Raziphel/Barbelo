@@ -71,12 +71,20 @@ class daily(Cog):
         d = dt.today()
         x = day_name[d.weekday()]
 
+        th= "th"
+        if day.daily == 1:
+            th = "st"
+        elif day.daily == 2:
+            th = "nd"
+        elif day.daily == 3:
+            th = "rd"
+
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
             embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n***{xps:,} XP***\n***{rewards}***")
         )
         
-        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\n**Rewards:**\n**{xps:,} ***XP***\n{rewards}")
+        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\nThis is their {day.daily}{th} in a row!\n**Rewards:**\n**{xps:,} ***XP***\n{rewards}")
 
         # * Save data changes
         async with self.bot.database() as db:
