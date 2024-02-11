@@ -8,8 +8,6 @@ from discord.ext.commands import Cog
 import utils
 
 
-# * Additions
-
 class store_Handler(Cog):
     def __init__(self, bot):
         self.bot = bot
