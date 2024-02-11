@@ -64,7 +64,7 @@ class daily(Cog):
         xps = lvl.level * now.isoweekday()
 
         g.emerald += emeralds
-        lvl.exp += exps
+        lvl.exp += xps
 
         rewards = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
 
