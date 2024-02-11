@@ -47,7 +47,7 @@ class Baphomet(commands.AutoShardedBot):
             utils.Levels.all_levels.clear()
             utils.Gems.all_gems.clear()
             utils.Tracking.all_tracking.clear()
-            utils.Daily.all_daily.clear()
+            utils.Daily.all_dailys.clear()
 
 
             #! Collect from Database
