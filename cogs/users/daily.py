@@ -6,6 +6,7 @@ from discord.ext.commands import command, Cog, ApplicationCommandMeta, cooldown,
 #* Additional
 from random import choice
 from datetime import datetime as dt, timedelta
+from calender import day_name
 
 import utils
 
@@ -67,10 +68,11 @@ class daily(Cog):
         lvl.exp += xps
 
         rewards = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
+        x = day_name[d.weekday()]
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# Claimed your {dt.strftime('%A')} Daily!\n**{xps:,} ***XP***\n{rewards}")
+            embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n**{xps:,} ***XP***\n{rewards}")
         )
         
         await self.coin_logs.send(f"{ctx.author.name} claimed daily!\n**{xps:,} ***XP***\n{rewards}")
