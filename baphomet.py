@@ -47,6 +47,7 @@ class Baphomet(commands.AutoShardedBot):
             utils.Levels.all_levels.clear()
             utils.Gems.all_gems.clear()
             utils.Tracking.all_tracking.clear()
+            utils.Daily.all_daily.clear()
 
 
             #! Collect from Database
@@ -56,6 +57,7 @@ class Baphomet(commands.AutoShardedBot):
                 levels = await db('SELECT * FROM levels')
                 gems = await db('SELECT * FROM gems')
                 tracking = await db('SELECT * FROM tracking')
+                daily = await db('SELECT * FROM daily')
 
 
             #! Cache all into local objects
@@ -69,6 +71,8 @@ class Baphomet(commands.AutoShardedBot):
                 utils.Gems(**i)
             for i in tracking:
                 utils.Tracking(**i)
+            for i in daily:
+                utils.Daily(**i)
 
         except Exception as e:
             print(f'Couldn\'t connect to the database... :: {e}')
