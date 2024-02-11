@@ -3,4 +3,3 @@ novus<1.0.0
 more_itertools
 toml
 pillow
-calendar
