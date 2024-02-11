@@ -68,6 +68,7 @@ class daily(Cog):
         lvl.exp += xps
 
         rewards = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
+        d = dt.today()
         x = day_name[d.weekday()]
 
         # ? Send the embed
