@@ -6,7 +6,7 @@ from discord.ext.commands import command, Cog, ApplicationCommandMeta, cooldown,
 #* Additional
 from random import choice
 from datetime import datetime as dt, timedelta
-from calender import day_name
+from calendar import day_name
 
 import utils
 
