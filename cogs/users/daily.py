@@ -31,7 +31,7 @@ class daily(Cog):
         day = utils.Daily.get(ctx.author.id)
         lvl = utils.Levels.get(ctx.author.id)
         g = utils.Gems.get(ctx.author.id)
-        t = utils.Tracking.get(ctx.author.id)
+        tr = utils.Tracking.get(ctx.author.id)
 
         #? Check if it's first daily
         if not day.daily:
@@ -81,10 +81,10 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n***{xps:,} XP***\nThis is their {day.daily}{th} in a row!\n**Rewards:**\n***{rewards}***")
+            embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n***{xps:,} XP***\nThis is their {day.daily}{th} in a row!\n**Rewards:**\n***{rewards}***", color=tr.color)
         )
         
-        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\nThis was their {day.daily}{th} in a row!\n**Rewards:**\n**{xps:,} ***XP***\n{rewards}")
+        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\nThis was their {day.daily}{th} in a row!\n**Rewards:**\n**{xps:,} ***XP***\n{rewards}", color=tr.color)
 
         # * Save data changes
         async with self.bot.database() as db:
