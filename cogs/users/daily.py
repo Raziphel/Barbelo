@@ -43,7 +43,7 @@ class daily(Cog):
             tf = day.last_daily + timedelta(hours=22)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
             return await ctx.interaction.response.send_message(
-                embed=utils.Embed(desc=f"# You have already claimed your daily rewards!\n⏰**You can claim them again in {t.hour} hours and {t.minute} minutes!**", color=tr.color)
+                embed=utils.Embed(desc=f"**You have already claimed your daily rewards!**\n⏰**You can claim them again in {t.hour} hours and {t.minute} minutes!**", color=tr.color)
             )
 
         #? Missed daily
