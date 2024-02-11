@@ -76,7 +76,7 @@ class daily(Cog):
             embed=utils.Embed(desc=f"# Claimed your {x} Daily!\n***{xps:,} XP***\n***{rewards}***")
         )
         
-        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\n**{xps:,} ***XP***\n{rewards}")
+        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\n**Rewards:**\n**{xps:,} ***XP***\n{rewards}")
 
         # * Save data changes
         async with self.bot.database() as db:
