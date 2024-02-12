@@ -30,8 +30,8 @@ class store_Handler(Cog):
         msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0x80F75C)
+        embed1.add_field(name=f"⊰ 💸 Convert Hellstones ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Turn all your hellstones into $USD!```", inline=True)
         embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ 10x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-        embed1.add_field(name=f"⊰ 💸 5$ USD ⊱", value=f"**╰⊰ 5x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get paypal'd 5$ USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x47B9F5)
         embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
@@ -41,8 +41,8 @@ class store_Handler(Cog):
         embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get perms to create threads!```", inline=True)
         embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
-        embed3=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x47B9F5)
-        embed3.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x47B9F5)
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['amethyst']}**\n\n```Gain the ability steal from others!```", inline=True)
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
