@@ -71,12 +71,15 @@ class daily(Cog):
         d = dt.today()
         x = day_name[d.weekday()]
 
+
+        stringForm = str(day.daily) 
+        lastDigit = stringForm[-1] 
         th= "th"
-        if day.daily == 1:
+        if lastDigit == 1:
             th = "st"
-        elif day.daily == 2:
+        elif lastDigit== 2:
             th = "nd"
-        elif day.daily == 3:
+        elif lastDigit == 3:
             th = "rd"
 
         # ? Send the embed
