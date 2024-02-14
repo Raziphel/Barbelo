@@ -20,9 +20,23 @@ class profile(Cog):
             user = ctx.author
 
         g = utils.Gems.get(user.id)
-        gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
-        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems}**"))
+        flags = []
+        if emeralds > 0:
+            flags.append(f"{emeralds} {cls.bot.config['gem_emoji']['emerald']}/100 ->")
+        if diamonds > 0:
+            flags.append(f"{diamonds} {cls.bot.config['gem_emoji']['diamond']}/100 ->")
+        if rubys > 0:
+            flags.append(f"{rubys} {cls.bot.config['gem_emoji']['ruby']}/100 ->")
+        if sapphires > 0:
+            flags.append(f"{sapphires} {cls.bot.config['gem_emoji']['sapphire']}/100 ->")
+        if amethysts > 0:
+            flags.append(f"{amethysts} {cls.bot.config['gem_emoji']['amethyst']}/100 ->")
+        if hellstones > 0:
+            flags.append(f"{hellstones} {cls.bot.config['gem_emoji']['hellstone']}")
+        gems_string = ' '.join(flags)
+
+        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems_string}**"))
 
 
 
