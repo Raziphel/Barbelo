@@ -23,15 +23,15 @@ class profile(Cog):
 
         flags = []
         if g.emerald > 0:
-            flags.append(f"{g.emerald} {self.bot.config['gem_emoji']['emerald']}/100 ->")
+            flags.append(f"{g.emerald}/100x {self.bot.config['gem_emoji']['emerald']} ->")
         if g.diamond > 0:
-            flags.append(f"{g.diamond} {self.bot.config['gem_emoji']['diamond']}/100 ->")
+            flags.append(f"{g.diamond}/100x {self.bot.config['gem_emoji']['diamond']} ->")
         if g.ruby > 0:
-            flags.append(f"{g.ruby} {self.bot.config['gem_emoji']['ruby']}/100 ->")
+            flags.append(f"{g.ruby}/100x {self.bot.config['gem_emoji']['ruby']} ->")
         if g.sapphire > 0:
-            flags.append(f"{g.sapphire} {self.bot.config['gem_emoji']['sapphire']}/100 ->")
+            flags.append(f"{g.sapphire}/100x{self.bot.config['gem_emoji']['sapphire']} ->")
         if g.amethyst > 0:
-            flags.append(f"{g.amethyst} {self.bot.config['gem_emoji']['amethyst']}/100 ->")
+            flags.append(f"{g.amethyst}/100x {self.bot.config['gem_emoji']['amethyst']} ->")
         if g.hellstone > 0:
             flags.append(f"{g.hellstone} {self.bot.config['gem_emoji']['hellstone']}")
         gems_string = ' '.join(flags)
