@@ -22,7 +22,7 @@ class profile(Cog):
         g = utils.Gems.get(user.id)
         gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
-        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"{gems}"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems}**"))
 
 
 
