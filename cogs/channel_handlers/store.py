@@ -1,9 +1,9 @@
 
 #* Discord
-from math import floor
-
 from discord import RawReactionActionEvent, Embed
 from discord.ext.commands import Cog
+
+from math import floor
 
 import utils
 
