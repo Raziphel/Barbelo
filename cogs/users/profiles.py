@@ -23,17 +23,17 @@ class profile(Cog):
 
         flags = []
         if g.emerald > 0:
-            flags.append(f"{g.emerald} {cls.bot.config['gem_emoji']['emerald']}/100 ->")
+            flags.append(f"{g.emerald} {self.bot.config['gem_emoji']['emerald']}/100 ->")
         if g.diamond > 0:
-            flags.append(f"{g.diamond} {cls.bot.config['gem_emoji']['diamond']}/100 ->")
+            flags.append(f"{g.diamond} {self.bot.config['gem_emoji']['diamond']}/100 ->")
         if g.ruby > 0:
-            flags.append(f"{g.ruby} {cls.bot.config['gem_emoji']['ruby']}/100 ->")
+            flags.append(f"{g.ruby} {self.bot.config['gem_emoji']['ruby']}/100 ->")
         if g.sapphire > 0:
-            flags.append(f"{g.sapphire} {cls.bot.config['gem_emoji']['sapphire']}/100 ->")
+            flags.append(f"{g.sapphire} {self.bot.config['gem_emoji']['sapphire']}/100 ->")
         if g.amethyst > 0:
-            flags.append(f"{g.amethyst} {cls.bot.config['gem_emoji']['amethyst']}/100 ->")
+            flags.append(f"{g.amethyst} {self.bot.config['gem_emoji']['amethyst']}/100 ->")
         if g.hellstone > 0:
-            flags.append(f"{g.hellstone} {cls.bot.config['gem_emoji']['hellstone']}")
+            flags.append(f"{g.hellstone} {self.bot.config['gem_emoji']['hellstone']}")
         gems_string = ' '.join(flags)
 
         await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems_string}**"))
