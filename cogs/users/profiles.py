@@ -1,9 +1,7 @@
 
 #* Discord
-from discord import RawReactionActionEvent, Embed
-from discord.ext.commands import Cog
-
-from math import floor
+import discord
+from discord.ext.commands import command, Cog, ApplicationCommandMeta, cooldown, BucketType
 
 import utils
 
