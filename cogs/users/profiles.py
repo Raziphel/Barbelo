@@ -2,6 +2,8 @@
 #* Discord
 import discord
 from discord.ext.commands import command, Cog, ApplicationCommandMeta, cooldown, BucketType
+from discord import Member, Message, User, ApplicationCommandOption, ApplicationCommandOptionType
+
 
 import utils
 
