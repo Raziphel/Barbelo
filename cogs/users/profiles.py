@@ -12,7 +12,7 @@ class profile(Cog):
         self.bot = bot
 
     @command(application_command_meta=ApplicationCommandMeta(), aliases=['g', 'gem', 'gems', 'Gem'])
-    async def gems(self, ctx, user:Member=None):
+    async def gems(self, ctx, user=None):
         '''Quick Check inventory'''
         if not user:
             user = ctx.author
