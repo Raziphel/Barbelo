@@ -43,7 +43,7 @@ class log_handler(Cog):
     #! Brand new members joining 
     @Cog.listener()
     async def on_member_join(self, member):
-        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, title=f"{member.name} has entered the cult and needs verification.", thumbnail=member.avatar.url))
+        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, title=f"{member.name} has entered the cult and needs verification."))
 
 
     #! Logs
