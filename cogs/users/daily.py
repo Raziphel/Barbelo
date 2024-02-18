@@ -74,12 +74,12 @@ class daily(Cog):
 
         stringForm = str(day.daily) 
         lastDigit = stringForm[-1] 
-        th= "th"
-        if lastDigit == 1:
+        th = "th"
+        if lastDigit == '1':
             th = "st"
-        elif lastDigit== 2:
+        elif lastDigit == '2':
             th = "nd"
-        elif lastDigit == 3:
+        elif lastDigit == '3':
             th = "rd"
 
         # ? Send the embed
