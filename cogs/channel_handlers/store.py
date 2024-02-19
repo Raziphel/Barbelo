@@ -89,7 +89,7 @@ class store_Handler(Cog):
             if emoji == "✨":
                 item['name'] = "Discord Nitro"
                 item['gem_type'] = self.bot.config['gem_emoji']['hellstone']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 10
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -185,10 +185,9 @@ class store_Handler(Cog):
 
             #! Save to databse
             async with self.bot.database() as db:
-                await c.save(db)
+                await g.save(db)
                 await day.save(db)
                 await mod.save(db)
-                await items.save(db)
 
             #* Do some logging
             if bought == True:
