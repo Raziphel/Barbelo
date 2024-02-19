@@ -42,7 +42,9 @@ class store_Handler(Cog):
         embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
-        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['amethyst']}**\n\n```Gain the ability steal from others!```", inline=True)
+
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['amethyst']}**\n\n```Gain the ability steal from others!```", inline=True) 
+        # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
