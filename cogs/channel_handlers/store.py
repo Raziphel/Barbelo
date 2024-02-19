@@ -78,7 +78,6 @@ class store_Handler(Cog):
             g = utils.Gems.get(user.id)
             mod = utils.Moderation.get(user.id)
             day = utils.Daily.get(user.id)
-            items = utils.Items.get(user.id)
             #* Define Shop item
             bought = True
             item = {'name': "Unknown", 
