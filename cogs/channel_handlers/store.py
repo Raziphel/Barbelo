@@ -72,9 +72,6 @@ class store_Handler(Cog):
             else:
                 emoji = payload.emoji.id
 
-            #* Get the coin emojis
-            coin = self.bot.config['emotes']['coin']
-
             #? Define Varibles
             guild = self.bot.get_guild(payload.guild_id)
             user = guild.get_member(payload.user_id)
