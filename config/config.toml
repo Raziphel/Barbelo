@@ -61,6 +61,11 @@ verified = 1154236618606125106
 
 [purchase_roles]
     image_pass = 1050588443283042334
+    library_pass = 1029965266391679037
+    soundboard_pass = 1137618537020665910
+    stats_channel_access = 1051035273330442270
+    threads_perm = 1186717217501487225
+    external_emojis = 1186714489022849034
 
 [ping_roles]
     changelogs = 1054142893872398346

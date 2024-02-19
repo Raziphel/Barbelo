@@ -30,20 +30,20 @@ class store_Handler(Cog):
         msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0xFF0000)
-        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ 10x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-        embed1.add_field(name=f"⊰ 💸 Convert Hellstones ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['hellstone']}**\n\n```Turn all your hellstones into $USD!```", inline=True)
+        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['hellstone']}x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
+        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ 5 {self.bot.config['gem_emoji']['hellstone']}x**\n\n```Turn all your hellstones into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
-        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['sapphire']}**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎁 Stat Channels ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['ruby']}**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
 
-        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1x {self.bot.config['gem_emoji']['amethyst']}**\n\n```Gain the ability steal from others!```", inline=True) 
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
         await msg1.edit(content=f" ", embed=embed1)
@@ -75,140 +75,116 @@ class store_Handler(Cog):
             #* Get the coin emojis
             coin = self.bot.config['emotes']['coin']
 
-
+            #? Define Varibles
             guild = self.bot.get_guild(payload.guild_id)
             user = guild.get_member(payload.user_id)
-            c = utils.Currency.get(user.id)
+            g = utils.Gems.get(user.id)
             mod = utils.Moderation.get(user.id)
             day = utils.Daily.get(user.id)
             items = utils.Items.get(user.id)
-            bought = False
-            item = {"name": "BROKEN OH NO", "coin": -1}
+            #* Define Shop item
+            bought = True
+            item = {'name': "Unknown", 
+                    'gem_type': self.bot.config['gem_emoji']['emerald'], 
+                    'gem_amount': 0}
 
-            #? Get the correct item
+
+            # #? Get the correct item
             if emoji == "✨":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase Discord Nitro!\nCost: {coin} 1,000,000x", footer=" "))
-                item['coin'] = 1000000
                 item['name'] = "Discord Nitro"
+                item['gem_type'] = self.bot.config['gem_emoji']['hellstone']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats!!!  Razi will give you your reward within 24 hours!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
+                    await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     razi = guild.get_member(self.bot.config['developers']['razi'])
-                    await razi.send(embed=utils.LogEmbed(type="special", title="Discord Nitro Purchase", desc=f"{user} purchased Discord Nitro!!!!", footer=" "))
+                    await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Discord Nitro Purchase\n{user} purchased Discord Nitro!!!!"))
+
+            if emoji == "💸":
+                item['name'] = "5$USD"
+                item['gem_type'] = self.bot.config['gem_emoji']['hellstone']
+                item['gem_amount'] = 5
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {gem_amount} {gem_type}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    razi = guild.get_member(self.bot.config['developers']['razi'])
+                    await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# 5 dollar Purchase\n{user} purchased 5$USD!!!!"))
 
             if emoji == "📚":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase a Library Pass!\nCost: {coin} 40,000x", footer=" "))
-                item['coin'] = 40000
                 item['name'] = "Library Pass"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased a Library pass!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    library_pass = utils.DiscordGet(guild.roles, id=self.bot.config['roles']['library_pass'])
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Library pass!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    library_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['library_pass'])
                     await user.add_roles(library_pass, reason="Given a Library Pass role.")
 
             if emoji == "🎫":
-                if mod.image_banned == True:
-                    await user.send(embed=utils.LogEmbed(type="special", title="IMAGE BANNED", desc=f"You have been banned from ever being able to have an image pass! <3", footer=" "))
-                    return
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase a Image Pass!\nCost: {coin} 50,000x", footer=" "))
-                item['coin'] = 50000
                 item['name'] = "Image Pass"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased a Image pass!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    image_pass = utils.DiscordGet(guild.roles, id=self.bot.config['roles']['image_pass'])
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Image Pass!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    image_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['image_pass'])
                     await user.add_roles(image_pass, reason="Given a Image Pass role.")
 
-            if emoji == "🎁":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase the Stat Channels!\nCost: {coin} 10,000x", footer=" "))
-                item['coin'] = 10000
-                item['name'] = "Stats Channel"
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the Stat Channels!", footer=" "))
-                    bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    special = utils.DiscordGet(guild.roles, id=self.bot.config['roles']['specials'])
-                    await user.add_roles(special, reason="Given the Stat Channels role.")
-
-            if emoji == "🔥":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase the dungeon key!\nCost: {coin} 30,000x", footer=" "))
-                item['coin'] = 30000
-                item['name'] = "dungeon key"
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the dungeon key!", footer=" "))
-                    bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    automod = utils.DiscordGet(guild.roles, id=1095177740451323984)
-                    await user.add_roles(automod, reason="Given dungeon key role.")
-
             if emoji == "🔊":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase the Sound Board Access!\nCost: {coin} 50,000x", footer=" "))
-                item['coin'] = 50000
-                item['name'] = "Sound Board Access"
+                item['name'] = "Soundboard Pass"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the Sound Board Access!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    automod = utils.DiscordGet(guild.roles, id=1137618537020665910)
-                    await user.add_roles(automod, reason="Given SoundBoard key role.")
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Soundboard Pass!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    soundboard_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['soundboard_pass'])
+                    await user.add_roles(soundboard_pass, reason="Given a Soundboard Pass role.")
 
-            if emoji == "💎":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase a Daily Bonus!\nCost: {coin} 40,000x", footer=" "))
-                item['coin'] = 40000
-                item['name'] = "Daily Bonus"
+            if emoji == "🎁":
+                item['name'] = "Stats Channel"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased a daily bonus!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    day.premium = True
-
-            if emoji == "🧤":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase 5 thief gloves!\nCost: {coin} 20,000x", footer=" "))
-                item['coin'] = 20000
-                item['name'] = "5 thief gloves"
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased 5 thief gloves!", footer=" "))
-                    bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    items.thief_gloves += 5
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Stats Channel access!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    stats_channel_access = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['stats_channel_access'])
+                    await user.add_roles(stats_channel_access, reason="Given a Soundboard Pass role.")
 
             if emoji == "🧶":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase the Thread Perms.\nCost: {coin} 20,000x", footer=" "))
-                item['coin'] = 20000
-                item['name'] = "Thread Perms"
+                item['name'] = "Thread Permissions"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the Thread Perms!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    thread_perms = utils.DiscordGet(guild.roles, id=1186717217501487225)
-                    await user.add_roles(thread_perms, reason="Given thread perms.")
-
-            if emoji == "🎈":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase the Reaction Perms!\nCost: {coin} 20,000x", footer=" "))
-                item['coin'] = 20000
-                item['name'] = "Reaction Perms"
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the Reaction Perms!", footer=" "))
-                    bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    bottom = utils.DiscordGet(guild.roles, id=1186714161405771838)
-                    await user.add_roles(bottom, reason="Given Reaction Perms.")
-
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thread Permissions!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    threads_perm = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['threads_perm'])
+                    await user.add_roles(threads_perm, reason="Given Thread Permissions role.")
 
             if emoji == "🔮":
-                msg = await user.send(embed=utils.LogEmbed(type="special", title="Purchase Confirmation:", desc=f"Please confirm you would like to purchase External Emotes/Stickers!\nCost: {coin} 30,000x", footer=" "))
-                item['coin'] = 30000
-                item['name'] = "External Emotes/Stickers"
+                item['name'] = "External Emojis"
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {gem_amount} {gem_type}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    await msg.edit(embed=utils.LogEmbed(type="special", title="Purchase Complete", desc=f"Congrats! Ya purchased the Goblin Badge on SCP servers!", footer=" "))
                     bought = True
-                    await utils.CoinFunctions.pay_for(payer=user, amount=item['coin'])
-                    coin_goblin = utils.DiscordGet(guild.roles, id=1186714489022849034)
-                    await user.add_roles(coin_goblin, reason="Given External Emotes/Stickers")
-
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
+                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
+                    external_emojis = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['external_emojis'])
+                    await user.add_roles(stats_channel_access, reason="Given External Emojis role.")
 
 
             #! Save to databse
@@ -218,7 +194,7 @@ class store_Handler(Cog):
                 await mod.save(db)
                 await items.save(db)
 
-
+            #* Do some logging
             if bought == True:
                 await self.coin_logs.send(f"**{user}** bought **{item['name']}**!")
             else: 
@@ -231,9 +207,9 @@ class store_Handler(Cog):
                 if message.id == payload.message_id:
                     break 
             if message.id != payload.message_id:
-                return  # Couldn't find message in channel history
+                return  #* Couldn't find message in channel history
 
-            # See total reactions
+            #? See total reactions
             emoji = [i.emoji for i in message.reactions]
             if sum([i.count for i in message.reactions]) > 69:
                 await message.clear_reactions()
@@ -242,14 +218,17 @@ class store_Handler(Cog):
 
 
 
+
+
+
+
     async def purchasing(self, msg, payload, item):
         '''The system for buying in the store.'''
 
+        #? Once again get some fucking varibles defined...
         guild = self.bot.get_guild(payload.guild_id)
         user = guild.get_member(payload.user_id)
-        c = utils.Currency.get(user.id)
-        coin = self.bot.config['emotes']['coin']
-
+        g = utils.Gems.get(user.id)
 
         await msg.add_reaction("✔")
         await msg.add_reaction("❌")
@@ -257,19 +236,39 @@ class store_Handler(Cog):
             check = lambda x, y: y.id == user.id and x.message.id == msg.id and x.emoji in ["✔", "❌"]
             r, _ = await self.bot.wait_for('reaction_add', check=check)
             if r.emoji == "✔":
-                if c.coins < item["coin"]:
-                    await msg.edit(embed=utils.LogEmbed(type="negative", desc=f"You don't have enough Coins for: `{item['name']}`!\nYou need {item['coin'] - floor(c.coins):,}x {coin}!", footer=" "))
-                    return False
-                else: return True
+
+                if item['gem_type'] == self.bot.config['gem_emoji']['hellstone']:
+                    if g.hellstone < item["gem_amount"]:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough hellstone {item['gem_type']}!"))
+                        return False
+                    else: return True
+
+                if item['gem_type'] == self.bot.config['gem_emoji']['amethyst']:
+                    if g.amethyst < item["gem_amount"]:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough amethyst {item['gem_type']}!"))
+                        return False
+                    else: return True
+
+                if item['gem_type'] == self.bot.config['gem_emoji']['sapphire']:
+                    if g.amethyst < item["gem_amount"]:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough sapphire {item['gem_type']}!"))
+                        return False
+                    else: return True
+
+                if item['gem_type'] == self.bot.config['gem_emoji']['ruby']:
+                    if g.amethyst < item["gem_amount"]:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough ruby {item['gem_type']}!"))
+                        return False
+                    else: return True
 
             if r.emoji == "❌":
-                    await msg.edit(embed=utils.LogEmbed(type="negative", desc=f"Purchase was canceled!", footer=" "))
+                    await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"Purchase was canceled!"))
                     return False
-
 
         except TimeoutError:
             await msg.edit('Sorry, but you took too long to respond.  Transaction Canceled.', embed=None)
             return False
+
 
 
 

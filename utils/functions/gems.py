@@ -70,12 +70,12 @@ class GemFunctions(object):
         g = utils.Gems.get(user.id)
 
         #? Hellstone
-        if gem == "hellstone":
+        if gem in ["hellstone", cls.bot.config['gem_emoji']['hellstone']]:
             if g.hellstone >= amount:
                 g.hellstone -= amount
             else: return False
         #? Amethyst
-        if gem == "amethyst":
+        if gem in ["amethyst", cls.bot.config['gem_emoji']['amethyst']]:
             if g.amethyst >= amount:
                 g.amethyst -= amount
             elif g.hellstone > 0:
@@ -84,7 +84,7 @@ class GemFunctions(object):
                 g.amethyst -= amount
             else: return False
         #? Sapphire
-        if gem == "sapphire":
+        if gem in ["sapphire", cls.bot.config['gem_emoji']['sapphire']]:
             if g.sapphire >= amount:
                 g.sapphire -= amount
             elif g.amethyst > 0:
@@ -93,7 +93,7 @@ class GemFunctions(object):
                 g.sapphire -= amount
             else: return False
         #? Ruby
-        if gem == "ruby":
+        if gem in ["ruby", cls.bot.config['gem_emoji']['ruby']]:
             if g.ruby >= amount:
                 g.ruby -= amount
             elif g.sapphire > 0:
@@ -102,7 +102,7 @@ class GemFunctions(object):
                 g.ruby -= amount
             else: return False
         #? Diamond
-        if gem == "diamond":
+        if gem in ["diamond", cls.bot.config['gem_emoji']['diamond']]:
             if g.diamond >= amount:
                 g.diamond -= amount
             elif g.ruby > 0:
@@ -111,7 +111,7 @@ class GemFunctions(object):
                 g.diamond -= amount
             else: return False
         #? Emerald
-        if gem == "emerald":
+        if gem in ["emerald", cls.bot.config['gem_emoji']['emerald']]:
             if g.emerald >= amount:
                 g.emerald -= amount
             elif g.diamond > 0:
