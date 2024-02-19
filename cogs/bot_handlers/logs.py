@@ -119,7 +119,7 @@ class log_handler(Cog):
             image = message.attachments[0].url 
         name_list = list(message.channel.name)
 
-        if any(item in name_list for item in ['🍺', "🐇", "🎀"]):
+        if any(item in name_list for item in ['🍺', "🐇", "🎀", "🐀", "🐍", "🐠"]):
             channel = self.adult_log
         elif any(item in name_list for item in ['🔥', "✨"]):
             channel = self.staff_log
@@ -150,6 +150,8 @@ class log_handler(Cog):
         try:
             await channel.send(embed=utils.Embed(color=0xc77f22, title=f"Message Edited", desc=f"**Author:** {before.author.mention}\n**Channel:** <#{before.channel.id}>\n**Before:**\n{before.content}\n\n**after:**\n{after.content}", thumbnail=before.author.avatar.url))
         except: pass
+
+
 
     @Cog.listener()
     async def on_guild_channel_pins_update(self, channel, last_pin):
