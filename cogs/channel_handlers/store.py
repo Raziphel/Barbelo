@@ -13,9 +13,12 @@ class store_Handler(Cog):
         self.bot = bot
 
 
+
     @property  #! The currency logs
     def gem_logs(self):
         return self.bot.get_channel(self.bot.config['logs']['gems'])
+
+
 
 
     @Cog.listener('on_ready')
@@ -217,6 +220,8 @@ class store_Handler(Cog):
 
 
 
+
+
     async def purchasing(self, msg, payload, item):
         '''The system for buying in the store.'''
 
@@ -263,6 +268,13 @@ class store_Handler(Cog):
         except TimeoutError:
             await msg.edit('Sorry, but you took too long to respond.  Transaction Canceled.', embed=None)
             return False
+
+
+
+
+
+
+
 
 
 
