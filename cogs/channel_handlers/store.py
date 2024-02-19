@@ -90,7 +90,7 @@ class store_Handler(Cog):
                 item['name'] = "Discord Nitro"
                 item['gem_type'] = self.bot.config['gem_emoji']['hellstone']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
@@ -102,7 +102,7 @@ class store_Handler(Cog):
                 item['name'] = "5$USD"
                 item['gem_type'] = self.bot.config['gem_emoji']['hellstone']
                 item['gem_amount'] = 5
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
@@ -114,7 +114,7 @@ class store_Handler(Cog):
                 item['name'] = "Library Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Library pass!"))
@@ -126,7 +126,7 @@ class store_Handler(Cog):
                 item['name'] = "Image Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Image Pass!"))
@@ -138,7 +138,7 @@ class store_Handler(Cog):
                 item['name'] = "Soundboard Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Soundboard Pass!"))
@@ -150,7 +150,7 @@ class store_Handler(Cog):
                 item['name'] = "Stats Channel"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Stats Channel access!"))
@@ -162,7 +162,7 @@ class store_Handler(Cog):
                 item['name'] = "Thread Permissions"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thread Permissions!"))
@@ -174,7 +174,7 @@ class store_Handler(Cog):
                 item['name'] = "External Emojis"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
                 item['gem_amount'] = 1
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {gem_amount} {gem_type}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
