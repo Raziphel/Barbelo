@@ -39,23 +39,18 @@ class Message_Rewards(Cog):
 
         #! Give them some rewards!
         try:
-            chance = randint(1, 1000000)
+            chance = randint(1, 50000)
             if chance <= 1:
-                message = choice(messages)
-                await message.add_reaction(self.bot.config['gem_emoji']['hellstone'])
-                self.hellstone_messages.append(message.id)
-
-            elif chance <= 1000:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['amethyst'])
                 self.amethyst_messages.append(message.id)
 
-            elif chance <= 10000:
+            elif chance <= 100:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['sapphire'])
                 self.sapphire_messages.append(message.id)
 
-            elif chance <= 100000:
+            elif chance <= 1000:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['ruby'])
                 self.ruby_messages.append(message.id)
