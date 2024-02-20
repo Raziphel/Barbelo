@@ -24,6 +24,9 @@ class Embed(Embed):
         #* Add Color
         if user:
             t = utils.Tracking.get(user.id)
+            if t.color == 0: 
+                t.color = 0xff69b4
+
             self.color = t.color
         elif color:
             self.color = color
