@@ -5,7 +5,7 @@ import asyncpg
 class Tracking(object):
     all_tracking = {}
 
-    def __init__(self, user_id:int, messages:int=0, vc_mins:int=0, last_bump:str=dt.now(), color:int=0):
+    def __init__(self, user_id:int, messages:int=0, vc_mins:int=0, last_bump:str=dt.now(), color:int=0xff69b4):
         self.user_id = user_id
         self.messages = messages
         self.vc_mins = vc_mins
