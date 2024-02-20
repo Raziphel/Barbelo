@@ -186,7 +186,7 @@ class store_Handler(Cog):
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
                     await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     external_emojis = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['external_emojis'])
-                    await user.add_roles(stats_channel_access, reason="Given External Emojis role.")
+                    await user.add_roles(external_emojis, reason="Given External Emojis role.")
 
 
             #! Save to databse
