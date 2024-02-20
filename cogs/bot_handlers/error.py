@@ -22,9 +22,9 @@ class error_handler(Cog):
             guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
 
             if countdown_time <= 60:
-                msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time:.2f} seconds!"))
+                msg = await ctx.send(embed=utils.Embed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time:.2f} seconds!"))
             else:
-                msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time // 60:.0f} minutes {countdown_time % 60:.0f} seconds!"))
+                msg = await ctx.send(embed=utils.Embed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time // 60:.0f} minutes {countdown_time % 60:.0f} seconds!"))
                 pass
 
         elif isinstance(error, CommandNotFound):
