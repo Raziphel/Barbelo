@@ -52,7 +52,7 @@ class log_handler(Cog):
     async def on_ready(self):
         print('The Baphomet is now online.')
 
-        await self.bot.change_presence(activity=Game(name=f"in the garden!"))
+        await self.bot.change_presence(activity=Game(name=f"in her garden..."))
 
         #+ Secret bullshit bro...  Don't question this...
         if math.floor(self.bot.latency*1000) <= 100: 
