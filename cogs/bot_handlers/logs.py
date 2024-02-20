@@ -143,7 +143,7 @@ class log_handler(Cog):
         if before.author.id == 159516156728836097: return #? Not Razi tho
         name_list = list(before.channel.name)
 
-        if any(item in name_list for item in ['🍺', "🐇", "🎀"]):
+        if any(item in name_list for item in ['🍺', "🐇", "🎀", "🐀", "🐍", "🐠"]):
             channel = self.adult_log
         elif any(item in name_list for item in ['🔥', "✨"]):
             channel = self.staff_log
