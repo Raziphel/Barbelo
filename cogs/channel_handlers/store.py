@@ -66,6 +66,9 @@ class store_Handler(Cog):
             #! See if I need to deal with it
             if not payload.channel_id == self.bot.config['channels']['store']:
                 return
+            #? Check if bot is connected!
+            if self.bot.connected == False:
+                return
             if self.bot.get_user(payload.user_id).bot:
                 return
 
