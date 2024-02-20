@@ -17,7 +17,17 @@ class error_handler(Cog):
     async def on_command_error(self, ctx, error):
         '''Handles any errors the bot runs into'''
 
-        if isinstance(error, CommandNotFound):
+        if isinstance(error, CommandOnCooldown):
+            countdown_time = error.retry_after
+            guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
+
+            if countdown_time <= 60:
+                msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time:.2f} seconds!"))
+            else:
+                msg = await ctx.send(embed=utils.ErrorEmbed(error_msg=f"Command Cooldown", desc=f"Please try again in {countdown_time // 60:.0f} minutes {countdown_time % 60:.0f} seconds!"))
+                pass
+
+        elif isinstance(error, CommandNotFound):
             return
         elif isinstance(error, MissingPermissions):
             msg = await ctx.send(embed=utils.Embed(desc=f"Ya don't have the right Server Permission!"))
