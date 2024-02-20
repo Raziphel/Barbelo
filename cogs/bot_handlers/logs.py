@@ -1,6 +1,6 @@
 
 #* Discord
-from discord import game
+from discord import Game
 from discord.ext.commands import Cog
 #* Additions
 from random import randint
