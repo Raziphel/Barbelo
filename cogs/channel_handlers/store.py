@@ -194,9 +194,9 @@ class store_Handler(Cog):
 
             #* Do some logging
             if bought == True:
-                await self.coin_logs.send(f"**{user}** bought **{item['name']}**!")
+                await self.gem_logs.send(f"**{user}** bought **{item['name']}**!")
             else: 
-                await self.coin_logs.send(f"**{user}** tried to purchase: **{item['name']}**")
+                await self.gem_logs.send(f"**{user}** tried to purchase: **{item['name']}**")
 
             #! Check to see total reactions on the message
             channel_id = payload.channel_id
