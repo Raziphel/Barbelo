@@ -45,19 +45,19 @@ class Message_Rewards(Cog):
                 await message.add_reaction(self.bot.config['gem_emoji']['hellstone'])
                 self.hellstone_messages.append(message.id)
 
-            elif chance <= 1000:
+            elif chance <= 100:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['amethyst'])
                 self.amethyst_messages.append(message.id)
 
-            elif chance <= 10000:
+            elif chance <= 1000:
                 message = choice(messages)
-                await message.add_reaction(self.bot.config['emotes']['sapphire'])
+                await message.add_reaction(self.bot.config['gem_emoji']['sapphire'])
                 self.sapphire_messages.append(message.id)
 
-            elif chance <= 100000:
+            elif chance <= 10000:
                 message = choice(messages)
-                await message.add_reaction(self.bot.config['emotes']['ruby'])
+                await message.add_reaction(self.bot.config['gem_emoji']['ruby'])
                 self.ruby_messages.append(message.id)
         except Exception as e:
             print(f'A reward failed to spawn :: {e}')
