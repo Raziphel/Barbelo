@@ -12,10 +12,10 @@ import utils
 class Message_Rewards(Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.hellstone_messages = []
         self.amethyst_messages = []
         self.sapphire_messages = []
         self.ruby_messages = []
+        self.diamond_messages = []
 
 
 
@@ -39,8 +39,8 @@ class Message_Rewards(Cog):
 
         #! Give them some rewards!
         try:
-            chance = randint(1, 50000)
-            if chance <= 1:
+            chance = randint(1, 1000000)
+            if chance <= 10:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['amethyst'])
                 self.amethyst_messages.append(message.id)
@@ -53,6 +53,11 @@ class Message_Rewards(Cog):
             elif chance <= 1000:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['ruby'])
+                self.ruby_messages.append(message.id)
+
+            elif chance <= 10000:
+                message = choice(messages)
+                await message.add_reaction(self.bot.config['gem_emoji']['diamond'])
                 self.ruby_messages.append(message.id)
         except Exception as e:
             print(f'A reward failed to spawn :: {e}')
@@ -95,15 +100,7 @@ class Message_Rewards(Cog):
         g = utils.Gems.get(user.id)
         gem_logs = self.bot.get_channel(self.bot.config['logs']['gems'])
 
-        if str(payload.emoji) == self.bot.config['gem_emoji']['hellstone']:
-            if message.id in self.hellstone_messages:
-                self.hellstone_messages.remove(message.id)
-                await message.clear_reactions()
-                g.hellstone += 1
-                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['hellstone']}x**")
-                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['hellstone']}x**")
-
-        elif str(payload.emoji) == self.bot.config['gem_emoji']['amethyst']:
+        if str(payload.emoji) == self.bot.config['gem_emoji']['amethyst']:
             if message.id in self.amethyst_messages:
                 self.amethyst_messages.remove(message.id)
                 await message.clear_reactions()
@@ -126,6 +123,14 @@ class Message_Rewards(Cog):
                 g.ruby += 1
                 msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['ruby']}x**")
                 await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['ruby']}x**")
+
+        if str(payload.emoji) == self.bot.config['gem_emoji']['diamond']:
+            if message.id in self.diamond_messages:
+                self.diamond_messages.remove(message.id)
+                await message.clear_reactions()
+                g.diamond += 1
+                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['diamond']}x**")
+                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['diamond']}x**")
 
 
         else: 
