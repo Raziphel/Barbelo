@@ -30,7 +30,7 @@ class payment(Cog):
                     required=True,
                 ),
                 ApplicationCommandOption(
-                    name="amount",
+                    name="gems",
                     description="The amount of gems you'd like to send.",
                     type=ApplicationCommandOptionType.integer,
                     required=True,
