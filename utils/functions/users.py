@@ -19,6 +19,15 @@ class UserFunctions(object):
     async def verify_user(cls, user:Member):
         '''Verifys a user access to the server!'''
 
+        #! Check if they aren't already verified.
+        role = utils.DiscordGet(guild.roles, id=cls.bot.config['verified'])
+
+
+        #+ Send joining server messages!
+        if role not in user.roles:
+            log = cls.bot.get_channel(cls.bot.config['channels']['general'])
+            await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the cult."))
+
         #+ Assign new member roles.
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
         entry_role_ids = [cls.bot.config['seperator_roles']['access'], 
@@ -33,9 +42,8 @@ class UserFunctions(object):
         #? Makes sure they get the gemless role.
         await cls.check_level(user)
 
-        # #+ Send joining server messages!
-        log = cls.bot.get_channel(cls.bot.config['channels']['general'])
-        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the cult."))
+
+
 
 
     @classmethod
