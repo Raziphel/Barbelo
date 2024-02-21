@@ -233,7 +233,7 @@ class store_Handler(Cog):
             if r.emoji == "✔":
 
                 #? Check & perform the purchase!
-                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=item["gem_type"], amount=item["gem_amount"])
+                purchased = await utils.GemFunctions.payment(user=user, gem=item["gem_type"], amount=item["gem_amount"])
 
                 if item['gem_type'] == self.bot.config['gem_emoji']['hellstone']:
                     if purchased == False:
