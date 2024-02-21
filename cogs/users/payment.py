@@ -106,7 +106,7 @@ class payment(Cog):
             await g_r.save(db)
 
         await msg.delete()
-        await ctx.interaction.response.send_message(embed=utils.Embed(tuser=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(user=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
 
         await self.gem_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author} payed {gems} {str(r.emoji)} was sent to {receiver}!"))
 
