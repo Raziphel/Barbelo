@@ -84,10 +84,10 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# {ctx.author.name} claimed their {x} daily!\n**This is their {day.daily}{th} in a row!**\n# Rewards:\n***{xps:,} XP***\n***{rewards}***", user=ctx.author)
+            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***", user=ctx.author)
         )
         
-        await self.gem_logs.send(f"{ctx.author.name} claimed daily!\nThis was their {day.daily}{th} in a row!\n# Rewards:\n**{xps:,} ***XP***\n{rewards}")
+        await self.gem_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***")
 
         # * Save data changes
         async with self.bot.database() as db:
