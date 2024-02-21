@@ -100,7 +100,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     razi = guild.get_member(self.bot.config['developers']['razi'])
                     await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Discord Nitro Purchase\n{user} purchased Discord Nitro!!!!"))
 
@@ -112,7 +111,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     razi = guild.get_member(self.bot.config['developers']['razi'])
                     await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# 5 dollar Purchase\n{user} purchased 5$USD!!!!"))
 
@@ -124,7 +122,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Library pass!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     library_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['library_pass'])
                     await user.add_roles(library_pass, reason="Given a Library Pass role.")
 
@@ -136,7 +133,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Image Pass!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     image_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['image_pass'])
                     await user.add_roles(image_pass, reason="Given a Image Pass role.")
 
@@ -148,7 +144,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Soundboard Pass!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     soundboard_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['soundboard_pass'])
                     await user.add_roles(soundboard_pass, reason="Given a Soundboard Pass role.")
 
@@ -160,7 +155,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Stats Channel access!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     stats_channel_access = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['stats_channel_access'])
                     await user.add_roles(stats_channel_access, reason="Given a Soundboard Pass role.")
 
@@ -172,7 +166,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thread Permissions!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     threads_perm = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['threads_perm'])
                     await user.add_roles(threads_perm, reason="Given Thread Permissions role.")
 
@@ -184,7 +177,6 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
-                    await utils.GemFunctions.payment(user=user, gem=item['gem_type'], amount=item['gem_amount'])
                     external_emojis = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['external_emojis'])
                     await user.add_roles(external_emojis, reason="Given External Emojis role.")
 
@@ -197,9 +189,9 @@ class store_Handler(Cog):
 
             #* Do some logging
             if bought == True:
-                await self.gem_logs.send(f"**{user}** bought **{item['name']}**!")
+                await self.gem_logs.send(f"# {user} bought {item['name']}!")
             else: 
-                await self.gem_logs.send(f"**{user}** tried to purchase: **{item['name']}**")
+                await self.gem_logs.send(f"# {user} tried to purchase: {item['name']}!")
 
             #! Check to see total reactions on the message
             channel_id = payload.channel_id
@@ -240,27 +232,30 @@ class store_Handler(Cog):
             r, _ = await self.bot.wait_for('reaction_add', check=check)
             if r.emoji == "✔":
 
+                #? Check & perform the purchase!
+                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=item["gem_type"], amount=item["gem_amount"])
+
                 if item['gem_type'] == self.bot.config['gem_emoji']['hellstone']:
-                    if g.hellstone < item["gem_amount"]:
-                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough hellstone {item['gem_type']}!"))
+                    if purchased == False:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough hellstone {item['gem_type']}!"))
                         return False
                     else: return True
 
                 if item['gem_type'] == self.bot.config['gem_emoji']['amethyst']:
-                    if g.amethyst < item["gem_amount"]:
-                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough amethyst {item['gem_type']}!"))
+                    if purchased == False:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough amethyst {item['gem_type']}!"))
                         return False
                     else: return True
 
                 if item['gem_type'] == self.bot.config['gem_emoji']['sapphire']:
-                    if g.amethyst < item["gem_amount"]:
-                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough sapphire {item['gem_type']}!"))
+                    if purchased == False:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough sapphire {item['gem_type']}!"))
                         return False
                     else: return True
 
                 if item['gem_type'] == self.bot.config['gem_emoji']['ruby']:
-                    if g.amethyst < item["gem_amount"]:
-                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"You don't have enough ruby {item['gem_type']}!"))
+                    if purchased == False:
+                        await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough ruby {item['gem_type']}!"))
                         return False
                     else: return True
 
@@ -269,7 +264,7 @@ class store_Handler(Cog):
                     return False
 
         except TimeoutError:
-            await msg.edit('Sorry, but you took too long to respond.  Transaction Canceled.', embed=None)
+            await msg.edit('# Sorry, but you took too long to respond.  Transaction Canceled.', embed=None)
             return False
 
 
