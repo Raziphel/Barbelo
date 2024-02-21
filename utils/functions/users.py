@@ -22,7 +22,6 @@ class UserFunctions(object):
         #! Check if they aren't already verified.
         role = utils.DiscordGet(guild.roles, id=cls.bot.config['verified'])
 
-
         #+ Send joining server messages!
         if role not in user.roles:
             log = cls.bot.get_channel(cls.bot.config['channels']['general'])
