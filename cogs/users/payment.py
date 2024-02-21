@@ -56,7 +56,7 @@ class payment(Cog):
             await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# {ctx.author.mention} Has to be more than 0 and less than 99 gems!", user=ctx.author))
             return
 
-        gem_string = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
+        gem_string = await utils.GemFunctions.gems_to_text(diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst)
 
         embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}", user=ctx.author)
         msg = await ctx.send(embed=embed)
@@ -102,8 +102,8 @@ class payment(Cog):
         await utils.GemFunctions.update(user=receiver)
 
         async with self.bot.database() as db:
-            await c.save(db)
-            await c_r.save(db)
+            await g.save(db)
+            await g_r.save(db)
 
         await msg.delete()
         await ctx.interaction.response.send_message(embed=utils.Embed(tuser=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
