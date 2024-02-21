@@ -50,16 +50,16 @@ class payment(Cog):
         g_r = utils.Currency.get(receiver.id)
 
         if receiver == ctx.author:
-            await ctx.send(embed=utils.Embed(desc=f"# {ctx.author.mention} You can't pay yourself gems!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# {ctx.author.mention} You can't pay yourself gems!", user=ctx.author))
             return
         if gems <= 0 or gems > 99:
-            await ctx.send(embed=utils.Embed(desc=f"# {ctx.author.mention} Has to be more than 0 and less than 99 gems!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# {ctx.author.mention} Has to be more than 0 and less than 99 gems!", user=ctx.author))
             return
 
         gem_string = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
         embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}",user=ctx.author)
-        msg = await ctx.send(embed=embed)
+        msg = await ctx.interaction.response.send_message(embed=embed)
 
         # adds the reactions
         await msg.add_reaction(self.bot.config['gem_emoji']['diamond'])
@@ -94,7 +94,7 @@ class payment(Cog):
 
 
         except TooPoor:
-            await ctx.send(f'# {ctx.author.mention} Payment denied. You would go in debt stupid!!!')
+            await ctx.interaction.response.send_message(f'# {ctx.author.mention} Payment denied. You would go in debt stupid!!!')
             return
 
         #! Always update after paying!
@@ -106,7 +106,7 @@ class payment(Cog):
             await c_r.save(db)
 
         await msg.delete()
-        await ctx.send(embed=utils.Embed(tuser=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(tuser=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
 
         await self.gem_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author} payed {gems} {str(r.emoji)} was sent to {receiver}!"))
 
