@@ -58,8 +58,8 @@ class payment(Cog):
 
         gem_string = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
-        embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}",user=ctx.author)
-        msg = await ctx.interaction.response.send_message(embed=embed)
+        embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}", user=ctx.author)
+        msg = await ctx.send(embed=embed)
 
         # adds the reactions
         await msg.add_reaction(self.bot.config['gem_emoji']['diamond'])
