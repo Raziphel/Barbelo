@@ -58,7 +58,7 @@ class Message_Rewards(Cog):
             elif chance <= 10000:
                 message = choice(messages)
                 await message.add_reaction(self.bot.config['gem_emoji']['diamond'])
-                self.ruby_messages.append(message.id)
+                self.diamond_messages.append(message.id)
         except Exception as e:
             print(f'A reward failed to spawn :: {e}')
 
