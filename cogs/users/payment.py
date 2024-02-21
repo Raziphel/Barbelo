@@ -24,7 +24,7 @@ class payment(Cog):
         application_command_meta=ApplicationCommandMeta(
             options=[
                 ApplicationCommandOption(
-                    name="recipient",
+                    name="receiver",
                     description="The user you want to send gems to.",
                     type=ApplicationCommandOptionType.user,
                     required=True,
