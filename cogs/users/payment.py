@@ -94,7 +94,7 @@ class payment(Cog):
 
 
         except TooPoor:
-            await ctx.interaction.response.send_message(f'# {ctx.author.mention} Payment denied. You would go in debt stupid!!!')
+            await msg.edit(f'# {ctx.author.mention} Payment denied. You would go in debt stupid!!!')
             return
 
         #! Always update after paying!
@@ -106,7 +106,7 @@ class payment(Cog):
             await g_r.save(db)
 
         await msg.delete()
-        await ctx.interaction.response.send_message(embed=utils.Embed(user=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
+        await msg.edit(embed=utils.Embed(user=ctx.author, desc=f"# {gems} {str(r.emoji)} was sent to {receiver}!"))
 
         await self.gem_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author} payed {gems} {str(r.emoji)} was sent to {receiver}!"))
 
