@@ -56,7 +56,9 @@ class payment(Cog):
             await ctx.send(embed=utils.Embed(desc=f"# {ctx.author.mention} Has to be more than 0 and less than 99 gems!", user=ctx.author))
             return
 
-        embed = utils.Embed(desc=f"# Click the emote for currency type! ",user=ctx.author)
+        gem_string = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
+
+        embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}",user=ctx.author)
         msg = await ctx.send(embed=embed)
 
         # adds the reactions
