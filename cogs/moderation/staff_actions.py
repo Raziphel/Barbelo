@@ -54,13 +54,13 @@ class Staff_Actions(Cog):
         if user:
             #! Ban hammer message
             try:
-                await user.send(F"**Sorry, you were banned from {ctx.guild} for: {reason}**\n\n**Honestly man thats a rip...\nI doubt you will be missed tho! c:**")
+                await user.send(F"# Sorry, you were banned from {ctx.guild} for: {reason}\n\n**Honestly that's a rip...**\n**I doubt you will be missed tho! c:**")
             except: pass
             await ctx.guild.ban(user, delete_message_days=0, reason=f'{reason} :: banned by {ctx.author!s}')
 
         #! Report who has been banned!
-        await ctx.interaction.response.send_message(embed=utils.WarningEmbed(title=f"Banned `{user}`."))
-        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, title=f"User Banned", desc=f"**{user.name} was banned!**\nBy: {ctx.author}\nReason :: {reason}"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(color=0xc77f22, desc=f"# {user.name} has been banned!**\nBy: {ctx.author}\nReason :: {reason}"))
+        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, desc=f"# {user.name} has been banned!**\nBy: {ctx.author}\nReason :: {reason}"))
 
 
 
@@ -92,8 +92,8 @@ class Staff_Actions(Cog):
 
         image_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['image_pass'])
         await user.remove_roles(image_pass, reason="Removed Image Pass role.")
-        await ctx.interaction.response.send_message(embed=utils.Embed(color=0xc77f22, title=f"{user} is now image pass banned!"))
-        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, title=f"{user.name} has been image banned.", thumbnail=member.avatar.url))
+        await ctx.interaction.response.send_message(embed=utils.Embed(color=0xc77f22, desc=f"# {user} is now image pass banned."))
+        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, desc=f"# {user.name} has been image banned.", thumbnail=member.avatar.url))
 
 
 
@@ -131,7 +131,7 @@ class Staff_Actions(Cog):
 
         # ! Report and log the purging!
         removed = await ctx.channel.purge(limit=amount, check=check)
-        await ctx.interaction.response.send_message(embed=utils.Embed(color=randint(1, 0xffffff), title=f"Deleted {len(removed)} messages!")
+        await ctx.interaction.response.send_message(embed=utils.Embed(color=randint(1, 0xffffff), desc=f"# Deleted {len(removed)} messages!")
         )
 
 
@@ -160,11 +160,8 @@ class Staff_Actions(Cog):
         # ! Report and log the purging!
         removed = await ctx.channel.purge(limit=amount, check=check)
         await ctx.interaction.response.send_message(
-            embed=utils.Embed(
-                title=f"Deleted {len(removed)} messages!"
-            )
-        )
-        await self.message_log.send(embed=utils.Embed(color=0xc74822, desc=f"<@{ctx.author.id}> purged {amount} messages from <#{ctx.channel.id}>!"))
+            embed=utils.Embed(desc=f"# Deleted {len(removed)} messages!"))
+        await self.message_log.send(embed=utils.Embed(color=0xc74822, desc=f"# <@{ctx.author.id}> purged {amount} messages from <#{ctx.channel.id}>!"))
 
 
     @utils.is_mod_staff()

@@ -53,8 +53,8 @@ class nsfw(Cog):
             await mod.save(db)
 
         #* Log the action!
-        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, desc=f"# NSFW Restricted\n{user.name} was nsfw restricted"))
-        await ctx.send(embed=utils.Embed(color=0xc77f22, desc=f"# NSFW Restricted\n{user.name} was nsfw restricted"))
+        await self.discord_log.send(embed=utils.Embed(color=0xc77f22, desc=f"# {user.name} was nsfw restricted"))
+        await ctx.send(embed=utils.Embed(color=0xc77f22, desc=f"# {user.name} was nsfw restricted"))
 
 
     @utils.is_mod_staff()
@@ -91,8 +91,8 @@ class nsfw(Cog):
             await mod.save(db)
 
         #* Log the action!
-        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, desc=f"# NSFW Allowed\n{user.name} was nsfw unrestricted and given."))
-        await ctx.send(embed=utils.Embed(color=0x339c2a, desc=f"# NSFW Allowed\n{user.name} was nsfw unrestricted and given."))
+        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, desc=f"# {user.name} was nsfw unrestricted and given."))
+        await ctx.send(embed=utils.Embed(color=0x339c2a, desc=f"# {user.name} was nsfw unrestricted and given."))
 
 
 
