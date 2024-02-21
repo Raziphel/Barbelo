@@ -62,6 +62,7 @@ class GemFunctions(object):
 
 
 
+
     @classmethod
     async def payment(cls, user:Member, gem:str, amount:int):
         '''Pay for stuff with gems if they can afford it!  
