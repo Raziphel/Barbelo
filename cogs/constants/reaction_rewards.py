@@ -105,32 +105,32 @@ class Message_Rewards(Cog):
                 self.amethyst_messages.remove(message.id)
                 await message.clear_reactions()
                 g.amethyst += 1
-                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['amethyst']}x**")
-                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['amethyst']}x**")
+                msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['amethyst']}x")
+                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['amethyst']}x")
 
         elif str(payload.emoji) == self.bot.config['gem_emoji']['sapphire']:
             if message.id in self.sapphire_messages:
                 self.sapphire_messages.remove(message.id)
                 await message.clear_reactions()
                 g.sapphire += 1
-                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['sapphire']}x**")
-                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['sapphire']}x**")
+                msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['sapphire']}x")
+                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['sapphire']}x")
 
         elif str(payload.emoji) == self.bot.config['gem_emoji']['ruby']:
             if message.id in self.ruby_messages:
                 self.ruby_messages.remove(message.id)
                 await message.clear_reactions()
                 g.ruby += 1
-                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['ruby']}x**")
-                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['ruby']}x**")
+                msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['ruby']}x")
+                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['ruby']}x")
 
         if str(payload.emoji) == self.bot.config['gem_emoji']['diamond']:
             if message.id in self.diamond_messages:
                 self.diamond_messages.remove(message.id)
                 await message.clear_reactions()
                 g.diamond += 1
-                msg = await channel.send(f"{user.name} got **1 {self.bot.config['gem_emoji']['diamond']}x**")
-                await gem_logs.send(f"**{user}** got **1 {self.bot.config['gem_emoji']['diamond']}x**")
+                msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['diamond']}x")
+                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['diamond']}x")
 
 
         else: 
