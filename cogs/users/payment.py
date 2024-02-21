@@ -38,7 +38,6 @@ class payment(Cog):
             ],
         ),
     )
-    @command(aliases=['send'])
     async def pay(self, ctx, receiver:User=None, gems:int=0):
         '''
         sending payemnts to other members
