@@ -45,14 +45,16 @@ class store_Handler(Cog):
         embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
-        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
-        embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
+        embed4=Embed(description=f"# Neat Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
         embed4.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['sun_flower']}>", inline=True)
         embed4.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['nephritis']}>", inline=True)
         embed4.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['belize_hole']}>", inline=True)
         embed4.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['wisteria']}>", inline=True)
+        embed4.add_field(name=f"⊰ ☁ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧩 Turquoise ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['turquoise']}>", inline=True)
 
 
 
@@ -233,6 +235,30 @@ class store_Handler(Cog):
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
                     color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['wisteria'])
                     await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "☁":
+                item['name'] = "Clouds (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Clouds Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['clouds'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🧩":
+                item['name'] = "Turquoise (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Turquoise Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['turquoise'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+
 
 
             #! Save to databse
