@@ -48,7 +48,7 @@ class store_Handler(Cog):
         embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
-        embed4=Embed(description=f"# Neat Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
+        embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
         embed4.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['sun_flower']}>", inline=True)
         embed4.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['nephritis']}>", inline=True)
         embed4.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['belize_hole']}>", inline=True)
@@ -56,12 +56,20 @@ class store_Handler(Cog):
         embed4.add_field(name=f"⊰ ⛅ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
         embed4.add_field(name=f"⊰ 🧩 Turquoise ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['turquoise']}>", inline=True)
 
+        embed4.add_field(name=f"⊰ 🍑 Pastel Pink ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_pink']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍇 Pastel Violet ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_violet']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧊 Pastel Blue ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pstel_blue']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🥒 Pastel Green ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_green']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍋 Pastel Yellow ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_yellow']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍓 Pastel Red ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_red']}>", inline=True)
 
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
         await msg3.edit(content=f" ", embed=embed3)
         await msg4.edit(content=f" ", embed=embed4)
+        await msg5.edit(content=f" ")
+        await msg6.edit(content=f" ")
 
 
 
@@ -258,6 +266,71 @@ class store_Handler(Cog):
                     color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['turquoise'])
                     await user.add_roles(color, reason="Bought the Color.")
 
+            if emoji == "🍑":
+                item['name'] = "Pastel Pink (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Pink Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_pink'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🍇":
+                item['name'] = "Pastel Violet (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Violet Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_violet'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🧊":
+                item['name'] = "Pastel Blue (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Blue Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_blue'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🥒":
+                item['name'] = "Pastel Green (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Green Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_violet'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🍋":
+                item['name'] = "Pastel Yellow (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Yellow Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_yellow'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🍓":
+                item['name'] = "Pastel Red (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Red Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['pastel_red'])
+                    await user.add_roles(color, reason="Bought the Color.")
 
 
 
