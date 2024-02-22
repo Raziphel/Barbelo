@@ -68,8 +68,8 @@ class store_Handler(Cog):
         await msg2.edit(content=f" ", embed=embed2)
         await msg3.edit(content=f" ", embed=embed3)
         await msg4.edit(content=f" ", embed=embed4)
-        await msg5.edit(content=f" ")
-        await msg6.edit(content=f" ")
+        await msg5.edit(content=f".")
+        await msg6.edit(content=f".")
 
 
 
