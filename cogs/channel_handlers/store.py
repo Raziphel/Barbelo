@@ -200,7 +200,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['sun_flower'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['sun_flower'])
                     await user.add_roles(color, reason="Bought the Color.")
 
             if emoji == "🥗":
@@ -211,7 +211,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['nephritis'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['nephritis'])
                     await user.add_roles(color, reason="Bought the Color.")
 
             if emoji == "🧿":
@@ -222,7 +222,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['belize_hole'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['belize_hole'])
                     await user.add_roles(color, reason="Bought the Color.")
 
             if emoji == "🪀":
@@ -233,7 +233,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['wisteria'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['wisteria'])
                     await user.add_roles(color, reason="Bought the Color.")
 
             if emoji == "⛅":
@@ -244,7 +244,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['clouds'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['clouds'])
                     await user.add_roles(color, reason="Bought the Color.")
 
             if emoji == "🧩":
@@ -255,7 +255,7 @@ class store_Handler(Cog):
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
-                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['turquoise'])
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['color_roles']['turquoise'])
                     await user.add_roles(color, reason="Bought the Color.")
 
 
