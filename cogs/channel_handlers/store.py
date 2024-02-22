@@ -37,21 +37,29 @@ class store_Handler(Cog):
         embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ 5 {self.bot.config['gem_emoji']['hellstone']}x**\n\n```Turn all your hellstones into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
-        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
-
         embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
+
+        embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
+        embed2.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['sun_flower']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['nephritis']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['belize_hole']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['wisteria']}>", inline=True)
+
+
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
         await msg3.edit(content=f" ", embed=embed3)
+        await msg4.edit(content=f" ", embed=embed4)
 
 
 
@@ -117,7 +125,7 @@ class store_Handler(Cog):
             if emoji == "📚":
                 item['name'] = "Library Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 10
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -128,7 +136,7 @@ class store_Handler(Cog):
             if emoji == "🎫":
                 item['name'] = "Image Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 10
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -139,7 +147,7 @@ class store_Handler(Cog):
             if emoji == "🔊":
                 item['name'] = "Soundboard Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 10
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -149,8 +157,8 @@ class store_Handler(Cog):
 
             if emoji == "🎁":
                 item['name'] = "Stats Channel"
-                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_type'] = self.bot.config['gem_emoji']['ruby']
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -160,8 +168,8 @@ class store_Handler(Cog):
 
             if emoji == "🧶":
                 item['name'] = "Thread Permissions"
-                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_type'] = self.bot.config['gem_emoji']['ruby']
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -171,14 +179,60 @@ class store_Handler(Cog):
 
             if emoji == "🔮":
                 item['name'] = "External Emojis"
-                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 1
+                item['gem_type'] = self.bot.config['gem_emoji']['ruby']
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
                     external_emojis = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['external_emojis'])
                     await user.add_roles(external_emojis, reason="Given External Emojis role.")
+
+# ! ---------------------------------- COLORS STUFF GOES HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! BEEEEEELLOOOOOOOWWWWWWWWW HEEEEERRRRRRRRRRRRREEEEEEE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            if emoji == "🌻":
+                item['name'] = "Sun Flower (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Sun Flower Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['sun_flower'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🥗":
+                item['name'] = "Nephritis (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Nephritis Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['nephritis'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🧿":
+                item['name'] = "Belize Hole (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Belize Hole Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['belize_hole'])
+                    await user.add_roles(color, reason="Bought the Color.")
+
+            if emoji == "🪀":
+                item['name'] = "Wisteria Hole (Color Role)"
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
+                item['gem_amount'] = 1
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Wisteria Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
+                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                    bought = True
+                    await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
+                    color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['wisteria'])
+                    await user.add_roles(color, reason="Bought the Color.")
 
 
             #! Save to databse
