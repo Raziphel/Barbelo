@@ -49,10 +49,10 @@ class store_Handler(Cog):
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
         embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
-        embed2.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['sun_flower']}>", inline=True)
-        embed2.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['nephritis']}>", inline=True)
-        embed2.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['belize_hole']}>", inline=True)
-        embed2.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['Amethyst']}x**\n<@!{self.bot.config['color_roles']['wisteria']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@!{self.bot.config['color_roles']['sun_flower']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@!{self.bot.config['color_roles']['nephritis']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@!{self.bot.config['color_roles']['belize_hole']}>", inline=True)
+        embed2.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@!{self.bot.config['color_roles']['wisteria']}>", inline=True)
 
 
 
