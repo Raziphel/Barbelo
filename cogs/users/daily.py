@@ -58,8 +58,8 @@ class daily(Cog):
 
         #! Determine rewards
         daily = day.daily
-        if daily > 90:
-            daily = 90
+        if daily > 350:
+            daily = 350
         now = dt.now()
         emeralds = (10 + day.daily) * now.isoweekday()
         xps = lvl.level * now.isoweekday()
