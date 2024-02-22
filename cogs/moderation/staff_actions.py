@@ -144,7 +144,7 @@ class Staff_Actions(Cog):
                     name="amount",
                     description="Amount of messages you want to delete.",
                     type=ApplicationCommandOptionType.integer,
-                    required=False,
+                    required=True,
                 ),
             ],
         )
@@ -159,8 +159,7 @@ class Staff_Actions(Cog):
 
         # ! Report and log the purging!
         removed = await ctx.channel.purge(limit=amount, check=check)
-        await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# Deleted {len(removed)} messages!"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Deleted {len(removed)} messages!"))
         await self.message_log.send(embed=utils.Embed(color=0xc74822, desc=f"# <@{ctx.author.id}> purged {amount} messages from <#{ctx.channel.id}>!"))
 
 
