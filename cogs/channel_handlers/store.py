@@ -53,7 +53,7 @@ class store_Handler(Cog):
         embed4.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['nephritis']}>", inline=True)
         embed4.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['belize_hole']}>", inline=True)
         embed4.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['wisteria']}>", inline=True)
-        embed4.add_field(name=f"⊰ ☁ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
+        embed4.add_field(name=f"⊰ ⛅ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
         embed4.add_field(name=f"⊰ 🧩 Turquoise ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n<@&{self.bot.config['color_roles']['turquoise']}>", inline=True)
 
 
@@ -236,7 +236,7 @@ class store_Handler(Cog):
                     color = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['wisteria'])
                     await user.add_roles(color, reason="Bought the Color.")
 
-            if emoji == "☁":
+            if emoji == "⛅":
                 item['name'] = "Clouds (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
                 item['gem_amount'] = 1
