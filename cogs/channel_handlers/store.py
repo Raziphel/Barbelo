@@ -58,7 +58,7 @@ class store_Handler(Cog):
 
         embed4.add_field(name=f"⊰ 🍑 Pastel Pink ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_pink']}>", inline=True)
         embed4.add_field(name=f"⊰ 🍇 Pastel Violet ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_violet']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🧊 Pastel Blue ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pstel_blue']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧊 Pastel Blue ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_blue']}>", inline=True)
         embed4.add_field(name=f"⊰ 🥒 Pastel Green ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_green']}>", inline=True)
         embed4.add_field(name=f"⊰ 🍋 Pastel Yellow ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_yellow']}>", inline=True)
         embed4.add_field(name=f"⊰ 🍓 Pastel Red ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_red']}>", inline=True)
