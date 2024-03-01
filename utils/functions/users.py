@@ -61,7 +61,7 @@ class UserFunctions(object):
         #+ Level em the hell up!
         lvl.exp = 0
         lvl.level += 1
-        emeralds = (lvl.level*500)
+        emeralds = (lvl.level*5000)
         g.emerald += emeralds
         async with cls.bot.database() as db:
             await lvl.save(db)

@@ -61,7 +61,7 @@ class daily(Cog):
         if daily > 350:
             daily = 350
         now = dt.now()
-        emeralds = 5 * ((10 + day.daily) * now.isoweekday())
+        emeralds = 25 * ((10 + day.daily) * now.isoweekday())
         xps = lvl.level * now.isoweekday()
 
         g.emerald += emeralds
