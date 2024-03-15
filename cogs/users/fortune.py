@@ -61,10 +61,10 @@ class fortune(Cog):
         ])
 
 
-    @command(application_command_meta=ApplicationCommandMeta(), aliases=['8ball', 'ask', 'Ask', 'Fortune'])
-    async def fortune(self, ctx, args):
+    @command(application_command_meta=ApplicationCommandMeta(), aliases=['8ball', 'fortune', 'Ask', 'Fortune'])
+    async def ask(self, ctx, args):
         '''
-        Tells people there fortunes
+        Ask the bot a yes or no question.
         '''
         contents = ctx.message.content.split()
         total_words = len(ctx.message.content.split())
