@@ -82,10 +82,10 @@ class fortune(Cog):
         response = "I don't understand that question~"
 
         for word in contents:
-            if word.lower() in ["am", "will", "does", "should", "can", "are", "do", "is", "did"]:
+            if word.lower() in ["am", "will", "does", "should", "can", "are", "do", "is", "did", "was"]:
                 response = choice(self.YesorNo)
 
-        await ctx.send(embed=utils.Embed(desc=f"**Q:** {question}\n**A:** {response}"))
+        await ctx.send(embed=utils.Embed(desc=f"**Q:** __{question}__\n\n**A:** {response}"))
 
 
 
