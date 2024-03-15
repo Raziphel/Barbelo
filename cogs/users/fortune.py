@@ -61,7 +61,18 @@ class fortune(Cog):
         ])
 
 
-    @command(application_command_meta=ApplicationCommandMeta(), aliases=['8ball', 'fortune', 'Ask', 'Fortune'])
+    @command(aliases=['8ball', 'fortune', 'Ask', 'Fortune'],
+            application_command_meta=ApplicationCommandMeta(
+            options=[
+                ApplicationCommandOption(
+                    name="question",
+                    description="The question you wish to ask!",
+                    type=ApplicationCommandOptionType.string,
+                    required=True,
+                ),
+            ],
+        ),
+    )
     async def ask(self, ctx, args):
         '''
         Ask the bot a yes or no question.
