@@ -77,8 +77,8 @@ class fortune(Cog):
         '''
         Ask the bot a yes or no question.
         '''
-        contents = ctx.message.content.split()
-        total_words = len(ctx.message.content.split())
+        contents = question.split()
+        total_words = len(question.split())
         response = "I don't understand that question~"
 
         for word in contents:
