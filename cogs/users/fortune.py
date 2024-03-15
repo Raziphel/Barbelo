@@ -73,7 +73,7 @@ class fortune(Cog):
             ],
         ),
     )
-    async def ask(self, ctx, args):
+    async def ask(self, ctx, question):
         '''
         Ask the bot a yes or no question.
         '''
