@@ -58,7 +58,7 @@ class Gem_Generator(Cog):
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
             #! Save it to database
-            lvl.exp += exp+3
+            lvl.exp += exp+5
             lvl.last_xp = dt.utcnow()
             tr.messages += 1
         async with self.bot.database() as db:
@@ -103,7 +103,7 @@ class Gem_Generator(Cog):
 
                     g = utils.Gems.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += 1 + (len(vc.members)*5)
+                    lvl.exp += 5 + (len(vc.members)*5)
                     g.emeralds = 15 + round(len(vc.members)*5)
 
                     await utils.UserFunctions.level_up(user=member, channel=None)

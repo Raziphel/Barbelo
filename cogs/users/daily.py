@@ -62,7 +62,7 @@ class daily(Cog):
             daily = 350
         now = dt.now()
         emeralds = 25 * ((10 + day.daily) * now.isoweekday())
-        xps = lvl.level * now.isoweekday()
+        xps = (25*lvl.level) * now.isoweekday()
 
         g.emerald += emeralds
         lvl.exp += xps
@@ -81,6 +81,8 @@ class daily(Cog):
             th = "nd"
         elif lastDigit == '3':
             th = "rd"
+        if day.daily in [11, 12, 13]:
+            th = "th"
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
