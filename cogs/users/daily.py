@@ -62,7 +62,7 @@ class daily(Cog):
             daily = 350
         now = dt.now()
         emeralds = 25 * ((10 + day.daily) * now.isoweekday())
-        xps = (25*lvl.level) * now.isoweekday()
+        xps = (5*lvl.level) * now.isoweekday()
 
         g.emerald += emeralds
         lvl.exp += xps
