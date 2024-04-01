@@ -75,14 +75,14 @@ class daily(Cog):
         stringForm = str(day.daily) 
         lastDigit = stringForm[-1] 
         th = "th"
-        if lastDigit == '1':
+        if day.daily > 3:
+            th = "th"
+        elif lastDigit == '1':
             th = "st"
         elif lastDigit == '2':
             th = "nd"
         elif lastDigit == '3':
             th = "rd"
-        if day.daily in [11, 12, 13]:
-            th = "th"
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
