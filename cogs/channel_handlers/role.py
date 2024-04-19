@@ -33,7 +33,7 @@ class role_handler(Cog):
 
         embed3=Embed(description=f"# LGBTQ Pride\n> {self.bot.config['lgbt_emoji']['trans']}<@&{self.bot.config['lgbt_roles']['trans']}>\n> {self.bot.config['lgbt_emoji']['binary']}<@&{self.bot.config['lgbt_roles']['binary']}>\n> {self.bot.config['lgbt_emoji']['pan']}<@&{self.bot.config['lgbt_roles']['pan']}>\n> 🌈<@&{self.bot.config['lgbt_roles']['gay']}>\n> {self.bot.config['lgbt_emoji']['lesbian']}<@&{self.bot.config['lgbt_roles']['lesbian']}>\n> {self.bot.config['lgbt_emoji']['asexual']}<@&{self.bot.config['lgbt_roles']['asexual']}>\n> {self.bot.config['lgbt_emoji']['bi']}<@&{self.bot.config['lgbt_roles']['bi']}>", color=0x8f00f8)
 
-        embed4=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\nKeep in mind nsfw mostly contains furry art.\n```\n> 🍺<@&{self.bot.config['age_roles']['nsfw_adult']}> `Gives access to NSFW text & voice channels.`\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Only gives access to NSFW voice channels.`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Is given automatically if you don't get an age role.`", color=0x8f00f8)
+        embed4=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\n```\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Gives access to Adult rated channels!`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Is given automatically if you don't get an age role.`", color=0x8f00f8)
 
         embed5=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ✅<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}> `Get pinged for info on server events!`\n> 🎲<@&{self.bot.config['ping_roles']['gambler']}> `Get a ping to see who won raffles.`\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}> `Get pinged to greet any new members!`\n> 🔦<@&{self.bot.config['ping_roles']['lethal']}> `Anyone can ping this role using /sendping`\n> 🔒<@&{self.bot.config['ping_roles']['scp']}> `Anyone can ping this role using /sendping`\n> 🔊<@&{self.bot.config['ping_roles']['vc']}> `Anyone can ping this role using /sendping`", color=0x8f00f8)
 
@@ -176,13 +176,7 @@ class role_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=self.bot.config['dm_roles']['closed'])
 
         mod = utils.Moderation.get(member.id)
-        if emoji == "🍺":
-            if mod.child != True:
-                role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['nsfw_adult'])
-            else: 
-                await member.send(f"You are unable to get the Adult role, message staff.")
-                await self.discord_log.send(f"<@{member.id}> failed to get NSFW role.")
-        elif emoji == "🚬":
+        if emoji == "🚬":
             if mod.child != True:
                 role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['adult'])
             else: 
