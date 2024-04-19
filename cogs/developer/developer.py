@@ -125,17 +125,17 @@ class Developer(Cog):
     @command()
     async def checkage(self, ctx):
         mod = utils.Moderation.get(ctx.author.id)
+        adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
         for member in ctx.guild.members:
             for i in member.roles:
-                if i.id is self.bot.config['age_roles']['nsfw_adult']:
+                if i.id == self.bot.config['age_roles']['nsfw_adult']:
                     mod.adult = True
                     mod.child = False
-                    adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
                     await member.add_roles(adult)
-                if i.id is self.bot.config['age_roles']['adult']:
+                if i.id == self.bot.config['age_roles']['adult']:
                     mod.adult = True
                     mod.child = False
-                if i.id is self.bot.config['age_roles']['underage']:
+                if i.id == self.bot.config['age_roles']['underage']:
                     mod.adult = False
                     mod.child = True
 
