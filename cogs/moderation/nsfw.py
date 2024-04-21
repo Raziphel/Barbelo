@@ -34,12 +34,10 @@ class nsfw(Cog):
 
         #+ Get some varibles!
         mod = utils.Moderation.get(user.id)
-        nsfw_adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['nsfw_adult'])
         adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
 
 
         try: #* Removes 18+ role if exists!
-            await user.remove_roles(nsfw_adult)
             await user.remove_roles(adult)
         except: pass
 
@@ -75,7 +73,7 @@ class nsfw(Cog):
 
         #+ Get some varibles!
         mod = utils.Moderation.get(user.id)
-        nsfw_adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['nsfw_adult'])
+        adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
         underage = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['underage'])
 
         try: #* Removes underage role if exists!
@@ -83,7 +81,7 @@ class nsfw(Cog):
         except: pass
 
         #* Add the underage role and update nsfw!
-        await user.add_roles(nsfw_adult)
+        await user.add_roles(adult)
 
         mod.child = False
         mod.adult = True
