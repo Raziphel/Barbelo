@@ -89,7 +89,7 @@ class nsfw(Cog):
             await mod.save(db)
 
         #* Log the action!
-        await self.discord_log.send(embed=utils.Embed(color=0x339c2a, content=f"<@{user.id}>", desc=f"# You have been given adult access!\nCongrats on becoming an adult!"))
+        await self.discord_log.send(content=f"<@{user.id}>", embed=utils.Embed(color=0x339c2a, desc=f"# You have been given adult access!\nCongrats on becoming an adult!"))
         await ctx.send(embed=utils.Embed(color=0x339c2a, desc=f"# {user.name} was nsfw unrestricted and given."))
 
 
