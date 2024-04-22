@@ -32,6 +32,8 @@ class thievery(Cog):
             skills.larceny = False
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Disabled!\nYou can no longer steal or be stolen from!", user=ctx.author))
 
+        async with self.bot.database() as db:
+            await skills.save(db)
 
 
 
