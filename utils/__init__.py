@@ -11,6 +11,7 @@ from utils.sql.gems import Gems
 from utils.sql.levels import Levels
 from utils.sql.tracking import Tracking
 from utils.sql.daily import Daily
+from utils.sql.skills import Skills
 
 #? Functions
 from utils.functions.gems import GemFunctions

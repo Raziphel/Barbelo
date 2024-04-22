@@ -38,3 +38,20 @@ CREATE TABLE gems (
     PRIMARY KEY (user_id)
 );
 
+
+CREATE TABLE moderation (
+    user_id bigint NOT NULL,
+    adult boolean DEFAULT false,
+    child boolean DEFAULT false,
+    muted boolean DEFAULT false,
+    image_banned boolean DEFAULT false,
+    PRIMARY KEY (user_id)
+);
+
+
+CREATE TABLE skills (
+    user_id BIGINT NOT NULL,
+    thievery INT,
+    larceny boolean DEFAULT false,
+    PRIMARY KEY (user_id)
+);
