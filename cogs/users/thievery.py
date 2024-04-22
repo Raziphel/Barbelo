@@ -26,11 +26,11 @@ class thievery(Cog):
         skills = utils.Skills.get(ctx.author.id)
         if skills.larceny == False:
             skills.larceny = True
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal and be stolen from!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal and be stolen from!", user=ctx.author))
 
         elif skills.larceny == True:
             skills.larceny = False
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Disabled!\nYou can no longer steal or be stolen from!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Disabled!\nYou can no longer steal or be stolen from!", user=ctx.author))
 
         async with self.bot.database() as db:
             await skills.save(db)
