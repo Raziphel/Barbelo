@@ -81,27 +81,27 @@ class thievery(Cog):
 
         #? Check everything!
         if user.id == self.bot.user.id:
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can't steal from the master of thiefs!", user=ctx.author))
 
         if user.id == ctx.author.id:
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can't steal from yourself!", user=ctx.author))
 
         if skills.thievery == False:
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You are not capable of stealing until you buy it from the shop!", user=ctx.author))
 
         if skills.larceny == False:
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You have not enabled `/larceny` to be able to steal!", user=ctx.author))
 
         if oskills.larceny == False:
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"{user.mention} has not enabled larceny!", user=ctx.author))
 
         if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
-            self.steal.reset_cooldown()
+            self.steal.reset_cooldown(ctx)
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can claim them again in {t.hour} hours and {t.minute} minutes!", user=ctx.author))
