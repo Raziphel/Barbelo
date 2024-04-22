@@ -98,17 +98,17 @@ class thievery(Cog):
         rubs = 0
         sapphires = 0
 
-        if chance == 'diamond':
+        if gem_type == 'diamond':
             og.diamond -= amount
             g.diamond += amount
             diamonds = amount
 
-        elif chance == 'ruby':
+        elif gem_type == 'ruby':
             og.ruby -= amount
             g.ruby += amount
             rubys = amount
 
-        elif chance == 'sapphire':
+        elif gem_type == 'sapphire':
             og.sapphire -= amount
             g.sapphire += amount
             sapphires = amount
