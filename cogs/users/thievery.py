@@ -102,7 +102,7 @@ class thievery(Cog):
         skills.larceny_stamp = dt.utcnow()
 
         diamonds = 0
-        rubs = 0
+        rubys = 0
         sapphires = 0
 
         if gem_type == 'diamond':
