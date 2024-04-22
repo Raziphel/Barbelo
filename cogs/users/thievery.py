@@ -17,6 +17,13 @@ class thievery(Cog):
 
 
 
+    @property  #! The currency logs
+    def gem_logs(self):
+        return self.bot.get_channel(self.bot.config['logs']['gems'])
+
+
+
+
     @cooldown(1, 3600, BucketType.user)
     @command(application_command_meta=ApplicationCommandMeta())
     async def larceny(self, ctx):
@@ -124,7 +131,7 @@ class thievery(Cog):
 
         await ctx.interaction.response.send_message(
                 content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author}** Stole gems from **{user.name}** and they gained {gem_string}"))
-        await coin_logs.send(f"**{ctx.author}** Stole gems from **{user}** and they gained {gem_string}")
+        await self.gem_logs.send(f"**{ctx.author}** Stole gems from **{user}** and they gained {gem_string}")
 
 
         async with self.bot.database() as db:
