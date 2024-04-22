@@ -128,10 +128,6 @@ class Developer(Cog):
         adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
         for member in ctx.guild.members:
             for i in member.roles:
-                if i.id == self.bot.config['age_roles']['nsfw_adult']:
-                    mod.adult = True
-                    mod.child = False
-                    await member.add_roles(adult)
                 if i.id == self.bot.config['age_roles']['adult']:
                     mod.adult = True
                     mod.child = False

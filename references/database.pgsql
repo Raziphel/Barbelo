@@ -51,7 +51,8 @@ CREATE TABLE moderation (
 
 CREATE TABLE skills (
     user_id BIGINT NOT NULL,
-    thievery INT,
+    thievery boolean DEFAULT false,
     larceny boolean DEFAULT false,
+    larceny_stamp TIMESTAMP,
     PRIMARY KEY (user_id)
 );
