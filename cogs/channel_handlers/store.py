@@ -202,7 +202,7 @@ class store_Handler(Cog):
 
             if emoji == "🧤":
                 item['name'] = "Thievery"
-                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
                 item['gem_amount'] = 10
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the ability to steal!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
