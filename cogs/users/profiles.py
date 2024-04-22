@@ -30,9 +30,11 @@ class profile(Cog):
     )
     async def gems(self, ctx, user=None):
         '''Quick Check inventory'''
+
         if not user:
             user = ctx.author
 
+        print(user)
         g = utils.Gems.get(user.id)
         gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
