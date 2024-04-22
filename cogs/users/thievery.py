@@ -18,18 +18,7 @@ class thievery(Cog):
 
 
     @cooldown(1, 3600, BucketType.user)
-    @command(        
-        application_command_meta=ApplicationCommandMeta(
-            options=[
-                ApplicationCommandOption(
-                    name="user",
-                    description="The user you would like to steal from!",
-                    type=ApplicationCommandOptionType.user,
-                    required=True,
-                ),
-            ],
-        ),
-    )
+    @command()
     async def larceny(self, ctx, user:Member=None):
         '''
         Enables or disabled the ability to steal.
