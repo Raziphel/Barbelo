@@ -13,7 +13,21 @@ class profile(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @command(application_command_meta=ApplicationCommandMeta(), aliases=['g', 'gem', 'Gems', 'Gem'])
+
+
+    @command(        
+        aliases=['gem'],
+        application_command_meta=ApplicationCommandMeta(
+            options=[
+                ApplicationCommandOption(
+                    name="user",
+                    description="The user you'd like to see the coins of!",
+                    type=ApplicationCommandOptionType.user,
+                    required=False,
+                ),
+            ],
+        ),
+    )
     async def gems(self, ctx, user=None):
         '''Quick Check inventory'''
         if not user:
