@@ -18,8 +18,8 @@ class thievery(Cog):
 
 
     @cooldown(1, 3600, BucketType.user)
-    @command()
-    async def larceny(self, ctx, user:Member=None):
+    @command(application_command_meta=ApplicationCommandMeta())
+    async def larceny(self, ctx):
         '''
         Enables or disabled the ability to steal.
         '''
