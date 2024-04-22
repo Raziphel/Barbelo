@@ -45,7 +45,7 @@ class store_Handler(Cog):
         embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
-        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['amethyst']}x**\n\n```Gain the ability steal from others!```", inline=True) 
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 50 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
         embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
@@ -202,8 +202,8 @@ class store_Handler(Cog):
 
             if emoji == "🧤":
                 item['name'] = "Thievery"
-                item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 10
+                item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
+                item['gem_amount'] = 50
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the ability to steal!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
