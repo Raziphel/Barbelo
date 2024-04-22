@@ -24,6 +24,13 @@ class thievery(Cog):
         Enables or disabled the ability to steal.
         '''
         skills = utils.Skills.get(ctx.author.id)
+
+        if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
+            tf = skills.larceny_stamp + timedelta(hours=2)
+            t = dt(1, 1, 1) + (tf - dt.utcnow())
+            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n{t.hour} hours and {t.minute} minutes!", user=ctx.author))
+
+        
         if skills.larceny == False:
             skills.larceny = True
             await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal and be stolen from!", user=ctx.author))
@@ -89,7 +96,7 @@ class thievery(Cog):
         if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can claim them again in {t.hour} hours and {t.minute} minutes!", user=ctx.author))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You are not capable of stealing for another:\n{t.hour} hours and {t.minute} minutes!", user=ctx.author))
 
         gems_stolen = None
         skills.larceny_stamp = dt.utcnow()
