@@ -100,6 +100,9 @@ class thievery(Cog):
         if oskills.larceny == False:
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"{user.mention} has not enabled larceny!", user=ctx.author))
 
+        if not skills.larceny_stamp:
+            skills.larceny_stamp = (dt.utcnow() - timedelta(days=3))
+
         if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
