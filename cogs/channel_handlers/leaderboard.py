@@ -72,18 +72,18 @@ class leaderboard(Cog):
 
 
         #+ Coin Leaderboard
-        msg = await channel.fetch_message(1095552313566965760)
-        msg2 = await channel.fetch_message(1095552323557806260)
+        msg = await channel.fetch_message(self.bot.config['leaderboard_messages']['3'])
+        msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['4'])
 
         #* Set up the embeds
         embed = Embed(color=randint(1, 0xffffff))
         embed2 = Embed(color=randint(1, 0xffffff))
-        embed.description = "```fix\n█ Top 15 highest levels! █\n```\n"
-        embed2.description = "```fix\n█ Top 30 highest levels! █\n```\n"
+        embed.description = "```fix\n█ Top 10 most gems! █\n```\n"
+        embed2.description = "```fix\n█ Top 20 most gems! █\n```\n"
 
 
         sorted_rank = utils.Currency.sort_coins()
-        ranks = sorted_rank[:22]
+        ranks = sorted_rank[:20]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -93,15 +93,16 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
+            text = await utils.GemFunctions.gems_to_text(amethysts=rank.amethyst, hellstones=rank.hellstone)
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
+                text.append(f"#{index+1} **{user.name}** --> {text}")
             else:
-                text2.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
+                text2.append(f"#{index+1} **{user.name}** --> {text}")
 
-        embed.add_field(name='Coin Rank', value='\n'.join(text), inline=True)
-        embed2.add_field(name='Coin Rank', value='\n'.join(text2), inline=True)
+        embed.add_field(name='Gem Rank', value='\n'.join(text), inline=True)
+        embed2.add_field(name='Gem Rank', value='\n'.join(text2), inline=True)
 
-        await msg.edit(content="**Those with the most coins!**", embed=embed)
+        await msg.edit(content="# Gem Leaderboard", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
