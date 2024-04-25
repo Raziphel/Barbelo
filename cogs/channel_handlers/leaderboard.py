@@ -107,12 +107,12 @@ class leaderboard(Cog):
         msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['6'])
 
         #* Set up the embeds
-        embed = Embed(color=0x00FF00)
-        embed2 = Embed(color=0x00FF00)
+        embed = Embed(color=0xFF0000)
+        embed2 = Embed(color=0xFF0000)
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:55]
+        ranks = sorted_rank[:53]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -146,7 +146,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_vc_mins()
-        ranks = sorted_rank[:44]
+        ranks = sorted_rank[:39]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
