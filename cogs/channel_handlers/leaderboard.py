@@ -169,6 +169,40 @@ class leaderboard(Cog):
 
 
 
+        #+ DAILY Leaderboard
+        msg = await channel.fetch_message(self.bot.config['leaderboard_messages']['9'])
+        msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['10'])
+
+        #* Set up the embeds
+        embed = Embed(color=0xFF00FF)
+        embed2 = Embed(color=0xFF00FF)
+
+
+        sorted_rank = utils.Daily.sorted_daily()
+        ranks = sorted_rank[:20]
+        users = []
+        for i in ranks:
+            user = self.bot.get_user(i.user_id)
+            if user != None:
+                users.append(user)
+
+        text = []
+        text2 = []
+        for index, (user, rank) in enumerate(zip(users, ranks)):
+            if index < 10:
+                text.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
+            else:
+                text2.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
+
+        embed.description = '\n'.join(text)
+        embed2.description = '\n'.join(text2)
+
+        await msg.edit(content="# Daily Leaderboard", embed=embed)
+        await msg2.edit(content=" ", embed=embed2)
+
+
+
+
 
 
     @five_minute_loop.before_loop
