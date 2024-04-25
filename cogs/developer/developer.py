@@ -156,7 +156,7 @@ class Developer(Cog):
     async def sm(self, ctx):
         '''send a placeholder message'''
 
-        await ctx.delete()
+        await ctx.message.delete()
         await ctx.send('placeholder message!')
 
 
