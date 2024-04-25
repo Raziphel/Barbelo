@@ -34,7 +34,7 @@ class thievery(Cog):
         if (skills.larceny_stamp + timedelta(hours=2)) >= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n{**t.hour} hours and {t.minute} minutes!**", user=ctx.author))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n**{t.hour} hours and {t.minute} minutes!**", user=ctx.author))
 
         
         if skills.larceny == False:
