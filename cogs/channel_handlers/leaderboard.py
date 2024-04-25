@@ -42,8 +42,6 @@ class leaderboard(Cog):
         #* Set up the embeds
         embed = Embed(color=0xFFBF00)
         embed2 = Embed(color=0xFFBF00)
-        embed.description = "`# Level Leaderboard\n"
-
 
         #* Add in level rankings
         sorted_rank = utils.Levels.sort_levels()
@@ -61,7 +59,7 @@ class leaderboard(Cog):
             else:
                 text2.append(f"#{index+1} **{user.name}** --> Lvl.{floor(rank.level):,}")
 
-        embed.description = '\n'.join(text)
+        embed.description = '# Level Leaderboard\n'.join(text)
         embed2.description = '\n'.join(text2)
 
         await msg.edit(content=f" ", embed=embed)
@@ -77,8 +75,6 @@ class leaderboard(Cog):
         #* Set up the embeds
         embed = Embed(color=0x00ff00)
         embed2 = Embed(color=0x00ff00)
-        embed.description = "```fix\n█ Top 10 most gems! █\n```\n"
-        embed2.description = "```fix\n█ Top 20 most gems! █\n```\n"
 
 
         sorted_rank = utils.Gems.sort_gems()
@@ -98,10 +94,10 @@ class leaderboard(Cog):
             else:
                 text2.append(f"#{index+1} **{user.name}** --> {gem_string}")
 
-        embed.add_field(name='Gem Rank', value='\n'.join(text), inline=True)
-        embed2.add_field(name='Gem Rank', value='\n'.join(text2), inline=True)
+        embed.description = '# Gem Leaderboard\n'.join(text)
+        embed2.description = '\n'.join(text2)
 
-        await msg.edit(content="# Gem Leaderboard", embed=embed)
+        await msg.edit(content=" ", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
