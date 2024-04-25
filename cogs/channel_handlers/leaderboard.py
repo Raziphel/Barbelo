@@ -82,7 +82,7 @@ class leaderboard(Cog):
         embed2.description = "```fix\n█ Top 20 most gems! █\n```\n"
 
 
-        sorted_rank = utils.Currency.sort_coins()
+        sorted_rank = utils.Gems.sort_gems()
         ranks = sorted_rank[:20]
         users = []
         for i in ranks:
