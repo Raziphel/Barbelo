@@ -48,5 +48,5 @@ class Gems(object):
     @classmethod
     def sort_gems(cls):
         '''sorts the user's by balance. getting ranks!'''
-        sorted_coins = sorted(cls.all_gems.values(), key=lambda u: u.amethyst+u.hellstone, reverse=True)
-        return sorted_coins
+        sorted_gems = sorted(cls.all_gems.values(), key=lambda u: u.amethyst+(u.hellstone*100), reverse=True)
+        return sorted_gems
