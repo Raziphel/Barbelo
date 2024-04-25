@@ -83,7 +83,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Gems.sort_gems()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:25]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
