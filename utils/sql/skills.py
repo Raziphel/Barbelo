@@ -38,5 +38,10 @@ class Skills(object):
         '''Gets table's connected varibles'''
         user = cls.all_skills.get(user_id)
         if user == None:
-            return cls(user_id)
+            return cls(
+                user_id = user_id,
+                thievery = False,
+                larceny = False,
+                larceny_stamp = dt.utcnow() - timedelta(days=1),
+            )
         return user
