@@ -130,7 +130,7 @@ class thievery(Cog):
         gem_string = await utils.GemFunctions.gems_to_text(diamonds=diamonds, rubys=rubys, sapphires=sapphires)
 
         await ctx.interaction.response.send_message(
-                content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author}** Stole gems from **{user.name}** and they gained {gem_string}", user=ctx.author))
+                content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained {gem_string}", user=ctx.author))
         await self.gem_logs.send(f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained {gem_string}")
 
 
