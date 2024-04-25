@@ -123,9 +123,9 @@ class leaderboard(Cog):
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,}")
+                text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
-                text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,}")
+                text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
@@ -164,7 +164,7 @@ class leaderboard(Cog):
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
 
-        await msg.edit(content="# VC Minute Leaderboard", embed=embed)
+        await msg.edit(content="# VC Hour Leaderboard", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
