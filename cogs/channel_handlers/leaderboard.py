@@ -93,11 +93,11 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            text = await utils.GemFunctions.gems_to_text(amethysts=rank.amethyst, hellstones=rank.hellstone)
+            gem_string = await utils.GemFunctions.gems_to_text(amethysts=rank.amethyst, hellstones=rank.hellstone)
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** --> {text}")
+                text.append(f"#{index+1} **{user.name}** --> {gem_string}")
             else:
-                text2.append(f"#{index+1} **{user.name}** --> {text}")
+                text2.append(f"#{index+1} **{user.name}** --> {gem_string}")
 
         embed.add_field(name='Gem Rank', value='\n'.join(text), inline=True)
         embed2.add_field(name='Gem Rank', value='\n'.join(text2), inline=True)
