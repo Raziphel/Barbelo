@@ -121,6 +121,10 @@ verified = 1154236618606125106
 #+
 #+ --- Emojis
 #+
+[misc_emoji]
+    nitro = "<:Nitro:1095491689029849189>"
+
+
 [gem_emoji]
     emerald = "<:Emerald:1202385480352813117>"
     diamond = "<:Diamond:1202385477492146176>"

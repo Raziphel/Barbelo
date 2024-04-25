@@ -71,7 +71,6 @@ class daily(Cog):
         d = dt.today()
         x = day_name[d.weekday()]
 
-
         stringForm = str(day.daily) 
         lastDigit = stringForm[-1] 
         th = "th"
