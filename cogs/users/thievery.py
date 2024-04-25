@@ -39,7 +39,7 @@ class thievery(Cog):
         
         if skills.larceny == False:
             skills.larceny = True
-            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal and be stolen from!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal in 2 hours and be stolen from!", user=ctx.author))
 
         elif skills.larceny == True:
             skills.larceny = False
