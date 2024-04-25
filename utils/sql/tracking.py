@@ -41,3 +41,18 @@ class Tracking(object):
         if user == None:
             return cls(user_id)
         return user
+
+
+    @classmethod
+    def sorted_messages(cls):
+        '''sorts the user's by balance. getting ranks!'''
+        sorted_messages = sorted(cls.all_tracking.values(), key=lambda u: u.messages, reverse=True)
+        return sorted_messages
+
+
+
+    @classmethod
+    def sorted_vc_mins(cls):
+        '''sorts the user's by balance. getting ranks!'''
+        sorted_vc_mins = sorted(cls.all_tracking.values(), key=lambda u: u.vc_mins, reverse=True)
+        return sorted_vc_mins
