@@ -71,38 +71,38 @@ class leaderboard(Cog):
 
 
 
-        # #+ Coin Leaderboard
-        # msg = await channel.fetch_message(1095552313566965760)
-        # msg2 = await channel.fetch_message(1095552323557806260)
+        #+ Coin Leaderboard
+        msg = await channel.fetch_message(1095552313566965760)
+        msg2 = await channel.fetch_message(1095552323557806260)
 
-        # #* Set up the embeds
-        # embed = Embed(color=randint(1, 0xffffff))
-        # embed2 = Embed(color=randint(1, 0xffffff))
-        # embed.description = "```fix\n█ Top 15 highest levels! █\n```\n"
-        # embed2.description = "```fix\n█ Top 30 highest levels! █\n```\n"
+        #* Set up the embeds
+        embed = Embed(color=randint(1, 0xffffff))
+        embed2 = Embed(color=randint(1, 0xffffff))
+        embed.description = "```fix\n█ Top 15 highest levels! █\n```\n"
+        embed2.description = "```fix\n█ Top 30 highest levels! █\n```\n"
 
 
-        # sorted_rank = utils.Currency.sort_coins()
-        # ranks = sorted_rank[:22]
-        # users = []
-        # for i in ranks:
-        #     user = self.bot.get_user(i.user_id)
-        #     if user != None:
-        #         users.append(user)
+        sorted_rank = utils.Currency.sort_coins()
+        ranks = sorted_rank[:22]
+        users = []
+        for i in ranks:
+            user = self.bot.get_user(i.user_id)
+            if user != None:
+                users.append(user)
 
-        # text = []
-        # text2 = []
-        # for index, (user, rank) in enumerate(zip(users, ranks)):
-        #     if index < 10:
-        #         text.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
-        #     else:
-        #         text2.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
+        text = []
+        text2 = []
+        for index, (user, rank) in enumerate(zip(users, ranks)):
+            if index < 10:
+                text.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
+            else:
+                text2.append(f"#{index+1} **{user.name}** --> {self.bot.config['emotes']['coin']} {floor(rank.coins):,}")
 
-        # embed.add_field(name='Coin Rank', value='\n'.join(text), inline=True)
-        # embed2.add_field(name='Coin Rank', value='\n'.join(text2), inline=True)
+        embed.add_field(name='Coin Rank', value='\n'.join(text), inline=True)
+        embed2.add_field(name='Coin Rank', value='\n'.join(text2), inline=True)
 
-        # await msg.edit(content="**Those with the most coins!**", embed=embed)
-        # await msg2.edit(content=" ", embed=embed2)
+        await msg.edit(content="**Those with the most coins!**", embed=embed)
+        await msg2.edit(content=" ", embed=embed2)
 
 
 
