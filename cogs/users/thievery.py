@@ -24,7 +24,6 @@ class thievery(Cog):
 
 
 
-    @cooldown(1, 3600, BucketType.user)
     @command(application_command_meta=ApplicationCommandMeta())
     async def larceny(self, ctx):
         '''
@@ -32,7 +31,7 @@ class thievery(Cog):
         '''
         skills = utils.Skills.get(ctx.author.id)
 
-        if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
+        if (skills.larceny_stamp + timedelta(hours=2)) >= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n{t.hour} hours and {t.minute} minutes!", user=ctx.author))
@@ -46,6 +45,8 @@ class thievery(Cog):
             skills.larceny = False
             await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Disabled!\nYou can no longer steal or be stolen from!", user=ctx.author))
 
+        skills.larceny_stamp = dt.utcnow()
+
         async with self.bot.database() as db:
             await skills.save(db)
 
@@ -56,7 +57,6 @@ class thievery(Cog):
 
 
 
-    @cooldown(1, 3600, BucketType.user)
     @command(        
         aliases=['yoink'],
         application_command_meta=ApplicationCommandMeta(
