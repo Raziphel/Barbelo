@@ -107,8 +107,8 @@ class leaderboard(Cog):
         msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['6'])
 
         #* Set up the embeds
-        embed = Embed(color=0x00ff00)
-        embed2 = Embed(color=0x00ff00)
+        embed = Embed(color=0x00FF00)
+        embed2 = Embed(color=0x00FF00)
 
 
         sorted_rank = utils.Tracking.sorted_messages()
@@ -131,6 +131,40 @@ class leaderboard(Cog):
         embed2.description = '\n'.join(text2)
 
         await msg.edit(content="# Message Leaderboard", embed=embed)
+        await msg2.edit(content=" ", embed=embed2)
+
+
+
+
+        #+ VC MINS Leaderboard
+        msg = await channel.fetch_message(self.bot.config['leaderboard_messages']['7'])
+        msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['8'])
+
+        #* Set up the embeds
+        embed = Embed(color=0x0000FF)
+        embed2 = Embed(color=0x0000FF)
+
+
+        sorted_rank = utils.Tracking.sorted_vc_mins()
+        ranks = sorted_rank[:55]
+        users = []
+        for i in ranks:
+            user = self.bot.get_user(i.user_id)
+            if user != None:
+                users.append(user)
+
+        text = []
+        text2 = []
+        for index, (user, rank) in enumerate(zip(users, ranks)):
+            if index < 10:
+                text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} mins")
+            else:
+                text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} mins")
+
+        embed.description = '\n'.join(text)
+        embed2.description = '\n'.join(text2)
+
+        await msg.edit(content="# VC Minute Leaderboard", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
