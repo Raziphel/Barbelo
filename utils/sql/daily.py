@@ -52,6 +52,6 @@ class Daily(object):
     @classmethod
     def sorted_daily(cls):
         '''sorts the user's by balance. getting ranks!'''
-        sorted_daily = sorted(cls.all_tracking.values(), key=lambda u: u.daily, reverse=True)
+        sorted_daily = sorted(cls.all_dailys.values(), key=lambda u: u.daily, reverse=True)
         return sorted_daily
 
