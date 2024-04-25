@@ -40,8 +40,8 @@ class leaderboard(Cog):
         msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['2'])
 
         #* Set up the embeds
-        embed = Embed(color=randint(1, 0xffffff))
-        embed2 = Embed(color=randint(1, 0xffffff))
+        embed = Embed(color=randint(1, 0xFFBF00))
+        embed2 = Embed(color=randint(1, 0xFFBF00))
         embed.description = "```fix\n█ Top 15 highest levels! █\n```\n"
         embed2.description = "```fix\n█ Top 30 highest levels! █\n```\n" 
 
@@ -76,8 +76,8 @@ class leaderboard(Cog):
         msg2 = await channel.fetch_message(self.bot.config['leaderboard_messages']['4'])
 
         #* Set up the embeds
-        embed = Embed(color=randint(1, 0xffffff))
-        embed2 = Embed(color=randint(1, 0xffffff))
+        embed = Embed(color=randint(1, 0x00ff00))
+        embed2 = Embed(color=randint(1, 0x00ff00))
         embed.description = "```fix\n█ Top 10 most gems! █\n```\n"
         embed2.description = "```fix\n█ Top 20 most gems! █\n```\n"
 
