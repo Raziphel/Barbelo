@@ -55,9 +55,9 @@ class leaderboard(Cog):
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
             if index < 15:
-                text.append(f"#{index+1} **{user.name}** --> Lvl.{floor(rank.level):,}")
+                text.append(f"#{index+1} **{user.name}** ─── Lvl.{floor(rank.level):,}")
             else:
-                text2.append(f"#{index+1} **{user.name}** --> Lvl.{floor(rank.level):,}")
+                text2.append(f"#{index+1} **{user.name}** ─── Lvl.{floor(rank.level):,}")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
@@ -90,9 +90,9 @@ class leaderboard(Cog):
         for index, (user, rank) in enumerate(zip(users, ranks)):
             gem_string = await utils.GemFunctions.gems_to_text(amethysts=rank.amethyst, hellstones=rank.hellstone)
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** --> {gem_string}")
+                text.append(f"#{index+1} **{user.name}** ─── {gem_string}")
             else:
-                text2.append(f"#{index+1} **{user.name}** --> {gem_string}")
+                text2.append(f"#{index+1} **{user.name}** ─── {gem_string}")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
@@ -112,7 +112,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:34]
+        ranks = sorted_rank[:20]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -123,9 +123,9 @@ class leaderboard(Cog):
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** --> {rank.messages:,}")
+                text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,}")
             else:
-                text2.append(f"#{index+1} **{user.name}** --> {rank.messages:,}")
+                text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,}")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
