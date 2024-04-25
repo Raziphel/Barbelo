@@ -42,8 +42,7 @@ class leaderboard(Cog):
         #* Set up the embeds
         embed = Embed(color=0xFFBF00)
         embed2 = Embed(color=0xFFBF00)
-        embed.description = "```fix\n█ Top 15 highest levels! █\n```\n"
-        embed2.description = "```fix\n█ Top 30 highest levels! █\n```\n" 
+        embed.description = "`# Level Leaderboard\n"
 
 
         #* Add in level rankings
@@ -62,10 +61,10 @@ class leaderboard(Cog):
             else:
                 text2.append(f"#{index+1} **{user.name}** --> Lvl.{floor(rank.level):,}")
 
-        embed.add_field(name='Level Rank', value='\n'.join(text), inline=True)
-        embed2.add_field(name='Level Rank', value='\n'.join(text2), inline=True)
+        embed.description = '\n'.join(text)
+        embed2.description = '\n'.join(text2)
 
-        await msg.edit(content=f"# Level Leaderboard", embed=embed)
+        await msg.edit(content=f" ", embed=embed)
         await msg2.edit(content=f" ", embed=embed2)
 
 
