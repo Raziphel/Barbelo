@@ -59,10 +59,10 @@ class leaderboard(Cog):
             else:
                 text2.append(f"#{index+1} **{user.name}** --> Lvl.{floor(rank.level):,}")
 
-        embed.description = '# Level Leaderboard\n'.join(text)
+        embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
 
-        await msg.edit(content=f" ", embed=embed)
+        await msg.edit(content=f"# Level Leaderboard", embed=embed)
         await msg2.edit(content=f" ", embed=embed2)
 
 
@@ -94,10 +94,10 @@ class leaderboard(Cog):
             else:
                 text2.append(f"#{index+1} **{user.name}** --> {gem_string}")
 
-        embed.description = '# Gem Leaderboard\n'.join(text)
+        embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
 
-        await msg.edit(content=" ", embed=embed)
+        await msg.edit(content="# Gem Leaderboard", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
