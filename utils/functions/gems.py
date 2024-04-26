@@ -169,6 +169,6 @@ class GemFunctions(object):
             flags.append(f"{amethysts} {cls.bot.config['gem_emoji']['amethyst']}x")
         if hellstones > 0:
             flags.append(f"{hellstones} {cls.bot.config['gem_emoji']['hellstone']}x")
-        gems_string = ' **-** '.join(flags)
+        gems_string = ' '.join(flags)
 
         return gems_string
