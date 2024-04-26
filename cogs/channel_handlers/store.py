@@ -33,35 +33,35 @@ class store_Handler(Cog):
         msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0xFF0000)
-        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['hellstone']}x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ 5 {self.bot.config['gem_emoji']['hellstone']}x**\n\n```Turn all your hellstones into $USD!```", inline=True)
+        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['hellstone']}10x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
+        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['hellstone']}5x**\n\n```Turn all your hellstones into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
-        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ 10 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ 25 {self.bot.config['gem_emoji']['ruby']}x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
         embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 50 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Gain the ability steal from others!```", inline=True) 
         # TODO: Add a way of stealing from one another's gems and commands to be/stop being a thief!
 
         embed4=Embed(description=f"# Color Roles\n`All these listed items change your color here on the discord!`", color=0xFF00FF)
-        embed4.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['sun_flower']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['nephritis']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['belize_hole']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['wisteria']}>", inline=True)
-        embed4.add_field(name=f"⊰ ⛅ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🧩 Turquoise ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['turquoise']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🌻 Sun Flower ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['sun_flower']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🥗 Nephritis ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['nephritis']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧿 Belize Hole ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['belize_hole']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🪀 Wisteria ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['wisteria']}>", inline=True)
+        embed4.add_field(name=f"⊰ ⛅ Clouds ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['clouds']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧩 Turquoise ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}1x**\n\n<@&{self.bot.config['color_roles']['turquoise']}>", inline=True)
 
-        embed4.add_field(name=f"⊰ 🍑 Pastel Pink ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_pink']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🍇 Pastel Violet ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_violet']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🧊 Pastel Blue ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_blue']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🥒 Pastel Green ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_green']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🍋 Pastel Yellow ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_yellow']}>", inline=True)
-        embed4.add_field(name=f"⊰ 🍓 Pastel Red ⊱", value=f"**╰⊰ 1 {self.bot.config['gem_emoji']['amethyst']}x**\n\n<@&{self.bot.config['color_roles']['pastel_red']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍑 Pastel Pink ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_pink']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍇 Pastel Violet ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_violet']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🧊 Pastel Blue ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_blue']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🥒 Pastel Green ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_green']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍋 Pastel Yellow ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_yellow']}>", inline=True)
+        embed4.add_field(name=f"⊰ 🍓 Pastel Red ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['amethyst']}3x**\n\n<@&{self.bot.config['color_roles']['pastel_red']}>", inline=True)
 
 
         await msg1.edit(content=f" ", embed=embed1)
@@ -282,7 +282,7 @@ class store_Handler(Cog):
             if emoji == "🍑":
                 item['name'] = "Pastel Pink (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Pink Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -293,7 +293,7 @@ class store_Handler(Cog):
             if emoji == "🍇":
                 item['name'] = "Pastel Violet (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Violet Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -304,7 +304,7 @@ class store_Handler(Cog):
             if emoji == "🧊":
                 item['name'] = "Pastel Blue (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Blue Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -315,7 +315,7 @@ class store_Handler(Cog):
             if emoji == "🥒":
                 item['name'] = "Pastel Green (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Green Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -326,7 +326,7 @@ class store_Handler(Cog):
             if emoji == "🍋":
                 item['name'] = "Pastel Yellow (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Yellow Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -337,7 +337,7 @@ class store_Handler(Cog):
             if emoji == "🍓":
                 item['name'] = "Pastel Red (Color Role)"
                 item['gem_type'] = self.bot.config['gem_emoji']['amethyst']
-                item['gem_amount'] = 1
+                item['gem_amount'] = 3
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Red Color Role!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
