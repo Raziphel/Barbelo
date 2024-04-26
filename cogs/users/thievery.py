@@ -24,7 +24,6 @@ class thievery(Cog):
 
 
 
-    @cooldown(1, 3600, BucketType.user)
     @command(application_command_meta=ApplicationCommandMeta())
     async def larceny(self, ctx):
         '''
@@ -32,19 +31,21 @@ class thievery(Cog):
         '''
         skills = utils.Skills.get(ctx.author.id)
 
-        if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
+        if (skills.larceny_stamp + timedelta(hours=2)) >= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n{t.hour} hours and {t.minute} minutes!", user=ctx.author))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You can change your larceny setting in:\n**{t.hour} hours and {t.minute} minutes!**", user=ctx.author))
 
         
         if skills.larceny == False:
             skills.larceny = True
-            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal and be stolen from!", user=ctx.author))
+            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Enabled!\nYou can now steal in 2 hours and be stolen from!", user=ctx.author))
 
         elif skills.larceny == True:
             skills.larceny = False
             await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# Larceny Disabled!\nYou can no longer steal or be stolen from!", user=ctx.author))
+
+        skills.larceny_stamp = dt.utcnow()
 
         async with self.bot.database() as db:
             await skills.save(db)
@@ -56,7 +57,6 @@ class thievery(Cog):
 
 
 
-    @cooldown(1, 3600, BucketType.user)
     @command(        
         aliases=['yoink'],
         application_command_meta=ApplicationCommandMeta(
@@ -100,13 +100,10 @@ class thievery(Cog):
         if oskills.larceny == False:
             return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"{user.mention} has not enabled larceny!", user=ctx.author))
 
-        if not skills.larceny_stamp:
-            skills.larceny_stamp = (dt.utcnow() - timedelta(days=3))
-
-        if (skills.larceny_stamp + timedelta(hours=2)) <= dt.utcnow():
+        if (skills.larceny_stamp + timedelta(hours=2)) >= dt.utcnow():
             tf = skills.larceny_stamp + timedelta(hours=2)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
-            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You are not capable of stealing for another:\n{t.hour} hours and {t.minute} minutes!", user=ctx.author))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"You are not capable of stealing for another:\n**{t.hour} hours and {t.minute} minutes!**", user=ctx.author))
 
         gems_stolen = None
         skills.larceny_stamp = dt.utcnow()
@@ -133,8 +130,8 @@ class thievery(Cog):
         gem_string = await utils.GemFunctions.gems_to_text(diamonds=diamonds, rubys=rubys, sapphires=sapphires)
 
         await ctx.interaction.response.send_message(
-                content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author}** Stole gems from **{user.name}** and they gained {gem_string}", user=ctx.author))
-        await self.gem_logs.send(f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained {gem_string}")
+                content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author.name}** Stole gems from **{user.name}**!\n# Stealing {gem_string}", user=ctx.author))
+        await self.gem_logs.send(f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained **{gem_string}**")
 
 
         async with self.bot.database() as db:

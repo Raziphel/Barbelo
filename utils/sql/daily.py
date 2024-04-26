@@ -47,3 +47,11 @@ class Daily(object):
                 monthly = dt.utcnow() - timedelta(days=31),
             )
         return user
+
+
+    @classmethod
+    def sorted_daily(cls):
+        '''sorts the user's by balance. getting ranks!'''
+        sorted_daily = sorted(cls.all_dailys.values(), key=lambda u: u.daily, reverse=True)
+        return sorted_daily
+

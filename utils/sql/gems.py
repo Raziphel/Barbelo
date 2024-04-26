@@ -42,3 +42,11 @@ class Gems(object):
         if user == None:
             return cls(user_id)
         return user
+
+
+
+    @classmethod
+    def sort_gems(cls):
+        '''sorts the user's by balance. getting ranks!'''
+        sorted_gems = sorted(cls.all_gems.values(), key=lambda u: u.amethyst+(u.hellstone*100), reverse=True)
+        return sorted_gems
