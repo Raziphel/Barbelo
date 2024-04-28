@@ -41,13 +41,6 @@ class Developer(Cog):
 
 
     @utils.is_dev()
-    @command()
-    async def resync(self, ctx):
-        await self.bot.tree.sync()
-        await ctx.send(embed=utils.Embed(title=f"Resyncing Commands..."))
-
-
-    @utils.is_dev()
     @command(aliases=['r'])
     async def restart(self, ctx):
         '''Restarts the bot'''  

@@ -46,7 +46,6 @@ class payment(Cog):
         if self.bot.connected == False:
             return
 
-        receiver = utils.DiscordGet(ctx.guild.members, id=receiver)
         g = utils.Gems.get(ctx.author.id)
         g_r = utils.Gems.get(receiver.id)
 
