@@ -68,7 +68,6 @@ class payment(Cog):
         await msg.add_reaction(self.bot.config['gem_emoji']['amethyst'])
 
         try:
-
             # Watches for the reactions
             check = lambda x, y: y.id == ctx.author.id and x.message.id == msg.id and str(x.emoji) in [self.bot.config['gem_emoji']['diamond'], self.bot.config['gem_emoji']['ruby'], self.bot.config['gem_emoji']['sapphire'], self.bot.config['gem_emoji']['amethyst']]
             r, _ = await self.bot.wait_for('reaction_add', check=check)
@@ -76,21 +75,25 @@ class payment(Cog):
                 purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['diamond'], amount=gems)
                 if purchased == False:
                     raise TooPoor
+                g_r.diamond += gems
 
             if str(r.emoji) == self.bot.config['gem_emoji']['ruby']:
                 purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['ruby'], amount=gems)
                 if purchased == False:
                     raise TooPoor
+                g_r.ruby += gems
 
             if str(r.emoji) == self.bot.config['gem_emoji']['sapphire']:
                 purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['sapphire'], amount=gems)
                 if purchased == False:
                     raise TooPoor
+                g_r.sapphire += gems
 
             if str(r.emoji) == self.bot.config['gem_emoji']['amethyst']:
                 purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['amethyst'], amount=gems)
                 if purchased == False:
                     raise TooPoor
+                g_r.amethyst += gems
 
 
         except TooPoor:
