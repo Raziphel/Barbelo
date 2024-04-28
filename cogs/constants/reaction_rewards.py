@@ -106,31 +106,31 @@ class Message_Rewards(Cog):
                 await message.clear_reactions()
                 g.amethyst += 1
                 msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['amethyst']}x")
-                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['amethyst']}x")
+                await gem_logs.send(f"# {user} got {self.bot.config['gem_emoji']['amethyst']}1x")
 
         elif str(payload.emoji) == self.bot.config['gem_emoji']['sapphire']:
             if message.id in self.sapphire_messages:
                 self.sapphire_messages.remove(message.id)
                 await message.clear_reactions()
-                g.sapphire += 1
+                g.sapphire += 3
                 msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['sapphire']}x")
-                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['sapphire']}x")
+                await gem_logs.send(f"# {user} got {self.bot.config['gem_emoji']['sapphire']}1x")
 
         elif str(payload.emoji) == self.bot.config['gem_emoji']['ruby']:
             if message.id in self.ruby_messages:
                 self.ruby_messages.remove(message.id)
                 await message.clear_reactions()
-                g.ruby += 1
+                g.ruby += 25
                 msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['ruby']}x")
-                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['ruby']}x")
+                await gem_logs.send(f"# {user} got {self.bot.config['gem_emoji']['ruby']}1x")
 
         if str(payload.emoji) == self.bot.config['gem_emoji']['diamond']:
             if message.id in self.diamond_messages:
                 self.diamond_messages.remove(message.id)
                 await message.clear_reactions()
-                g.diamond += 1
+                g.diamond += 75
                 msg = await channel.send(f"# {user.name} got 1 {self.bot.config['gem_emoji']['diamond']}x")
-                await gem_logs.send(f"# {user} got 1 {self.bot.config['gem_emoji']['diamond']}x")
+                await gem_logs.send(f"# {user} got {self.bot.config['gem_emoji']['diamond']}1x")
 
 
         else: 
