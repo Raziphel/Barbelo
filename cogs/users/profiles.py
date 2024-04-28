@@ -32,8 +32,8 @@ class profile(Cog):
         '''Quick Check inventory'''
         if not user:
             user = ctx.author
-
-        user = utils.DiscordGet(ctx.guild.members, id=user)
+        else:
+            user = utils.DiscordGet(ctx.guild.members, id=user)
 
         g = utils.Gems.get(user.id)
         gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
