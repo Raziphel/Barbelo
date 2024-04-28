@@ -40,12 +40,13 @@ class payment(Cog):
     )
     async def pay(self, ctx, receiver:User=None, gems:int=0):
         '''
-        sending payemnts to other members
+        send payments to other members
         '''
         #? Check if bot is connected!
         if self.bot.connected == False:
             return
 
+        receiver = utils.DiscordGet(ctx.guild.members, id=receiver)
         g = utils.Gems.get(ctx.author.id)
         g_r = utils.Gems.get(receiver.id)
 
@@ -107,7 +108,7 @@ class payment(Cog):
             await g_r.save(db)
 
         await msg.delete()
-        await ctx.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {gems} {str(r.emoji)}x to {receiver.mention}!"))
+        await ctx.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {str(r.emoji)}{gems}x to {receiver.mention}!"))
 
         await self.gem_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {gems} {str(r.emoji)}x to {receiver.mention}!"))
 
