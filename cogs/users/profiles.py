@@ -15,28 +15,28 @@ class profile(Cog):
 
 
 
-    @command(        
-        aliases=['gem'],
-        application_command_meta=ApplicationCommandMeta(
-            options=[
-                ApplicationCommandOption(
-                    name="user",
-                    description="The user you'd like to see the coins of!",
-                    type=ApplicationCommandOptionType.user,
-                    required=False,
-                ),
-            ],
-        ),
-    )
-    async def gems(self, ctx, user=None):
-        '''Quick Check inventory'''
-        if not user:
-            user = ctx.author
+    # @command(        
+    #     aliases=['gem'],
+    #     application_command_meta=ApplicationCommandMeta(
+    #         options=[
+    #             ApplicationCommandOption(
+    #                 name="user",
+    #                 description="The user you'd like to see the coins of!",
+    #                 type=ApplicationCommandOptionType.user,
+    #                 required=False,
+    #             ),
+    #         ],
+    #     ),
+    # )
+    # async def gems(self, ctx, user=None):
+    #     '''Quick Check inventory'''
+    #     if not user:
+    #         user = ctx.author
 
-        g = utils.Gems.get(user.id)
-        gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
+    #     g = utils.Gems.get(user.id)
+    #     gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
 
-        await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems}**"))
+    #     await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"**{gems}**"))
 
 
 
