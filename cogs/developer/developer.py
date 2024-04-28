@@ -43,7 +43,7 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def resync(self, ctx):
-        await bot.tree.sync()
+        await self.bot.tree.sync()
         await ctx.send(embed=utils.Embed(title=f"Resyncing Commands..."))
 
 
