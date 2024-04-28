@@ -40,6 +40,12 @@ class Developer(Cog):
         await ctx.send('```py\n' + str(ans) + '```')
 
 
+    @utils.is_dev()
+    @command()
+    async def resync(self, ctx):
+        await bot.tree.sync()
+        await ctx.send(embed=utils.Embed(title=f"Resyncing Commands..."))
+
 
     @utils.is_dev()
     @command(aliases=['r'])
