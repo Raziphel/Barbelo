@@ -78,7 +78,7 @@ class UserFunctions(object):
             msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{gems_string}**"))
 
         log = cls.bot.get_channel(cls.bot.config['logs']['gems'])
-        await log.send(f"**{user.name}** leveled up and is now level **{lvl.level:,}**\nGranting them: **{gems_string}**")
+        await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{gems_string}**")
 
         await sleep(6)
         try: await msg.delete()
