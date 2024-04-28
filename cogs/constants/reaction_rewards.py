@@ -132,7 +132,6 @@ class Message_Rewards(Cog):
                 msg = await channel.send(f"# {user.name} got {self.bot.config['gem_emoji']['diamond']}75x")
                 await gem_logs.send(f"# {user} got {self.bot.config['gem_emoji']['diamond']}75x")
 
-
         else: 
             return
 
