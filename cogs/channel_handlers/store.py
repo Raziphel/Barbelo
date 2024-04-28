@@ -37,12 +37,12 @@ class store_Handler(Cog):
         embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['hellstone']}5x**\n\n```Turn all your hellstones into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
-        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}10x**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}25x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}25x**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}25x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['sapphire']}25x**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}75x**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}75x**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ {self.bot.config['gem_emoji']['ruby']}75x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
         embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ 50 {self.bot.config['gem_emoji']['sapphire']}x**\n\n```Gain the ability steal from others!```", inline=True) 
@@ -136,7 +136,7 @@ class store_Handler(Cog):
             if emoji == "📚":
                 item['name'] = "Library Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 10
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -147,7 +147,7 @@ class store_Handler(Cog):
             if emoji == "🎫":
                 item['name'] = "Image Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 10
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -158,7 +158,7 @@ class store_Handler(Cog):
             if emoji == "🔊":
                 item['name'] = "Soundboard Pass"
                 item['gem_type'] = self.bot.config['gem_emoji']['sapphire']
-                item['gem_amount'] = 10
+                item['gem_amount'] = 25
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -169,7 +169,7 @@ class store_Handler(Cog):
             if emoji == "🎁":
                 item['name'] = "Stats Channel"
                 item['gem_type'] = self.bot.config['gem_emoji']['ruby']
-                item['gem_amount'] = 25
+                item['gem_amount'] = 75
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -180,7 +180,7 @@ class store_Handler(Cog):
             if emoji == "🧶":
                 item['name'] = "Thread Permissions"
                 item['gem_type'] = self.bot.config['gem_emoji']['ruby']
-                item['gem_amount'] = 25
+                item['gem_amount'] = 75
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
@@ -191,7 +191,7 @@ class store_Handler(Cog):
             if emoji == "🔮":
                 item['name'] = "External Emojis"
                 item['gem_type'] = self.bot.config['gem_emoji']['ruby']
-                item['gem_amount'] = 25
+                item['gem_amount'] = 75
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['gem_amount']} {item['gem_type']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
