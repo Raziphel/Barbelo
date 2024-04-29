@@ -103,7 +103,7 @@ class Gem_Generator(Cog):
 
                     g = utils.Gems.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += (5 + (len(vc.members)*5)) * (round(lvl.level/5))
+                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/5))
                     g.emeralds = 15 + round(len(vc.members)*5)
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
