@@ -71,7 +71,7 @@ class store_Handler(Cog):
         await msg5.edit(content=f".")
         await msg6.edit(content=f".")
 
-
+ 
 
 
 
