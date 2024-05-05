@@ -53,7 +53,7 @@ class Gem_Generator(Cog):
                 unique_words = 8
 
             g.emerald += (2*unique_words)
-            exp += 1+unique_words * (round(lvl.level/5))
+            exp += 1+unique_words * (round(lvl.level/10))
 
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
@@ -103,7 +103,7 @@ class Gem_Generator(Cog):
 
                     g = utils.Gems.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/5))
+                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/10))
                     g.emeralds = 15 + round(len(vc.members)*5)
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
