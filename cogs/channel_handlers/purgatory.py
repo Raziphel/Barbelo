@@ -41,7 +41,7 @@ class purgatory(Cog):
     @Cog.listener('on_ready') #! ---> Server Rules
     async def rules(self):
 
-        embed1=Embed(description=f"# __**Welcome to Esoterica**__\n*This isn't your typical Discord server...*\n\nHere in Esoterica in addition to be a fantastic community to post and engage in...\n", color=0xff0000)
+        embed1=Embed(description=f"# __**Welcome to Esoterica**__\n*This isn't your typical Discord server...*\n\nHere in Esoterica in addition to being an engaging and social community.\nYou will be apart of a ", color=0xff0000)
 
         embed2=Embed(description=f"# 2. Respect\nExcessively argumentative, rude, dismissive, or aggressive members will be removed. We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of racism, homophobia, transphobia or other types of discriminatory language. Jokes about these topics are equally unwelcome. Personal arguments or conversations between members should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0xff0000)
 
