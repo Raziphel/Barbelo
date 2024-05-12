@@ -69,7 +69,7 @@ class purgatory(Cog):
 
         # embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7, embed8, embed9]
 
-        await ch.fetch_message(self.bot.config['welcome_messages']['welcome_banner'])
+        welcome_banner = await ch.fetch_message(self.bot.config['welcome_messages']['welcome_banner'])
         await welcome_banner.edit(content=" ", set_image="https://cdn.discordapp.com/attachments/550556052396179458/1239079059401736252/S0omDsX.png?ex=66419dcc&is=66404c4c&hm=e5be1a1c5284b8c32b948ce4047bd00aa66e7c90b55582bbb032e0c6ddcd8fbc&")
 
         # for i, rule in rules.items():
