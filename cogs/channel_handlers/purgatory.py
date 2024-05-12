@@ -64,7 +64,7 @@ class purgatory(Cog):
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
         welcome_banner = await ch.fetch_message(self.bot.config['welcome_messages']['banner_id']) #? 
-        await welcome_banner.edit(content=f"{self.bot.config['welcome_messages']['banner_url']}", embed=embed1)
+        await welcome_banner.edit(content=f"{self.bot.config['welcome_messages']['banner_url']}")
 
         # rules = {}
         # for i in range(2, 10):
