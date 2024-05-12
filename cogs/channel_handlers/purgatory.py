@@ -61,7 +61,7 @@ class purgatory(Cog):
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
-        ch = guild.get_channel(self.bot.config['channels']['purgatory']) 
+        ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
         rules = {}
         for i in range(2, 10):
