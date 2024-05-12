@@ -41,7 +41,7 @@ class purgatory(Cog):
     @Cog.listener('on_ready') #! ---> Server Rules
     async def rules(self):
 
-        embed1=Embed(description=f"# __**Welcome to Esoterica**__\n", color=0xff0000)
+        embed1=Embed(description=f"# __**Welcome to Esoterica**__\n\n*This isn't your typical Discord server...*\nHere in Esoterica in addition to be a fantastic community to post and engage in...\n", color=0xff0000)
 
         embed2=Embed(description=f"# 2. Respect\nExcessively argumentative, rude, dismissive, or aggressive members will be removed. We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of racism, homophobia, transphobia or other types of discriminatory language. Jokes about these topics are equally unwelcome. Personal arguments or conversations between members should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0xff0000)
 
@@ -66,14 +66,14 @@ class purgatory(Cog):
         welcome_banner = await ch.fetch_message(self.bot.config['welcome_messages']['banner_id']) #? 
         await welcome_banner.edit(content=f"{self.bot.config['welcome_messages']['banner_url']}")
 
-        # rules = {}
-        # for i in range(2, 10):
-        #     rules[i] = await ch.fetch_message(self.bot.config['rules_messages'][str(i)])
+        rules = {}
+        for i in range(1, 2):
+            rules[i] = await ch.fetch_message(self.bot.config['rules_messages'][str(i)])
 
-        # embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7, embed8, embed9]
+        embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7, embed8, embed9]
 
-        # for i, rule in rules.items():
-        #     await rule.edit(content="", embed=embeds[i-1])
+        for i, rule in rules.items():
+            await rule.edit(content="", embed=embeds[i-1])
 
 
 
