@@ -43,7 +43,7 @@ class purgatory(Cog):
 
         embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0xff0000)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\n**1.)** I may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n**2.)** I have fully read, understand and will uphold the rules of Esoterica.\n\n**3.)** I have fully read, understand and will uphold Discord's Terms of Service.", color=0x808080)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\n**1.)** I may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n**2.)** I have fully read, understand and will uphold the rules of Esoterica.\n\n**3.)** I have fully read, understand and will uphold Discord's Terms of Service.", color=0x8F00FF)
 
         embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Esoterica Terms of Service and are capable of receiving a private message then please click the ✔ reaction button to being the verification process.", color=0xff0000)
 
