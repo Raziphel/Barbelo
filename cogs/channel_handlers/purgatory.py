@@ -70,7 +70,7 @@ class purgatory(Cog):
         await tos_banner.edit(content=f"{self.bot.config['welcome_messages']['tos_url']}")
 
         rules = {}
-        for i in range(1, 2):
+        for i in range(1, 3):
             rules[i] = await ch.fetch_message(self.bot.config['welcome_messages'][str(i)])
 
         embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7, embed8, embed9]
