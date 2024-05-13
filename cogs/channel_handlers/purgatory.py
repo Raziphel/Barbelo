@@ -43,12 +43,11 @@ class purgatory(Cog):
 
         embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0xff0000)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica, you understand that you may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n", color=0x36454F)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.\n**You agree to the following:** \n\n\1.) You may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n ", color=0x36454F)
 
         embed3=Embed(description=f"", color=0xff0000)
 
         embed4=Embed(description=f"", color=0xBEBEBE)
-
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
