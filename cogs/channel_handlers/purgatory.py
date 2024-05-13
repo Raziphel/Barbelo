@@ -41,23 +41,13 @@ class purgatory(Cog):
     @Cog.listener('on_ready') #! ---> Server Rules
     async def rules(self):
 
-        embed1=Embed(description=f"# __**Welcome to Esoterica**__\n*This isn't your typical Discord server...*\n\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are  all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0xff0000)
+        embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0xff0000)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\n", color=0xff0000)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica, you understand that you may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n", color=0x000000)
 
-        embed3=Embed(description=f"# 3. Mental Illness\nThis includes jokes and discussing methods of harm. We care about the well-being of all our members; however, this chat is not a suitable method of mental care therapy. Instead, if you or somebody you know needs help, please seek out trained professionals for appropriate care. Resources relating to these issues can be found [Here](https://www.ispn-psych.org/mental-health-links).\n\n This rule isn't included in an attempt to deny people an emotional outlet, but instead to protect those members from malicious users who might try to convince them to harm themselves and to protect them from armchair psychologists who may make things worse.", color=0xff0000)
+        embed3=Embed(description=f"", color=0xff0000)
 
-        embed4=Embed(description=f"# 4. Staff Decisions\nIf any issue comes up, please ping the appropriate staff for assistance. Please do not attempt to resolve issues yourself. Staff's decisions and actions should be respected by all users; however users may contact the team for additional information, clarification or to appeal. If you have any issues with a particular staff's actions please take it to an <@&1104988250478743572> or <@&1109654196942282793> privately.\n\nIn the case of emergencies or issues that require immediate attention you can:\nPing us using <@&1068389119195107378> Please do not use this for non-emergencies.", color=0xBEBEBE)
-
-        embed5=Embed(description=f"# 5. Advertising\nAdvertisements to other groups or Discord servers are not allowed without prior staff approval. Members seeking to advertise commissions or other products must do so in the art sectioned channels. Advertisements should not include any NSFW or otherwise unsuitable content. (Secret number for verification is: 33) We consider raffles, or anything which requires following, liking, retweeting, and so forth, as advertising.\n\nChoosing to DM any member of the server only to try and advertise will result in an instant ban, especially if you are a low level member.", color=0xBEBEBE)
-
-        embed6=Embed(description=f"# 6. Politics\nPlease try to avoid any heated political discussions. This includes, but is not limited to, inflammatory remarks, stances or controversial topics, takes or media. Political imagery or references are also not suitable for inclusion in profile pictures, nicknames or emojis. This ranges from Communist and Fascist symbolism, to modern day mainstream politics and political movements. Keep rule #2 in mind and treat each other with respect during discourse.", color=0xBEBEBE)
-
-        embed7=Embed(description=f"# 7. NSFW Content\nNSFW content is not allowed.  Do not post any sexually explicit, suggestive or excessively violent content.\n\n⦁ This applies to all forms of content. Text, images, profile pictures, statuses, etc.\n⦁ Featureless anatomy (i.e.: cartoon / barbie doll nudity) is okay.\n⦁ Images that are sexually themed or where any part of a character is featured in a sexually suggestive manner are not allowed.\n⦁ Excessive or detailed gore is not permitted.\n⦁ No questionable underage content of any kind.\n⦁ No content that could be considered to be depicting a fetish, regardless of whether some may consider it SFW.\n⦁ No alluding to or mentioning content disallowed by these rules. This includes but is not limited to phrases, imagery or external sites.\n\nIf you are unsure whether or not something is considered SFW according to this server’s rules, message a mod for clarification.", color=0x7F00FF)
-
-        embed8=Embed(description=f"# 8. Alt Accounts\nDue to potential user abuse, users are not allowed to have alts within the server. If a user is found with an alt, the alt(s) and main account will be removed. Please keep any and all alts out of the server.", color=0x7F00FF)
-
-        embed9=Embed(description=f"# Verification\n**Please click the ✅ reaction to begin the verification process.**\n*The bot must be able to message you!*\n\n`WARNING: You must get these answers correct or you will be kicked.`", color=0x7F00FF)
+        embed4=Embed(description=f"", color=0xBEBEBE)
 
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
