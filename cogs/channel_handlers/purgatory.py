@@ -104,12 +104,15 @@ class purgatory(Cog):
         etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['etiquette_id']) #? 
         await etiquette_banner.edit(content=f"{self.bot.config['purgatory_messages']['etiquette_url']}")
 
+        respect_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['respect_id']) #? 
+        await respect_banner.edit(content=f"{self.bot.config['purgatory_messages']['respect_url']}")
+
 
         rules = {}
-        for i in range(1, 10):
+        for i in range(1, 3):
             rules[i] = await ch.fetch_message(self.bot.config['rules_messages'][str(i)])
 
-        embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7, embed8, embed9]
+        embeds = [embed1, embed2]
 
         for i, rule in rules.items():
             await rule.edit(content="", embed=embeds[i-1])
