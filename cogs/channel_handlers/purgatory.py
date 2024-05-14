@@ -51,18 +51,18 @@ class purgatory(Cog):
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
-        welcome_banner = await ch.fetch_message(self.bot.config['welcome_messages']['banner_id']) #? 
-        await welcome_banner.edit(content=f"{self.bot.config['welcome_messages']['banner_url']}")
+        welcome_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['welcome_id']) #? 
+        await welcome_banner.edit(content=f"{self.bot.config['purgatory_messages']['welcome_url']}")
 
-        tos_banner = await ch.fetch_message(self.bot.config['welcome_messages']['tos_id']) #? 
-        await tos_banner.edit(content=f"{self.bot.config['welcome_messages']['tos_url']}")
+        tos_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['tos_id']) #? 
+        await tos_banner.edit(content=f"{self.bot.config['purgatory_messages']['tos_url']}")
 
-        verify_banner = await ch.fetch_message(self.bot.config['welcome_messages']['verify_id']) #? 
-        await verify_banner.edit(content=f"{self.bot.config['welcome_messages']['verify_url']}")
+        verify_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['verify_id']) #? 
+        await verify_banner.edit(content=f"{self.bot.config['purgatory_messages']['verify_url']}")
 
         rules = {}
         for i in range(1, 4):
-            rules[i] = await ch.fetch_message(self.bot.config['welcome_messages'][str(i)])
+            rules[i] = await ch.fetch_message(self.bot.config['purgatory_messages'][str(i)])
 
         embeds = [embed1, embed2, embed3]
 
@@ -78,7 +78,7 @@ class purgatory(Cog):
     @Cog.listener('on_ready') #! ---> Server Rules
     async def rules(self):
 
-        embed1=Embed(description=f"# 1. Chat Etiquette\n🐍 **All text & voice channels are english only.**  Staff have to understand anything being said.\n🐍 **No Drama.** No matter how you feel about others you can't bring it up here.\n🐍 **No Politics, No Religion.**  Chats about Spirituality is allowed in *some* chats.\n🐍 **No Spamming.**  Anything that is cluttering up a chat or repetitive in VC.\n🐍 **No Self Promotion.** Unless done so in a channel deciated to self promotion.\n", color=0xff0000)
+        embed1=Embed(description=f"# 1. Chat Etiquette\n🐍 **All text & voice channels are english only.**\n🐍 **No Drama.** No matter how you feel about others you can't bring it up here.\n🐍 **No Politics, No Religion.**  Chats about Spirituality is allowed in *some* chats.\n🐍 **No Spamming.**  Anything that is cluttering up a chat or repetitive in VC.\n🐍 **No Self Promotion.** Unless done so in a channel deciated to self promotion.\n", color=0xff0000)
 
         embed2=Embed(description=f"# 2. Respect\n🩸 Excessively argumentative, rude, dismissive, or aggressive members will be removed.\n🩸 We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of racism, homophobia, transphobia or other types of discriminatory language. Jokes about these topics are equally unwelcome.\n🩸 Personal arguments or conversations between members should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0xff0000)
 
@@ -99,6 +99,11 @@ class purgatory(Cog):
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
+
+
+        etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['etiquette_id']) #? 
+        await etiquette_banner.edit(content=f"{self.bot.config['purgatory_messages']['etiquette_url']}")
+
 
         rules = {}
         for i in range(1, 10):
