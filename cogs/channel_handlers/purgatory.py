@@ -57,6 +57,9 @@ class purgatory(Cog):
         tos_banner = await ch.fetch_message(self.bot.config['welcome_messages']['tos_id']) #? 
         await tos_banner.edit(content=f"{self.bot.config['welcome_messages']['tos_url']}")
 
+        verify_banner = await ch.fetch_message(self.bot.config['welcome_messages']['verify_id']) #? 
+        await verify_banner.edit(content=f"{self.bot.config['welcome_messages']['verify_url']}")
+
         rules = {}
         for i in range(1, 4):
             rules[i] = await ch.fetch_message(self.bot.config['welcome_messages'][str(i)])
