@@ -102,7 +102,7 @@ class purgatory(Cog):
 
 
         etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['etiquette_id']) #? 
-        await etiquette_banner.edit(content=f"{self.bot.config['purgatory_messages']['etiquette_url']}", embed=Embed.None)
+        await etiquette_banner.edit(content=f"{self.bot.config['purgatory_messages']['etiquette_url']}", embed=Embed)
 
 
         rules = {}
