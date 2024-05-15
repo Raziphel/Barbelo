@@ -77,7 +77,7 @@ class leaderboard(Cog):
         embed2 = Embed(color=0x00ff00)
 
 
-        sorted_rank = utils.Gems.sort_gems()
+        sorted_rank = utils.Coins.sort_coins()
         ranks = sorted_rank[:25]
         users = []
         for i in ranks:
@@ -88,16 +88,15 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            gem_string = await utils.GemFunctions.gems_to_text(amethysts=rank.amethyst, hellstones=rank.hellstone)
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** ─── {gem_string}")
+                text.append(f"#{index+1} **{user.name}** ─── {c.coins:,}")
             else:
-                text2.append(f"#{index+1} **{user.name}** ─── {gem_string}")
+                text2.append(f"#{index+1} **{user.name}** ─── {c.coins:,}")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
 
-        await msg.edit(content="# Gem Leaderboard", embed=embed)
+        await msg.edit(content="# Coin Leaderboard", embed=embed)
         await msg2.edit(content=" ", embed=embed2)
 
 
