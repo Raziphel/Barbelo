@@ -84,7 +84,7 @@ class purgatory(Cog):
 
         embed3=Embed(description=f"# Secret Society\n🔮 **In private areas you must obey their rules and secrets.**\n🔮 **Access to these areas must be gained.** All having different requirements.\n🔮 **Designated council members** manage their respective areas.\n🔮 **Access to one area can restrict you from other areas.** ", color=0xff0000)
 
-        embed4=Embed(description=f"# Knights, Council & Overlords\n🔱 **Overlords are owners and access to all areas.**\n🔱 **Decisions made by council is final.**\n🔱 **Knights are only helpers to council.**  Most decisions come from council.\n🔱 **Not even council have access to all areas.**\n🔱 **Council & Knights are still mortal.**", color=0x8F00FF)
+        embed4=Embed(description=f"# Knights, Council & Overlords\n🔱 **Overlords are owners and access to all areas.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**  Most decisions come from council.\n🔱 **Not even council have access to all areas.**\n🔱 **Council & Knights are still mortal.**", color=0x8F00FF)
 
 
 
