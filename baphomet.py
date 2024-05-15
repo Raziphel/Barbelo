@@ -56,6 +56,7 @@ class Baphomet(commands.AutoShardedBot):
                 moderation = await db('SELECT * FROM moderation')
                 levels = await db('SELECT * FROM levels')
                 gems = await db('SELECT * FROM gems')
+                coins = await db('SELECT * FROM coins')
                 tracking = await db('SELECT * FROM tracking')
                 daily = await db('SELECT * FROM daily')
                 skills = await db('SELECT * FROM skills')
