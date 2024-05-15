@@ -111,6 +111,7 @@ class Developer(Cog):
             c.coins += g.sapphire*1000
             c.coins += g.amethyst*10000
             c.coins += g.hellstone*100000
+            c.earned = c.coins
             async with self.bot.database() as db:
                 await g.save(db)
                 await c.save(db)
