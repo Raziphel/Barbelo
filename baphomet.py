@@ -48,7 +48,7 @@ class Baphomet(commands.AutoShardedBot):
             utils.Coins.all_coins.clear()
             utils.Tracking.all_tracking.clear()
             utils.Daily.all_dailys.clear()
-            utils.Skills.all_skills.clear()rankrank
+            utils.Skills.all_skills.clear()
 
 
             #! Collect from Database
