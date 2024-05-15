@@ -14,8 +14,8 @@ class CoinFunctions(object):
         '''Use for payment between users (Taxed)'''
 
         #! Define Varibles
-        cp = utils.Currency.get(payer.id)
-        cr = utils.Currency.get(receiver.id)
+        cp = utils.Coins.get(payer.id)
+        cr = utils.Coins.get(receiver.id)
         new_amount = await cls.pay_tax(payer=payer, amount=amount)
         taxed = amount - new_amount
 
@@ -41,8 +41,8 @@ class CoinFunctions(object):
         '''Use this method to pay the taxes for an amount then send the new amount back.'''
 
         #! Define Varibles
-        cp = utils.Currency.get(payer.id)
-        cr = utils.Currency.get(self.bot.config['bot_id'])
+        cp = utils.Coins.get(payer.id)
+        cr = utils.Coins.get(self.bot.config['bot_id'])
 
         #! Determine tax amount
         new_amount = amount*(0.92) #? 8% Tax
@@ -65,8 +65,8 @@ class CoinFunctions(object):
         '''Use this method for purchases made!'''
 
         #! Define Varibles
-        cp = utils.Currency.get(payer.id)
-        cr = utils.Currency.get(self.bot.config['bot_id'])
+        cp = utils.Coins.get(payer.id)
+        cr = utils.Coins.get(self.bot.config['bot_id'])
 
         if cp.coins < amount:
             return false
@@ -89,8 +89,8 @@ class CoinFunctions(object):
         '''Use this method for letting users earn coins'''
 
         #! Define Varibles
-        cu = utils.Currency.get(earner.id)
-        cb = utils.Currency.get(self.bot.config['bot_id'])
+        cu = utils.Coins.get(earner.id)
+        cb = utils.Coins.get(self.bot.config['bot_id'])
 
         #! Check if the bank's got coins!
         if cb.coins <= 10000:
