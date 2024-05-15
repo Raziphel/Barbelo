@@ -6,6 +6,7 @@ CREATE TABLE tracking (
     vc_mins integer DEFAULT 0,
     last_bump timestamp,
     color integer,
+    last_massage 
     PRIMARY KEY (user_id)
 );
 

@@ -187,7 +187,7 @@ class purgatory(Cog):
             return message
 
         try:
-            invited_answer = await get_input(f"Where did you recieve an invintation to {guild.name} from?")
+            invited_answer = await get_input(f"Where did you recieve an invintation to Esoterica from?")
 
             age_answer = await get_input("How old are you?")
             age_answer =get_only_numbers(age_answer.content)
@@ -213,12 +213,12 @@ class purgatory(Cog):
                 color = 0x0
                 await author.send('Invalid color specified!\nSetting to default color.')
 
-            verify_answer = await get_input("What is the secret number found in the rules?\n**WARNING** putting anything but the secret bumber perfectly will result in being kicked from the server.")
+            verify_answer = await get_input("Do you agree to the server's TOS and plan to read the rules once verified? (Only answer is yes)")
 
-            msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nPhrase Given: {verify_answer.content}"
+            msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nAgreed?: {verify_answer.content}"
             msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
-            if verify_answer.content.lower() == "33" and age_answer > 12:
+            if verify_answer.content.lower() == "yes" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)

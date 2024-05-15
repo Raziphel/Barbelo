@@ -16,24 +16,26 @@ class UserFunctions(object):
 
 
     @classmethod
-    async def verify_user(cls, user:Member):
-        '''Verifys a user access to the server!'''
+    async def revive_user(cls, user:Member):
+        '''Brings a user back to life, or to life for the first time!'''
 
-        #! Check if they aren't already verified.
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
-        role = utils.DiscordGet(guild.roles, id=cls.bot.config['verified'])
+        alive = utils.DiscordGet(guild.roles, id=cls.bot.config['alive'])
+        dead = utils.DiscordGet(guild.roles, id=cls.bot.config['dead'])
 
         #+ Send joining server messages!
-        if role not in user.roles:
-            log = cls.bot.get_channel(cls.bot.config['channels']['general'])
-            await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the cult."))
+        if alive not in user.roles:
+            if dead not in user.roles:
+                log = cls.bot.get_channel(cls.bot.config['channels']['general'])
+                await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Esoterica."))
 
-        #? Assign new member roles.
-        entry_role_ids = [cls.bot.config['seperator_roles']['access'], 
-                            cls.bot.config['seperator_roles']['purchases'], 
-                            cls.bot.config['seperator_roles']['pings'], 
-                            cls.bot.config['seperator_roles']['about'],
-                            cls.bot.config['verified']]
+                #? Assign new member roles.
+                entry_role_ids = [cls.bot.config['seperator_roles']['access'], 
+                                    cls.bot.config['seperator_roles']['purchases'], 
+                                    cls.bot.config['seperator_roles']['pings'], 
+                                    cls.bot.config['seperator_roles']['about'],
+                                    cls.bot.config['alive']],
+
         for role_id in entry_role_ids:
             role = utils.DiscordGet(guild.roles, id=role_id)
             await user.add_roles(role, reason="Joined Server!")

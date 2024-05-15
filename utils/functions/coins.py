@@ -28,6 +28,7 @@ class CoinFunctions(object):
 
             cr.coins += amount
             cr.given += amount
+            cp.taxed += taxed
 
         async with cls.bot.database() as db:
             await cp.save(db)
@@ -94,7 +95,7 @@ class CoinFunctions(object):
 
         #! Check if the bank's got coins!
         if cb.coins <= 10000:
-            
+            # ??? Make something happen...
             return
 
         #+ Just take it away from the bot!
