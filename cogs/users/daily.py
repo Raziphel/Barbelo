@@ -30,7 +30,7 @@ class daily(Cog):
         #? Define variables
         day = utils.Daily.get(ctx.author.id)
         lvl = utils.Levels.get(ctx.author.id)
-        g = utils.Gems.get(ctx.author.id)
+        c = utils.Coins.get(ctx.author.id)
         tr = utils.Tracking.get(ctx.author.id)
 
         #? Check if it's first daily
@@ -61,13 +61,13 @@ class daily(Cog):
         if daily > 350:
             daily = 350
         now = dt.now()
-        emeralds = 250 * ((10 + day.daily) * now.isoweekday())
+        coins = 2.5 * ((10 + day.daily) * now.isoweekday())
         xps = (5*lvl.level) * now.isoweekday()
 
-        g.emerald += emeralds
+        c.coins += coins
+        c.earned += coins
         lvl.exp += xps
 
-        rewards = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
         d = dt.today()
         x = day_name[d.weekday()]
 
@@ -85,10 +85,10 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***", user=ctx.author)
+            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{coins:,}***", user=ctx.author)
         )
         
-        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***")
+        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['currency_emoji']['coin_emoji']}{coins:,}x***")
 
         # * Save data changes
         async with self.bot.database() as db:

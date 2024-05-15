@@ -12,7 +12,7 @@ from re import compile
 
 import utils
 
-class Gem_Generator(Cog):
+class Coin_Generator(Cog):
     def __init__(self, bot):
         self.bot = bot
         self.voice_gen_loop.start()
@@ -20,7 +20,7 @@ class Gem_Generator(Cog):
 
 
     @Cog.listener('on_message')
-    async def gem_generator(self, message:Message):
+    async def coin_generator(self, message:Message):
         '''Determine Level progression settings!'''
 
         #? Better not be in dms.
@@ -34,7 +34,7 @@ class Gem_Generator(Cog):
             return
 
         lvl = utils.Levels.get(message.author.id)
-        g = utils.Gems.get(message.author.id)
+        c = utils.Coins.get(message.author.id)
         tr = utils.Tracking.get(message.author.id)
 
 
@@ -52,7 +52,8 @@ class Gem_Generator(Cog):
             if unique_words > 14:
                 unique_words = 8
 
-            g.emerald += (2*unique_words)
+            c.coins += unique_words
+            c.earned += unique_words
             exp += 1+unique_words * (round(lvl.level/10))
 
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
@@ -63,7 +64,7 @@ class Gem_Generator(Cog):
             tr.messages += 1
         async with self.bot.database() as db:
             await lvl.save(db)
-            await g.save(db)
+            await c.save(db)
             await tr.save(db)
 
 
@@ -77,7 +78,7 @@ class Gem_Generator(Cog):
         if self.bot.connected == False:
             return
 
-        emeralds_payed = 0
+        coins_payed = 0
 
         for guild in self.bot.guilds:
             for vc in guild.voice_channels:
@@ -101,15 +102,16 @@ class Gem_Generator(Cog):
                     if len(vc.members) < 2:
                         break
 
-                    g = utils.Gems.get(member.id)
+                    c = utils.Coins.get(member.id)
                     lvl = utils.Levels.get(member.id)
                     lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/10))
-                    g.emeralds = 15 + round(len(vc.members)*5)
+                    c.coins = 2 + round(len(vc.members))
+                    c.earned = 2 + round(len(vc.members))
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
 
                     async with self.bot.database() as db:
-                        await g.save(db)
+                        await c.save(db)
                         await lvl.save(db)
                         await tr.save(db)
 
@@ -123,5 +125,5 @@ class Gem_Generator(Cog):
 
 
 def setup(bot):
-    x = Gem_Generator(bot)
+    x = Coin_Generator(bot)
     bot.add_cog(x)
