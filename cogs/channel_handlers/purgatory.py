@@ -43,7 +43,7 @@ class purgatory(Cog):
 
         embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0x8F00FF)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\n**1.)** I may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\n**2.)** I have fully read, understand and will uphold the rules of Esoterica.\n\n**3.)** I have fully read, understand and will uphold Discord's Terms of Service.", color=0xFF0000)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\nI may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\nI have fully read, understand and will uphold the rules of Esoterica.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0xFF0000)
 
         embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Esoterica Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.", color=0x8F00FF)
 
@@ -51,14 +51,14 @@ class purgatory(Cog):
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
-        welcome_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['welcome_id']) #? 
-        await welcome_banner.edit(content=f"{self.bot.config['purgatory_messages']['welcome_url']}")
+        welcome_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['welcome_id']) #? 
+        await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}")
 
-        tos_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['tos_id']) #? 
-        await tos_banner.edit(content=f"{self.bot.config['purgatory_messages']['tos_url']}")
+        tos_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['tos_id']) #? 
+        await tos_banner.edit(content=f"{self.bot.config['purgatory_banners']['tos_url']}")
 
-        verify_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['verify_id']) #? 
-        await verify_banner.edit(content=f"{self.bot.config['purgatory_messages']['verify_url']}")
+        verify_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['verify_id']) #? 
+        await verify_banner.edit(content=f"{self.bot.config['purgatory_banners']['verify_url']}")
 
         rules = {}
         for i in range(1, 4):
@@ -90,17 +90,17 @@ class purgatory(Cog):
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
 
 
-        etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['etiquette_id']) #? 
-        await etiquette_banner.edit(content=f"{self.bot.config['purgatory_messages']['etiquette_url']}")
+        etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['etiquette_id']) #? 
+        await etiquette_banner.edit(content=f"{self.bot.config['purgatory_banners']['etiquette_url']}")
 
-        respect_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['respect_id']) #? 
-        await respect_banner.edit(content=f"{self.bot.config['purgatory_messages']['respect_url']}")
+        respect_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['respect_id']) #? 
+        await respect_banner.edit(content=f"{self.bot.config['purgatory_banners']['respect_url']}")
 
-        society_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['society_id']) #? 
-        await society_banner.edit(content=f"{self.bot.config['purgatory_messages']['society_url']}")
+        society_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['society_id']) #? 
+        await society_banner.edit(content=f"{self.bot.config['purgatory_banners']['society_url']}")
 
-        council_banner = await ch.fetch_message(self.bot.config['purgatory_messages']['council_id']) #? 
-        await council_banner.edit(content=f"{self.bot.config['purgatory_messages']['council_url']}")
+        council_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['council_id']) #? 
+        await council_banner.edit(content=f"{self.bot.config['purgatory_banners']['council_url']}")
 
         rules = {}
         for i in range(1, 5):

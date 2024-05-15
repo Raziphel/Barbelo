@@ -154,7 +154,7 @@ verified = 1154236618606125106
 #+
 #+ --- Messages
 #+
-[purgatory_messages]
+[purgatory_banners]
     welcome_id = 1239078912399773737 
     welcome_url = "https://cdn.discordapp.com/attachments/550556052396179458/1239762951376732271/LaKmL2t.png?ex=66441ab9&is=6642c939&hm=f3220b723e9c91fe94bb322251be92969124c5348cbf52c6b339a64d0ac7a5de&"
     tos_id = 1239078928522678272 
