@@ -123,7 +123,8 @@ verified = 1154236618606125106
 #+
 #+ --- Emojis
 #+
-coin_emoji = "<:Coin:1026302157521174649>"
+[currency_emoji]
+    coin_emoji = "<:Coin:1026302157521174649>"
 
 [misc_emoji]
     nitro = "<:Nitro:1095491689029849189>"
