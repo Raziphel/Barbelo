@@ -62,7 +62,7 @@ class purgatory(Cog):
 
         rules = {}
         for i in range(1, 4):
-            rules[i] = await ch.fetch_message(self.bot.config['purgatory_messages'][str(i)])
+            rules[i] = await ch.fetch_message(self.bot.config['welcome_messages'][str(i)])
 
         embeds = [embed1, embed2, embed3]
 
