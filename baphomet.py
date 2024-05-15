@@ -45,9 +45,10 @@ class Baphomet(commands.AutoShardedBot):
             utils.Moderation.all_moderation.clear()
             utils.Levels.all_levels.clear()
             utils.Gems.all_gems.clear()
+            utils.Coins.all_coins.clear()
             utils.Tracking.all_tracking.clear()
             utils.Daily.all_dailys.clear()
-            utils.Skills.all_skills.clear()
+            utils.Skills.all_skills.clear()rankrank
 
 
             #! Collect from Database
@@ -67,6 +68,8 @@ class Baphomet(commands.AutoShardedBot):
                 utils.Levels(**i)
             for i in gems:
                 utils.Gems(**i)
+            for i in coins:
+                utils.Coins(**i)
             for i in tracking:
                 utils.Tracking(**i)
             for i in daily:

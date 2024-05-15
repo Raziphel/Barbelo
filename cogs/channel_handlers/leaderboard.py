@@ -78,7 +78,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Coins.sort_coins()
-        ranks = sorted_rank[:10]
+        ranks = sorted_rank[:20]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
