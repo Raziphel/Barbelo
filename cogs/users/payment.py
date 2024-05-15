@@ -14,8 +14,8 @@ class payment(Cog):
         self.bot = bot
 
     @property  #! The currency logs
-    def gem_logs(self):
-        return self.bot.get_channel(self.bot.config['logs']['gems'])
+    def coin_logs(self):
+        return self.bot.get_channel(self.bot.config['logs']['coins'])
 
 
     @cooldown(1, 30, BucketType.user)
@@ -112,7 +112,7 @@ class payment(Cog):
         await msg.delete()
         await ctx.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {str(r.emoji)}{gems}x to {receiver.mention}!"))
 
-        await self.gem_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {gems} {str(r.emoji)}x to {receiver.mention}!"))
+        await self.coin_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {gems} {str(r.emoji)}x to {receiver.mention}!"))
 
 
 

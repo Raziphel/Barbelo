@@ -18,8 +18,8 @@ class daily(Cog):
         self.bot = bot
 
     @property  #! The currency logs
-    def gem_logs(self):
-        return self.bot.get_channel(self.bot.config['logs']['gems'])
+    def coin_logs(self):
+        return self.bot.get_channel(self.bot.config['logs']['coins'])
 
 
 
@@ -88,7 +88,7 @@ class daily(Cog):
             embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***", user=ctx.author)
         )
         
-        await self.gem_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***")
+        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{rewards}***")
 
         # * Save data changes
         async with self.bot.database() as db:

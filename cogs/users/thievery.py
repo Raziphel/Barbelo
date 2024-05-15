@@ -18,8 +18,8 @@ class thievery(Cog):
 
 
     @property  #! The currency logs
-    def gem_logs(self):
-        return self.bot.get_channel(self.bot.config['logs']['gems'])
+    def coin_logs(self):
+        return self.bot.get_channel(self.bot.config['logs']['coins'])
 
 
 
@@ -131,7 +131,7 @@ class thievery(Cog):
 
         await ctx.interaction.response.send_message(
                 content=f"{user.mention}", embed=utils.Embed(title=f"🧤 Gems Stolen 🧤", desc=f"**{ctx.author.name}** Stole gems from **{user.name}**!\n# Stealing {gem_string}", user=ctx.author))
-        await self.gem_logs.send(f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained **{gem_string}**")
+        await self.coin_logs.send(f"**{ctx.author.name}** Stole gems from **{user.name}** and they gained **{gem_string}**")
 
 
         async with self.bot.database() as db:

@@ -16,6 +16,7 @@ from utils.sql.skills import Skills
 
 #? Functions
 from utils.functions.gems import GemFunctions
+from utils.functions.coins import CoinFunctions
 from utils.functions.users import UserFunctions
 
 #? Additions

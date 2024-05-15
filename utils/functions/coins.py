@@ -5,7 +5,7 @@ from discord import Member, Message, User, TextChannel
 import utils
 
 
-class Coins(object):
+class CoinFunctions(object):
     bot = None
 
 
@@ -68,6 +68,9 @@ class Coins(object):
         cp = utils.Currency.get(payer.id)
         cr = utils.Currency.get(self.bot.config['bot_id'])
 
+        if cp.coins < amount:
+            return false
+
         #+ Buy things with coins!
         cp.coins -= amount
         cp.spent += amount
@@ -76,6 +79,8 @@ class Coins(object):
         async with cls.bot.database() as db:
             await cp.save(db)
             await cr.save(db)
+
+        return True
 
 
 
