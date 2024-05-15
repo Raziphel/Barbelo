@@ -104,13 +104,13 @@ class Developer(Cog):
             g = utils.Gems.get(member.id)
             c = utils.Coins.get(member.id)
 
+            c.coins = 0
             c.coins += g.emerald 
             c.coins += g.diamond*10 
             c.coins += g.ruby*100
-            c.coins += g.sapphire*100
-            c.coins += g.amethyst*1000
-            c.coins += g.hellstone*1000
-            await utils.GemFunctions.update(member)
+            c.coins += g.sapphire*1000
+            c.coins += g.amethyst*10000
+            c.coins += g.hellstone*100000
             async with self.bot.database() as db:
                 await g.save(db)
                 await c.save(db)
