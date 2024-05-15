@@ -111,7 +111,7 @@ class purgatory(Cog):
         await society_banner.edit(content=f"{self.bot.config['purgatory_messages']['society_url']}")
 
         rules = {}
-        for i in range(1, 3):
+        for i in range(1, 4):
             rules[i] = await ch.fetch_message(self.bot.config['rules_messages'][str(i)])
 
         embeds = [embed1, embed2, embed3]
