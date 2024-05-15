@@ -2,17 +2,7 @@
 
 #! ------>  Staff Hierarchy  <------
 
-#+ Community Managers
-Overlords -> Overseers -> Council 
-
-# Development
-Senior Developers -> Developers -> Advisors
-
-#? Discord Staff
-Discord Overseer -> Developers -> Discord Admin -> Discord Sr. Moderator -> Discord Mod -> Discord Jr. Mod
-
-#* SCPSL Staff
-SCPSL Overseer -> Developers -> SCPSL Sr. Moderator -> SCPSL Mod -> SCPSL Jr. Mod
+Overlords -> Council -> Architects -> Knights 
 
 
 

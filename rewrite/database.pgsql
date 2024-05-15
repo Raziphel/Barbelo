@@ -27,6 +27,21 @@ CREATE TABLE daily (
 );
 
 
+CREATE TABLE coins (
+    user_id bigint NOT NULL,
+    coins integer DEFAULT 0,
+    banked integer DEFAULT 0,
+    earned integer DEFAULT 0,
+    spent integer DEFAULT 0,
+    taxed integer DEFAULT 0,
+    lost integer DEFAULT 0,
+    stolen integer DEFAULT 0,
+    gifted integer DEFAULT 0,
+    given integer DEFAULT 0,
+    PRIMARY KEY (user_id)
+);
+
+
 CREATE TABLE gems (
     user_id bigint NOT NULL,
     emerald integer DEFAULT 0,

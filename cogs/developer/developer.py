@@ -102,14 +102,20 @@ class Developer(Cog):
     async def convertcoins(self, ctx):
         for member in ctx.guild.members:
             g = utils.Gems.get(member.id)
-            c = utils.Currency.get(member.id)
+            c = utils.Coins.get(member.id)
 
-            g.emerald = c.coins*2222
+            c.coins += g.emerald 
+            c.coins += g.diamond*10 
+            c.coins += g.ruby*100
+            c.coins += g.sapphire*100
+            c.coins += g.amethyst*1000
+            c.coins += g.hellstone*1000
             await utils.GemFunctions.update(member)
             async with self.bot.database() as db:
                 await g.save(db)
+                await c.save(db)
 
-        await ctx.send('All members coins have been copied over and adjusted too new currency.')
+        await ctx.send('All members gems have been copied over and adjusted too coins.')
 
 
     @utils.is_dev()
