@@ -85,7 +85,7 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{coins:,}***", user=ctx.author)
+            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['currency_emoji']['coin_emoji']}{coins:,}x***", user=ctx.author)
         )
         
         await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['currency_emoji']['coin_emoji']}{coins:,}x***")
@@ -94,7 +94,7 @@ class daily(Cog):
         async with self.bot.database() as db:
             await day.save(db)
             await lvl.save(db)
-            await g.save(db)
+            await c.save(db)
 
 
 
