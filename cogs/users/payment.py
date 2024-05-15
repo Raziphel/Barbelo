@@ -1,22 +1,19 @@
 # Discord
-from discord.ext.commands import command, cooldown, ApplicationCommandMeta, BucketType, Cog
-from discord import Message, User, ApplicationCommandOption, ApplicationCommandOptionType
+from discord import User, ApplicationCommandOption, ApplicationCommandOptionType
+from discord.ext.commands import command, cooldown, BucketType, Cog, ApplicationCommandMeta
+
 # Utils
 import utils
+from math import floor
 
 
-class TooPoor(BaseException):
-    pass
-
-
-class payment(Cog):
+class Payment(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @property  #! The currency logs
+    @property  # ! The members logs
     def coin_logs(self):
-        return self.bot.get_channel(self.bot.config['logs']['coins'])
-
+        return self.bot.get_channel(self.bot.config['channels']['coin_logs']) 
 
     @cooldown(1, 30, BucketType.user)
     @command(
@@ -24,100 +21,43 @@ class payment(Cog):
         application_command_meta=ApplicationCommandMeta(
             options=[
                 ApplicationCommandOption(
-                    name="receiver",
-                    description="The user you want to send gems to.",
+                    name="recipient",
+                    description="The user you want to send coins to.",
                     type=ApplicationCommandOptionType.user,
                     required=True,
                 ),
                 ApplicationCommandOption(
-                    name="gems",
-                    description="The amount of gems you'd like to send.",
+                    name="amount",
+                    description="The amount of coins you'd like to send.",
                     type=ApplicationCommandOptionType.integer,
                     required=True,
                 ),
             ],
         ),
     )
-    async def pay(self, ctx, receiver:User=None, gems:int=0):
-        '''
-        send payments to other members
-        '''
-        #? Check if bot is connected!
-        if self.bot.connected == False:
-            return
+    async def pay(self, ctx, recipient: User = None, amount: int = 0):
+        """Send coins to another member (With a tax)."""
+        coin_e = self.bot.config['emotes']['coin']
 
-        g = utils.Gems.get(ctx.author.id)
-        g_r = utils.Gems.get(receiver.id)
+        #? Check if the recipient is the same as the user.
+        if recipient == ctx.author:
+            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{ctx.author.name} You can't pay yourself coins! stupid..."))
 
-        if receiver == ctx.author:
-            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# {ctx.author.mention} You can't pay yourself gems!", user=ctx.author))
-            return
-        if gems <= 0 or gems > 99:
-            await ctx.interaction.response.send_message(embed=utils.Embed(desc=f"# {ctx.author.mention} Has to be more than 0 and less than 99 gems!", user=ctx.author))
-            return
+        if amount <= 1000:
+            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{ctx.author.name} Has to be more than 1,000!"))
 
-        gem_string = await utils.GemFunctions.gems_to_text(diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst)
+        #? Check if the user has enough coins.
+        c = utils.Coins.get(ctx.author.id)
+        if amount > (c.coins - amount*0.08):
+            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{recipient.mention} you don't have that many coins.  (Could be due to taxes)"))
 
-        embed = utils.Embed(desc=f"# Click the gem you want to send!\n**Here's your current gem count:**\n{gem_string}", user=ctx.author)
-        msg = await ctx.send(embed=embed)
+        tax = await utils.CoinFunctions.pay_user(payer=ctx.author, receiver=recipient, amount=amount)
 
-        # adds the reactions
-        await msg.add_reaction(self.bot.config['gem_emoji']['diamond'])
-        await msg.add_reaction(self.bot.config['gem_emoji']['ruby'])
-        await msg.add_reaction(self.bot.config['gem_emoji']['sapphire'])
-        await msg.add_reaction(self.bot.config['gem_emoji']['amethyst'])
+        await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"**{ctx.author} sent {coin_e} {floor(amount):,}x to {recipient}!**\n*Taxes: {floor(tax):,}*"))
 
-        try:
-            # Watches for the reactions
-            check = lambda x, y: y.id == ctx.author.id and x.message.id == msg.id and str(x.emoji) in [self.bot.config['gem_emoji']['diamond'], self.bot.config['gem_emoji']['ruby'], self.bot.config['gem_emoji']['sapphire'], self.bot.config['gem_emoji']['amethyst']]
-            r, _ = await self.bot.wait_for('reaction_add', check=check)
-            if str(r.emoji) == self.bot.config['gem_emoji']['diamond']:
-                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['diamond'], amount=gems)
-                if purchased == False:
-                    raise TooPoor
-                g_r.diamond += gems
-
-            if str(r.emoji) == self.bot.config['gem_emoji']['ruby']:
-                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['ruby'], amount=gems)
-                if purchased == False:
-                    raise TooPoor
-                g_r.ruby += gems
-
-            if str(r.emoji) == self.bot.config['gem_emoji']['sapphire']:
-                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['sapphire'], amount=gems)
-                if purchased == False:
-                    raise TooPoor
-                g_r.sapphire += gems
-
-            if str(r.emoji) == self.bot.config['gem_emoji']['amethyst']:
-                purchased = await utils.GemFunctions.payment(user=ctx.author, gem=self.bot.config['gem_emoji']['amethyst'], amount=gems)
-                if purchased == False:
-                    raise TooPoor
-                g_r.amethyst += gems
-
-
-        except TooPoor:
-            await ctx.interaction.response.send_message(f'# {ctx.author.mention} Payment denied. You would go in debt stupid!!!')
-            await msg.delete()
-            return
-
-        #! Always update after paying!
-        await utils.GemFunctions.update(user=ctx.author)
-        await utils.GemFunctions.update(user=receiver)
-
-        async with self.bot.database() as db:
-            await g.save(db)
-            await g_r.save(db)
-
-        await msg.delete()
-        await ctx.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {str(r.emoji)}{gems}x to {receiver.mention}!"))
-
-        await self.coin_logs.send(embed=utils.Embed(user=ctx.author, desc=f"# {ctx.author.mention} sent {gems} {str(r.emoji)}x to {receiver.mention}!"))
-
-
-
+        await self.coin_logs.send(f"**{ctx.author.name}** payed **{coin_e} {amount}x** to **{recipient.name}**!")
 
 
 def setup(bot):
-    x = payment(bot)
+    x = Payment(bot)
     bot.add_cog(x)

@@ -52,9 +52,8 @@ class Coin_Generator(Cog):
             if unique_words > 14:
                 unique_words = 8
 
-            c.coins += unique_words
-            c.earned += unique_words
-            exp += 1+unique_words * (round(lvl.level/10))
+            await utils.CoinFunctions.earn(earner=ctx.author, amount=unique_words)
+            exp += 1+unique_words * (round(lvl.level/25))
 
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
@@ -104,9 +103,8 @@ class Coin_Generator(Cog):
 
                     c = utils.Coins.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/10))
-                    c.coins = 2 + round(len(vc.members))
-                    c.earned = 2 + round(len(vc.members))
+                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/25))
+                    await utils.CoinFunctions.earn(earner=ctx.author, amount=1 + round(len(vc.members)))
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
 
