@@ -89,9 +89,9 @@ class leaderboard(Cog):
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
             if index < 10:
-                text.append(f"#{index+1} **{user.name}** ─── {c.coins:,}")
+                text.append(f"#{index+1} **{user.name}** ─── {rank.coins:,}")
             else:
-                text2.append(f"#{index+1} **{user.name}** ─── {c.coins:,}")
+                text2.append(f"#{index+1} **{user.name}** ─── {rank.coins:,}")
 
         embed.description = '\n'.join(text)
         embed2.description = '\n'.join(text2)
