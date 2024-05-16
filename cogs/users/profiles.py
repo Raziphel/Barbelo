@@ -16,7 +16,7 @@ class profile(Cog):
 
 
     @command(
-        aliases=['gem'],
+        aliases=['coin'],
         application_command_meta=ApplicationCommandMeta(
             options=[
                 ApplicationCommandOption(
@@ -28,15 +28,14 @@ class profile(Cog):
             ],
         ),
     )
-    async def gems(self, ctx, user:User=None):
-        '''Quick Check inventory'''
+    async def coins(self, ctx, user:User=None):
+        '''Quick Check Coins'''
         if not user:
             user = ctx.author
 
-        g = utils.Gems.get(user.id)
-        gems = await utils.GemFunctions.gems_to_text(emeralds=g.emerald, diamonds=g.diamond, rubys=g.ruby, sapphires=g.sapphire, amethysts=g.amethyst, hellstones=g.hellstone)
+        c = utils.Coins.get(user.id)
 
-        await ctx.interaction.response.send_message(content=f"Showing <@{user.id}>'s Gems:", embed=utils.Embed(desc=f"**{gems}**"))
+        await ctx.interaction.response.send_message(content=f"Showing <@{user.id}>'s Coins Stats:", embed=utils.Embed(desc=f"**{self.bot.config['currency_emoji']['coin_emoji']}{c.coins:,}x in there pockets!**\n\nEarned: {self.bot.config['currency_emoji']['coin_emoji']}{c.earned:,}x\nSpent: {self.bot.config['currency_emoji']['coin_emoji']}{c.spent:,}x\nTaxed: {self.bot.config['currency_emoji']['coin_emoji']}{c.taxed:,}x\nLost: {self.bot.config['currency_emoji']['coin_emoji']}{c.lost:,}x\nStolen: {self.bot.config['currency_emoji']['coin_emoji']}{c.stolen:,}x\nGifted: {self.bot.config['currency_emoji']['coin_emoji']}{c.gifted:,}x\nGiven: {self.bot.config['currency_emoji']['coin_emoji']}{c.given:,}x\nBanked: {self.bot.config['currency_emoji']['coin_emoji']}{c.banked:,}x"))
 
 
 
