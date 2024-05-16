@@ -379,7 +379,7 @@ class store_Handler(Cog):
             if r.emoji == "✔":
 
                 #? Check & perform the purchase!
-                purchased = await utils..CoinFunctions.pay_for(payer=user, amount=item["price"])
+                purchased = await utils.CoinFunctions.pay_for(payer=user, amount=item["price"])
                 if purchased == False:
                     await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough coins {self.bot.config['currency_emoji']['coin_emoji']}!"))
                     return False
