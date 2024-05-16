@@ -6,6 +6,7 @@ CREATE TABLE tracking (
     vc_mins integer DEFAULT 0,
     last_bump timestamp,
     color integer,
+    last_massage 
     PRIMARY KEY (user_id)
 );
 
@@ -23,6 +24,21 @@ CREATE TABLE daily (
     daily INT NOT NULL DEFAULT 0,
     premium BOOLEAN DEFAULT False,
     monthly TIMESTAMP,
+    PRIMARY KEY (user_id)
+);
+
+
+CREATE TABLE coins (
+    user_id bigint NOT NULL,
+    coins integer DEFAULT 0,
+    banked integer DEFAULT 0,
+    earned integer DEFAULT 0,
+    spent integer DEFAULT 0,
+    taxed integer DEFAULT 0,
+    lost integer DEFAULT 0,
+    stolen integer DEFAULT 0,
+    gifted integer DEFAULT 0,
+    given integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 
@@ -49,10 +65,9 @@ CREATE TABLE moderation (
 );
 
 
-CREATE TABLE skills (
+CREATE TABLE thievery (
     user_id BIGINT NOT NULL,
-    thievery boolean DEFAULT false,
-    larceny boolean DEFAULT false,
-    larceny_stamp TIMESTAMP,
+    level boolean DEFAULT false,
+    last_steal TIMESTAMP,
     PRIMARY KEY (user_id)
 );

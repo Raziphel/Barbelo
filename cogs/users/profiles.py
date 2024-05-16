@@ -34,8 +34,9 @@ class profile(Cog):
             user = ctx.author
 
         c = utils.Coins.get(user.id)
+        emoji = self.bot.config['currency_emoji']['coin_emoji']
 
-        await ctx.interaction.response.send_message(content=f"Showing <@{user.id}>'s Coins Stats:", embed=utils.Embed(desc=f"**{self.bot.config['currency_emoji']['coin_emoji']}{c.coins:,}x in there pockets!**\n\nEarned: {self.bot.config['currency_emoji']['coin_emoji']}{c.earned:,}x\nSpent: {self.bot.config['currency_emoji']['coin_emoji']}{c.spent:,}x\nTaxed: {self.bot.config['currency_emoji']['coin_emoji']}{c.taxed:,}x\nLost: {self.bot.config['currency_emoji']['coin_emoji']}{c.lost:,}x\nStolen: {self.bot.config['currency_emoji']['coin_emoji']}{c.stolen:,}x\nGifted: {self.bot.config['currency_emoji']['coin_emoji']}{c.gifted:,}x\nGiven: {self.bot.config['currency_emoji']['coin_emoji']}{c.given:,}x\nBanked: {self.bot.config['currency_emoji']['coin_emoji']}{c.banked:,}x"))
+        await ctx.interaction.response.send_message(content=f"**Showing <@{user.id}>'s Coins Stats:**", embed=utils.Embed(desc=f"**{emoji}{c.coins:,}x in there pockets!**\n\nEarned: {emoji}{c.earned:,}x\nSpent: {emoji}{c.spent:,}x\nTaxed: {emoji}{c.taxed:,}x\nLost: {emoji}{c.lost:,}x\nStolen: {emoji}{c.stolen:,}x\nGifted: {emoji}{c.gifted:,}x\nGiven: {emoji}{c.given:,}x\nBanked: {emoji}{c.banked:,}x"))
 
 
 

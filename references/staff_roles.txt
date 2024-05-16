@@ -2,8 +2,7 @@
 
 #! ------>  Staff Hierarchy  <------
 
-#+ Community Managers
-Overlords -> Overseers -> Council 
+Overlords -> Council -> Architects -> Knights 
 
 
 
