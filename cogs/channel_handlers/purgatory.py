@@ -120,7 +120,7 @@ class purgatory(Cog):
             '''Send verification message~!'''
 
             # See if I need to deal with it
-            if payload.channel_id != self.bot.config['channels']['rules']: #? Verification Channel
+            if payload.channel_id != self.bot.config['channels']['welcome']: #? Verification Channel
                 return
             if self.bot.get_user(payload.user_id).bot:
                 return
