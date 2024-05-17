@@ -111,13 +111,7 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            100: "⊰ Hellstone (Lvl.100) ⊱",
-            75: "⊰ Amethyst (Lvl.75) ⊱",
-            50: "⊰ Sapphire (Lvl.50) ⊱",
-            30: "⊰ Ruby (Lvl.30) ⊱",
-            15: "⊰ Diamond (Lvl.15) ⊱",
-            5: "⊰ Emerald (Lvl.5) ⊱",
-            0: "⊰ Gemless ⊱"
+            0: "Member"
         }
 
         # Get roles from the user we'd need to delete
