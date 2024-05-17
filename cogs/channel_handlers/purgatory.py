@@ -135,7 +135,7 @@ class purgatory(Cog):
             member = guild.get_member(payload.user_id)
 
             if emoji == "✅":
-                verified = utils.DiscordGet(guild.roles, id=self.bot.config['verified'])
+                verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['alive'])
                 if verified not in member.roles:
                     await self.verification(author=member)
 
