@@ -36,11 +36,13 @@ class UserFunctions(object):
                                     cls.bot.config['seperator_roles']['about'],
                                     cls.bot.config['access_roles']['alive']],
 
-        for role_id in entry_role_ids:
-            role = utils.DiscordGet(guild.roles, id=role_id)
-            await user.add_roles(role, reason="Joined Server!")
+                for role_id in entry_role_ids:
+                    role = utils.DiscordGet(guild.roles, id=role_id)
+                    await user.add_roles(role, reason="Joined Server!")
 
-        #* Makes sure they get the gemless role.
+        #! Add a way to revive dead people later.
+
+        #* Makes sure they get have the correct level role.
         await cls.check_level(user)
 
 

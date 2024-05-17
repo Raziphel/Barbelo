@@ -221,7 +221,7 @@ class purgatory(Cog):
             if verify_answer.content.lower() == "yes" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
-                await utils.UserFunctions.verify_user(author)
+                await utils.UserFunctions.revive_user(author)
             else:
                 embed2=Embed(description="**You have been denied!**")
                 await author.send(embed=embed2)
