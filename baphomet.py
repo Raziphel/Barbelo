@@ -26,7 +26,6 @@ class Baphomet(commands.AutoShardedBot):
 
         #+ Load Utils
         utils.Embed.bot = self
-        utils.GemFunctions.bot = self
         utils.CoinFunctions.bot = self
         utils.UserFunctions.bot = self
 
