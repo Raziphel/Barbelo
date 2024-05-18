@@ -63,7 +63,7 @@ class daily(Cog):
             daily = 350
         now = dt.now()
         coins = 2.5 * ((10 + day.daily) * now.isoweekday())
-        xps = (5*lvl.level) * now.isoweekday()
+        xps = (2*day.daily) * now.isoweekday()
 
         await utils.CoinFunctions.earn(earner=ctx.author, amount=coins)
         lvl.exp += xps
