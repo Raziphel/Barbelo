@@ -110,12 +110,15 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            95: "Archmage",
-            85: "Magus",
-            75: "Invoker",
-            60: "Adept",
-            30: "Seeker",
-            15: "Acolyte",
+            90: "Grandmaster",
+            80: "Archmage",
+            70: "Sorcerer",
+            60: "Magus",
+            50: "Invoker",
+            40: "Practitioner",
+            30: "Adept",
+            20: "Seeker",
+            10: "Acolyte",
             0: "Neophyte"
         }
 
