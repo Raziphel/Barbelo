@@ -55,7 +55,7 @@ class UserFunctions(object):
 
         #? Set Varibles
         lvl = utils.Levels.get(user.id)
-        g = utils.Gems.get(user.id)
+        c = utils.Coins.get(user.id)
 
         #? Check if they should even level up!
         requiredexp = await cls.determine_required_exp(lvl.level)
@@ -65,24 +65,23 @@ class UserFunctions(object):
         #+ Level em the hell up!
         lvl.exp = 0
         lvl.level += 1
-        emeralds = (lvl.level*50000)
-        g.emerald += emeralds
+        coins = (lvl.level*2500)
+
+        await utils.CoinFunctions.earn(earner=user, amount=coins)
+
         async with cls.bot.database() as db:
             await lvl.save(db)
-            await g.save(db)
+            await c.save(db)
 
         #? Check for a role change.
         await cls.check_level(user=user)
 
-        #? Generates text to show how many gems they got!
-        gems_string = await utils.GemFunctions.gems_to_text(emeralds=emeralds)
-
         #? Log it and tell em.
         if channel:
-            msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{gems_string}**"))
+            msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{coins:,}**"))
 
         log = cls.bot.get_channel(cls.bot.config['logs']['coins'])
-        await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{gems_string}**")
+        await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{coins:,}**")
 
         await sleep(6)
         try: await msg.delete()
@@ -111,7 +110,13 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            0: "Member"
+            95: "Archmage",
+            85: "Magus",
+            75: "Invoker",
+            60: "Adept",
+            30: "Seeker",
+            15: "Acolyte",
+            0: "Neophyte"
         }
 
         # Get roles from the user we'd need to delete
