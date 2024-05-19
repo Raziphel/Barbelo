@@ -20,8 +20,8 @@ class UserFunctions(object):
         '''Brings a user back to life, or to life for the first time!'''
 
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
-        alive = utils.DiscordGet(guild.roles, id=cls.bot.config['alive'])
-        dead = utils.DiscordGet(guild.roles, id=cls.bot.config['dead'])
+        alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
+        dead = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['dead'])
 
         #+ Send joining server messages!
         if alive not in user.roles:
