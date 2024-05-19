@@ -110,16 +110,16 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            90: "Grandmaster",
-            80: "Archmage",
-            70: "Sorcerer",
-            60: "Magus",
-            50: "Invoker",
-            40: "Practitioner",
-            30: "Adept",
-            20: "Seeker",
-            10: "Acolyte",
-            0: "Neophyte"
+            90: "lvl.90",
+            80: "lvl.80",
+            70: "lvl.70",
+            60: "lvl.60",
+            50: "lvl.50",
+            40: "lvl.40",
+            30: "lvl.30",
+            20: "lvl.20",
+            10: "lvl.10",
+            0: "lvl.0"
         }
 
         # Get roles from the user we'd need to delete
