@@ -22,7 +22,7 @@ class UserFunctions(object):
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
         alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
         dead = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['dead'])
-        coin_e = self.bot.config['emotes']['coin']
+        coin_e = CLS.bot.config['emotes']['coin']
 
         #+ Send joining server messages!
         if alive not in user.roles:
