@@ -30,15 +30,16 @@ class UserFunctions(object):
                 await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Esoterica."))
 
                 #? Assign new member roles.
-                entry_role_ids = [cls.bot.config['seperator_roles']['access'], 
-                                    cls.bot.config['seperator_roles']['purchases'], 
-                                    cls.bot.config['seperator_roles']['pings'], 
-                                    cls.bot.config['seperator_roles']['about'],
-                                    cls.bot.config['access_roles']['alive']]
-
-                for role_id in entry_role_ids:
-                    role = utils.DiscordGet(guild.roles, id=role_id)
-                    await user.add_roles(role, reason="Joined Server!")
+            alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
+            s1 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['access'])
+            s2 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['purchases'])
+            s3 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['pings'])
+            s4 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['bio'])
+            await user.add_roles(alive, reason="Verification")
+            await user.add_roles(s1, reason="Verification")
+            await user.add_roles(s2, reason="Verification")
+            await user.add_roles(s3, reason="Verification")
+            await user.add_roles(s4, reason="Verification")
 
         #! Add a way to revive dead people later.
 
