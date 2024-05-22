@@ -34,7 +34,7 @@ class UserFunctions(object):
                                     cls.bot.config['seperator_roles']['purchases'], 
                                     cls.bot.config['seperator_roles']['pings'], 
                                     cls.bot.config['seperator_roles']['about'],
-                                    cls.bot.config['access_roles']['alive']],
+                                    cls.bot.config['access_roles']['alive']]
 
                 for role_id in entry_role_ids:
                     role = utils.DiscordGet(guild.roles, id=role_id)

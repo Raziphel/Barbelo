@@ -78,7 +78,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Coins.sort_coins()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:30]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -111,7 +111,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:53]
+        ranks = sorted_rank[:50]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -145,7 +145,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_vc_mins()
-        ranks = sorted_rank[:39]
+        ranks = sorted_rank[:50]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -178,7 +178,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Daily.sorted_daily()
-        ranks = sorted_rank[:40]
+        ranks = sorted_rank[:50]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
