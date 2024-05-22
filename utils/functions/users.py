@@ -58,7 +58,7 @@ class UserFunctions(object):
         #? Set Varibles
         lvl = utils.Levels.get(user.id)
         c = utils.Coins.get(user.id)
-        coin_e = self.bot.config['emotes']['coin']
+        coin_e = cls.bot.config['emotes']['coin']
 
         #? Check if they should even level up!
         requiredexp = await cls.determine_required_exp(lvl.level)
