@@ -22,6 +22,7 @@ class UserFunctions(object):
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
         alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
         dead = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['dead'])
+        coin_e = self.bot.config['emotes']['coin']
 
         #+ Send joining server messages!
         if alive not in user.roles:
@@ -79,10 +80,10 @@ class UserFunctions(object):
 
         #? Log it and tell em.
         if channel:
-            msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{coins:,}**"))
+            msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**"))
 
         log = cls.bot.get_channel(cls.bot.config['logs']['coins'])
-        await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{coins:,}**")
+        await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**")
 
         await sleep(6)
         try: await msg.delete()
