@@ -37,7 +37,7 @@ class Payment(Cog):
     )
     async def pay(self, ctx, recipient: User = None, amount: int = 0):
         """Send coins to another member (With a tax)."""
-        coin_e = self.bot.config['emotes']['coin']
+        coin_e = self.bot.config['emojis']['coin']
 
         #? Check if the recipient is the same as the user.
         if recipient == ctx.author:
