@@ -85,10 +85,10 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['currency_emoji']['coin_emoji']}{floor(coins):,}x***", user=ctx.author)
+            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['emojis']['coin_emoji']}{floor(coins):,}x***", user=ctx.author)
         )
         
-        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['currency_emoji']['coin_emoji']}{floor(coins):,}x***")
+        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{xps:,} XP***\n***{self.bot.config['emojis']['coin_emoji']}{floor(coins):,}x***")
 
         # * Save data changes
         async with self.bot.database() as db:
