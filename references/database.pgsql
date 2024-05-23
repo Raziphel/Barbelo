@@ -14,12 +14,6 @@ CREATE TABLE moderation (
 ############################## USER VALUES ##################################
 #############################################################################
 
-CREATE TABLE character (
-    user_id bigint NOT NULL,
-    role VARCHAR(49) DEFAULT "",
-    PRIMARY KEY (user_id)
-);
-
 CREATE TABLE levels (
     user_id bigint NOT NULL,
     level integer NOT NULL DEFAULT 0,
@@ -35,6 +29,12 @@ CREATE TABLE coins (
     PRIMARY KEY (user_id)
 );
 
+CREATE TABLE player (
+    user_id bigint NOT NULL,
+    role VARCHAR(49) DEFAULT "",
+    PRIMARY KEY (user_id)
+);
+
 #############################################################################
 ########################## USER TRACK / RECORDS #############################
 #############################################################################
@@ -43,9 +43,8 @@ CREATE TABLE tracking (
     user_id bigint NOT NULL,
     messages integer DEFAULT 0,
     vc_mins integer DEFAULT 0,
-    last_bump timestamp,
     color integer,
-    last_massage 
+    last_massage timestamp,
     PRIMARY KEY (user_id)
 );
 
@@ -58,6 +57,12 @@ CREATE TABLE coins_record (
     stolen integer DEFAULT 0,
     gifted integer DEFAULT 0,
     given integer DEFAULT 0,
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE player_record (
+    user_id bigint NOT NULL,
+    deaths integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 
