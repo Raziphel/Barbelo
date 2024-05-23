@@ -16,7 +16,7 @@ CREATE TABLE moderation (
 
 CREATE TABLE character (
     user_id bigint NOT NULL,
-    tarot VARCHAR(49) DEFAULT "",
+    role VARCHAR(49) DEFAULT "",
     PRIMARY KEY (user_id)
 );
 
