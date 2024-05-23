@@ -1,12 +1,22 @@
 
+###########################################################################
+#######################  ADMINISTRATIVE / MODERATION ######################
+###########################################################################
 
-CREATE TABLE tracking (
+CREATE TABLE moderation (
     user_id bigint NOT NULL,
-    messages integer DEFAULT 0,
-    vc_mins integer DEFAULT 0,
-    last_bump timestamp,
-    color integer,
-    last_massage 
+    adult boolean DEFAULT false,
+    image_banned boolean DEFAULT false,
+    PRIMARY KEY (user_id)
+);
+
+#############################################################################
+############################## USER VALUES ##################################
+#############################################################################
+
+CREATE TABLE character (
+    user_id bigint NOT NULL,
+    tarot VARCHAR(49) DEFAULT "",
     PRIMARY KEY (user_id)
 );
 
@@ -18,20 +28,29 @@ CREATE TABLE levels (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE daily (
+CREATE TABLE coins (
     user_id bigint NOT NULL,
-    last_daily TIMESTAMP,
-    daily INT NOT NULL DEFAULT 0,
-    premium BOOLEAN DEFAULT False,
-    monthly TIMESTAMP,
+    in_hand integer DEFAULT 0,
+    in_bank integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 
+#############################################################################
+########################## USER TRACK / RECORDS #############################
+#############################################################################
 
-CREATE TABLE coins (
+CREATE TABLE tracking (
     user_id bigint NOT NULL,
-    coins integer DEFAULT 0,
-    banked integer DEFAULT 0,
+    messages integer DEFAULT 0,
+    vc_mins integer DEFAULT 0,
+    last_bump timestamp,
+    color integer,
+    last_massage 
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE coins_record (
+    user_id bigint NOT NULL,
     earned integer DEFAULT 0,
     spent integer DEFAULT 0,
     taxed integer DEFAULT 0,
@@ -42,32 +61,21 @@ CREATE TABLE coins (
     PRIMARY KEY (user_id)
 );
 
+#############################################################################
+########################## DAILY / ABILITYS #################################
+#############################################################################
 
-CREATE TABLE gems (
+CREATE TABLE daily (
     user_id bigint NOT NULL,
-    emerald integer DEFAULT 0,
-    diamond integer DEFAULT 0,
-    ruby integer DEFAULT 0,
-    sapphire integer DEFAULT 0,
-    amethyst integer DEFAULT 0,
-    hellstone integer DEFAULT 0,
+    level integer DEFAULT 0,
+    daily INT NOT NULL DEFAULT 0,
+    last_daily TIMESTAMP,
     PRIMARY KEY (user_id)
 );
-
-
-CREATE TABLE moderation (
-    user_id bigint NOT NULL,
-    adult boolean DEFAULT false,
-    child boolean DEFAULT false,
-    muted boolean DEFAULT false,
-    image_banned boolean DEFAULT false,
-    PRIMARY KEY (user_id)
-);
-
 
 CREATE TABLE thievery (
     user_id BIGINT NOT NULL,
-    level boolean DEFAULT false,
+    level integer DEFAULT 0,
     last_steal TIMESTAMP,
     PRIMARY KEY (user_id)
 );
