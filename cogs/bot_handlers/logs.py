@@ -50,7 +50,7 @@ class log_handler(Cog):
     #! Logs
     @Cog.listener()
     async def on_ready(self):
-        print('The Barbelo is now online.')
+        print('Barbelo is now online.')
 
         if self.bot.connected == False:
             await self.bot.change_presence(activity=Game(name="Database is Down!!!"))
