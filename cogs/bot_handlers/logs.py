@@ -50,7 +50,7 @@ class log_handler(Cog):
     #! Logs
     @Cog.listener()
     async def on_ready(self):
-        print('The Baphomet is now online.')
+        print('The Barbelo is now online.')
 
         if self.bot.connected == False:
             await self.bot.change_presence(activity=Game(name="Database is Down!!!"))
@@ -59,11 +59,11 @@ class log_handler(Cog):
 
         #+ Secret bullshit bro...  Don't question this...
         if math.floor(self.bot.latency*1000) <= 100: 
-            await self.bot_log.send(embed=utils.Embed(color=0x339c2a, title=f"Baphomet is Online!", desc=f"Perfect Restart."))
+            await self.bot_log.send(embed=utils.Embed(color=0x339c2a, title=f"Barbelo is Online!", desc=f"Perfect Restart."))
         elif math.floor(self.bot.latency*1000) <= 420:
-            await self.bot_log.send(embed=utils.Embed(color=0xc74822, title=f"Baphomet is Online!", desc=f"Weird Restart."))
+            await self.bot_log.send(embed=utils.Embed(color=0xc74822, title=f"Barbelo is Online!", desc=f"Weird Restart."))
         elif math.floor(self.bot.latency*1000) > 200:
-            await self.bot_log.send(embed=utils.Embed(color=0xc77f22, title=f"Baphomet is Online!", desc=f"Discord Connection Refresh"))
+            await self.bot_log.send(embed=utils.Embed(color=0xc77f22, title=f"Barbelo is Online!", desc=f"Discord Connection Refresh"))
 
 
     @Cog.listener()

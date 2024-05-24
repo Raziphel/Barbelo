@@ -8,12 +8,12 @@ import utils
 from utils.database import DatabaseConnection
 
 
-#+ ------------------------- Baphomet Main Class
-class Baphomet(commands.AutoShardedBot):
+#+ ------------------------- Barbelo Main Class
+class Barbelo(commands.AutoShardedBot):
     def __init__(self, config: str, secret: str, *args, logger: logging.Logger = None, **kwargs):
         super().__init__(*args, fetch_offline_members=True, guild_subscriptions=True, allowed_mentions = AllowedMentions(roles=True, users=True, everyone=True), **kwargs)
 
-        self.logger = logger or logging.getLogger("Baphomet")
+        self.logger = logger or logging.getLogger("Barbelo")
         self.config = config
         self.secret = secret
 

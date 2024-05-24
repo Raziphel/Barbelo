@@ -3,11 +3,11 @@ from glob import glob
 
 from discord import Intents
 
-from baphomet import Baphomet
+from barbelo import Barbelo
 
 
 intents = Intents.all()
-bot = Baphomet(
+bot = Barbelo(
     command_prefix=["."],
     config="config/config.toml",
     secret="config/secret.toml",
