@@ -55,7 +55,7 @@ class log_handler(Cog):
         if self.bot.connected == False:
             await self.bot.change_presence(activity=Game(name="Database is Down!!!"))
         else:
-            await self.bot.change_presence(activity=Game(name=f"in her garden..."))
+            await self.bot.change_presence(activity=Game(name=f"in the mind..."))
 
         #+ Secret bullshit bro...  Don't question this...
         if math.floor(self.bot.latency*1000) <= 100: 
