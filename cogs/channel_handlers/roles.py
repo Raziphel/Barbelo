@@ -80,40 +80,6 @@ class role_handler(Cog):
         if role:
             await member.add_roles(role, reason="Role picker entry")
 
-            # Check they only have one gender role
-            pronoun_roles = self.bot.config['pronoun_roles'].values()
-            if len([i for i in member.roles if i.id in pronoun_roles]) >= 1:
-                try:
-                    for i in pronoun_roles:
-                        role = utils.DiscordGet(guild.roles, name=i)
-                        await member.remove_roles(role, reason="Too many pronoun roles")
-                except Exception:
-                    pass
-                return
-
-            # Check they only have one DM role
-            dm_roles = self.bot.config['dm_roles'].values()
-            if len([i for i in member.roles if i.id in dm_roles]) >= 1:
-                await member.send(f"You can only have one DM preference.")
-                try:
-                    for i in dm_roles:
-                        role = utils.DiscordGet(guild.roles, name=i)
-                        await member.remove_roles(role, reason="Too many DM roles")
-                except Exception:
-                    pass
-                return
-
-            # Check they only have one color role
-            color_roles = self.bot.config['color_roles'].values()
-            if len([i for i in member.roles if i.id in color_roles]) >= 1:
-                await member.send(f"You can only have one color role at a time.")
-                try:
-                    for i in color_roles:
-                        role = utils.DiscordGet(guild.roles, name=i)
-                        await member.remove_roles(role, reason="Too many color roles")
-                except Exception:
-                    pass
-                return
 
         # Check to see total reactions on the message
         message = await channel.fetch_message(payload.message_id)
