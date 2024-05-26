@@ -98,7 +98,7 @@ class UserFunctions(object):
         if level == 0:
             requiredexp = 10
         elif level < 4:
-            requiredexp = level*25
+            requiredexp = level*20
         else:
             requiredexp = round(level**2.75)
         return requiredexp

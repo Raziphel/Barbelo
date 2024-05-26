@@ -1,6 +1,6 @@
 
 ###########################################################################
-#######################  ADMINISTRATIVE / MODERATION ######################
+######################## ADMINISTRATIVE / MODERATION ######################
 ###########################################################################
 
 CREATE TABLE moderation (
@@ -22,16 +22,16 @@ CREATE TABLE levels (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE coins (
+CREATE TABLE currency (
     user_id bigint NOT NULL,
-    in_hand integer DEFAULT 0,
-    in_bank integer DEFAULT 0,
+    coins integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE player (
+CREATE TABLE daily (
     user_id bigint NOT NULL,
-    role VARCHAR(49) DEFAULT "",
+    daily integer NOT NULL DEFAULT 0,
+    last_daily TIMESTAMP,
     PRIMARY KEY (user_id)
 );
 
@@ -60,27 +60,3 @@ CREATE TABLE coins_record (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE player_record (
-    user_id bigint NOT NULL,
-    deaths integer DEFAULT 0,
-    PRIMARY KEY (user_id)
-);
-
-#############################################################################
-########################## DAILY / ABILITYS #################################
-#############################################################################
-
-CREATE TABLE daily (
-    user_id bigint NOT NULL,
-    level integer DEFAULT 0,
-    daily INT NOT NULL DEFAULT 0,
-    last_daily TIMESTAMP,
-    PRIMARY KEY (user_id)
-);
-
-CREATE TABLE thievery (
-    user_id BIGINT NOT NULL,
-    level integer DEFAULT 0,
-    last_steal TIMESTAMP,
-    PRIMARY KEY (user_id)
-);

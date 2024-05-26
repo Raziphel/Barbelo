@@ -53,7 +53,7 @@ class Coin_Generator(Cog):
                 unique_words = 8
 
             await utils.CoinFunctions.earn(earner=message.author, amount=unique_words)
-            exp += 1+unique_words * (round(lvl.level/25))
+            exp += 1+unique_words
 
             await utils.UserFunctions.level_up(user=message.author, channel=message.channel)
 
@@ -71,7 +71,7 @@ class Coin_Generator(Cog):
     def cog_unload(self):
         self.exp_voice_gen.cancel()
 
-    @loop(minutes=1)
+    @loop(minutes=10)
     async def voice_gen_loop(self):
         #? Check if bot DB is connected!
         if self.bot.connected == False:
@@ -84,7 +84,7 @@ class Coin_Generator(Cog):
                 for member in vc.members:
 
                     tr = utils.Tracking.get(member.id)
-                    tr.vc_mins += 1
+                    tr.vc_mins += 10
                     async with self.bot.database() as db:
                         await tr.save(db)
 
@@ -103,7 +103,7 @@ class Coin_Generator(Cog):
 
                     c = utils.Coins.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += (2 + (len(vc.members))) * (round(lvl.level/25))
+                    lvl.exp += (1 + (len(vc.members)))
                     await utils.CoinFunctions.earn(earner=member, amount=1 + round(len(vc.members)))
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
