@@ -16,27 +16,23 @@ class UserFunctions(object):
 
 
     @classmethod
-    async def revive_user(cls, user:Member):
+    async def verify_user(cls, user:Member):
         '''Brings a user back to life, or to life for the first time!'''
 
         guild = cls.bot.get_guild(cls.bot.config['guild_id'])
-        alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
-        dead = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['dead'])
         coin_e = cls.bot.config['emojis']['coin']
 
         #+ Send joining server messages!
-        if alive not in user.roles:
-            if dead not in user.roles:
-                log = cls.bot.get_channel(cls.bot.config['channels']['general'])
-                await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Esoterica."))
+        log = cls.bot.get_channel(cls.bot.config['channels']['general'])
+        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Esoterica."))
 
                 #? Assign new member roles.
-            alive = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['alive'])
+            verified = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['verified'])
             s1 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['access'])
             s2 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['purchases'])
             s3 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['pings'])
             s4 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['about'])
-            await user.add_roles(alive, reason="Verification")
+            await user.add_roles(verified, reason="Verification")
             await user.add_roles(s1, reason="Verification")
             await user.add_roles(s2, reason="Verification")
             await user.add_roles(s3, reason="Verification")

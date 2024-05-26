@@ -135,7 +135,7 @@ class purgatory(Cog):
             member = guild.get_member(payload.user_id)
 
             if emoji == "✅":
-                verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['alive'])
+                verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['verified'])
                 if verified not in member.roles:
                     await self.verification(author=member)
 
@@ -221,7 +221,7 @@ class purgatory(Cog):
             if verify_answer.content.lower() == "yes" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
-                await utils.UserFunctions.revive_user(author)
+                await utils.UserFunctions.verify_user(author)
             else:
                 embed2=Embed(description="**You have been denied!**")
                 await author.send(embed=embed2)
