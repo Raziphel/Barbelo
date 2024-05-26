@@ -97,37 +97,6 @@ class Developer(Cog):
 
 
 
-    @utils.is_dev()
-    @command()
-    async def convertcoins(self, ctx):
-        for member in ctx.guild.members:
-            g = utils.Gems.get(member.id)
-            c = utils.Coins.get(member.id)
-            lvl = utils.Levels.get(member.id)
-
-            c.coins = 0
-            c.coins += g.emerald 
-            c.coins += g.diamond*10 
-            c.coins += g.ruby*100
-            c.coins += g.sapphire*1000
-            c.coins += g.amethyst*10000
-            c.coins += g.hellstone*100000
-            c.coins += lvl.level*5000
-
-            c.earned = 0
-            c.earned += g.emerald 
-            c.earned += g.diamond*10 
-            c.earned += g.ruby*100
-            c.earned += g.sapphire*1000
-            c.earned += g.amethyst*10000
-            c.earned += g.hellstone*100000
-            c.earned += lvl.level*5000
-            async with self.bot.database() as db:
-                await g.save(db)
-                await c.save(db)
-
-        await ctx.send('All members gems have been copied over and adjusted too coins.')
-
 
     @utils.is_dev()
     @command()
