@@ -88,7 +88,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 15:
                 text.append(f"#{index+1} **{user.name}** ─── {self.bot.config['emojis']['coin']}{floor(rank.coins):,}x")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {self.bot.config['emojis']['coin']}{floor(rank.coins):,}x")
@@ -121,7 +121,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 25:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
@@ -155,7 +155,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 25:
                 text.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
@@ -188,7 +188,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 25:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
