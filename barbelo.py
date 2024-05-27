@@ -44,7 +44,7 @@ class Barbelo(commands.AutoShardedBot):
             #! Clear cache
             utils.Moderation.all_moderation.clear()
             utils.Levels.all_levels.clear()
-            utils.Gems.all_gems.clear()
+            utils.Currency.all_currency.clear()
             utils.Coins.all_coins.clear()
             utils.Tracking.all_tracking.clear()
             utils.Daily.all_dailys.clear()
@@ -55,7 +55,7 @@ class Barbelo(commands.AutoShardedBot):
             async with self.database() as db:
                 moderation = await db('SELECT * FROM moderation')
                 levels = await db('SELECT * FROM levels')
-                gems = await db('SELECT * FROM gems')
+                currency = await db('SELECT * FROM currency')
                 coins = await db('SELECT * FROM coins')
                 tracking = await db('SELECT * FROM tracking')
                 daily = await db('SELECT * FROM daily')
@@ -67,8 +67,8 @@ class Barbelo(commands.AutoShardedBot):
                 utils.Moderation(**i)
             for i in levels:
                 utils.Levels(**i)
-            for i in gems:
-                utils.Gems(**i)
+            for i in currency:
+                utils.Currency(**i)
             for i in coins:
                 utils.Coins(**i)
             for i in tracking:
