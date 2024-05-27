@@ -20,7 +20,7 @@ class Coins_Record(object):
         '''Saves all of the connected user varibles'''
         try:
             await db('''
-                INSERT INTO coins
+                INSERT INTO coins_record
                 VALUES
                 ($1, $2, $3, $4, $5, $6, $7, $8)
                 ''',
@@ -28,7 +28,7 @@ class Coins_Record(object):
             )
         except asyncpg.exceptions.UniqueViolationError: 
             await db('''
-                UPDATE coins SET
+                UPDATE coins_record SET
                 earned=$2, spent=$3, taxed=$4, lost=$5, stolen=$6, gifted=$7, given=$8
                 WHERE
                 user_id=$1
