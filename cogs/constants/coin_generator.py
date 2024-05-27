@@ -34,7 +34,7 @@ class Coin_Generator(Cog):
             return
 
         lvl = utils.Levels.get(message.author.id)
-        c = utils.Coins.get(message.author.id)
+        c = utils.Currency.get(message.author.id)
         tr = utils.Tracking.get(message.author.id)
 
 
@@ -101,7 +101,7 @@ class Coin_Generator(Cog):
                     if len(vc.members) < 2:
                         break
 
-                    c = utils.Coins.get(member.id)
+                    c = utils.Currency.get(member.id)
                     lvl = utils.Levels.get(member.id)
                     lvl.exp += (1 + (len(vc.members)))
                     await utils.CoinFunctions.earn(earner=member, amount=1 + round(len(vc.members)))

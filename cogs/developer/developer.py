@@ -147,19 +147,6 @@ class Developer(Cog):
 
 
 
-    @utils.is_dev()
-    @command()
-    async def convertcoins(self, ctx):
-        for member in ctx.guild.members:
-            c = utils.Currency.get(member.id)
-            co = utils.Coins.get(member.id)
-            c.coins = co.coins
-            async with self.bot.database() as db:
-                await c.save(db)
-        await ctx.send('Moved coins to the new table!')
-
-
-
 def setup(bot):
     x = Developer(bot)
     bot.add_cog(x)

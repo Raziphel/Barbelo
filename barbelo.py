@@ -45,7 +45,7 @@ class Barbelo(commands.AutoShardedBot):
             utils.Moderation.all_moderation.clear()
             utils.Levels.all_levels.clear()
             utils.Currency.all_currency.clear()
-            utils.Coins.all_coins.clear()
+            utils.Coins_Record.all_coins_record.clear()
             utils.Tracking.all_tracking.clear()
             utils.Daily.all_dailys.clear()
             utils.Skills.all_skills.clear()
@@ -56,7 +56,7 @@ class Barbelo(commands.AutoShardedBot):
                 moderation = await db('SELECT * FROM moderation')
                 levels = await db('SELECT * FROM levels')
                 currency = await db('SELECT * FROM currency')
-                coins = await db('SELECT * FROM coins')
+                coins_record = await db('SELECT * FROM coins_record')
                 tracking = await db('SELECT * FROM tracking')
                 daily = await db('SELECT * FROM daily')
                 skills = await db('SELECT * FROM skills')
@@ -69,8 +69,8 @@ class Barbelo(commands.AutoShardedBot):
                 utils.Levels(**i)
             for i in currency:
                 utils.Currency(**i)
-            for i in coins:
-                utils.Coins(**i)
+            for i in coins_record:
+                utils.Coins_Record(**i)
             for i in tracking:
                 utils.Tracking(**i)
             for i in daily:

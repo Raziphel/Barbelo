@@ -47,7 +47,7 @@ class Payment(Cog):
             return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{ctx.author.name} Has to be more than 1,000!"))
 
         #? Check if the user has enough coins.
-        c = utils.Coins.get(ctx.author.id)
+        c = utils.Currency.get(ctx.author.id)
         if amount > (c.coins - amount*0.08):
             return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{recipient.mention} you don't have that many coins.  (Could be due to taxes)"))
 

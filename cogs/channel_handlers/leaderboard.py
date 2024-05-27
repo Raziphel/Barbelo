@@ -77,7 +77,7 @@ class leaderboard(Cog):
         embed2 = Embed(color=0x00ff00)
 
 
-        sorted_rank = utils.Coins.sort_coins()
+        sorted_rank = utils.Currency.sort_coins()
         ranks = sorted_rank[:30]
         users = []
         for i in ranks:

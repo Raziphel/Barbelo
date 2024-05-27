@@ -31,7 +31,7 @@ class daily(Cog):
         #? Define variables
         day = utils.Daily.get(ctx.author.id)
         lvl = utils.Levels.get(ctx.author.id)
-        c = utils.Coins.get(ctx.author.id)
+        c = utils.Currency.get(ctx.author.id)
         tr = utils.Tracking.get(ctx.author.id)
 
         #? Check if it's first daily

@@ -8,7 +8,7 @@ from utils.embed import Embed
 #? SQL
 from utils.sql.moderation import Moderation
 from utils.sql.currency import Currency
-from utils.sql.coins import Coins
+from utils.sql.coins_record import Coins_Record
 from utils.sql.levels import Levels
 from utils.sql.tracking import Tracking
 from utils.sql.daily import Daily
