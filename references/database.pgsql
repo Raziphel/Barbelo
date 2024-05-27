@@ -25,6 +25,7 @@ CREATE TABLE levels (
 CREATE TABLE currency (
     user_id bigint NOT NULL,
     coins integer DEFAULT 0,
+    credits integer DEFAULT 0,
     PRIMARY KEY (user_id)
 );
 

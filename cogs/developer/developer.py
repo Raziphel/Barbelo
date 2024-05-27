@@ -140,9 +140,24 @@ class Developer(Cog):
     @command()
     async def sm(self, ctx):
         '''send a placeholder message'''
-
         await ctx.message.delete()
         await ctx.send('placeholder message!')
+
+
+
+
+
+    @utils.is_dev()
+    @command()
+    async def convertcoins(self, ctx):
+        for member in ctx.guild.members:
+            c = utils.Currency.get(member.id)
+            coins = utils.Coins.get(member.id)
+            c.coins += coins.coins
+        async with self.bot.database() as db:
+                await c.save(db)
+        await ctx.send('Moved coins to the new table!')
+
 
 
 def setup(bot):

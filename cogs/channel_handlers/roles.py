@@ -34,10 +34,10 @@ class role_handler(Cog):
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
-        await msg3.edit(content=f" ")
-        await msg4.edit(content=f" ")
-        await msg5.edit(content=f" ")
-        await msg6.edit(content=f" ")
+        await msg3.edit(content=f"~")
+        await msg4.edit(content=f"~")
+        await msg5.edit(content=f"~")
+        await msg6.edit(content=f"~")
 
 
 
