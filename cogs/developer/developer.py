@@ -153,9 +153,9 @@ class Developer(Cog):
         for member in ctx.guild.members:
             c = utils.Currency.get(member.id)
             coins = utils.Coins.get(member.id)
-            c.coins += coins.coins
+            c.coins = coins.coins
         async with self.bot.database() as db:
-                await c.save(db)
+            await c.save(db)
         await ctx.send('Moved coins to the new table!')
 
 
