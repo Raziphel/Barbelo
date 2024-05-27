@@ -154,8 +154,8 @@ class Developer(Cog):
             c = utils.Currency.get(member.id)
             co = utils.Coins.get(member.id)
             c.coins = co.coins
-        async with self.bot.database() as db:
-            await c.save(db)
+            async with self.bot.database() as db:
+                await c.save(db)
         await ctx.send('Moved coins to the new table!')
 
 
