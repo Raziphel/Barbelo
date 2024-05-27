@@ -111,7 +111,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:50]
+        ranks = sorted_rank[:40]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -121,7 +121,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 25:
+            if index < 20:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
@@ -145,7 +145,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_vc_mins()
-        ranks = sorted_rank[:50]
+        ranks = sorted_rank[:40]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -155,7 +155,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 25:
+            if index < 20:
                 text.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
@@ -178,7 +178,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Daily.sorted_daily()
-        ranks = sorted_rank[:50]
+        ranks = sorted_rank[:40]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -188,7 +188,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 25:
+            if index < 20:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
