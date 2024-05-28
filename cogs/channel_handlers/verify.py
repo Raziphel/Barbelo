@@ -28,7 +28,7 @@ def get_only_numbers(data: str):
 
 
 
-class purgatory(Cog):
+class verify(Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -247,5 +247,5 @@ class purgatory(Cog):
 
 
 def setup(bot):
-    x = purgatory(bot)
+    x = verify(bot)
     bot.add_cog(x)
