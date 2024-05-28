@@ -132,7 +132,8 @@ class role_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['events'])
         elif emoji == "🤝":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['welcomer'])
-
+        elif emoji == "📊":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['server_status'])
 
         if role:
             return role
