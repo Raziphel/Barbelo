@@ -61,3 +61,13 @@ CREATE TABLE coins_record (
     PRIMARY KEY (user_id)
 );
 
+#############################################################################
+############################# SCP SL TABLES #################################
+#############################################################################
+
+
+CREATE TABLE account_link (
+    user_id bigint NOT NULL,
+    steam_id bigint NOT NULL,
+    PRIMARY KEY (user_id)
+);

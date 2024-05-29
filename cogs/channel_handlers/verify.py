@@ -38,10 +38,10 @@ class verify(Cog):
 
 
 
-    @Cog.listener('on_ready') #! ---> Server Rules
-    async def rules(self):
+    @Cog.listener('on_ready') #! ---> verify
+    async def verify(self):
 
-        embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica is not meant to be a normal Discord server thats sole purpose is for socializing and posting memes with your friends.\n\nHere in esoterica, members of the server are all given roles and abilities that make them capable of doing almost anything...\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0x8F00FF)
+        embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica has an advanced way of prevent scammers, spammers and beggars from the server!\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0x8F00FF)
 
         embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\nI may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\nI have fully read, understand and will uphold the rules of Esoterica.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0xFF0000)
 
@@ -84,7 +84,7 @@ class verify(Cog):
 
         embed3=Embed(description=f"# Secret Society\n🔮 **In private areas you must obey their rules and secrets.**\n🔮 **Access to these areas must be gained.** All having different requirements.\n🔮 **Designated council members** manage their respective areas.\n🔮 **Access to one area can restrict you from other areas.** ", color=0xff0000)
 
-        embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners and access to all areas.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**  Most decisions come from council.\n🔱 **Not even council have access to all areas.**\n🔱 **Council & Knights are still mortal.**\n🔱 **Architects are developers** and don't moderate.", color=0x8F00FF)
+        embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**n🔱 **All roles get in-game perms.**\n🔱 **Architects are developers** and can still moderate.", color=0x8F00FF)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
