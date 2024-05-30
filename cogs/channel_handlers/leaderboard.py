@@ -111,7 +111,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:10]
+        ranks = sorted_rank[:15]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -145,7 +145,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_vc_mins()
-        ranks = sorted_rank[:10]
+        ranks = sorted_rank[:15]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
