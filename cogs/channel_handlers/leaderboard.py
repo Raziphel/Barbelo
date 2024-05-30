@@ -121,7 +121,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 5:
+            if index < 10:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
