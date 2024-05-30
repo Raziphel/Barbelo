@@ -105,7 +105,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:30]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -115,7 +115,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 15:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
