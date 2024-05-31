@@ -45,6 +45,7 @@ class leaderboard(Cog):
             user = self.bot.get_user(i.user_id)
             if user != None:
                 users.append(user)
+
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
