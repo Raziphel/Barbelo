@@ -39,7 +39,7 @@ class leaderboard(Cog):
 
         #* Add in level rankings
         sorted_rank = utils.Levels.sort_levels()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:10]
         users = []
         for i in sorted_rank:
             user = self.bot.get_user(i.user_id)
@@ -48,7 +48,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 5:
                 text.append(f"#{index+1} **{user.name}** ─── Lvl.{floor(rank.level):,}")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── Lvl.{floor(rank.level):,}")
@@ -72,7 +72,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Currency.sort_coins()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:10]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -82,7 +82,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 5:
                 text.append(f"#{index+1} **{user.name}** ─── {self.bot.config['emojis']['coin']}{floor(rank.coins):,}x")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {self.bot.config['emojis']['coin']}{floor(rank.coins):,}x")
@@ -105,7 +105,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_messages()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:10]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -115,7 +115,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 5:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.messages:,} msgs")
@@ -139,7 +139,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Tracking.sorted_vc_mins()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:10]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -149,7 +149,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 5:
                 text.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {floor(rank.vc_mins/60):,} hours")
@@ -172,7 +172,7 @@ class leaderboard(Cog):
 
 
         sorted_rank = utils.Daily.sorted_daily()
-        ranks = sorted_rank[:20]
+        ranks = sorted_rank[:10]
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
@@ -182,7 +182,7 @@ class leaderboard(Cog):
         text = []
         text2 = []
         for index, (user, rank) in enumerate(zip(users, ranks)):
-            if index < 10:
+            if index < 5:
                 text.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
             else:
                 text2.append(f"#{index+1} **{user.name}** ─── {rank.daily:,}th daily")
