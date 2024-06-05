@@ -35,7 +35,7 @@ class profile(Cog):
         c = utils.Currency.get(user.id)
         emoji = self.bot.config['emojis']['coin']
 
-        await ctx.interaction.response.send_message(content=f"**Showing <@{user.id}>'s Coins Stats:**", embed=utils.Embed(desc=f"**{emoji}{round(c.coins):,}x in there pockets!**"))
+        await ctx.interaction.response.send_message(content=f"**Showing <@{user.id}>'s Coins Stats:**", embed=utils.Embed(desc=f"**{emoji}{round(c.coins):,}x in their pockets!**"))
 
 
 

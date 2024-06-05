@@ -84,7 +84,7 @@ class verify(Cog):
 
         embed3=Embed(description=f"# Secret Society\n🔮 **In private areas you must obey their rules and secrets.**\n🔮 **Access to these areas must be gained.** All having different requirements.\n🔮 **Designated council members** manage their respective areas.\n🔮 **Access to one area can restrict you from other areas.** ", color=0xff0000)
 
-        embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**n🔱 **All roles get in-game perms.**\n🔱 **Architects are developers** and can still moderate.", color=0x8F00FF)
+        embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**\n🔱 **All roles get in-game perms.**\n🔱 **Architects are developers** and can still moderate.", color=0x8F00FF)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
