@@ -45,7 +45,7 @@ class Staff_Actions(Cog):
         ),
     )
     async def ban(self, ctx, user:Member, *, reason:Optional[str]="[No Reason Given]"):
-        '''Bans any given amount of members given!'''
+        """Bans any given amount of members given!"""
 
         if not user:
             return await ctx.interaction.response.send_message('Please specify a valid user.')
@@ -82,7 +82,7 @@ class Staff_Actions(Cog):
         ),
     )
     async def imageban(self, ctx, user:Member):
-        '''Bans a user from posting images.'''  
+        """Bans a user from posting images."""
         mod = utils.Moderation.get(user.id)
         mod.image_banned = True
         async with self.bot.database() as db:

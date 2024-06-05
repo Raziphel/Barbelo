@@ -21,7 +21,7 @@ class Coin_Generator(Cog):
 
     @Cog.listener('on_message')
     async def coin_generator(self, message:Message):
-        '''Determine Level progression settings!'''
+        """Determine Level progression settings!"""
 
         #? Better not be in dms.
         if message.guild == None:
@@ -30,7 +30,7 @@ class Coin_Generator(Cog):
         if message.author.bot:
             return
         #? Check if bot DB is connected!
-        if self.bot.connected == False:
+        if not self.bot.connected:
             return
 
         lvl = utils.Levels.get(message.author.id)
@@ -38,14 +38,14 @@ class Coin_Generator(Cog):
         tr = utils.Tracking.get(message.author.id)
 
 
-        if lvl.last_xp == None:
+        if lvl.last_xp is None:
             lvl.last_xp = dt.utcnow()
         if (lvl.last_xp + timedelta(seconds=10)) <= dt.utcnow(): #? Make sure it's not just spam.
 
-            #! Define varibles
+            #! Define variables
             exp = 1
             unique_words = len(list(unique_everseen(message.content.split(), str.lower)))
-            if message.attachments != None:
+            if message.attachments is not None:
                 unique_words += 6
 
             #! Unique Word Nerfer
@@ -74,7 +74,7 @@ class Coin_Generator(Cog):
     @loop(minutes=10)
     async def voice_gen_loop(self):
         #? Check if bot DB is connected!
-        if self.bot.connected == False:
+        if not self.bot.connected:
             return
 
         coins_payed = 0

@@ -41,7 +41,7 @@ class log_handler(Cog):
 #? 
 
 
-    #! Brand new members joining 
+    #! Brand-new members joining
     @Cog.listener()
     async def on_member_join(self, member):
         await self.discord_log.send(embed=utils.Embed(color=0x339c2a, title=f"{member.name} has entered the cult and needs verification."))
@@ -52,7 +52,7 @@ class log_handler(Cog):
     async def on_ready(self):
         print('Barbelo is now online.')
 
-        if self.bot.connected == False:
+        if not self.bot.connected:
             await self.bot.change_presence(activity=Game(name="Database is Down!!!"))
         else:
             await self.bot.change_presence(activity=Game(name=f"in the mind..."))
@@ -116,7 +116,7 @@ class log_handler(Cog):
         if message.author.bot: return #? Check it's not a bot.
         image = None
         if message is None:
-            return #? Check its a message with content?
+            return #? Check it's a message with content?
         if message.channel.name is None:
             return #? Check it's a channel.
         if message.author.id == 159516156728836097: 

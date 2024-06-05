@@ -1,4 +1,3 @@
-
 #* Discord
 import discord
 from discord.ext.commands import command, Cog, ApplicationCommandMeta, cooldown, BucketType
@@ -12,8 +11,6 @@ from math import floor
 import utils
 
 
-
-
 class daily(Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -21,8 +18,6 @@ class daily(Cog):
     @property  #! The currency logs
     def coin_logs(self):
         return self.bot.get_channel(self.bot.config['logs']['coins'])
-
-
 
     @cooldown(1, 30, BucketType.user)
     @command(application_command_meta=ApplicationCommandMeta())
@@ -44,7 +39,9 @@ class daily(Cog):
             tf = day.last_daily + timedelta(hours=22)
             t = dt(1, 1, 1) + (tf - dt.utcnow())
             return await ctx.interaction.response.send_message(
-                embed=utils.Embed(desc=f"⏰**You have already claimed your daily rewards!**\n**You can claim them again in {t.hour} hours and {t.minute} minutes!**", user=ctx.author)
+                embed=utils.Embed(
+                    desc=f"⏰**You have already claimed your daily rewards!**\n**You can claim them again in {t.hour} hours and {t.minute} minutes!**",
+                    user=ctx.author)
             )
 
         #? Missed daily
@@ -55,9 +52,9 @@ class daily(Cog):
         #? Got daily
         elif (day.last_daily + timedelta(hours=22)) <= dt.utcnow():
             day.daily += 1
-            day.last_daily = dt.utcnow() 
+            day.last_daily = dt.utcnow()
 
-        #! Determine rewards
+            #! Determine rewards
         daily = day.daily
         if daily > 350:
             daily = 350
@@ -69,8 +66,8 @@ class daily(Cog):
         d = dt.today()
         x = day_name[d.weekday()]
 
-        stringForm = str(day.daily) 
-        lastDigit = stringForm[-1] 
+        stringForm = str(day.daily)
+        lastDigit = stringForm[-1]
         th = "th"
         if day.daily > 3:
             th = "th"
@@ -83,17 +80,19 @@ class daily(Cog):
 
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
-            embed=utils.Embed(desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***", user=ctx.author)
+            embed=utils.Embed(
+                desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***",
+                user=ctx.author)
         )
-        
-        await self.coin_logs.send(f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***")
+
+        await self.coin_logs.send(
+            f"***{ctx.author.name} claimed there your {day.daily}{th} daily claimed in a row!***\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***")
 
         # * Save data changes
         async with self.bot.database() as db:
             await day.save(db)
             await lvl.save(db)
             await c.save(db)
-
 
 
 def setup(bot):

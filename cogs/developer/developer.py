@@ -27,9 +27,9 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def ev(self, ctx, *, content:str):
-        '''
+        """
         Runs code through Python
-        '''
+        """
         try:
             ans = eval(content, globals(), locals())
         except Exception:
@@ -43,7 +43,7 @@ class Developer(Cog):
     @utils.is_dev()
     @command(aliases=['r'])
     async def restart(self, ctx):
-        '''Restarts the bot'''  
+        """Restarts the bot"""
         msg = await ctx.send(embed=utils.Embed(title=f"Restarting..."))
         for num in range(5):
             await sleep(1)
@@ -56,7 +56,7 @@ class Developer(Cog):
 
     @command()
     async def ping(self, ctx):
-        '''Checks bot's ping'''
+        """Checks bot's ping"""
         await sleep(1)
         await ctx.message.delete()
         before = monotonic()
@@ -126,7 +126,7 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def mass_verify(self, ctx):
-        '''Verify all users on server'''
+        """Verify all users on server"""
         for member in ctx.guild.members:
             await utils.UserFunctions.verify_user(member)
             print(f'{member.name} was verified!')
@@ -139,7 +139,7 @@ class Developer(Cog):
     @utils.is_dev()
     @command()
     async def sm(self, ctx):
-        '''send a placeholder message'''
+        """send a placeholder message"""
         await ctx.message.delete()
         await ctx.send('placeholder message!')
 

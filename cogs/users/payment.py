@@ -11,7 +11,7 @@ class Payment(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @property  # ! The members logs
+    @property  # ! The members log
     def coin_logs(self):
         return self.bot.get_channel(self.bot.config['channels']['coin_logs']) 
 

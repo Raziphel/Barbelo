@@ -17,7 +17,7 @@ class role_handler(Cog):
 
     @Cog.listener()
     async def on_ready(self):
-        '''Displays the role handler messages'''
+        """Displays the role handler messages"""
         ch = self.bot.get_channel(self.bot.config['channels']['roles'])
 
         msg1 = await ch.fetch_message(self.bot.config['roles_messages']['1']) 
@@ -112,13 +112,13 @@ class role_handler(Cog):
         # Role picker emoji
         mod = utils.Moderation.get(member.id)
         if emoji == "🚬":
-            if mod.child != True:
+            if not mod.child:
                 role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['adult'])
             else: 
                 await member.send(f"You are unable to get the Adult role, message staff.")
                 await self.discord_log.send(f"<@{member.id}> failed to get ADULT role.")
         elif emoji == "🍼":
-            if mod.adult != True:
+            if not mod.adult:
                 role = utils.DiscordGet(guild.roles, id=self.bot.config['age_roles']['underage'])
             else: 
                 await member.send(f"You are unable to get the Child role, message staff.")

@@ -30,9 +30,9 @@ class nsfw(Cog):
         ),
     )
     async def notnsfw(self, ctx, user:Member):
-        '''Removes nsfw access from a user!'''
+        """Removes nsfw access from a user!"""
 
-        #+ Get some varibles!
+        #+ Get some variables!
         mod = utils.Moderation.get(user.id)
         adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
 
@@ -69,9 +69,9 @@ class nsfw(Cog):
         ),
     )
     async def nsfw(self, ctx, user:Member):
-        '''Gives nsfw access to a user!'''
+        """Gives nsfw access to a user!"""
 
-        #+ Get some varibles!
+        #+ Get some variables!
         mod = utils.Moderation.get(user.id)
         adult = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['adult'])
         underage = utils.DiscordGet(ctx.guild.roles, id=self.bot.config['age_roles']['underage'])

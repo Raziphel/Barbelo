@@ -117,7 +117,7 @@ class verify(Cog):
 
     @Cog.listener('on_raw_reaction_add') #! --------> verification
     async def verify(self, payload:RawReactionActionEvent):
-            '''Send verification message~!'''
+        """Send verification message~!"""
 
             # See if I need to deal with it
             if payload.channel_id != self.bot.config['channels']['welcome']: #? Verification Channel
@@ -160,16 +160,16 @@ class verify(Cog):
 
 
     async def verification(self, author):
-        '''Sends a verification application!'''
+        """Sends a verification application!"""
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
 
         async def get_input(prompt: str, timeout: float = 300.0, max_length: Optional[int] = 50):
-            '''Gets users responses and checks them'''
+            """Gets users responses and checks them"""
             await author.send(embed=utils.Embed(color=randint(1, 0xffffff), desc=prompt))
 
             async def get_response():
-                ''''Waits for users responses'''
+                """'Waits for users responses"""
                 msg = await self.bot.wait_for('message', check=lambda m: m.author.id == author.id and not m.guild, timeout=timeout)
 
                 if 'cancel' == msg.content.lower():
@@ -187,7 +187,7 @@ class verify(Cog):
             return message
 
         try:
-            invited_answer = await get_input(f"Where did you recieve an invintation to Esoterica from?")
+            invited_answer = await get_input(f"Where did you receive an invitation to Esoterica from?")
 
             age_answer = await get_input("How old are you?")
             age_answer =get_only_numbers(age_answer.content)
@@ -198,7 +198,7 @@ class verify(Cog):
 
             color = await get_input("What's your favourite colour? (Say a color name or a hex code)")
             colour_value = utils.Colors.get(color.content.lower()) 
-            if colour_value == None:
+            if colour_value is None:
                 try:
                     colour_value = int(color.content.strip('#'), 16)
                 except ValueError:

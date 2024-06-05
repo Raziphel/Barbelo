@@ -28,7 +28,7 @@ class profile(Cog):
         ),
     )
     async def coins(self, ctx, user:User=None):
-        '''Quick Check Coins'''
+        """Quick Check Coins"""
         if not user:
             user = ctx.author
 
@@ -55,7 +55,7 @@ class profile(Cog):
             ),
         )
     async def setcolor(self, ctx, colour=None):
-        '''Sets your user color'''
+        """Sets your user color"""
 
         if colour == None:
             file = discord.File('config/lists/colors.py', filename='config/lists/colors.py')

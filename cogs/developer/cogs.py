@@ -1,6 +1,7 @@
+import os
 
 #* Discord
-from discord.ext.commands import command, Cog
+from discord.ext.commands import command, Cog, cog
 from glob import glob
 
 import utils
@@ -14,7 +15,7 @@ class Cogs(Cog):
     @utils.is_dev()
     @command(aliases=['rld'])
     async def reload(self, ctx):
-        '''Reloads all cogs'''
+        """Reloads all cogs"""
         extensions = [i.replace(os.sep, '.')[:-3] for i in glob("Cogs/*/[!_]*.py")]
         for extension in extensions:
             try:
@@ -30,7 +31,7 @@ class Cogs(Cog):
     @utils.is_dev()
     @command(aliases=['ld'])
     async def load(self, ctx, cog:str):
-        '''Loads a cog'''
+        """Loads a cog"""
         try:
             self.bot.load_extension(f"cogs.{cog}")
             await ctx.send(embed=utils.DevEmbed(title=f"Load Cog Command Successful", desc=f"The cog: `{cog}` was loaded."))
@@ -42,7 +43,7 @@ class Cogs(Cog):
     @utils.is_dev()
     @command(aliases=['uld'])
     async def unload(self, ctx, cog:str):
-        '''Unloads a cog'''
+        """Unloads a cog"""
         try:
             self.bot.unload_extension(f"cogs.{cog}")
             await ctx.send(embed=utils.DevEmbed(title=f"Unload Cog Command Successful", desc=f"The cog: `{cog}` was unloaded."))

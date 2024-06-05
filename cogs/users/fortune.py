@@ -74,9 +74,7 @@ class fortune(Cog):
         ),
     )
     async def ask(self, ctx, question):
-        '''
-        Ask the bot a yes or no question.
-        '''
+        """Ask the bot a yes or no question."""
         contents = question.split()
         total_words = len(question.split())
         response = "I don't understand that question~"

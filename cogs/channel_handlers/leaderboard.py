@@ -22,7 +22,7 @@ class leaderboard(Cog):
         """The loop that handles updating things every minute."""
 
         #! Database check
-        if self.bot.connected == False:
+        if not self.bot.connected:
             return
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
@@ -43,7 +43,7 @@ class leaderboard(Cog):
         users = []
         for i in sorted_rank:
             user = self.bot.get_user(i.user_id)
-            if user != None:
+            if user is not None:
                 users.append(user)
 
         text = []
@@ -77,7 +77,7 @@ class leaderboard(Cog):
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
-            if user != None:
+            if user is not None:
                 users.append(user)
 
         text = []
@@ -110,7 +110,7 @@ class leaderboard(Cog):
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
-            if user != None:
+            if user is not None:
                 users.append(user)
 
         text = []
@@ -144,7 +144,7 @@ class leaderboard(Cog):
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
-            if user != None:
+            if user is not None:
                 users.append(user)
 
         text = []
@@ -177,7 +177,7 @@ class leaderboard(Cog):
         users = []
         for i in ranks:
             user = self.bot.get_user(i.user_id)
-            if user != None:
+            if user is not None:
                 users.append(user)
 
         text = []
