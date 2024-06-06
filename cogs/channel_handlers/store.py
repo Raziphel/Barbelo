@@ -82,7 +82,7 @@ class store_Handler(Cog):
             #? Define Varibles
             guild = self.bot.get_guild(payload.guild_id)
             user = guild.get_member(payload.user_id)
-            g = utils.Gems.get(user.id)
+            g = utils.Currency.get(user.id)
             mod = utils.Moderation.get(user.id)
             day = utils.Daily.get(user.id)
             skills = utils.Skills.get(user.id)
@@ -352,7 +352,7 @@ class store_Handler(Cog):
         #? Once again get some fucking varibles defined...
         guild = self.bot.get_guild(payload.guild_id)
         user = guild.get_member(payload.user_id)
-        g = utils.Gems.get(user.id)
+        g = utils.Currency.get(user.id)
 
         await msg.add_reaction("✔")
         await msg.add_reaction("❌")
