@@ -33,19 +33,19 @@ class store_Handler(Cog):
         msg6 = await ch.fetch_message(self.bot.config['store_messages']['6'])
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0xFF0000)
-        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}10,000,000x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}5,000,000x**\n\n```Turn all your hellstones into $USD!```", inline=True)
+        embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}10,000,000x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
+        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}5,000,000x**\n\n```Turn all your hellstones into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
-        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}250,000x**\n\n```Get access to all of the server's logs!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}250,000x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
-        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}250,000x**\n\n```Get access to using the soundboard in VC!```", inline=True)
-        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}75,000x**\n\n```Get permission to the Stats Channels!```", inline=True)
-        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}75,000x**\n\n```Get perms to create threads!```", inline=True)
-        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}75,000x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
+        embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}250,000x**\n\n```Get access to all of the server's logs!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎫 Image Pass ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}250,000x**\n\n```Get permission for images & embeds in General Chats.```", inline=True)
+        embed2.add_field(name=f"⊰ 🔊 SoundBoard Pass ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}250,000x**\n\n```Get access to using the soundboard in VC!```", inline=True)
+        embed2.add_field(name=f"⊰ 🎁 Stats Channel ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}75,000x**\n\n```Get permission to the Stats Channels!```", inline=True)
+        embed2.add_field(name=f"⊰ 🧶 Thread Perms ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}75,000x**\n\n```Get perms to create threads!```", inline=True)
+        embed2.add_field(name=f"⊰ 🔮 External Emotes ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}75,000x**\n\n```Get access to using your external emotes and stickers!```", inline=True)
 
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
-        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}100,000x**\n\n```Gain the ability steal from others!```", inline=True) 
+        embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}100,000x**\n\n```Gain the ability steal from others!```", inline=True) 
 
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
@@ -97,7 +97,7 @@ class store_Handler(Cog):
             if emoji == "✨":
                 item['name'] = "Discord Nitro"
                 item['price'] = 10000000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
@@ -107,7 +107,7 @@ class store_Handler(Cog):
             if emoji == "💸":
                 item['name'] = "5$USD"
                 item['price'] = 5000000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
@@ -117,7 +117,7 @@ class store_Handler(Cog):
             if emoji == "📚":
                 item['name'] = "Library Pass"
                 item['price'] = 250000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Library pass!"))
@@ -127,7 +127,7 @@ class store_Handler(Cog):
             if emoji == "🎫":
                 item['name'] = "Image Pass"
                 item['price'] = 250000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Image Pass!"))
@@ -137,7 +137,7 @@ class store_Handler(Cog):
             if emoji == "🔊":
                 item['name'] = "Soundboard Pass"
                 item['price'] = 250000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Soundboard Pass!"))
@@ -147,7 +147,7 @@ class store_Handler(Cog):
             if emoji == "🎁":
                 item['name'] = "Stats Channel"
                 item['price'] = 75000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Stats Channel access!"))
@@ -157,7 +157,7 @@ class store_Handler(Cog):
             if emoji == "🧶":
                 item['name'] = "Thread Permissions"
                 item['price'] = 75000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thread Permissions!"))
@@ -167,7 +167,7 @@ class store_Handler(Cog):
             if emoji == "🔮":
                 item['name'] = "External Emojis"
                 item['price'] = 75000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
@@ -178,7 +178,7 @@ class store_Handler(Cog):
             if emoji == "🧤":
                 item['name'] = "Thievery"
                 item['price'] = 1000000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the ability to steal!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the ability to steal!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thievery!"))
@@ -190,7 +190,7 @@ class store_Handler(Cog):
             if emoji == "🌻":
                 item['name'] = "Sun Flower (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Sun Flower Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Sun Flower Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -200,7 +200,7 @@ class store_Handler(Cog):
             if emoji == "🥗":
                 item['name'] = "Nephritis (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Nephritis Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Nephritis Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -210,7 +210,7 @@ class store_Handler(Cog):
             if emoji == "🧿":
                 item['name'] = "Belize Hole (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Belize Hole Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Belize Hole Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -220,7 +220,7 @@ class store_Handler(Cog):
             if emoji == "🪀":
                 item['name'] = "Wisteria Hole (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Wisteria Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Wisteria Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -230,7 +230,7 @@ class store_Handler(Cog):
             if emoji == "⛅":
                 item['name'] = "Clouds (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Clouds Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Clouds Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -240,7 +240,7 @@ class store_Handler(Cog):
             if emoji == "🧩":
                 item['name'] = "Turquoise (Color Role)"
                 item['price'] = 100000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Turquoise Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Turquoise Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -250,7 +250,7 @@ class store_Handler(Cog):
             if emoji == "🍑":
                 item['name'] = "Pastel Pink (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Pink Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Pink Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -260,7 +260,7 @@ class store_Handler(Cog):
             if emoji == "🍇":
                 item['name'] = "Pastel Violet (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Violet Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Violet Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -270,7 +270,7 @@ class store_Handler(Cog):
             if emoji == "🧊":
                 item['name'] = "Pastel Blue (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Blue Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Blue Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -280,7 +280,7 @@ class store_Handler(Cog):
             if emoji == "🥒":
                 item['name'] = "Pastel Green (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Green Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Green Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -290,7 +290,7 @@ class store_Handler(Cog):
             if emoji == "🍋":
                 item['name'] = "Pastel Yellow (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Yellow Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Yellow Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -300,7 +300,7 @@ class store_Handler(Cog):
             if emoji == "🍓":
                 item['name'] = "Pastel Red (Color Role)"
                 item['price'] = 200000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Red Color Role!\nThis will cost you {item['price']} {self.bot.config['currency_emoji']['coin_emoji']}x"))
+                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Pastel Red Color Role!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
                 if await self.purchasing(msg=msg, payload=payload, item=item) == True:
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a color role!"))
@@ -364,7 +364,7 @@ class store_Handler(Cog):
                 #? Check & perform the purchase!
                 purchased = await utils.CoinFunctions.pay_for(payer=user, amount=item["price"])
                 if purchased == False:
-                    await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough coins {self.bot.config['currency_emoji']['coin_emoji']}!"))
+                    await msg.edit(embed=utils.Embed(color=0xc74822, desc=f"# You don't have enough coins {self.bot.config['emojis']['coin']}!"))
                     return False
                 else: return True
 
