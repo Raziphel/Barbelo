@@ -47,8 +47,6 @@ class store_Handler(Cog):
         embed3=Embed(description=f"# Abilities\n`All these listed items give you the ability to do something here in the garden!`", color=0x0000FF)
         embed3.add_field(name=f"⊰ 🧤 Thievery ⊱", value=f"**╰⊰ {self.bot.config['currency_emoji']['coin_emoji']}100,000x**\n\n```Gain the ability steal from others!```", inline=True) 
 
-
-
         await msg1.edit(content=f" ", embed=embed1)
         await msg2.edit(content=f" ", embed=embed2)
         await msg3.edit(content=f" ", embed=embed3)
