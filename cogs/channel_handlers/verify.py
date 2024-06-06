@@ -119,41 +119,41 @@ class verify(Cog):
     async def verify(self, payload:RawReactionActionEvent):
         """Send verification message~!"""
 
-            # See if I need to deal with it
-            if payload.channel_id != self.bot.config['channels']['welcome']: #? Verification Channel
-                return
-            if self.bot.get_user(payload.user_id).bot:
-                return
+        # See if I need to deal with it
+        if payload.channel_id != self.bot.config['channels']['welcome']: #? Verification Channel
+            return
+        if self.bot.get_user(payload.user_id).bot:
+            return
 
-            # See what the emoji is
-            if payload.emoji.is_unicode_emoji():
-                emoji = payload.emoji.name 
-            else:
-                emoji = payload.emoji.id
-        
-            guild = self.bot.get_guild(payload.guild_id)
-            member = guild.get_member(payload.user_id)
+        # See what the emoji is
+        if payload.emoji.is_unicode_emoji():
+            emoji = payload.emoji.name
+        else:
+            emoji = payload.emoji.id
 
-            if emoji == "✅":
-                verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['verified'])
-                if verified not in member.roles:
-                    await self.verification(author=member)
+        guild = self.bot.get_guild(payload.guild_id)
+        member = guild.get_member(payload.user_id)
 
-            # Check to see total reactions on the message
-            channel_id = payload.channel_id
-            channel = self.bot.get_channel(channel_id)
-            async for message in channel.history():
-                if message.id == payload.message_id:
-                    break 
-            if message.id != payload.message_id:
-                return  # Couldn't find message in channel history
+        if emoji == "✅":
+            verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['verified'])
+            if verified not in member.roles:
+                await self.verification(author=member)
 
-            # See total reactions
-            emoji = [i.emoji for i in message.reactions]
-            if sum([i.count for i in message.reactions]) > 5000:
-                await message.clear_reactions()
-            for e in emoji:
-                await message.add_reaction(e)
+        # Check to see total reactions on the message
+        channel_id = payload.channel_id
+        channel = self.bot.get_channel(channel_id)
+        async for message in channel.history():
+            if message.id == payload.message_id:
+                break
+        if message.id != payload.message_id:
+            return  # Couldn't find message in channel history
+
+        # See total reactions
+        emoji = [i.emoji for i in message.reactions]
+        if sum([i.count for i in message.reactions]) > 5000:
+            await message.clear_reactions()
+        for e in emoji:
+            await message.add_reaction(e)
 
 
 
