@@ -62,51 +62,51 @@ class store_Handler(Cog):
 
     @Cog.listener('on_raw_reaction_add')
     async def store_buy(self, payload:RawReactionActionEvent):
-            '''Buys item's from the store.'''
+        """Buys item's from the store."""
 
-            #! See if I need to deal with it
-            if not payload.channel_id == self.bot.config['channels']['store']:
-                return
-            #? Check if bot is connected!
-            if self.bot.connected == False:
-                return
-            if self.bot.get_user(payload.user_id).bot:
-                return
+        #! See if I need to deal with it
+        if not payload.channel_id == self.bot.config['channels']['store']:
+            return
+        #? Check if bot is connected!
+        if not self.bot.connected:
+            return
+        if self.bot.get_user(payload.user_id).bot:
+            return
 
-            #! See what the emoji is
-            if payload.emoji.is_unicode_emoji():
-                emoji = payload.emoji.name 
-            else:
-                emoji = payload.emoji.id
+        #! See what the emoji is
+        if payload.emoji.is_unicode_emoji():
+            emoji = payload.emoji.name
+        else:
+            emoji = payload.emoji.id
 
-            #? Define Varibles
-            guild = self.bot.get_guild(payload.guild_id)
-            user = guild.get_member(payload.user_id)
-            c = utils.Currency.get(user.id)
-            mod = utils.Moderation.get(user.id)
-            day = utils.Daily.get(user.id)
-            skills = utils.Skills.get(user.id)
-            #* Define Shop item
-            bought = True
-            item = {'name': "Unknown", 'price': 0}
+            #? Define Variables
+        guild = self.bot.get_guild(payload.guild_id)
+        user = guild.get_member(payload.user_id)
+        c = utils.Currency.get(user.id)
+        mod = utils.Moderation.get(user.id)
+        day = utils.Daily.get(user.id)
+        skills = utils.Skills.get(user.id)
+        #* Define Shop item
+        bought = True
+        item = {'name': "Unknown", 'price': 0}
 
 
-            # #? Get the correct item
-            if emoji == "✨":
-                item['name'] = "Discord Nitro"
-                item['price'] = 10000000
-                msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
-                    bought = True
-                    await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
-                    razi = guild.get_member(self.bot.config['developers']['razi'])
-                    await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Discord Nitro Purchase\n{user} purchased Discord Nitro!!!!"))
+        #? Get the correct item
+        if emoji == "✨":
+            item['name'] = "Discord Nitro"
+            item['price'] = 10000000
+            msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase Discord Nitro!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
+            if await self.purchasing(msg=msg, payload=payload, item=item):
+                bought = True
+                await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
+                razi = guild.get_member(self.bot.config['developers']['razi'])
+                await razi.send(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Discord Nitro Purchase\n{user} purchased Discord Nitro!!!!"))
 
             if emoji == "💸":
                 item['name'] = "5$USD"
                 item['price'] = 5000000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase 5$USD!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, color=0x339c2a, desc=f"# Purchase Complete\nCongrats!!!  Razi will give you your reward within 24 hours!"))
                     razi = guild.get_member(self.bot.config['developers']['razi'])
@@ -116,7 +116,7 @@ class store_Handler(Cog):
                 item['name'] = "Library Pass"
                 item['price'] = 250000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Library Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Library pass!"))
                     library_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['library_pass'])
@@ -126,7 +126,7 @@ class store_Handler(Cog):
                 item['name'] = "Image Pass"
                 item['price'] = 250000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Image Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Image Pass!"))
                     image_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['image_pass'])
@@ -136,7 +136,7 @@ class store_Handler(Cog):
                 item['name'] = "Soundboard Pass"
                 item['price'] = 250000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Soundboard Pass!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Soundboard Pass!"))
                     soundboard_pass = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['soundboard_pass'])
@@ -146,7 +146,7 @@ class store_Handler(Cog):
                 item['name'] = "Stats Channel"
                 item['price'] = 75000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Stats Channel access\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased a Stats Channel access!"))
                     stats_channel_access = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['stats_channel_access'])
@@ -156,7 +156,7 @@ class store_Handler(Cog):
                 item['name'] = "Thread Permissions"
                 item['price'] = 75000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the Thread Permissions!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thread Permissions!"))
                     threads_perm = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['threads_perm'])
@@ -166,7 +166,7 @@ class store_Handler(Cog):
                 item['name'] = "External Emojis"
                 item['price'] = 75000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the External Emojis!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased External Emojis!"))
                     external_emojis = utils.DiscordGet(guild.roles, id=self.bot.config['purchase_roles']['external_emojis'])
@@ -177,14 +177,14 @@ class store_Handler(Cog):
                 item['name'] = "Thievery"
                 item['price'] = 1000000
                 msg = await user.send(embed=utils.Embed(user=user, desc=f"# Purchase Confirmation:\nPlease confirm you would like to purchase the ability to steal!\nThis will cost you {item['price']} {self.bot.config['emojis']['coin']}x"))
-                if await self.purchasing(msg=msg, payload=payload, item=item) == True:
+                if await self.purchasing(msg=msg, payload=payload, item=item):
                     bought = True
                     await msg.edit(embed=utils.Embed(user=user, desc=f"# Purchase Complete\nCongrats! Ya purchased Thievery!"))
                     skills.thievery = True
 
 
 
-            #! Save to databse
+            #! Save to database
             async with self.bot.database() as db:
                 await c.save(db)
                 await day.save(db)

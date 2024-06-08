@@ -29,7 +29,7 @@ class role_handler(Cog):
 
         embed1=Embed(description=f"# Age\n```\nLying about your age will result in a ban!\n```\n> 🚬<@&{self.bot.config['age_roles']['adult']}>`Gives access to adult only channels!`\n> 🍼<@&{self.bot.config['age_roles']['underage']}>`Given automatically if you don't get an age role.`", color=0x8f00f8)
 
-        embed2=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ✅<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}> `Get pinged for info on server events!`\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}> `Get pinged to greet any new members!`\n> 📊<@&{self.bot.config['ping_roles']['server_status']}> `Get pinged when our servers are down!`", color=0x8f00f8)
+        embed2=Embed(description=f"# Pings\n> 📔<@&{self.bot.config['ping_roles']['changelogs']}> `Recommended! Get pinged about changes!`\n> ✅<@&{self.bot.config['ping_roles']['voters']}> `Get pinged when a vote is held!`\n> 📆<@&{self.bot.config['ping_roles']['events']}> `Get pinged for info on server events!`\n> 🤝<@&{self.bot.config['ping_roles']['welcomer']}> `Get pinged to greet any new members!`\n> 📊<@&{self.bot.config['ping_roles']['server_status']}> `Get pinged when our servers are down!`\n> 🍎<@&{self.bot.config['ping_roles']['ping_me']}> `Get pinged by other users to come play!`", color=0x8f00f8)
 
 
         await msg1.edit(content=f" ", embed=embed1)
@@ -61,7 +61,7 @@ class role_handler(Cog):
             emoji = payload.emoji.id
 
 
-        # Work out out cached items
+        # Work out cached items
         channel = self.bot.get_channel(payload.channel_id)
         guild = channel.guild
         member = guild.get_member(payload.user_id)
@@ -134,6 +134,8 @@ class role_handler(Cog):
             role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['welcomer'])
         elif emoji == "📊":
             role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['server_status'])
+        elif emoji == "🍎":
+            role = utils.DiscordGet(guild.roles, id=self.bot.config['ping_roles']['ping_me'])
 
         if role:
             return role
