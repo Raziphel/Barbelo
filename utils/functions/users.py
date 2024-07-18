@@ -28,13 +28,7 @@ class UserFunctions(object):
 
         #? Assign new member roles.
         verified = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['verified'])
-        s1 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['access'])
-        s2 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['purchases'])
-        s3 = utils.DiscordGet(guild.roles, id=cls.bot.config['seperator_roles']['pings'])
         await user.add_roles(verified, reason="Verification")
-        await user.add_roles(s1, reason="Verification")
-        await user.add_roles(s2, reason="Verification")
-        await user.add_roles(s3, reason="Verification")
 
         #* Makes sure they get have the correct level role.
         await cls.check_level(user)
