@@ -126,9 +126,6 @@ class Profile(Cog):
         if not user:
             user = ctx.author
 
-        #! Quest 2 Complete
-        await self.bot.get_cog('Quests').get_quest(user=user, quest_no=2, completed=True)
-
         # await self.base_profile(ctx=ctx, user=user, msg=None)
         file = await self.generate_screenshot(user)
 
