@@ -54,7 +54,7 @@ class UserFunctions(object):
         #+ Level em the hell up!
         lvl.exp = 0
         lvl.level += 1
-        coins = (lvl.level*2500)
+        coins = (lvl.level*1000)
 
         await utils.CoinFunctions.earn(earner=user, amount=coins)
 
