@@ -171,7 +171,6 @@ class Profile(Cog):
         levels = utils.Levels.get(member.id)
         currency = utils.Currency.get(member.id)
         tracking = utils.Tracking.get(member.id)
-        staff_tracking = utils.Staff_Track.get(member.id)
 
         if levels.level == 0:
             required_exp = 10
