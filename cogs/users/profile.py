@@ -428,7 +428,7 @@ class Profile(Cog):
         '''Quick Check inventory'''
         if not user:
             user = ctx.author
-        await ctx.interaction.response.send_message(embed=utils.ProfileEmbed(type="Items", user=user, quick=True))
+        await ctx.interaction.response.send_message(embed=utils.Embed(type="Items", user=user, quick=True))
 
 
 
@@ -460,14 +460,14 @@ class Profile(Cog):
             try:
                 colour_value = int(colour.strip('#'), 16)
             except ValueError:
-                await ctx.interaction.response.send_message(embed=utils.SpecialEmbed(title="Incorrect colour usage!"))
+                await ctx.interaction.response.send_message(embed=utils.Embed(title="Incorrect colour usage!"))
                 return
 
         tr.color = colour_value
         async with self.bot.database() as db:
             await tr.save(db)
 
-        await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(title="Your color setting has been set!", user=ctx.author))
+        await ctx.interaction.response.send_message(embed=utils.Embed(title="Your color setting has been set!", user=ctx.author))
 
 def setup(bot):
     x = Profile(bot)

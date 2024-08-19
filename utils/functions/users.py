@@ -24,7 +24,7 @@ class UserFunctions(object):
 
         #+ Send joining server messages!
         log = cls.bot.get_channel(cls.bot.config['channels']['general'])
-        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined the Serpent's Garden."))
+        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Razi's Realm."))
 
         #? Assign new member roles.
         verified = utils.DiscordGet(guild.roles, id=cls.bot.config['access_roles']['verified'])
