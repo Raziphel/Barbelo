@@ -38,8 +38,8 @@ class verify(Cog):
 
 
 
-    @Cog.listener() #! ---> verify
-    async def on_ready(self):
+    @Cog.listener('on_ready') #! ---> verify
+    async def verify(self):
 
         embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica has an advanced way of prevent scammers, spammers and beggars from the server!\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0x8F00FF)
 
@@ -75,8 +75,8 @@ class verify(Cog):
 
 
 
-    @Cog.listener() #! ---> Server Rules
-    async def on_ready(self):
+    @Cog.listener('on_ready') #! ---> Server Rules
+    async def rules(self):
 
         embed1=Embed(description=f"# Etiquette\n🐍 **All text & voice channels are english only.**\n🐍 **No Drama.** No matter how you feel about others you can't bring it up here.\n🐍 **No Politics, No Religion.**  Only allowed in specific chats.\n🐍 **No Spamming.**  Anything that is cluttering up a chat or repetitive in VC.\n🐍 **No Self Promotion.** Unless done so in a channel deciated to self promotion.\n", color=0xff0000)
 
