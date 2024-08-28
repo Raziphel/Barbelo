@@ -51,13 +51,13 @@ class verify(Cog):
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
         welcome_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['welcome_id']) #? 
-        await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}")
+        await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}", embed=None)
 
         tos_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['tos_id']) #? 
-        await tos_banner.edit(content=f"{self.bot.config['purgatory_banners']['tos_url']}")
+        await tos_banner.edit(content=f"{self.bot.config['purgatory_banners']['tos_url']}", embed=None)
 
         verify_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['verify_id']) #? 
-        await verify_banner.edit(content=f"{self.bot.config['purgatory_banners']['verify_url']}")
+        await verify_banner.edit(content=f"{self.bot.config['purgatory_banners']['verify_url']}", embed=None)
 
         rules = {}
         for i in range(1, 4):
