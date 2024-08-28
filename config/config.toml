@@ -91,11 +91,11 @@ bot_id = 550474149332516881
 #+
 [purgatory_banners]
     welcome_id = 1239078912399773737 
-    welcome_url = "https://cdn.discordapp.com/attachments/550556052396179458/1239762951376732271/LaKmL2t.png?ex=66441ab9&is=6642c939&hm=f3220b723e9c91fe94bb322251be92969124c5348cbf52c6b339a64d0ac7a5de&"
+    welcome_url = "https://cdn.discordapp.com/attachments/550556052396179458/1278147536007204956/uVLBZw7.png?ex=66cfbf27&is=66ce6da7&hm=f816e82e2dfa384f06167fd4696d6deb5ba254d3eac6bd924303134c081cf0b8&"
     tos_id = 1239078928522678272 
-    tos_url = "https://cdn.discordapp.com/attachments/550556052396179458/1239449567762583593/Uw2RnmE.png?ex=6642f6dc&is=6641a55c&hm=4637de5524118295f45d400621cd986821f4cb66265d269a1a27172714debe8d&"
+    tos_url = "https://cdn.discordapp.com/attachments/550556052396179458/1278147619532570686/b3T0tHE.png?ex=66cfbf3b&is=66ce6dbb&hm=c1f922b06a7b4e3a676d721a94a4f89e79b7c17cf9e89fb118755b6f8afb68f1&"
     verify_id = 1239078944020631623
-    verify_url = "https://cdn.discordapp.com/attachments/550556052396179458/1239845283312046111/nGopsMt.png?ex=66446766&is=664315e6&hm=92194c30ff9fdb9a285bca351ea285bd1febcd0bc85f1cd897ae54286d32d18d&"
+    verify_url = "https://cdn.discordapp.com/attachments/550556052396179458/1278148466064756746/g3EvMNs.png?ex=66cfc005&is=66ce6e85&hm=8c0d7144e5c9642f117ef690757b2b0c10c3fe9f46f283e7630284f7dbf8ebbc&"
     etiquette_id = 1239887374956101662
     etiquette_url = "https://cdn.discordapp.com/attachments/550556052396179458/1239883592046346250/WGCLmSq.png?ex=66448b14&is=66433994&hm=54812e21d6a26b97742a40caaa0e1121a039e51b4e7b34c06fc176ec518e46e7&"
     respect_id = 1239887386310082601
