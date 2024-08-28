@@ -43,7 +43,7 @@ class verify(Cog):
 
         embed1=Embed(description=f"# __**Welcome to Serpent's Garden**__\nSerpent's Garden has an advanced way of prevent scammers, spammers and beggars from the server!\n\n**All members are required to accept the Serpent's - Terms of Service.**", color=0x269f00)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Serpent's Garden and completing the verification process.\n**__You agree to the following__:** \n\nYou are okay and willing to be subject to lots of gay, furry, degenerates and crazy people.\n\nYou will fully read, understand and will uphold the rules of Serpent's Garden.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0x0ca994)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Serpent's Garden and completing the verification process.\n\n**__You agree to the following__:** \nYou are okay and willing to be subject to lots of gay, furry, degenerates and crazy people.\n\nYou will fully read, understand and will uphold the rules of Serpent's Garden.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0x0ca994)
 
         embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Serpent's Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.", color=0xde1326)
 
