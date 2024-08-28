@@ -81,7 +81,7 @@ class verify(Cog):
 
         embed2=Embed(description=f"# Respect\n🩸 **Excessively argumentative, rude, dismissive, or aggressive members will be removed.** \n🩸 We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of **racism, homophobia, transphobia or other types of discriminatory language.**\n🩸 **Personal arguments or conversations.** This should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0x8F00FF)
 
-        embed3=Embed(description=f"# Secret Society\n🔮 **In private areas you must obey their rules and secrets.**\n🔮 **Access to these areas must be gained.** All having different requirements.\n🔮 **Designated council members** manage their respective areas.\n🔮 **Access to one area can restrict you from other areas.** ", color=0xff0000)
+        embed3=Embed(description=f"# Secret Society's\n🔮 **You must respect the areas you choose to be in!**\n🔮 **Not aLl staff members** manage every area of the server.\n🔮 People who choose to be apart of both can not be treated poorly in different area", color=0xff0000)
 
         embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**\n🔱 **All roles get in-game perms.**\n🔱 **Architects are developers** and can still moderate.", color=0x8F00FF)
 
