@@ -47,7 +47,6 @@ class verify(Cog):
 
         embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Esoterica Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.", color=0x8F00FF)
 
-        print('JESUS FUCKING CHRIST')
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
@@ -88,7 +87,6 @@ class verify(Cog):
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
-
 
         etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['etiquette_id']) #? 
         await etiquette_banner.edit(content=f"{self.bot.config['purgatory_banners']['etiquette_url']}")
