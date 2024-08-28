@@ -9,3 +9,4 @@ _*
 .ini
 config/secret.toml
 .venv
+.idea
