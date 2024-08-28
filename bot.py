@@ -24,6 +24,7 @@ if __name__ == "__main__":
     print(f"Loading {len(extensions)} extensions")
     for extension in extensions:
         try:
+            print(f"Loaded: {extension}")
             bot.load_extension(extension)
         except Exception as e:
             print(f"Failed to load {extension}")
