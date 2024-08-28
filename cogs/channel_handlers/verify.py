@@ -88,7 +88,7 @@ class verify(Cog):
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
-
+        print('JESUS FUCKING CHRIST')
 
         etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['etiquette_id']) #? 
         await etiquette_banner.edit(content=f"{self.bot.config['purgatory_banners']['etiquette_url']}")
