@@ -39,26 +39,25 @@ class verify(Cog):
 
 
     @Cog.listener('on_ready') #! ---> verify
-    async def verify(self):
+    async def verify_page(self):
 
-        embed1=Embed(description=f"# __**Welcome to Esoterica**__\nEsoterica has an advanced way of prevent scammers, spammers and beggars from the server!\n\n**All members are required to accept the Esoterica - Terms of Service.**", color=0x8F00FF)
+        embed1=Embed(description=f"# __**Welcome to Serpent's Garden**__\nSerpent's Garden has an advanced way of prevent scammers, spammers and beggars from the server!\n\n**All members are required to accept the Serpent's - Terms of Service.**", color=0x269f00)
 
-        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Esoterica and completing the verification process.  **__You agree to the following__:** \n\nI may be subject to \"unfair treatment\" and \"punishments\" that are automated and not brought on by any members of staff.\n\nI have fully read, understand and will uphold the rules of Esoterica.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0xFF0000)
+        embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Serpent's Garden and completing the verification process.\n\n**__You agree to the following__:** \nYou are okay and willing to be subject to lots of gay, furry, degenerates and crazy people.\n\nYou will fully read, understand and will uphold the rules of Serpent's Garden.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0x0ca994)
 
-        embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Esoterica Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.", color=0x8F00FF)
-
+        embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Serpent's Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.\n\n**Please make sure the bot is able to message you!!!**", color=0xde1326)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
 
         welcome_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['welcome_id']) #? 
-        await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}")
+        await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}", embed=None)
 
         tos_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['tos_id']) #? 
-        await tos_banner.edit(content=f"{self.bot.config['purgatory_banners']['tos_url']}")
+        await tos_banner.edit(content=f"{self.bot.config['purgatory_banners']['tos_url']}", embed=None)
 
         verify_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['verify_id']) #? 
-        await verify_banner.edit(content=f"{self.bot.config['purgatory_banners']['verify_url']}")
+        await verify_banner.edit(content=f"{self.bot.config['purgatory_banners']['verify_url']}", embed=None)
 
         rules = {}
         for i in range(1, 4):
@@ -82,13 +81,12 @@ class verify(Cog):
 
         embed2=Embed(description=f"# Respect\n🩸 **Excessively argumentative, rude, dismissive, or aggressive members will be removed.** \n🩸 We will not tolerate any instances of offensive behaviour towards anyone, nor any occurrences of **racism, homophobia, transphobia or other types of discriminatory language.**\n🩸 **Personal arguments or conversations.** This should be taken to direct messages if both users wish to continue, rather than affecting the atmosphere/mood/feeling of the chat.", color=0x8F00FF)
 
-        embed3=Embed(description=f"# Secret Society\n🔮 **In private areas you must obey their rules and secrets.**\n🔮 **Access to these areas must be gained.** All having different requirements.\n🔮 **Designated council members** manage their respective areas.\n🔮 **Access to one area can restrict you from other areas.** ", color=0xff0000)
+        embed3=Embed(description=f"# Secret Society's\n🔮 **You must respect the areas you choose to be in!**\n🔮 **Not all staff members** manage every area of the server.\n🔮 People who choose to be apart of both can not be treated poorly in different area", color=0xff0000)
 
         embed4=Embed(description=f"# Knights, Architects, Council and Overlords\n🔱 **Overlords are owners.**\n🔱 **Decisions made by council are final.**\n🔱 **Knights are only helpers to council.**\n🔱 **All roles get in-game perms.**\n🔱 **Architects are developers** and can still moderate.", color=0x8F00FF)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['rules']) #? Rules Channel
-
 
         etiquette_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['etiquette_id']) #? 
         await etiquette_banner.edit(content=f"{self.bot.config['purgatory_banners']['etiquette_url']}")
@@ -137,7 +135,9 @@ class verify(Cog):
         if emoji == "✅":
             verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['verified'])
             if verified not in member.roles:
-                await self.verification(author=member)
+                try:
+                    await self.verification(author=member)
+                except: pass
 
         # Check to see total reactions on the message
         channel_id = payload.channel_id
@@ -187,7 +187,7 @@ class verify(Cog):
             return message
 
         try:
-            invited_answer = await get_input(f"Where did you receive an invitation to Esoterica from?")
+            invited_answer = await get_input(f"Where did you receive an invitation to Serpent's Garden from?")
 
             age_answer = await get_input("How old are you?")
             age_answer =get_only_numbers(age_answer.content)
@@ -213,17 +213,17 @@ class verify(Cog):
                 color = 0x0
                 await author.send('Invalid color specified!\nSetting to default color.')
 
-            verify_answer = await get_input("Do you agree to the server's TOS and plan to read the rules once verified? (Only answer is yes)")
+            verify_answer = await get_input("Do you agree to the server's TOS and plan to read the rules once verified? (Only answer is 'yes')")
 
             msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nAgreed?: {verify_answer.content}"
-            msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
+            await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
             if verify_answer.content.lower() == "yes" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
             else:
-                embed2=Embed(description="**You have been denied!**")
+                embed2=Embed(description="**Your verification have been denied!**")
                 await author.send(embed=embed2)
 
         except DiscordException:
@@ -233,7 +233,7 @@ class verify(Cog):
             await author.send('Aborting Verification!')
 
         except TimeoutError:
-            await author.send('Sorry, but you took too long to respond.  Verification has closed.')
+            await author.send('Sorry, but you took too long to respond.\nPlease re-click the check emoji and verify.')
 
 
 
