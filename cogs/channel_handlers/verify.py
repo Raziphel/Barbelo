@@ -45,7 +45,7 @@ class verify(Cog):
 
         embed2=Embed(description=f"# __**Terms of Service**__\nBy choosing to be apart of Serpent's Garden and completing the verification process.\n\n**__You agree to the following__:** \nYou are okay and willing to be subject to lots of gay, furry, degenerates and crazy people.\n\nYou will fully read, understand and will uphold the rules of Serpent's Garden.\n\nI have fully read, understand and will uphold Discord's Terms of Service.", color=0x0ca994)
 
-        embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Serpent's Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.", color=0xde1326)
+        embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Serpent's Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.\n\n**Please make sure the bot is able to message you!!!**", color=0xde1326)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
         ch = guild.get_channel(self.bot.config['channels']['welcome']) 
@@ -135,7 +135,9 @@ class verify(Cog):
         if emoji == "✅":
             verified = utils.DiscordGet(guild.roles, id=self.bot.config['access_roles']['verified'])
             if verified not in member.roles:
-                await self.verification(author=member)
+                try:
+                    await self.verification(author=member)
+                except: pass
 
         # Check to see total reactions on the message
         channel_id = payload.channel_id
@@ -185,7 +187,7 @@ class verify(Cog):
             return message
 
         try:
-            invited_answer = await get_input(f"Where did you receive an invitation to Esoterica from?")
+            invited_answer = await get_input(f"Where did you receive an invitation to Serpent's Garden from?")
 
             age_answer = await get_input("How old are you?")
             age_answer =get_only_numbers(age_answer.content)
@@ -211,17 +213,17 @@ class verify(Cog):
                 color = 0x0
                 await author.send('Invalid color specified!\nSetting to default color.')
 
-            verify_answer = await get_input("Do you agree to the server's TOS and plan to read the rules once verified? (Only answer is yes)")
+            verify_answer = await get_input("Do you agree to the server's TOS and plan to read the rules once verified? (Only answer is 'yes')")
 
             msg = f"How they were invited: {invited_answer.content}\nAge given: {age_answer}\nAgreed?: {verify_answer.content}"
-            msg = await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
+            await self.discord_log.send(embed=utils.Embed(footer=f"Verification", desc=msg, color=t.color, author=author, image=author.avatar.url))
 
             if verify_answer.content.lower() == "yes" and age_answer > 12:
                 embed2=Embed(description="**You have been accepted!**")
                 await author.send(embed=embed2)
                 await utils.UserFunctions.verify_user(author)
             else:
-                embed2=Embed(description="**You have been denied!**")
+                embed2=Embed(description="**Your verification have been denied!**")
                 await author.send(embed=embed2)
 
         except DiscordException:
@@ -231,7 +233,7 @@ class verify(Cog):
             await author.send('Aborting Verification!')
 
         except TimeoutError:
-            await author.send('Sorry, but you took too long to respond.  Verification has closed.')
+            await author.send('Sorry, but you took too long to respond.\nPlease re-click the check emoji and verify.')
 
 
 
