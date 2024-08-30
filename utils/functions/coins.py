@@ -78,7 +78,7 @@ class CoinFunctions(object):
         cp_r = utils.Coins_Record.get(payer.id)
 
         if cp.coins < amount:
-            return false
+            return False
 
         #+ Buy things with coins!
         cp.coins -= amount
