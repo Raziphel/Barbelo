@@ -48,7 +48,7 @@ class verify(Cog):
         embed3=Embed(description=f"# __**Verification**__\nIf you agree to the Serpent's Terms of Service and are capable of receiving a private message then please click the ✅ reaction button to being the verification process.\n\n**Please make sure the bot is able to message you!!!**", color=0xde1326)
 
         guild = self.bot.get_guild(self.bot.config['guild_id']) #? Guild
-        ch = guild.get_channel(self.bot.config['channels']['welcome']) 
+        ch = guild.get_channel(self.bot.config['channels']['verify'])
 
         welcome_banner = await ch.fetch_message(self.bot.config['purgatory_banners']['welcome_id']) #? 
         await welcome_banner.edit(content=f"{self.bot.config['purgatory_banners']['welcome_url']}", embed=None)
@@ -118,7 +118,7 @@ class verify(Cog):
         """Send verification message~!"""
 
         # See if I need to deal with it
-        if payload.channel_id != self.bot.config['channels']['welcome']: #? Verification Channel
+        if payload.channel_id != self.bot.config['channels']['verify']: #? Verification Channel
             return
         if self.bot.get_user(payload.user_id).bot:
             return
