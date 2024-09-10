@@ -24,7 +24,7 @@ class UserFunctions(object):
 
         #+ Send joining server messages!
         log = cls.bot.get_channel(cls.bot.config['channels']['welcome'])
-        await log.send(content=f"{user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Serpent's Garden."))
+        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Serpent's Garden."))
 
 
         #? Assign new member roles.
