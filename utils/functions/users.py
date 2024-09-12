@@ -69,6 +69,8 @@ class UserFunctions(object):
         #? Log it and tell em.
         if channel:
             msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**"))
+        else:
+            await user.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 You are now level: **{lvl.level:,}**\nGranting you: **{coin_e} {floor(coins):,}x**"))
 
         log = cls.bot.get_channel(cls.bot.config['logs']['coins'])
         await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**")
