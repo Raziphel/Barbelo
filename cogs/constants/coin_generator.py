@@ -103,7 +103,7 @@ class Coin_Generator(Cog):
 
                     c = utils.Currency.get(member.id)
                     lvl = utils.Levels.get(member.id)
-                    lvl.exp += (1 + (len(vc.members)))
+                    lvl.exp += (4 + (len(vc.members)))
                     await utils.CoinFunctions.earn(earner=member, amount=1 + round(len(vc.members)))
 
                     await utils.UserFunctions.level_up(user=member, channel=None)
