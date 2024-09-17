@@ -24,7 +24,7 @@ class UserFunctions(object):
 
         #+ Send joining server messages!
         log = cls.bot.get_channel(cls.bot.config['channels']['welcome'])
-        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Serpent's Garden."))
+        await log.send(content=f"<@&{cls.bot.config['ping_roles']['welcomer']}> {user.mention}  **Make sure to go to <#{cls.bot.config['channels']['roles']}> to choose what areas of the server you get access to!**", embed=utils.Embed(color=randint(1, 0xffffff), title=f"{user.name} has joined Serpent's Garden."))
 
 
         #? Assign new member roles.
@@ -69,6 +69,8 @@ class UserFunctions(object):
         #? Log it and tell em.
         if channel:
             msg = await channel.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 {user.mention} is now level: **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**"))
+        else:
+            await user.send(embed=utils.Embed(color = randint(1, 0xffffff), desc=f"🎉 You are now level: **{lvl.level:,}**\nGranting you: **{coin_e} {floor(coins):,}x**"))
 
         log = cls.bot.get_channel(cls.bot.config['logs']['coins'])
         await log.send(f"**<@{user.id}>** leveled up and is now level **{lvl.level:,}**\nGranting them: **{coin_e} {floor(coins):,}x**")
@@ -100,16 +102,16 @@ class UserFunctions(object):
         lvl = utils.Levels.get(user.id)
 
         level_roles = {
-            90: "lvl.90",
-            80: "lvl.80",
-            70: "lvl.70",
-            60: "lvl.60",
-            50: "lvl.50",
-            40: "lvl.40",
-            30: "lvl.30",
-            20: "lvl.20",
-            10: "lvl.10",
-            0: "lvl.0"
+            90: "Level 90",
+            80: "Level 80",
+            70: "Level 70",
+            60: "Level 60",
+            50: "Level 50",
+            40: "Level 40",
+            30: "Level 30",
+            20: "Level 20",
+            10: "Level 10",
+            0: "Level 0"
         }
 
         # Get roles from the user we'd need to delete
