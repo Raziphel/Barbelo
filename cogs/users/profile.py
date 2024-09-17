@@ -425,7 +425,7 @@ class Profile(Cog):
 
     @command(application_command_meta=ApplicationCommandMeta(), aliases=['i', 'inv', 'items', 'Inv'])
     async def inventory(self, ctx, user:Member=None):
-        '''Quick Check inventory'''
+        """Quick Check inventory"""
         if not user:
             user = ctx.author
         await ctx.interaction.response.send_message(embed=utils.Embed(type="Items", user=user, quick=True))
@@ -446,9 +446,9 @@ class Profile(Cog):
             ),
         )
     async def setcolor(self, ctx, colour=None):
-        '''Sets your user color'''
+        """Sets your user color"""
 
-        if colour == None:
+        if colour is None:
             file = discord.File('config/lists/colors.py', filename='config/lists/colors.py')
             await ctx.interaction.response.send_message(f"**Heres a list of colors you can use!**", file=file)
             return
@@ -456,7 +456,7 @@ class Profile(Cog):
         colour_value = utils.Colors.get(colour.lower())
         tr = utils.Tracking.get(ctx.author.id)
 
-        if colour_value == None:
+        if colour_value is None:
             try:
                 colour_value = int(colour.strip('#'), 16)
             except ValueError:

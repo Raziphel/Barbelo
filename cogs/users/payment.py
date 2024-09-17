@@ -1,5 +1,5 @@
 # Discord
-from discord import User, ApplicationCommandOption, ApplicationCommandOptionType
+from discord import User, ApplicationCommandOption, ApplicationCommandOptionType, Member
 from discord.ext.commands import command, cooldown, BucketType, Cog, ApplicationCommandMeta
 
 # Utils
@@ -35,25 +35,25 @@ class Payment(Cog):
             ],
         ),
     )
-    async def pay(self, ctx, recipient: User = None, amount: int = 0):
+    async def pay(self, ctx, recipient: Member = None, amount: int = 0):
         """Send coins to another member (With a tax)."""
         coin_e = self.bot.config['emojis']['coin']
 
         #? Check if the recipient is the same as the user.
         if recipient == ctx.author:
-            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{ctx.author.name} You can't pay yourself coins! stupid..."))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(description=f"{ctx.author.name} You can't pay yourself coins! stupid..."))
 
         if amount <= 1000:
-            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{ctx.author.name} Has to be more than 1,000!"))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(description=f"{ctx.author.name} Has to be more than 1,000!"))
 
         #? Check if the user has enough coins.
         c = utils.Currency.get(ctx.author.id)
         if amount > (c.coins - amount*0.08):
-            return await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"{recipient.mention} you don't have that many coins.  (Could be due to taxes)"))
+            return await ctx.interaction.response.send_message(embed=utils.Embed(description=f"{recipient.mention} you don't have that many coins.  (Could be due to taxes)"))
 
         tax = await utils.CoinFunctions.pay_user(payer=ctx.author, receiver=recipient, amount=amount)
 
-        await ctx.interaction.response.send_message(embed=utils.DefaultEmbed(description=f"**{ctx.author} sent {coin_e} {floor(amount):,}x to {recipient}!**\n*Taxes: {floor(tax):,}*"))
+        await ctx.interaction.response.send_message(embed=utils.Embed(description=f"**{ctx.author} sent {coin_e} {floor(amount):,}x to {recipient}!**\n*Taxes: {floor(tax):,}*"))
 
         await self.coin_logs.send(f"**{ctx.author.name}** payed **{coin_e} {amount}x** to **{recipient.name}**!")
 
