@@ -18,7 +18,6 @@ class Message_Rewards(Cog):
         self.bun_msg = 0
 
 
-
     @Cog.listener('on_message')
     async def reward_gen(self, message):
         """Message Reward Generation"""
@@ -88,7 +87,7 @@ class Message_Rewards(Cog):
         msg = None
 
         c = utils.Currency.get(user.id)
-        coin_logs = self.bot.get_channel(self.bot.config['channels']['coin_logs'])
+        coin_logs = self.bot.get_channel(self.bot.config['logs']['coins'])
 
         #! Define Emojis
         bunny_e = "<a:Bunny:703136644366336000>"
