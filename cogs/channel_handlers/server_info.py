@@ -24,11 +24,11 @@ class server_info(Cog):
         msg2 = await ch.fetch_message(self.bot.config['server_info_messages']['2'])
         msg3 = await ch.fetch_message(self.bot.config['server_info_messages']['3'])
 
-        embed1=Embed(description=f"# SCP Server Info\nIf for some reason the servers are not showing up on the Server List.  You can direct connect to the servers using the command `connect n01.infra.serpents.garden:7777-7780`.\n\nYou can also visit our CedMod site by going to `scp.serpents.garden` where can see a list of players online as well as link your discord account for in-game badges and rewards.", color=0xff0000)
+        embed1=Embed(description=f"# SCP Server Info\nIf for some reason the servers are not showing up on the Server List.  You can direct connect to the servers using the command:\n`connect n01.infra.serpents.garden:7777-7780`.\n\nYou can also visit our CedMod site by going to `scp.serpents.garden` where can see a list of players online as well as link your discord account for in-game badges and rewards.", color=0xff0000)
 
-        embed2=Embed(description=f"# Discord -> SCP Server linking\n", color=0xffff00)
+        embed2=Embed(description=f"# Discord -> SCP Server linking\nConnecting your discord account to our CedMod integration allows you to be able to receive rewards from the Discord!  It's required if you choose to donate or nitro boost the discord, so that you can get any benefits!\n\n1.) Run this command on the discord `/account link`\n2.) Go through the process of logging in on the link provided.\n3.) **Profit!**", color=0xffff00)
 
-        embed3=Embed(description=f"", color=0x0000ff)
+        embed3=Embed(description=f" ", color=0x0000ff)
 
 
         await msg1.edit(content=f" ", embed=embed1)
