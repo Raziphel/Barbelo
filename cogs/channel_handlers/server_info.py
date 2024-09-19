@@ -28,7 +28,7 @@ class server_info(Cog):
 
         embed2=Embed(description=f"# Discord -> SCP Server linking\nConnecting your discord account to our CedMod integration allows you to be able to receive rewards from the Discord!  It's required if you choose to donate or nitro boost the discord, so that you can get any benefits!\n\n1.) Run this command on the discord `/account link`\n2.) Go through the process of logging in on the link provided.\n3.) **Profit!**", color=0xffff00)
 
-        embed3=Embed(description=f"# Server Plugins\n\nA full list of plugins and there functions will be available when Razi isn't a Lazi bitch....", color=0x0000ff)
+        embed3=Embed(description=f"# Server Plugins\n\nA full list of plugins and there functions will be available when Razi isn't a Lazy bitch....", color=0x0000ff)
 
 
         await msg1.edit(content=f" ", embed=embed1)
