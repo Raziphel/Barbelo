@@ -34,7 +34,7 @@ class store_Handler(Cog):
 
         embed1=Embed(description=f"# Garden Specials\n`All the listed items are worth real life money for the cost of gems!`", color=0xFF0000)
         embed1.add_field(name=f"⊰ ✨ Discord Nitro ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}10,000,000x**\n\n```Get the 10$ Discord Nitro!```", inline=True)
-        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}5,000,000x**\n\n```Turn all your hellstones into $USD!```", inline=True)
+        embed1.add_field(name=f"⊰ 💸 Get 5$USD! ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}5,000,000x**\n\n```Turn your coins into $USD!```", inline=True)
 
         embed2=Embed(description=f"# Permissions\n`All these listed items give you general permissions on the server!`", color=0x00FF00)
         embed2.add_field(name=f"⊰ 📚 Library Pass ⊱", value=f"**╰⊰ {self.bot.config['emojis']['coin']}250,000x**\n\n```Get access to all of the server's logs!```", inline=True)
