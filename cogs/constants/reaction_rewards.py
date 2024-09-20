@@ -46,11 +46,11 @@ class Message_Rewards(Cog):
             elif chance <= 75:
                 for x in range(5):
                     message = choice(messages)
-                    reaction = await message.add_reaction(self.bot.config['emotes']['bunny'])
+                    reaction = await message.add_reaction(self.bot.config['emojis']['bunny'])
                     self.bunny_messages.append(message.id)
             elif chance <= 500:
                 message = choice(messages)
-                await message.add_reaction(self.bot.config['emotes']['coin'])
+                await message.add_reaction(self.bot.config['emojis']['coin'])
                 self.coin_messages.append(message.id)
         except Exception as e:
             print(f'A reward failed to spawn :: {e}')
@@ -90,7 +90,7 @@ class Message_Rewards(Cog):
         coin_logs = self.bot.get_channel(self.bot.config['logs']['coins'])
 
         #! Define Emojis
-        bunny_e = "<a:Bunny:703136644366336000>"
+        bunny_e = self.bot.config['emojis']['bunny']
         coin_e = self.bot.config['emojis']['coin']
 
         #! Get the correct item
