@@ -81,7 +81,7 @@ class daily(Cog):
         # ? Send the embed
         msg = await ctx.interaction.response.send_message(
             embed=utils.Embed(
-                desc=f"# This your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***",
+                desc=f"# This is your {day.daily}{th} daily claimed in a row!\n```\nYou have been rewarded:\n```\n***{self.bot.config['emojis']['coin']}{floor(coins):,}x***",
                 user=ctx.author)
         )
 
